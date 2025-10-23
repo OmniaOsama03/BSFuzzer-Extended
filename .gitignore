@@ -1,0 +1,24 @@
+# API Keys and Secrets
+*.log
+**/test*.log
+**/teest.log
+**/testt.log
+**/esp_time.log
+**/cypress_time.log
+**/field.log
+**/state_analysis.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# API Keys
+*api_key*
+*secret*
+*password*
+*token*
+
+# Temporary files
+*.tmp
+*.temp
