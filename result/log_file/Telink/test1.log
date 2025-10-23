@@ -6,9 +6,9 @@ Advertiser Address:  D8:5F:77:DB:68:C5
 config_file:  /home/yangting/Documents/Semantic/srcs/Config_File/Telink/tlkapp_controller_selected_07_15.ini
 Master Address:  b6:5e:bd:0a:e2:8d
 Advertiser Address:  D8:5F:77:DB:68:C5
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-beta', 'temperature': 0.7, 'max_tokens': 4096}
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-beta', 'temperature': 0.7, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
 -----------------Pre Start-----------------
 Master Address:  bd:4d:d7:e3:87:7e
 Advertiser Address:  D8:5F:77:DB:68:C5

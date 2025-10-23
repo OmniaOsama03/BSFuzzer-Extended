@@ -6,9 +6,9 @@ Advertiser Address:  00:80:E1:27:B1:B2
 config_file:  /home/yangting/Documents/Semantic/srcs/Config_File/STM32/esp_ble_security.ini
 Master Address:  c3:67:76:b1:09:2e
 Advertiser Address:  00:80:E1:27:B1:B2
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-beta', 'temperature': 0.7, 'max_tokens': 4096}
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-beta', 'temperature': 0.7, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
 -----------------Pre Start-----------------
 Master Address:  2c:79:f9:ad:2a:3d
 Advertiser Address:  00:80:E1:27:B1:B2
@@ -136,9 +136,9 @@ Advertiser Address:  00:80:E1:27:B1:B2
 config_file:  /home/yangting/Documents/Semantic/srcs/Config_File/STM32/esp_ble_security.ini
 Master Address:  f8:58:48:73:8d:80
 Advertiser Address:  00:80:E1:27:B1:B2
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-beta', 'temperature': 0.7, 'max_tokens': 4096}
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-beta', 'temperature': 0.7, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
 -----------------Pre Start-----------------
 Master Address:  a9:94:bf:23:2a:d0
 Advertiser Address:  00:80:E1:27:B1:B2

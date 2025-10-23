@@ -6,9 +6,9 @@ Advertiser Address:  00:80:E1:27:B1:B2
 config_file:  /home/yangting/Documents/Semantic/srcs/Config_File/STM32/esp_ble_security.ini
 Master Address:  fe:51:51:29:b9:9c
 Advertiser Address:  00:80:E1:27:B1:B2
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-beta', 'temperature': 0.7, 'max_tokens': 4096}
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-beta', 'temperature': 0.7, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
 -----------------Pre Start-----------------
 Master Address:  ab:6f:18:9a:73:40
 Advertiser Address:  00:80:E1:27:B1:B2
@@ -22263,9 +22263,9 @@ Advertiser Address:  00:80:E1:27:B1:B2
 config_file:  /home/yangting/Documents/Semantic/srcs/Config_File/STM32/esp_ble_security.ini
 Master Address:  85:d2:af:aa:0e:05
 Advertiser Address:  00:80:E1:27:B1:B2
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-beta', 'temperature': 0.7, 'max_tokens': 4096}
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-beta', 'temperature': 0.7, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
 -----------------Pre Start-----------------
 Master Address:  b3:33:dd:4b:eb:11
 Advertiser Address:  00:80:E1:27:B1:B2
@@ -22835,9 +22835,9 @@ Advertiser Address:  00:80:E1:27:B1:B2
 config_file:  /home/yangting/Documents/Semantic/srcs/Config_File/STM32/esp_ble_security.ini
 Master Address:  6f:80:15:95:10:89
 Advertiser Address:  00:80:E1:27:B1:B2
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-beta', 'temperature': 0.7, 'max_tokens': 4096}
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-beta', 'temperature': 0.7, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
 -----------------Pre Start-----------------
 Master Address:  bd:66:e1:da:aa:5b
 Advertiser Address:  00:80:E1:27:B1:B2
@@ -51312,9 +51312,9 @@ Advertiser Address:  00:80:E1:27:B1:B2
 config_file:  /home/yangting/Documents/Semantic/srcs/Config_File/STM32/esp_ble_security.ini
 Master Address:  a1:60:22:15:1f:65
 Advertiser Address:  00:80:E1:27:B1:B2
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-beta', 'temperature': 0.7, 'max_tokens': 4096}
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-beta', 'temperature': 0.7, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
 -----------------Pre Start-----------------
 Master Address:  d4:84:3e:15:e8:5a
 Advertiser Address:  00:80:E1:27:B1:B2
@@ -51655,9 +51655,9 @@ Advertiser Address:  00:80:E1:27:B1:B2
 config_file:  /home/yangting/Documents/Semantic/srcs/Config_File/STM32/esp_ble_security.ini
 Master Address:  ee:6d:d3:6e:f1:ba
 Advertiser Address:  00:80:E1:27:B1:B2
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-beta', 'temperature': 0.7, 'max_tokens': 4096}
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
-{'api_key': 'xai-5VqZQk7h4sYzpHyVMR8T97GWqNZ3RNpxkzfdpI573p0a5zFisuohUdHthORJYCk7GGTFIgVyNm7OGKrg', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-beta', 'temperature': 0.7, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
+{'api_key': 'xai-REDACTED', 'model': 'grok-2', 'temperature': 0, 'max_tokens': 4096}
 -----------------Pre Start-----------------
 Master Address:  ca:39:0c:36:c6:e7
 Advertiser Address:  00:80:E1:27:B1:B2
