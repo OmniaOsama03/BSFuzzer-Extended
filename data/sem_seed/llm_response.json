@@ -1,0 +1,82 @@
+{
+  "name": "SM_Confirm",
+  "Inner_Packet_Field_Dependent_Mutations": [
+    {
+      "Mutation_Type": "Invalid_Confirm_Value_Length",
+      "Description": "Send an SMP Confirm packet with an invalid Confirm Value length (non-128-bit). Tests parameter validation and error handling.",
+      "Packet_Name": "SMP Pairing Confirm",
+      "Mutated_Packet": {
+        "Confirm_Value": "0x00000000"
+      }
+    }
+  ],
+  "Sequences_Packet_Field_Dependent_Mutations": [
+    {
+      "Mutation_Type": "OOB_Indicated_But_Zeroed_Confirm",
+      "Description": "Indicate OOB authentication in Pairing Request but send a zeroed Confirm Value. Tests OOB data validation in Confirm phase.",
+      "Packet_Sequence": [
+        {
+          "Packet_Name": "SMP Pairing Request",
+          "Modified_Fields": {
+            "OOB_Flag": "0x01",
+            "IO_Capability": "0x03",
+            "AuthReq": "0x0C",
+            "MaxEncKeySize": "0x10",
+            "InitiatorKeyDist": "0x07",
+            "ResponderKeyDist": "0x07"
+          }
+        },
+        {
+          "Packet_Name": "SMP Pairing Confirm",
+          "Modified_Fields": {
+            "Confirm_Value": "0x00000000000000000000000000000000"
+          }
+        }
+      ]
+    },
+    {
+      "Mutation_Type": "Secure_Connections_With_Legacy_Confirm",
+      "Description": "Initiate LE Secure Connections (SC=1) but send Legacy Pairing Confirm packet. Tests protocol state machine validation.",
+      "Packet_Sequence": [
+        {
+          "Packet_Name": "SMP Pairing Request",
+          "Modified_Fields": {
+            "AuthReq": "0x08",
+            "IO_Capability": "0x04",
+            "OOB_Flag": "0x00",
+            "MaxEncKeySize": "0x10",
+            "InitiatorKeyDist": "0x07",
+            "ResponderKeyDist": "0x07"
+          }
+        },
+        {
+          "Packet_Name": "SMP Pairing Confirm",
+          "Modified_Fields": {
+            "Confirm_Value": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+          }
+        }
+      ]
+    },
+    {
+      "Mutation_Type": "MITM_Requirement_Bypassed",
+      "Description": "Request MITM-protected Passkey Entry but send unauthenticated Confirm Value. Tests MITM enforcement.",
+      "Packet_Sequence": [
+        {
+          "Packet_Name": "SMP Pairing Request",
+          "Modified_Fields": {
+            "IO_Capability": "0x01",
+            "AuthReq": "0x05",
+            "OOB_Flag": "0x00",
+            "MaxEncKeySize": "0x10"
+          }
+        },
+        {
+          "Packet_Name": "SMP Pairing Confirm",
+          "Modified_Fields": {
+            "Confirm_Value": "0xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        }
+      ]
+    }
+  ]
+} 

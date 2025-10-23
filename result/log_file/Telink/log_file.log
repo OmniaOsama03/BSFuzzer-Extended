@@ -1,0 +1,14 @@
+2025-05-16 16:51:17,485 - INFO - Bluetooth_SUL.py:78 - Advertiser Address: D8:5F:77:DB:68:C5
+2025-05-16 16:51:17,486 - DEBUG - key.py:72 - ia: c3990d26a1de ia_type: 01 ra: d85f77db68c5 ra_type: 00 role: 1
+2025-05-16 16:51:17,498 - DEBUG - key.py:72 - ia: b600970e2926 ia_type: 01 ra: d85f77db68c5 ra_type: 00 role: 1
+2025-05-16 16:51:17,509 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_ADV / BTLE_SCAN_REQ
+2025-05-16 16:51:17,744 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_DATA / BTLE_CTRL / LL_VERSION_IND
+2025-05-16 16:51:17,957 - DEBUG - Bluetooth_SUL.py:258 - RX <--- BTLE / BTLE_DATA / BTLE_CTRL / LL_VERSION_IND
+2025-05-16 16:51:17,962 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_DATA / BTLE_CTRL / LL_LENGTH_REQ
+2025-05-16 16:51:18,297 - DEBUG - Bluetooth_SUL.py:258 - RX <--- BTLE / BTLE_DATA / BTLE_CTRL / LL_LENGTH_RSP
+2025-05-16 16:51:18,303 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_DATA / BTLE_CTRL / LL_FEATURE_REQ
+2025-05-16 16:51:18,577 - DEBUG - Bluetooth_SUL.py:258 - RX <--- BTLE / BTLE_DATA / BTLE_CTRL / LL_FEATURE_RSP
+2025-05-16 16:51:18,583 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_DATA / L2CAP_Hdr / SM_Hdr / SM_Identity_Address_Information
+2025-05-16 16:51:18,639 - DEBUG - Bluetooth_SUL.py:258 - RX <--- BTLE / BTLE_DATA / L2CAP_Hdr / SM_Hdr / SM_Failed
+2025-05-16 16:51:18,639 - DEBUG - Bluetooth_SUL.py:258 - RX <--- BTLE / BTLE_DATA / L2CAP_Hdr / L2CAP_CmdHdr / L2CAP_Connection_Parameter_Update_Request
+2025-05-16 16:51:18,646 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_DATA / BTLE_CTRL / LL_START_ENC_RSP

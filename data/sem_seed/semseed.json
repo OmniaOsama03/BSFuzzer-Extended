@@ -1,0 +1,2148 @@
+{
+  "packets": [
+    {
+      "name": "SM_Hdr",
+      "fields": [
+        {
+          "name": "sm_command",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "sm_command": "0x00",
+                  "TestType": "Boundary Test - Reserved Value"
+                },
+                {
+                  "sm_command": "0xFF",
+                  "TestType": "Boundary Test - Maximum Value"
+                },
+                {
+                  "sm_command": "0x10",
+                  "TestType": "Semantic Invalid - Undefined Command"
+                },
+                {
+                  "sm_command": "0x80",
+                  "TestType": "Bit Flip - High Bit Set"
+                },
+                {
+                  "sm_command": "0x01",
+                  "TestType": "Boundary Test - Pairing Request"
+                },
+                {
+                  "sm_command": "0x0F",
+                  "TestType": "Boundary Test - Reserved for Future Use"
+                },
+                {
+                  "sm_command": "0x05",
+                  "TestType": "Semantic Invalid - Pairing Failed without Prior Request"
+                },
+                {
+                  "sm_command": "0x04",
+                  "TestType": "Semantic Invalid - Pairing Random without Confirm"
+                },
+                {
+                  "sm_command": "0x08",
+                  "TestType": "Semantic Invalid - Identity Information without Prior Request"
+                },
+                {
+                  "sm_command": "0x02",
+                  "TestType": "Bit Flip - Single Bit Change"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "sm_command": "0x01",
+                  "Packet": "SM_Pairing_Response",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Key Distribution Mismatch"
+                },
+                {
+                  "sm_command": "0x03",
+                  "Packet": "SM_Confirm",
+                  "confirm": "0xFFFFFFFF",
+                  "TestType": "Invalid Confirm Value"
+                },
+                {
+                  "sm_command": "0x06",
+                  "Packet": "SM_Encryption_Information",
+                  "ltk": "0x00000000000000000000000000000000",
+                  "TestType": "Zero LTK"
+                },
+                {
+                  "sm_command": "0x0B",
+                  "Packet": "SM_Security_Request",
+                  "authentication": "0xFF",
+                  "TestType": "Invalid Security Request"
+                },
+                {
+                  "sm_command": "0x0C",
+                  "Packet": "SM_Public_Key",
+                  "public_key_x": "0x00",
+                  "public_key_y": "0x00",
+                  "TestType": "Invalid Public Key"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Master_Identification",
+      "fields": [
+        {
+          "name": "ediv",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "ediv": "0x0000",
+                  "TestType": "Boundary Test - Minimum Value"
+                },
+                {
+                  "ediv": "0xFFFF",
+                  "TestType": "Boundary Test - Maximum Value"
+                },
+                {
+                  "ediv": "0x8000",
+                  "TestType": "Boundary Test - Midpoint Value"
+                },
+                {
+                  "ediv": "0x0001",
+                  "TestType": "Boundary Test - Just Above Minimum"
+                },
+                {
+                  "ediv": "0xFFFE",
+                  "TestType": "Boundary Test - Just Below Maximum"
+                },
+                {
+                  "ediv": "0x7FFF",
+                  "TestType": "Boundary Test - Just Below Midpoint"
+                },
+                {
+                  "ediv": "0x8001",
+                  "TestType": "Boundary Test - Just Above Midpoint"
+                },
+                {
+                  "ediv": "0xAAAA",
+                  "TestType": "Bit Flip - Alternating Bits"
+                },
+                {
+                  "ediv": "0x5555",
+                  "TestType": "Bit Flip - Inverse Alternating Bits"
+                },
+                {
+                  "ediv": "0x000F",
+                  "TestType": "Bit Flip - Low Nibble Set"
+                },
+                {
+                  "ediv": "0xF000",
+                  "TestType": "Bit Flip - High Nibble Set"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "ediv": "0x1234",
+                  "Packet": "SM_Encryption_Information",
+                  "ltk": "0x00000000000000000000000000000000",
+                  "TestType": "Zero LTK with Non-zero EDIV"
+                },
+                {
+                  "ediv": "0x0000",
+                  "Packet": "SM_Encryption_Information",
+                  "ltk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Max LTK with Zero EDIV"
+                },
+                {
+                  "ediv": "0xFFFF",
+                  "Packet": "SM_Encryption_Information",
+                  "ltk": "0x1234567890ABCDEF1234567890ABCDEF",
+                  "TestType": "Random LTK with Max EDIV"
+                },
+                {
+                  "ediv": "0x0001",
+                  "Packet": "SM_Encryption_Information",
+                  "ltk": "0x00000000000000000000000000000001",
+                  "TestType": "Minimal LTK with Minimal Non-zero EDIV"
+                },
+                {
+                  "ediv": "0x8000",
+                  "Packet": "SM_Encryption_Information",
+                  "ltk": "0x80000000000000000000000000000000",
+                  "TestType": "Midpoint LTK with Midpoint EDIV"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "rand",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "rand": "0x0000000000000000",
+                  "TestType": "Boundary Test - All Bits Zero"
+                },
+                {
+                  "rand": "0xFFFFFFFFFFFFFFFF",
+                  "TestType": "Boundary Test - All Bits One"
+                },
+                {
+                  "rand": "0x8000000000000000",
+                  "TestType": "Bit Flip - High Bit Set"
+                },
+                {
+                  "rand": "0x7FFFFFFFFFFFFFFF",
+                  "TestType": "Bit Flip - High Bit Cleared"
+                },
+                {
+                  "rand": "0x0000000000000001",
+                  "TestType": "Boundary Test - Lowest Non-Zero Value"
+                },
+                {
+                  "rand": "0xFFFFFFFFFFFFFFFE",
+                  "TestType": "Boundary Test - Highest Non-Max Value"
+                },
+                {
+                  "rand": "0xAAAAAAAAAAAAAAAA",
+                  "TestType": "Pattern Test - Alternating Bits"
+                },
+                {
+                  "rand": "0x5555555555555555",
+                  "TestType": "Pattern Test - Inverse Alternating Bits"
+                },
+                {
+                  "rand": "0x123456789ABCDEF0",
+                  "TestType": "Semantic Invalid - Random Value"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "rand": "0x0000000000000000",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Key Distribution Mismatch - No Keys"
+                },
+                {
+                  "rand": "0xFFFFFFFFFFFFFFFF",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0xFF",
+                  "TestType": "Key Distribution Mismatch - All Keys"
+                },
+                {
+                  "rand": "0x123456789ABCDEF0",
+                  "Packet": "SM_Pairing_Request",
+                  "oob": "0x01",
+                  "TestType": "OOB Authentication Conflict"
+                },
+                {
+                  "rand": "0xAAAAAAAAAAAAAAAA",
+                  "Packet": "SM_Pairing_Request",
+                  "iocap": "0x03",
+                  "TestType": "IO Capability Mismatch"
+                },
+                {
+                  "rand": "0x5555555555555555",
+                  "Packet": "SM_Pairing_Request",
+                  "authentication": "0x08",
+                  "TestType": "authentication Mismatch - Secure Connections"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Pairing_Request",
+      "fields": [
+        {
+          "name": "iocap",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "iocap": "0x00",
+                  "TestType": "Boundary Test - DisplayOnly"
+                },
+                {
+                  "iocap": "0xFF",
+                  "TestType": "Boundary Test - All Bits Set"
+                },
+                {
+                  "iocap": "0x05",
+                  "TestType": "Semantic Invalid - Reserved Value"
+                },
+                {
+                  "iocap": "0x80",
+                  "TestType": "Bit Flip - High Bit"
+                },
+                {
+                  "iocap": "0x01",
+                  "TestType": "Boundary Test - DisplayYesNo"
+                },
+                {
+                  "iocap": "0x04",
+                  "TestType": "Boundary Test - KeyboardDisplay"
+                },
+                {
+                  "iocap": "0x10",
+                  "TestType": "Bit Flip - Out of Spec Flag"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "iocap": "0x00",
+                  "Packet": "SM_Pairing_Request",
+                  "authentication": "0x09",
+                  "TestType": "IO Capability Mismatch"
+                },
+                {
+                  "iocap": "0x02",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Incompatible Key Distribution"
+                },
+                {
+                  "iocap": "0x03",
+                  "Packet": "SM_Pairing_Request",
+                  "oob": "0x01",
+                  "TestType": "OOB Authentication Conflict"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "oob",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "oob": "0x00",
+                  "TestType": "Boundary Test - OOB Not Present"
+                },
+                {
+                  "oob": "0x01",
+                  "TestType": "Boundary Test - OOB Present"
+                },
+                {
+                  "oob": "0x02",
+                  "TestType": "Semantic Invalid - Reserved Value"
+                },
+                {
+                  "oob": "0xFF",
+                  "TestType": "Boundary Test - All Bits Set"
+                },
+                {
+                  "oob": "0x80",
+                  "TestType": "Bit Flip - High Bit Set"
+                },
+                {
+                  "oob": "0x03",
+                  "TestType": "Semantic Invalid - Reserved Value"
+                },
+                {
+                  "oob": "0x7F",
+                  "TestType": "Bit Flip - All Bits Except High Bit"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "oob": "0x01",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "OOB Present with No Key Distribution"
+                },
+                {
+                  "oob": "0x00",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0xFF",
+                  "TestType": "OOB Not Present with All Key Distribution"
+                },
+                {
+                  "oob": "0x01",
+                  "Packet": "SM_Pairing_Request",
+                  "responder_key_distribution": "0x00",
+                  "TestType": "OOB Present with No Responder Key Distribution"
+                },
+                {
+                  "oob": "0x00",
+                  "Packet": "SM_Pairing_Request",
+                  "responder_key_distribution": "0xFF",
+                  "TestType": "OOB Not Present with All Responder Key Distribution"
+                },
+                {
+                  "oob": "0x01",
+                  "Packet": "SM_Pairing_Request",
+                  "iocap": "0x03",
+                  "TestType": "OOB Present with Display Only IO Capability"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "authentication",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "authentication": "0x00",
+                  "TestType": "Boundary Test - No Security Flags"
+                },
+                {
+                  "authentication": "0xFF",
+                  "TestType": "Boundary Test - All Bits Set"
+                },
+                {
+                  "authentication": "0x03",
+                  "TestType": "Valid Case - MITM and SC"
+                },
+                {
+                  "authentication": "0x80",
+                  "TestType": "Bit Flip - High Bit"
+                },
+                {
+                  "authentication": "0x01",
+                  "TestType": "Boundary Test - MITM, No SC"
+                },
+                {
+                  "authentication": "0x04",
+                  "TestType": "Semantic Invalid - Reserved Value"
+                },
+                {
+                  "authentication": "0x10",
+                  "TestType": "Bit Flip - Out of Spec Flag"
+                },
+                {
+                  "authentication": "0x02",
+                  "TestType": "Boundary Test - No MITM, SC"
+                },
+                {
+                  "authentication": "0x05",
+                  "TestType": "Semantic Invalid - Reserved Value"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "authentication": "0x09",
+                  "Packet": "SM_Pairing_Request",
+                  "iocap": "0x03",
+                  "TestType": "IO Capability Mismatch"
+                },
+                {
+                  "authentication": "0x06",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Incompatible Key Distribution"
+                },
+                {
+                  "authentication": "0x07",
+                  "Packet": "SM_Pairing_Request",
+                  "oob": "0x00",
+                  "TestType": "OOB Authentication Conflict"
+                },
+                {
+                  "authentication": "0x0A",
+                  "Packet": "SM_Pairing_Request",
+                  "responder_key_distribution": "0x01",
+                  "TestType": "Key Distribution Mismatch"
+                },
+                {
+                  "authentication": "0x0B",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x04",
+                  "TestType": "Invalid Key Distribution Combination"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "max_key_size",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "max_key_size": "0x07",
+                  "TestType": "Boundary Test - Minimum Valid Key Size"
+                },
+                {
+                  "max_key_size": "0x10",
+                  "TestType": "Boundary Test - Maximum Valid Key Size"
+                },
+                {
+                  "max_key_size": "0x06",
+                  "TestType": "Semantic Invalid - Reserved Value"
+                },
+                {
+                  "max_key_size": "0x00",
+                  "TestType": "Semantic Invalid - Reserved Value"
+                },
+                {
+                  "max_key_size": "0xFF",
+                  "TestType": "Boundary Test - All Bits Set"
+                },
+                {
+                  "max_key_size": "0x08",
+                  "TestType": "Bit Flip - Single Bit Change from Minimum"
+                },
+                {
+                  "max_key_size": "0x0F",
+                  "TestType": "Bit Flip - Single Bit Change from Maximum"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "max_key_size": "0x09",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Key Distribution Mismatch"
+                },
+                {
+                  "max_key_size": "0x0A",
+                  "Packet": "SM_Pairing_Request",
+                  "responder_key_distribution": "0x01",
+                  "TestType": "Responder Key Distribution Conflict"
+                },
+                {
+                  "max_key_size": "0x0B",
+                  "Packet": "SM_Pairing_Request",
+                  "authentication": "0x00",
+                  "TestType": "authentication Mismatch"
+                },
+                {
+                  "max_key_size": "0x0C",
+                  "Packet": "SM_Pairing_Request",
+                  "oob": "0x01",
+                  "TestType": "OOB Data Present Conflict"
+                },
+                {
+                  "max_key_size": "0x0D",
+                  "Packet": "SM_Pairing_Request",
+                  "iocap": "0x03",
+                  "TestType": "IO Capability Mismatch"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "initiator_key_distribution",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "initiator_key_distribution": "0x0",
+                  "TestType": "Boundary Test - No Keys Distributed"
+                },
+                {
+                  "initiator_key_distribution": "0xF",
+                  "TestType": "Boundary Test - All Keys Distributed"
+                },
+                {
+                  "initiator_key_distribution": "0x3",
+                  "TestType": "Semantic Invalid - EncKey and IdKey Only"
+                },
+                {
+                  "initiator_key_distribution": "0x5",
+                  "TestType": "Semantic Invalid - EncKey and SignKey Only"
+                },
+                {
+                  "initiator_key_distribution": "0xA",
+                  "TestType": "Semantic Invalid - IdKey and LinkKey Only"
+                },
+                {
+                  "initiator_key_distribution": "0x1",
+                  "TestType": "Boundary Test - EncKey Only"
+                },
+                {
+                  "initiator_key_distribution": "0x2",
+                  "TestType": "Boundary Test - IdKey Only"
+                },
+                {
+                  "initiator_key_distribution": "0x4",
+                  "TestType": "Boundary Test - SignKey Only"
+                },
+                {
+                  "initiator_key_distribution": "0x8",
+                  "TestType": "Boundary Test - LinkKey Only"
+                },
+                {
+                  "initiator_key_distribution": "0x10",
+                  "TestType": "Bit Flip - Out of Spec Flag"
+                },
+                {
+                  "initiator_key_distribution": "0x7",
+                  "TestType": "Semantic Invalid - EncKey, IdKey, and SignKey"
+                },
+                {
+                  "initiator_key_distribution": "0xB",
+                  "TestType": "Semantic Invalid - EncKey, IdKey, and LinkKey"
+                },
+                {
+                  "initiator_key_distribution": "0xC",
+                  "TestType": "Semantic Invalid - SignKey and LinkKey Only"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "initiator_key_distribution": "0x1",
+                  "Packet": "SM_Pairing_Request",
+                  "responder_key_distribution": "0x0",
+                  "TestType": "Responder Not Accepting Any Keys"
+                },
+                {
+                  "initiator_key_distribution": "0xF",
+                  "Packet": "SM_Pairing_Request",
+                  "responder_key_distribution": "0x1",
+                  "TestType": "Responder Only Accepting EncKey"
+                },
+                {
+                  "initiator_key_distribution": "0x2",
+                  "Packet": "SM_Pairing_Request",
+                  "responder_key_distribution": "0x4",
+                  "TestType": "Incompatible Key Distribution - IdKey vs SignKey"
+                },
+                {
+                  "initiator_key_distribution": "0x8",
+                  "Packet": "SM_Pairing_Request",
+                  "responder_key_distribution": "0x2",
+                  "TestType": "Incompatible Key Distribution - LinkKey vs IdKey"
+                },
+                {
+                  "initiator_key_distribution": "0x4",
+                  "Packet": "SM_Pairing_Request",
+                  "responder_key_distribution": "0x8",
+                  "TestType": "Incompatible Key Distribution - SignKey vs LinkKey"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "responder_key_distribution",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "responder_key_distribution": "0x0",
+                  "TestType": "Boundary Test - No Keys Distributed"
+                },
+                {
+                  "responder_key_distribution": "0xF",
+                  "TestType": "Boundary Test - All Keys Distributed"
+                },
+                {
+                  "responder_key_distribution": "0x3",
+                  "TestType": "Semantic Invalid - EncKey and IdKey Only"
+                },
+                {
+                  "responder_key_distribution": "0x5",
+                  "TestType": "Semantic Invalid - EncKey and SignKey Only"
+                },
+                {
+                  "responder_key_distribution": "0xA",
+                  "TestType": "Semantic Invalid - IdKey and LinkKey Only"
+                },
+                {
+                  "responder_key_distribution": "0xF0",
+                  "TestType": "Boundary Test - Reserved Value Start"
+                },
+                {
+                  "responder_key_distribution": "0xFF",
+                  "TestType": "Boundary Test - Reserved Value End"
+                },
+                {
+                  "responder_key_distribution": "0x1",
+                  "TestType": "Bit Flip - Single Key (EncKey)"
+                },
+                {
+                  "responder_key_distribution": "0x2",
+                  "TestType": "Bit Flip - Single Key (IdKey)"
+                },
+                {
+                  "responder_key_distribution": "0x4",
+                  "TestType": "Bit Flip - Single Key (SignKey)"
+                },
+                {
+                  "responder_key_distribution": "0x8",
+                  "TestType": "Bit Flip - Single Key (LinkKey)"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "responder_key_distribution": "0x1",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x0",
+                  "TestType": "Incompatible Key Distribution - Initiator No Keys"
+                },
+                {
+                  "responder_key_distribution": "0xF",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0xF",
+                  "TestType": "Compatible Key Distribution - All Keys"
+                },
+                {
+                  "responder_key_distribution": "0x0",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0xF",
+                  "TestType": "Incompatible Key Distribution - Responder No Keys"
+                },
+                {
+                  "responder_key_distribution": "0x8",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x4",
+                  "TestType": "Incompatible Key Distribution - LinkKey vs SignKey"
+                },
+                {
+                  "responder_key_distribution": "0x2",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x1",
+                  "TestType": "Incompatible Key Distribution - IdKey vs EncKey"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Identity_Information",
+      "fields": [
+        {
+          "name": "irk",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "irk": "0x00000000000000000000000000000000",
+                  "TestType": "Boundary Test - All Zeros"
+                },
+                {
+                  "irk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Boundary Test - All Ones"
+                },
+                {
+                  "irk": "0x80000000000000000000000000000000",
+                  "TestType": "Bit Flip - High Bit Set"
+                },
+                {
+                  "irk": "0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Bit Flip - High Bit Cleared"
+                },
+                {
+                  "irk": "0x00000000000000000000000000000001",
+                  "TestType": "Boundary Test - Single Bit Set"
+                },
+                {
+                  "irk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE",
+                  "TestType": "Boundary Test - Single Bit Cleared"
+                },
+                {
+                  "irk": "0x1234567890ABCDEF1234567890ABCDEF",
+                  "TestType": "Semantic Invalid - Random Pattern"
+                },
+                {
+                  "irk": "0xFEDCBA0987654321FEDCBA0987654321",
+                  "TestType": "Semantic Invalid - Inverse Pattern"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "irk": "0x00000000000000000000000000000000",
+                  "Packet": "SM_Identity_Address_Information",
+                  "addr_type": "0x01",
+                  "TestType": "Address Type Mismatch"
+                },
+                {
+                  "irk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "Packet": "SM_Identity_Address_Information",
+                  "addr_type": "0x00",
+                  "TestType": "Address Type Mismatch"
+                },
+                {
+                  "irk": "0x1234567890ABCDEF1234567890ABCDEF",
+                  "Packet": "SM_Pairing_Response",
+                  "authentication": "0x00",
+                  "TestType": "authentication Mismatch"
+                },
+                {
+                  "irk": "0xFEDCBA0987654321FEDCBA0987654321",
+                  "Packet": "SM_Pairing_Response",
+                  "authentication": "0xFF",
+                  "TestType": "authentication Mismatch"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Pairing_Response",
+      "fields": [
+        {
+          "name": "iocap",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "iocap": "0x00",
+                  "TestType": "Boundary Test - Reserved for Future Use"
+                },
+                {
+                  "iocap": "0xFF",
+                  "TestType": "Boundary Test - All Bits Set"
+                },
+                {
+                  "iocap": "0x10",
+                  "TestType": "Bit Flip - Out of Spec Flag"
+                },
+                {
+                  "iocap": "0x01",
+                  "TestType": "Semantic Invalid - Pairing Request in Response"
+                },
+                {
+                  "iocap": "0x03",
+                  "TestType": "Semantic Invalid - Pairing Confirm in Response"
+                },
+                {
+                  "iocap": "0x80",
+                  "TestType": "Bit Flip - High Bit"
+                },
+                {
+                  "iocap": "0x0F",
+                  "TestType": "Boundary Test - Reserved for Future Use"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "iocap": "0x02",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Key Distribution Mismatch"
+                },
+                {
+                  "iocap": "0x06",
+                  "Packet": "SM_Pairing_Request",
+                  "oob": "0x01",
+                  "TestType": "OOB Authentication Conflict"
+                },
+                {
+                  "iocap": "0x09",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x04",
+                  "TestType": "Incompatible Key Distribution"
+                },
+                {
+                  "iocap": "0x0A",
+                  "Packet": "SM_Pairing_Request",
+                  "responder_key_distribution": "0x00",
+                  "TestType": "Responder Key Distribution Mismatch"
+                },
+                {
+                  "iocap": "0x0C",
+                  "Packet": "SM_Pairing_Request",
+                  "oob": "0x00",
+                  "TestType": "Public Key without OOB"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "oob",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "oob": "0x00",
+                  "TestType": "Boundary Test - Reserved for Future Use"
+                },
+                {
+                  "oob": "0xFF",
+                  "TestType": "Boundary Test - All Bits Set"
+                },
+                {
+                  "oob": "0x10",
+                  "TestType": "Bit Flip - Out of Spec Flag"
+                },
+                {
+                  "oob": "0x01",
+                  "TestType": "Semantic Invalid - Pairing Request in Response"
+                },
+                {
+                  "oob": "0x0F",
+                  "TestType": "Boundary Test - Reserved for Future Use"
+                },
+                {
+                  "oob": "0x80",
+                  "TestType": "Bit Flip - High Bit"
+                },
+                {
+                  "oob": "0x03",
+                  "TestType": "Semantic Invalid - Pairing Confirm in Response"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "oob": "0x06",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Encryption Information without Key Distribution"
+                },
+                {
+                  "oob": "0x0A",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x01",
+                  "TestType": "Signing Information without Signing Key"
+                },
+                {
+                  "oob": "0x02",
+                  "Packet": "SM_Pairing_Request",
+                  "TestType": "Identity Address Information Conflict"
+                },
+                {
+                  "oob": "0x0C",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x04",
+                  "TestType": "Pairing Public Key without Public Key Distribution"
+                },
+                {
+                  "oob": "0x05",
+                  "Packet": "SM_Pairing_Request",
+                  "TestType": "Pairing Keypress Notification Conflict"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "authentication",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "authentication": "0x00",
+                  "TestType": "Boundary Test - Reserved Value"
+                },
+                {
+                  "authentication": "0xFF",
+                  "TestType": "Boundary Test - All Bits Set"
+                },
+                {
+                  "authentication": "0x03",
+                  "TestType": "Semantic Invalid - Confirm without Request"
+                },
+                {
+                  "authentication": "0x80",
+                  "TestType": "Bit Flip - High Bit"
+                },
+                {
+                  "authentication": "0x0F",
+                  "TestType": "Boundary Test - Reserved for Future Use"
+                },
+                {
+                  "authentication": "0x04",
+                  "TestType": "Semantic Invalid - Random without Confirm"
+                },
+                {
+                  "authentication": "0x10",
+                  "TestType": "Bit Flip - Out of Spec Flag"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "authentication": "0x06",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Encryption Info without Key Distribution"
+                },
+                {
+                  "authentication": "0x07",
+                  "Packet": "SM_Pairing_Request",
+                  "responder_key_distribution": "0x00",
+                  "TestType": "Master ID without Key Distribution"
+                },
+                {
+                  "authentication": "0x0A",
+                  "Packet": "SM_Pairing_Request",
+                  "oob": "0x00",
+                  "TestType": "Signing Info without OOB"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "max_key_size",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "max_key_size": "0x00",
+                  "TestType": "Boundary Test - Minimum Value"
+                },
+                {
+                  "max_key_size": "0xFF",
+                  "TestType": "Boundary Test - Maximum Value"
+                },
+                {
+                  "max_key_size": "0x10",
+                  "TestType": "Semantic Invalid - Out of Defined Range"
+                },
+                {
+                  "max_key_size": "0x80",
+                  "TestType": "Bit Flip - High Bit Set"
+                },
+                {
+                  "max_key_size": "0x01",
+                  "TestType": "Boundary Test - Pairing Request"
+                },
+                {
+                  "max_key_size": "0x0F",
+                  "TestType": "Boundary Test - Last Defined Value"
+                },
+                {
+                  "max_key_size": "0x05",
+                  "TestType": "Semantic Invalid - Pairing Failed in Response"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "max_key_size": "0x02",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Key Distribution Mismatch"
+                },
+                {
+                  "max_key_size": "0x03",
+                  "Packet": "SM_Pairing_Request",
+                  "responder_key_distribution": "0xFF",
+                  "TestType": "Excessive Key Distribution"
+                },
+                {
+                  "max_key_size": "0x06",
+                  "Packet": "SM_Pairing_Request",
+                  "oob": "0x01",
+                  "TestType": "OOB Data Present Conflict"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "initiator_key_distribution",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Boundary Test - Reserved Value"
+                },
+                {
+                  "initiator_key_distribution": "0xFF",
+                  "TestType": "Boundary Test - All Bits Set"
+                },
+                {
+                  "initiator_key_distribution": "0x10",
+                  "TestType": "Bit Flip - Out of Spec Flag"
+                },
+                {
+                  "initiator_key_distribution": "0x01",
+                  "TestType": "Semantic Invalid - Pairing Request in Response"
+                },
+                {
+                  "initiator_key_distribution": "0x05",
+                  "TestType": "Semantic Invalid - Pairing Failed in Response"
+                },
+                {
+                  "initiator_key_distribution": "0x80",
+                  "TestType": "Bit Flip - High Bit"
+                },
+                {
+                  "initiator_key_distribution": "0x0F",
+                  "TestType": "Boundary Test - Reserved for Future Use"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "initiator_key_distribution": "0x06",
+                  "Packet": "SM_Pairing_Request",
+                  "responder_key_distribution": "0x00",
+                  "TestType": "Incompatible Key Distribution"
+                },
+                {
+                  "initiator_key_distribution": "0x08",
+                  "Packet": "SM_Pairing_Request",
+                  "TestType": "Identity Information Conflict"
+                },
+                {
+                  "initiator_key_distribution": "0x0B",
+                  "Packet": "SM_Pairing_Request",
+                  "TestType": "Signing Information Conflict"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "responder_key_distribution",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "responder_key_distribution": "0x00",
+                  "TestType": "Boundary Test - Reserved Value"
+                },
+                {
+                  "responder_key_distribution": "0xFF",
+                  "TestType": "Boundary Test - All Bits Set"
+                },
+                {
+                  "responder_key_distribution": "0x10",
+                  "TestType": "Bit Flip - Out of Spec Flag"
+                },
+                {
+                  "responder_key_distribution": "0x01",
+                  "TestType": "Semantic Invalid - Pairing Request in Response"
+                },
+                {
+                  "responder_key_distribution": "0x0F",
+                  "TestType": "Boundary Test - Reserved for Future Use"
+                },
+                {
+                  "responder_key_distribution": "0x80",
+                  "TestType": "Bit Flip - High Bit"
+                },
+                {
+                  "responder_key_distribution": "0x05",
+                  "TestType": "Semantic Invalid - Pairing Failed in Response"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "responder_key_distribution": "0x06",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Incompatible Key Distribution"
+                },
+                {
+                  "responder_key_distribution": "0x09",
+                  "Packet": "SM_Pairing_Request",
+                  "oob": "0x01",
+                  "TestType": "OOB Authentication Conflict"
+                },
+                {
+                  "responder_key_distribution": "0x0A",
+                  "Packet": "SM_Pairing_Request",
+                  "iocap": "0x03",
+                  "TestType": "IO Capability Mismatch"
+                },
+                {
+                  "responder_key_distribution": "0x0B",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x0C",
+                  "TestType": "Incompatible Security Request"
+                },
+                {
+                  "responder_key_distribution": "0x0D",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x0E",
+                  "TestType": "DHKey Check Conflict"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Confirm",
+      "fields": [
+        {
+          "name": "confirm",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "confirm": "0x00000000000000000000000000000000",
+                  "TestType": "Boundary Test - Minimum Value"
+                },
+                {
+                  "confirm": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Boundary Test - Maximum Value"
+                },
+                {
+                  "confirm": "0x80000000000000000000000000000000",
+                  "TestType": "Bit Flip - High Bit"
+                },
+                {
+                  "confirm": "0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Bit Flip - Low Bit"
+                },
+                {
+                  "confirm": "0x00000000000000000000000000000001",
+                  "TestType": "Boundary Test - Increment from Minimum"
+                },
+                {
+                  "confirm": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE",
+                  "TestType": "Boundary Test - Decrement from Maximum"
+                },
+                {
+                  "confirm": "0x1234567890ABCDEF1234567890ABCDEF",
+                  "TestType": "Semantic Invalid - Random Value"
+                },
+                {
+                  "confirm": "0xFFFFFFFF000000000000000000000000",
+                  "TestType": "Bit Flip - Half High"
+                },
+                {
+                  "confirm": "0x00000000FFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Bit Flip - Half Low"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "confirm": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "Packet": "SM_Pairing_Response",
+                  "authentication": "0x00",
+                  "TestType": "authentication Mismatch - No Security"
+                },
+                {
+                  "confirm": "0x00000000000000000000000000000000",
+                  "Packet": "SM_Pairing_Response",
+                  "authentication": "0xFF",
+                  "TestType": "authentication Mismatch - All Security"
+                },
+                {
+                  "confirm": "0x1234567890ABCDEF1234567890ABCDEF",
+                  "Packet": "SM_Pairing_Response",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Key Distribution Mismatch"
+                },
+                {
+                  "confirm": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "Packet": "SM_Pairing_Response",
+                  "oob": "0x01",
+                  "TestType": "OOB Authentication Conflict"
+                },
+                {
+                  "confirm": "0x00000000000000000000000000000000",
+                  "Packet": "SM_Pairing_Response",
+                  "iocap": "0x03",
+                  "TestType": "IO Capability Mismatch"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Random",
+      "fields": [
+        {
+          "name": "random",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "random": "0x00000000000000000000000000000000",
+                  "TestType": "Boundary Test - All Zeros"
+                },
+                {
+                  "random": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Boundary Test - All Ones"
+                },
+                {
+                  "random": "0x80000000000000000000000000000000",
+                  "TestType": "Bit Flip - High Bit Set"
+                },
+                {
+                  "random": "0x00000000000000000000000000000001",
+                  "TestType": "Boundary Test - Single Bit Set"
+                },
+                {
+                  "random": "0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Boundary Test - All But High Bit Set"
+                },
+                {
+                  "random": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE",
+                  "TestType": "Boundary Test - All But Low Bit Set"
+                },
+                {
+                  "random": "0x1234567890ABCDEF1234567890ABCDEF",
+                  "TestType": "Semantic Invalid - Random Non-Boundary Value"
+                },
+                {
+                  "random": "0x0000000000000000000000000000FFFF",
+                  "TestType": "Boundary Test - Lower Half Zeros, Upper Half Ones"
+                },
+                {
+                  "random": "0xFFFF0000000000000000000000000000",
+                  "TestType": "Boundary Test - Upper Half Zeros, Lower Half Ones"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "random": "0x00000000000000000000000000000000",
+                  "Packet": "SM_Confirm",
+                  "confirm": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Confirm Mismatch"
+                },
+                {
+                  "random": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "Packet": "SM_Confirm",
+                  "confirm": "0x00000000000000000000000000000000",
+                  "TestType": "Confirm Mismatch"
+                },
+                {
+                  "random": "0x1234567890ABCDEF1234567890ABCDEF",
+                  "Packet": "SM_Pairing_Response",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Key Distribution Conflict"
+                },
+                {
+                  "random": "0x00000000000000000000000000000001",
+                  "Packet": "SM_Pairing_Response",
+                  "responder_key_distribution": "0xFF",
+                  "TestType": "Key Distribution Conflict"
+                },
+                {
+                  "random": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE",
+                  "Packet": "SM_Pairing_Request",
+                  "oob": "0x01",
+                  "TestType": "OOB Authentication Conflict"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Failed",
+      "fields": [
+        {
+          "name": "reason",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "reason": "0x00",
+                  "TestType": "Boundary Test - Reserved Value"
+                },
+                {
+                  "reason": "0xFF",
+                  "TestType": "Boundary Test - All Bits Set"
+                },
+                {
+                  "reason": "0x09",
+                  "TestType": "Semantic Invalid - Undefined Reason Code"
+                },
+                {
+                  "reason": "0x80",
+                  "TestType": "Bit Flip - High Bit"
+                },
+                {
+                  "reason": "0x01",
+                  "TestType": "Boundary Test - Passkey Entry Failed"
+                },
+                {
+                  "reason": "0x04",
+                  "TestType": "Boundary Test - Confirm Value Failed"
+                },
+                {
+                  "reason": "0x10",
+                  "TestType": "Bit Flip - Out of Spec Flag"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "reason": "0x03",
+                  "Packet": "SM_Pairing_Request",
+                  "authentication": "0x00",
+                  "TestType": "Authentication Requirements Mismatch"
+                },
+                {
+                  "reason": "0x05",
+                  "Packet": "SM_Pairing_Response",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Pairing Not Supported with No Key Distribution"
+                },
+                {
+                  "reason": "0x06",
+                  "Packet": "SM_Pairing_Response",
+                  "max_enc_key_size": "0x07",
+                  "TestType": "Encryption Key Size Too Small"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Encryption_Information",
+      "fields": [
+        {
+          "name": "ltk",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "ltk": "0x00000000000000000000000000000000",
+                  "TestType": "Boundary Test - All Zeros"
+                },
+                {
+                  "ltk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Boundary Test - All Ones"
+                },
+                {
+                  "ltk": "0x80000000000000000000000000000000",
+                  "TestType": "Bit Flip - High Bit Set"
+                },
+                {
+                  "ltk": "0x00000000000000000000000000000001",
+                  "TestType": "Boundary Test - Single Bit Set"
+                },
+                {
+                  "ltk": "0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Boundary Test - All But High Bit Set"
+                },
+                {
+                  "ltk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE",
+                  "TestType": "Boundary Test - All But Low Bit Set"
+                },
+                {
+                  "ltk": "0x1234567890ABCDEF1234567890ABCDEF",
+                  "TestType": "Semantic Invalid - Random Value"
+                },
+                {
+                  "ltk": "0x0000000000000000000000000000FFFF",
+                  "TestType": "Boundary Test - Half Zeros, Half Ones"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "ltk": "0x00000000000000000000000000000000",
+                  "Packet": "SM_Confirm",
+                  "confirm": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Confirm Value Mismatch"
+                },
+                {
+                  "ltk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "Packet": "SM_Random",
+                  "random": "0x00000000000000000000000000000000",
+                  "TestType": "Random Value Mismatch"
+                },
+                {
+                  "ltk": "0x1234567890ABCDEF1234567890ABCDEF",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Key Distribution Conflict"
+                },
+                {
+                  "ltk": "0x80000000000000000000000000000000",
+                  "Packet": "SM_Pairing_Response",
+                  "responder_key_distribution": "0xFF",
+                  "TestType": "Responder Key Distribution Conflict"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Identity_Address_Information",
+      "fields": [
+        {
+          "name": "atype",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "atype": "0x00",
+                  "TestType": "Boundary Test - Public Device Address"
+                },
+                {
+                  "atype": "0x01",
+                  "TestType": "Boundary Test - Static Random Device Address"
+                },
+                {
+                  "atype": "0x02",
+                  "TestType": "Semantic Invalid - Out of Defined Range"
+                },
+                {
+                  "atype": "0xFF",
+                  "TestType": "Boundary Test - All Bits Set"
+                },
+                {
+                  "atype": "0x80",
+                  "TestType": "Bit Flip - High Bit"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "atype": "0x00",
+                  "Packet": "SM_Identity_Address_Information",
+                  "address": "0x123456789ABC",
+                  "TestType": "Address Type Mismatch - Public Address with Random Address"
+                },
+                {
+                  "atype": "0x01",
+                  "Packet": "SM_Identity_Address_Information",
+                  "address": "0xFEDCBA987654",
+                  "TestType": "Address Type Mismatch - Static Random Address with Public Address"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "address",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "address": "0x000000000000",
+                  "TestType": "Boundary Test - Minimum Address"
+                },
+                {
+                  "address": "0xFFFFFFFFFFFF",
+                  "TestType": "Boundary Test - Maximum Address"
+                },
+                {
+                  "address": "0x000000000001",
+                  "TestType": "Boundary Test - Just Above Minimum"
+                },
+                {
+                  "address": "0xFFFFFFFFFFFE",
+                  "TestType": "Boundary Test - Just Below Maximum"
+                },
+                {
+                  "address": "0x800000000000",
+                  "TestType": "Bit Flip - High Bit Set"
+                },
+                {
+                  "address": "0x7FFFFFFFFFFF",
+                  "TestType": "Bit Flip - High Bit Cleared"
+                },
+                {
+                  "address": "0x123456789ABC",
+                  "TestType": "Semantic Invalid - Random Non-Standard Address"
+                },
+                {
+                  "address": "0x0000000000FF",
+                  "TestType": "Boundary Test - Low Byte Set"
+                },
+                {
+                  "address": "0xFF0000000000",
+                  "TestType": "Boundary Test - High Byte Set"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "address": "0x123456789ABC",
+                  "Packet": "SM_Pairing_Response",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Key Distribution Mismatch"
+                },
+                {
+                  "address": "0xABCDEF123456",
+                  "Packet": "SM_Pairing_Request",
+                  "oob": "0x00",
+                  "TestType": "OOB Data Not Available"
+                },
+                {
+                  "address": "0x000000000000",
+                  "Packet": "SM_Identity_Information",
+                  "identity_resolving_key": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Identity Resolving Key Mismatch"
+                },
+                {
+                  "address": "0xFFFFFFFFFFFF",
+                  "Packet": "SM_Identity_Information",
+                  "identity_resolving_key": "0x00000000000000000000000000000000",
+                  "TestType": "Identity Resolving Key All Zero"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Signing_Information",
+      "fields": [
+        {
+          "name": "csrk",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "csrk": "0x00000000000000000000000000000000",
+                  "TestType": "Boundary Test - Minimum Value"
+                },
+                {
+                  "csrk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Boundary Test - Maximum Value"
+                },
+                {
+                  "csrk": "0x80000000000000000000000000000000",
+                  "TestType": "Bit Flip - High Bit"
+                },
+                {
+                  "csrk": "0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Bit Flip - Low Bit"
+                },
+                {
+                  "csrk": "0x00000000000000000000000000000001",
+                  "TestType": "Boundary Test - Increment Minimum"
+                },
+                {
+                  "csrk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE",
+                  "TestType": "Boundary Test - Decrement Maximum"
+                },
+                {
+                  "csrk": "0x1234567890ABCDEF1234567890ABCDEF",
+                  "TestType": "Semantic Invalid - Random Value"
+                },
+                {
+                  "csrk": "0xFFFFFFFF000000000000000000000000",
+                  "TestType": "Bit Flip - Half High"
+                },
+                {
+                  "csrk": "0x00000000FFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Bit Flip - Half Low"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "csrk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "Packet": "SM_Pairing_Response",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Key Distribution Mismatch"
+                },
+                {
+                  "csrk": "0x00000000000000000000000000000000",
+                  "Packet": "SM_Pairing_Response",
+                  "responder_key_distribution": "0xFF",
+                  "TestType": "Key Distribution Overflow"
+                },
+                {
+                  "csrk": "0x1234567890ABCDEF1234567890ABCDEF",
+                  "Packet": "SM_Pairing_Response",
+                  "oob": "0x01",
+                  "TestType": "OOB Authentication Conflict"
+                },
+                {
+                  "csrk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "Packet": "SM_Pairing_Request",
+                  "iocap": "0x03",
+                  "TestType": "IO Capability Mismatch"
+                },
+                {
+                  "csrk": "0x00000000000000000000000000000000",
+                  "Packet": "SM_Pairing_Request",
+                  "authentication": "0x08",
+                  "TestType": "authentication Conflict"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Security_Request",
+      "fields": [
+        {
+          "name": "authentication",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "authentication": "0x00",
+                  "TestType": "Boundary Test - No Security Flags"
+                },
+                {
+                  "authentication": "0xFF",
+                  "TestType": "Boundary Test - All Bits Set"
+                },
+                {
+                  "authentication": "0x20",
+                  "TestType": "Semantic Invalid - SC without MITM"
+                },
+                {
+                  "authentication": "0x40",
+                  "TestType": "Bit Flip - SC Bit Only"
+                },
+                {
+                  "authentication": "0x01",
+                  "TestType": "Boundary Test - Just Bonding, No MITM"
+                },
+                {
+                  "authentication": "0x04",
+                  "TestType": "Semantic Invalid - Secure Connections without MITM"
+                },
+                {
+                  "authentication": "0x10",
+                  "TestType": "Bit Flip - Out of Spec Flag"
+                },
+                {
+                  "authentication": "0x08",
+                  "TestType": "Bit Flip - Keypress Bit Only"
+                },
+                {
+                  "authentication": "0xA0",
+                  "TestType": "Semantic Invalid - SC and Keypress without MITM"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "authentication": "0x09",
+                  "Packet": "SM_Pairing_Request",
+                  "iocap": "0x03",
+                  "TestType": "IO Capability Mismatch"
+                },
+                {
+                  "authentication": "0x05",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Incompatible Key Distribution"
+                },
+                {
+                  "authentication": "0x28",
+                  "Packet": "SM_Pairing_Request",
+                  "oob": "0x00",
+                  "TestType": "OOB Authentication Conflict"
+                },
+                {
+                  "authentication": "0x24",
+                  "Packet": "SM_Pairing_Request",
+                  "responder_key_distribution": "0x01",
+                  "TestType": "Responder Key Distribution Conflict"
+                },
+                {
+                  "authentication": "0x02",
+                  "Packet": "SM_Pairing_Request",
+                  "initiator_key_distribution": "0x04",
+                  "TestType": "Incompatible Key Distribution with MITM"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Public_Key",
+      "fields": [
+        {
+          "name": "key_x",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "key_x": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                  "TestType": "Boundary Test - Minimum Value"
+                },
+                {
+                  "key_x": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Boundary Test - Maximum Value"
+                },
+                {
+                  "key_x": "0x8000000000000000000000000000000000000000000000000000000000000000",
+                  "TestType": "Bit Flip - High Bit Set"
+                },
+                {
+                  "key_x": "0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Bit Flip - High Bit Cleared"
+                },
+                {
+                  "key_x": "0x0000000000000000000000000000000000000000000000000000000000000001",
+                  "TestType": "Boundary Test - Just Above Minimum"
+                },
+                {
+                  "key_x": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE",
+                  "TestType": "Boundary Test - Just Below Maximum"
+                },
+                {
+                  "key_x": "0x1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF",
+                  "TestType": "Semantic Invalid - Random Value"
+                },
+                {
+                  "key_x": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00",
+                  "TestType": "Bit Flip - Low Byte Cleared"
+                },
+                {
+                  "key_x": "0x00000000000000000000000000000000000000000000000000000000000000FF",
+                  "TestType": "Bit Flip - Low Byte Set"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "key_x": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "Packet": "SM_Pairing_Response",
+                  "key_y": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                  "TestType": "Cross-Field Validation - Incompatible Y Coordinate"
+                },
+                {
+                  "key_x": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                  "Packet": "SM_Pairing_Response",
+                  "key_y": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Cross-Field Validation - Incompatible Y Coordinate"
+                },
+                {
+                  "key_x": "0x1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF",
+                  "Packet": "SM_Pairing_Response",
+                  "key_y": "0x1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF",
+                  "TestType": "Cross-Field Validation - Matching X and Y Coordinates"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "key_y",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "key_y": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                  "TestType": "Boundary Test - Minimum Value"
+                },
+                {
+                  "key_y": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Boundary Test - Maximum Value"
+                },
+                {
+                  "key_y": "0x8000000000000000000000000000000000000000000000000000000000000000",
+                  "TestType": "Bit Flip - High Bit"
+                },
+                {
+                  "key_y": "0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Bit Flip - Low Bit"
+                },
+                {
+                  "key_y": "0x0000000000000000000000000000000000000000000000000000000000000001",
+                  "TestType": "Boundary Test - Just Above Minimum"
+                },
+                {
+                  "key_y": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE",
+                  "TestType": "Boundary Test - Just Below Maximum"
+                },
+                {
+                  "key_y": "0x1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF",
+                  "TestType": "Semantic Invalid - Random Value"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "key_y": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "Packet": "SM_Pairing_Response",
+                  "key_x": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                  "TestType": "Cross-field Validation - Incompatible X and Y"
+                },
+                {
+                  "key_y": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                  "Packet": "SM_Pairing_Response",
+                  "key_x": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Cross-field Validation - Incompatible X and Y"
+                },
+                {
+                  "key_y": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "Packet": "SM_Pairing_Response",
+                  "key_x": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Cross-field Validation - Both Max Values"
+                },
+                {
+                  "key_y": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                  "Packet": "SM_Pairing_Response",
+                  "key_x": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                  "TestType": "Cross-field Validation - Both Min Values"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_DHKey_Check",
+      "fields": [
+        {
+          "name": "dhkey_check",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "dhkey_check": "0x00000000000000000000000000000000",
+                  "TestType": "Boundary Test - All Zeros"
+                },
+                {
+                  "dhkey_check": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Boundary Test - All Ones"
+                },
+                {
+                  "dhkey_check": "0x80000000000000000000000000000000",
+                  "TestType": "Bit Flip - High Bit Set"
+                },
+                {
+                  "dhkey_check": "0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Bit Flip - High Bit Cleared"
+                },
+                {
+                  "dhkey_check": "0x00000000000000000000000000000001",
+                  "TestType": "Boundary Test - Single Bit Set"
+                },
+                {
+                  "dhkey_check": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE",
+                  "TestType": "Boundary Test - Single Bit Cleared"
+                },
+                {
+                  "dhkey_check": "0x1234567890ABCDEF1234567890ABCDEF",
+                  "TestType": "Semantic Invalid - Random Value"
+                },
+                {
+                  "dhkey_check": "0xFFFFFFFF00000000FFFFFFFF00000000",
+                  "TestType": "Pattern Test - Alternating Blocks"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "dhkey_check": "0x00000000000000000000000000000000",
+                  "Packet": "SM_Confirm",
+                  "confirm": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Confirm Value Mismatch"
+                },
+                {
+                  "dhkey_check": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "Packet": "SM_Random",
+                  "random": "0x00000000000000000000000000000000",
+                  "TestType": "Random Value Mismatch"
+                },
+                {
+                  "dhkey_check": "0x1234567890ABCDEF1234567890ABCDEF",
+                  "Packet": "SM_Confirm",
+                  "confirm": "0x1234567890ABCDEF1234567890ABCDEF",
+                  "TestType": "Matching Confirm and DHKey Check"
+                },
+                {
+                  "dhkey_check": "0x00000000000000000000000000000000",
+                  "Packet": "SM_Random",
+                  "random": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                  "TestType": "Random Value Inversion"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Keypress_Notification",
+      "fields": [
+        {
+          "name": "notification_type",
+          "mutations": [
+            {
+              "MutationType": "Field Mutation",
+              "TestCases": [
+                {
+                  "notification_type": "0x00",
+                  "TestType": "Boundary Test - Passkey Entry Started"
+                },
+                {
+                  "notification_type": "0x04",
+                  "TestType": "Boundary Test - Passkey Entry Completed"
+                },
+                {
+                  "notification_type": "0x05",
+                  "TestType": "Semantic Invalid - Reserved Value"
+                },
+                {
+                  "notification_type": "0xFF",
+                  "TestType": "Boundary Test - All Bits Set"
+                },
+                {
+                  "notification_type": "0x80",
+                  "TestType": "Bit Flip - High Bit Set"
+                },
+                {
+                  "notification_type": "0x01",
+                  "TestType": "Boundary Test - Passkey Digit Entered"
+                },
+                {
+                  "notification_type": "0x02",
+                  "TestType": "Boundary Test - Passkey Digit Erased"
+                },
+                {
+                  "notification_type": "0x03",
+                  "TestType": "Boundary Test - Passkey Cleared"
+                },
+                {
+                  "notification_type": "0x06",
+                  "TestType": "Semantic Invalid - Reserved Value"
+                },
+                {
+                  "notification_type": "0x7F",
+                  "TestType": "Bit Flip - High Bit Unset"
+                }
+              ]
+            },
+            {
+              "MutationType": "Field Dependency Mutation",
+              "TestCases": [
+                {
+                  "notification_type": "0x01",
+                  "Packet": "SM_Pairing_Response",
+                  "initiator_key_distribution": "0x00",
+                  "TestType": "Key Distribution Mismatch"
+                },
+                {
+                  "notification_type": "0x02",
+                  "Packet": "SM_Pairing_Response",
+                  "responder_key_distribution": "0xFF",
+                  "TestType": "Excessive Key Distribution"
+                },
+                {
+                  "notification_type": "0x03",
+                  "Packet": "SM_Pairing_Response",
+                  "oob": "0x01",
+                  "TestType": "OOB Authentication Conflict"
+                },
+                {
+                  "notification_type": "0x04",
+                  "Packet": "SM_Pairing_Response",
+                  "iocap": "0x03",
+                  "TestType": "IO Capability Mismatch"
+                },
+                {
+                  "notification_type": "0x05",
+                  "Packet": "SM_Pairing_Response",
+                  "authentication": "0x08",
+                  "TestType": "Authentication Requirement Conflict"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

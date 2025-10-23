@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Packet name="SM_Pairing_Request">
+  <TestCase>
+    <ScenarioType>Pairing Process Interruption</ScenarioType>
+    <Analysis>
+      Protocol Section 3.1 states: Phase 2 (STK/LTK generation) must follow a completed Phase 1 (Pairing Request/Response exchange). Protocol Section 4.3 states: LL Encryption Request must only be sent after successful STK/LTK generation in Phase 2.
+    </Analysis>
+    <MutationSteps>
+      1. Send LL Feature Request → LL Length Request → LL Version Ind. 2. Send Pairing Request (Phase 1). 3. Skip Pairing Confirm and Pairing Random (Phase 2). 4. Directly send LL Encryption Request.
+    </MutationSteps>
+    <Validation>
+      ✔ Violates Prestate Not Completed (Phase 2 key generation steps omitted). ✔ Violates Encryption Handshake Process Specification.
+    </Validation>
+  </TestCase>
+  <TestCase>
+    <ScenarioType>Encryption Handshake Failure</ScenarioType>
+    <Analysis>
+      Protocol Section 4.3 states: Encryption must be initiated only after Phase 2 completes with valid STK/LTK. Protocol Section 5.2 states: LL Encryption Request shall contain parameters derived from the Phase 2 key.
+    </Analysis>
+    <MutationSteps>
+      1. Send Pairing Request (Phase 1). 2. Send LL Encryption Request before sending Pairing Confirm.
+    </MutationSteps>
+    <Validation>
+      ✔ Violates Prestate Not Completed (STK/LTK not generated). ✔ Encryption Request parameters are invalid due to missing key.
+    </Validation>
+  </TestCase>
+  <TestCase>
+    <ScenarioType>Service Discovery Conflict</ScenarioType>
+    <Analysis>
+      Protocol Section 6.1 states: Service discovery shall not interrupt active pairing phases. Protocol Section 3.3 states: Key distribution in Phase 3 must occur in a stable connection state.
+    </Analysis>
+    <MutationSteps>
+      1. Send Pairing Request → Pairing Confirm → Pairing Random (Phases 1-2). 2. Initiate ATT_Find_Information_Request during Phase 3 (Key Distribution). 3. Send LL Pause Encryption Request.
+    </MutationSteps>
+    <Validation>
+      ✔ Violates Prestate Not Completed (Service discovery overlaps with key distribution). ✔ Causes resource contention in Security Manager.
+    </Validation>
+  </TestCase>
+  <TestCase>
+    <ScenarioType>Feature Value Read/Write Order Error</ScenarioType>
+    <Analysis>
+      Protocol Section 2.1 states: LL Feature Request/Response shall only occur once before Phase 1. Protocol Section 3.1 states: Pairing Request parameters are final after Phase 1 starts.
+    </Analysis>
+    <MutationSteps>
+      1. Send LL Feature Request → LL Length Request → LL Version Ind. 2. Send Pairing Request (Phase 1). 3. Re-send LL Feature Request after Pairing Request.
+    </MutationSteps>
+    <Validation>
+      ✔ Violates Repeated Operations Not Following Protocol (duplicate Feature Request). ✔ Feature renegotiation during active pairing is prohibited.
+    </Validation>
+  </TestCase>
+  <TestCase>
+    <ScenarioType>Connection Parameter Update Conflict</ScenarioType>
+    <Analysis>
+      Protocol Section 7.2 states: Connection parameter updates are prohibited during Phase 3 (Key Distribution). Protocol Section 4.4 states: Key distribution requires stable connection intervals.
+    </Analysis>
+    <MutationSteps>
+      1. Complete Phases 1-2 (Pairing Request → Confirm → Random). 2. During Phase 3 (Key Distribution), send LL Connection Update Request. 3. Send LL Pause Encryption Request.
+    </MutationSteps>
+    <Validation>
+      ✔ Violates Prestate Not Completed (Key Distribution interrupted). ✔ Causes packet timing mismatches during critical security operations.
+    </Validation>
+  </TestCase>
+</Packet>

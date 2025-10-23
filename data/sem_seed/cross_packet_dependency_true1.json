@@ -1,0 +1,185 @@
+{
+    "packets": [
+        {
+            "packet_name_1": "ll_enc_req_pkt",
+            "packet_name_2": "smp_master_identification_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "rand (ll_enc_req) -> rand (smp_master_identification)": "The 'rand' value in smp_master_identification directly depends on the 'rand' from ll_enc_req, as it is reused to identify the encryption key during the SMP pairing process.",
+                "ediv (ll_enc_req) -> ediv (smp_master_identification)": "The 'ediv' value in smp_master_identification is directly derived from the 'ediv' in ll_enc_req to reference the same encryption session."
+            }
+        },
+        {
+            "packet_name_1": "ll_enc_rsp_pkt",
+            "packet_name_2": "smp_pairing_request_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "responder_key_distribution (smp pairing request) -> skds (ll enc rsp)": "The responder_key_distribution field in the SMP Pairing Request specifies which keys the responder (slave) will distribute during the pairing process. This directly determines the SKDS (Slave Key Distribution Subset) value in the LL_ENC_RSP, as SKDS reflects the keys the slave has agreed to distribute."
+            }
+        },
+        {
+            "packet_name_1": "ll_enc_rsp_pkt",
+            "packet_name_2": "smp_encryption_information_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "skds <-> ltk": "The Session Key Diversifier Slave (skds) in ll enc rsp is derived using the Long Term Key (ltk) from smp encryption information. The ltk directly contributes to the computation of session keys like skds during the encryption setup phase, as per Bluetooth protocol specifications."
+            }
+        },
+        {
+            "packet_name_1": "ll_feature_req_pkt",
+            "packet_name_2": "ll_slave_feature_req_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "feature_set (ll feature req) -> feature_set (ll slave feature req)": "The slave's feature_set in ll_slave_feature_req is derived by intersecting the master's feature_set (from ll_feature_req) with the slave's own capabilities. The protocol mandates that the slave's response must only include features supported by both devices, creating a direct dependency where the master's feature_set determines the valid subset of the slave's feature_set."
+            }
+        },
+        {
+            "packet_name_1": "ll_feature_req_pkt",
+            "packet_name_2": "ll_connection_param_req_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "feature_set -> preferred_periodicity": "The 'preferred_periodicity' parameter in ll connection param req is only valid if the LE Periodic Advertising feature (bit 5) is enabled in 'feature_set'. Its value is constrained by the feature's presence.",
+                "feature_set -> reference_conn_evt_count": "The 'reference_conn_evt_count' parameter requires Channel Selection Algorithm #2 (CSA #2) support (bit 6 in 'feature_set'). Its validity depends directly on this feature.",
+                "feature_set -> offset0": "The 'offset0' parameter is only applicable if CSA #2 (bit 6) is enabled in 'feature_set'. The offset values are ignored if the feature is absent.",
+                "feature_set -> offset1": "Same dependency as offset0: requires CSA #2 (bit 6) in 'feature_set'.",
+                "feature_set -> offset2": "Same dependency as offset0: requires CSA #2 (bit 6) in 'feature_set'.",
+                "feature_set -> offset3": "Same dependency as offset0: requires CSA #2 (bit 6) in 'feature_set'.",
+                "feature_set -> offset4": "Same dependency as offset0: requires CSA #2 (bit 6) in 'feature_set'.",
+                "feature_set -> offset5": "Same dependency as offset0: requires CSA #2 (bit 6) in 'feature_set'."
+            }
+        },
+        {
+            "packet_name_1": "ll_feature_req_pkt",
+            "packet_name_2": "smp_pairing_request_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "feature_set and authentication": "The Secure Connections (SC) bit in feature_set directly determines the SC flag in authentication. If SC is supported, the authentication field must set the SC bit.",
+                "feature_set and max_key_size": "If SC is enabled in feature_set, max_key_size must be 16 bytes per protocol specification.",
+                "feature_set and initiator_key_distribution": "SC restricts initiator_key_distribution to specific keys (e.g., LTK, IRK). The presence of SC in feature_set directly limits allowable bits.",
+                "feature_set and responder_key_distribution": "SC restricts responder_key_distribution similarly to initiator_key_distribution, based on SC support in feature_set."
+            }
+        },
+        {
+            "packet_name_1": "ll_feature_req_pkt",
+            "packet_name_2": "smp_identity_information_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "feature_set -> irk": "The Privacy feature bit in ll_feature_req's feature_set directly determines whether the SMP Identity Information packet must include the irk parameter. If the Privacy feature is enabled (via feature_set), the irk is required for generating resolvable private addresses, as per protocol constraints. However, the irk's value is generated independently and not derived from feature_set."
+            }
+        },
+        {
+            "packet_name_1": "ll_feature_rsp_pkt",
+            "packet_name_2": "ll_length_req_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "feature_set vs max_rx_bytes": "If the feature_set in ll_feature_rsp indicates support for Data Length Extension (DLE), the max_rx_bytes in ll_length_req can be set to values larger than the default 27 bytes (up to 251 bytes).",
+                "feature_set vs max_rx_time": "The max_rx_time in ll_length_req depends on the DLE support in feature_set, as the transmission time calculation directly uses the supported max_rx_bytes (which is enabled by DLE).",
+                "feature_set vs max_tx_bytes": "The max_tx_bytes in ll_length_req is directly constrained by the DLE support in feature_set, similar to max_rx_bytes.",
+                "feature_set vs max_tx_time": "The max_tx_time in ll_length_req is derived from the max_tx_bytes value, which is enabled by DLE support in feature_set."
+            }
+        },
+        {
+            "packet_name_1": "ll_feature_rsp_pkt",
+            "packet_name_2": "smp_pairing_request_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "feature_set -> authentication": "If the Secure Connections (SC) bit in feature_set is enabled, the Authentication Flag in SMP Pairing Request must set the SC bit. SC support in LL directly determines valid authentication options.",
+                "feature_set -> max_key_size": "The presence of SC in feature_set mandates max_key_size to be 16 bytes. Without SC, max_key_size can be 7-16 bytes. LL capabilities directly constrain SMP key size negotiation.",
+                "feature_set -> initiator_key_distribution": "If LE Encryption is not supported in feature_set, the initiator_key_distribution cannot include encryption keys (e.g., LTK). LL capabilities directly restrict permissible key distribution flags.",
+                "feature_set -> responder_key_distribution": "Similar to initiator_key_distribution: responder key distribution is constrained by LE Encryption/SC support in feature_set."
+            }
+        },
+        {
+            "packet_name_1": "ll_feature_rsp_pkt",
+            "packet_name_2": "smp_identity_information_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "feature_set (LE Privacy bit) -> irk": "If the LE Privacy bit in ll_feature_rsp's feature_set is enabled, the device must support SMP identity resolution via irk. The protocol mandates that IRK generation and usage depend directly on LE Privacy feature negotiation during the LL feature exchange."
+            }
+        },
+        {
+            "packet_name_1": "ll_feature_rsp_pkt",
+            "packet_name_2": "smp_identity_address_information_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "feature_set -> atype": "If the 'feature_set' in 'll feature rsp' includes LE Privacy, the 'atype' in 'smp identity address information' must specify the type of identity address (public or static) used for resolving resolvable private addresses, as mandated by the protocol.",
+                "feature_set -> address": "The 'feature_set' in 'll feature rsp' (e.g., LE Privacy support) directly determines whether the 'address' in 'smp identity address information' is required to provide the valid identity address for resolving private addresses during pairing."
+            }
+        },
+        {
+            "packet_name_1": "ll_version_ind_pkt",
+            "packet_name_2": "ll_slave_feature_req_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "version (ll version ind) -> feature_set (ll slave feature req)": "The version parameter in ll version ind directly determines the permissible values of the feature_set parameter in ll slave feature req. The Bluetooth protocol specifies that supported features (feature_set) depend on the Link Layer version (version). For example, newer protocol versions enable additional feature bits, which must align with the declared version."
+            }
+        },
+        {
+            "packet_name_1": "ll_slave_feature_req_pkt",
+            "packet_name_2": "ll_length_req_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "feature_set <-> max_rx_bytes": "The 'LE Data Length Extension' bit in feature_set must be supported (via ll slave feature req) to enable values of max_rx_bytes exceeding the default 27 octets. The protocol mandates this feature as a prerequisite for negotiating extended data lengths.",
+                "feature_set <-> max_rx_time": "The 'LE Data Length Extension' feature in feature_set directly determines the permissible range for max_rx_time, as the feature enables longer PDU transmission times.",
+                "feature_set <-> max_tx_bytes": "The presence of the 'LE Data Length Extension' bit in feature_set is required to set max_tx_bytes beyond the default 27 octets, per protocol constraints.",
+                "feature_set <-> max_tx_time": "The max_tx_time parameter depends on the 'LE Data Length Extension' feature in feature_set, as the feature governs support for extended transmission durations."
+            }
+        },
+        {
+            "packet_name_1": "ll_connection_param_req_pkt",
+            "packet_name_2": "ll_length_req_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "interval_min/max_rx_time": "The minimum connection interval (interval_min) constrains the maximum allowed RX time (max_rx_time) to ensure it fits within the connection event interval.",
+                "interval_min/max_tx_time": "The minimum connection interval (interval_min) constrains the maximum allowed TX time (max_tx_time) to ensure it fits within the connection event interval.",
+                "interval_max/max_rx_time": "The maximum connection interval (interval_max) provides an upper bound for RX time (max_rx_time) allocation.",
+                "interval_max/max_tx_time": "The maximum connection interval (interval_max) provides an upper bound for TX time (max_tx_time) allocation."
+            }
+        },
+        {
+            "packet_name_1": "smp_master_identification_pkt",
+            "packet_name_2": "smp_encryption_information_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "ediv <-> ltk": "EDIV (Encrypted Diversifier) in smp master identification directly identifies the LTK (Long Term Key) in smp encryption information during encryption key lookup. The master uses EDIV to retrieve the correct LTK for session decryption.",
+                "rand <-> ltk": "RAND (Random Number) in smp master identification is used alongside EDIV to uniquely reference the LTK in smp encryption information. The LTK is bound to the specific RAND value generated during the key exchange phase."
+            }
+        },
+        {
+            "packet_name_1": "smp_pairing_request_pkt",
+            "packet_name_2": "smp_identity_information_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "initiator_key_distribution -> irk": "If the initiator_key_distribution field in the pairing request includes the IRK distribution flag (per SMP protocol), the initiator is required to share its IRK. This directly determines the presence of the irk parameter in the identity information packet.",
+                "responder_key_distribution -> irk": "If the responder_key_distribution field in the pairing request includes the IRK distribution flag, the responder must generate and share its IRK. This directly mandates the inclusion of the irk parameter in the identity information packet."
+            }
+        },
+        {
+            "packet_name_1": "smp_pairing_request_pkt",
+            "packet_name_2": "smp_encryption_information_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "max_key_size -> ltk": "The max_key_size in smp pairing request directly determines the maximum allowable length of the ltk in smp encryption information. The negotiated key size (based on max_key_size) constrains the ltk's length during generation, per protocol specifications.",
+                "initiator_key_distribution/responder_key_distribution -> ltk": "The EncKey bits in initiator_key_distribution or responder_key_distribution directly control whether the ltk is distributed (included) in the smp encryption information packet. If EncKey is set, the corresponding party must generate and include the ltk."
+            }
+        },
+        {
+            "packet_name_1": "smp_pairing_request_pkt",
+            "packet_name_2": "smp_signing_information_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "initiator_key_distribution -> csrk": "If the initiator_key_distribution field in smp pairing request includes the CSRK distribution flag (per protocol bitmask), the initiator must generate and transmit the csrk in smp signing information. The presence/absence of the CSRK flag directly determines whether csrk is included.",
+                "responder_key_distribution -> csrk": "If the responder_key_distribution field in smp pairing request includes the CSRK distribution flag, the responder must generate and transmit the csrk in smp signing information. The flag directly controls csrk availability."
+            }
+        },
+        {
+            "packet_name_1": "smp_signing_information_pkt",
+            "packet_name_2": "smp_security_request_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "csrk (Signing Information) \u2194 auth_req (Security Request)": "The auth_req parameter in the Security Request specifies authentication requirements (e.g., MITM protection, bonding flags). If auth_req mandates signing (e.g., via MITM), the csrk in the Signing Information packet must be generated and exchanged to fulfill this requirement. Thus, auth_req's value directly determines whether csrk is required."
+            }
+        }
+
+    ]
+} 

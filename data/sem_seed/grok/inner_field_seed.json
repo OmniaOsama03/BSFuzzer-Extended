@@ -1,0 +1,3083 @@
+{
+    "packets": [
+        {
+            "name": "ll_connection_update_ind_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Interval_Latency",
+                        "Description": "Sets the interval to a value lower than the minimum allowed (0x0006) while setting a high latency (0xFFFF). This combination is invalid as the interval must be at least 7.5 ms.",
+                        "Packet_Name": "ll_connection_update_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x00",
+                            "win_size": "0x01",
+                            "win_offset": "0x00",
+                            "interval": "0x0005",
+                            "latency": "0xFFFF",
+                            "timeout": "0x000A",
+                            "instant": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Timeout_Interval",
+                        "Description": "Sets the timeout to the minimum allowed value (0x000A) while setting a very high interval (0xFFFF). This combination is invalid as the timeout must be greater than the interval.",
+                        "Packet_Name": "ll_connection_update_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x00",
+                            "win_size": "0x01",
+                            "win_offset": "0x00",
+                            "interval": "0xFFFF",
+                            "latency": "0x0000",
+                            "timeout": "0x000A",
+                            "instant": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_WinSize_WinOffset",
+                        "Description": "Sets the win_size to the maximum allowed value (0xFF) while setting win_offset to a reserved value (0x100). This combination is invalid as win_offset values above 0xFF are reserved for future use.",
+                        "Packet_Name": "ll_connection_update_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x00",
+                            "win_size": "0xFF",
+                            "win_offset": "0x100",
+                            "interval": "0x0006",
+                            "latency": "0x0000",
+                            "timeout": "0x000A",
+                            "instant": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Interval_Timeout",
+                        "Description": "Sets the interval to the maximum allowed value (0xFFFF) while setting the timeout to the minimum allowed value (0x000A). This combination is invalid as the timeout must be greater than the interval.",
+                        "Packet_Name": "ll_connection_update_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x00",
+                            "win_size": "0x01",
+                            "win_offset": "0x00",
+                            "interval": "0xFFFF",
+                            "latency": "0x0000",
+                            "timeout": "0x000A",
+                            "instant": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Instant",
+                        "Description": "Sets the instant to a value that is lower than the current connection event count, causing the update to take effect in the past.",
+                        "Packet_Name": "ll_connection_update_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x00",
+                            "win_size": "0x01",
+                            "win_offset": "0x00",
+                            "interval": "0x0006",
+                            "latency": "0x0000",
+                            "timeout": "0x000A",
+                            "instant": "0x0000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Latency_Timeout",
+                        "Description": "Sets the latency to the maximum allowed value (0xFFFF) while setting the timeout to the minimum allowed value (0x000A). This combination is invalid as the timeout must be greater than the latency.",
+                        "Packet_Name": "ll_connection_update_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x00",
+                            "win_size": "0x01",
+                            "win_offset": "0x00",
+                            "interval": "0x0006",
+                            "latency": "0xFFFF",
+                            "timeout": "0x000A",
+                            "instant": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_WinSize_Interval",
+                        "Description": "Sets the win_size to the maximum allowed value (0xFF) while setting the interval to the minimum allowed value (0x0006). This combination is invalid as the win_size should be proportional to the interval.",
+                        "Packet_Name": "ll_connection_update_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x00",
+                            "win_size": "0xFF",
+                            "win_offset": "0x00",
+                            "interval": "0x0006",
+                            "latency": "0x0000",
+                            "timeout": "0x000A",
+                            "instant": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_WinOffset_Interval",
+                        "Description": "Sets the win_offset to the maximum allowed value (0xFF) while setting the interval to the minimum allowed value (0x0006). This combination is invalid as the win_offset should be proportional to the interval.",
+                        "Packet_Name": "ll_connection_update_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x00",
+                            "win_size": "0x01",
+                            "win_offset": "0xFF",
+                            "interval": "0x0006",
+                            "latency": "0x0000",
+                            "timeout": "0x000A",
+                            "instant": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Timeout",
+                        "Description": "Sets the timeout to a value lower than the minimum allowed (0x000A). This combination is invalid as the timeout must be at least 100 ms.",
+                        "Packet_Name": "ll_connection_update_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x00",
+                            "win_size": "0x01",
+                            "win_offset": "0x00",
+                            "interval": "0x0006",
+                            "latency": "0x0000",
+                            "timeout": "0x0009",
+                            "instant": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Interval_Latency_Timeout",
+                        "Description": "Sets the interval to a high value (0xFFFF), latency to a high value (0xFFFF), and timeout to a low value (0x000A). This combination is invalid as the timeout must be greater than the interval and latency.",
+                        "Packet_Name": "ll_connection_update_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x00",
+                            "win_size": "0x01",
+                            "win_offset": "0x00",
+                            "interval": "0xFFFF",
+                            "latency": "0xFFFF",
+                            "timeout": "0x000A",
+                            "instant": "0x0001"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ll_channel_map_req_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Opcode_Channel_Map",
+                        "Description": "Sets the opcode to LL_CONNECTION_UPDATE_IND (0x00) while keeping the chM and instant fields valid for LL_CHANNEL_MAP_IND. This is invalid as the opcode does not match the packet structure.",
+                        "Packet_Name": "ll_channel_map_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x00",
+                            "chM": "0x1FFFFFFFFF",
+                            "instant": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Channel_Map",
+                        "Description": "Sets the chM to include reserved bits (37, 38, 39) as used, which is not allowed according to the specification.",
+                        "Packet_Name": "ll_channel_map_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x01",
+                            "chM": "0x7FFFFFFFFF",
+                            "instant": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Zero_Channel_Map",
+                        "Description": "Sets the chM to all zeros, which would disable all data channels, an invalid configuration.",
+                        "Packet_Name": "ll_channel_map_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x01",
+                            "chM": "0x0000000000",
+                            "instant": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Instant",
+                        "Description": "Sets the instant to a value outside the valid range (0xFFFF + 1), which is not allowed.",
+                        "Packet_Name": "ll_channel_map_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x01",
+                            "chM": "0x1FFFFFFFFF",
+                            "instant": "0x10000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Zero_Instant",
+                        "Description": "Sets the instant to zero, which might cause immediate application of the channel map, potentially disrupting the connection.",
+                        "Packet_Name": "ll_channel_map_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x01",
+                            "chM": "0x1FFFFFFFFF",
+                            "instant": "0x0000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Max_Instant",
+                        "Description": "Sets the instant to the maximum valid value (0xFFFF), which might delay the application of the channel map significantly.",
+                        "Packet_Name": "ll_channel_map_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x01",
+                            "chM": "0x1FFFFFFFFF",
+                            "instant": "0xFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Inconsistent_Channel_Map",
+                        "Description": "Sets the chM to a pattern that is inconsistent with typical usage, potentially causing connectivity issues.",
+                        "Packet_Name": "ll_channel_map_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x01",
+                            "chM": "0xAAAAAAAAAA",
+                            "instant": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Opcode",
+                        "Description": "Sets the opcode to a reserved value (0xFF), which is not defined in the specification and should not be used.",
+                        "Packet_Name": "ll_channel_map_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0xFF",
+                            "chM": "0x1FFFFFFFFF",
+                            "instant": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Channel_Map_Length",
+                        "Description": "Sets the chM to a value that exceeds the 37-bit length, which is not allowed.",
+                        "Packet_Name": "ll_channel_map_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x01",
+                            "chM": "0x1FFFFFFFFFFFFF",
+                            "instant": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "All_Channels_Unused",
+                        "Description": "Sets the chM to all ones except the reserved bits, which would indicate all channels are unused, an invalid configuration.",
+                        "Packet_Name": "ll_channel_map_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x01",
+                            "chM": "0x1FFFFFFFFE",
+                            "instant": "0x0001"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ll_terminate_ind_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Opcode_Length",
+                        "Description": "Sets the opcode to LL_TERMINATE_IND (0x02) but sets an invalid length (0x00) which should be 0x01 for this control PDU.",
+                        "Packet_Name": "ll_terminate_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x02",
+                            "len": "0x00",
+                            "code": "0x01"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Opcode",
+                        "Description": "Sets the opcode to a reserved value (0xFF) which is not defined for any LL Control PDU, causing an invalid packet.",
+                        "Packet_Name": "ll_terminate_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0xFF",
+                            "len": "0x01",
+                            "code": "0x01"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Length_For_Terminate",
+                        "Description": "Sets the length to an invalid value (0x02) for LL_TERMINATE_IND which should always be 0x01.",
+                        "Packet_Name": "ll_terminate_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x02",
+                            "len": "0x02",
+                            "code": "0x01"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Error_Code",
+                        "Description": "Sets the error code to a reserved value (0xFF) which is not defined in the Bluetooth specification, causing an invalid termination reason.",
+                        "Packet_Name": "ll_terminate_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x02",
+                            "len": "0x01",
+                            "code": "0xFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Zero_Error_Code",
+                        "Description": "Sets the error code to 0x00 which is not a valid termination reason according to the Bluetooth specification.",
+                        "Packet_Name": "ll_terminate_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x02",
+                            "len": "0x01",
+                            "code": "0x00"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Opcode_Length_Mismatch",
+                        "Description": "Sets the opcode to LL_TERMINATE_IND (0x02) but sets the length to 0x02, which is inconsistent with the expected length of 0x01 for this PDU.",
+                        "Packet_Name": "ll_terminate_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x02",
+                            "len": "0x02",
+                            "code": "0x01"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Opcode_Valid_Length",
+                        "Description": "Sets the opcode to a reserved value (0x1A) but keeps the length valid (0x01), causing an invalid packet due to the opcode.",
+                        "Packet_Name": "ll_terminate_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x1A",
+                            "len": "0x01",
+                            "code": "0x01"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Valid_Opcode_Invalid_Length",
+                        "Description": "Sets the opcode to LL_TERMINATE_IND (0x02) but sets the length to an invalid value (0x03), causing an invalid packet due to the length.",
+                        "Packet_Name": "ll_terminate_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x02",
+                            "len": "0x03",
+                            "code": "0x01"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Opcode_Reserved_Error_Code",
+                        "Description": "Sets the opcode to a reserved value (0xFF) and the error code to a reserved value (0xFF), causing an invalid packet due to both fields.",
+                        "Packet_Name": "ll_terminate_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0xFF",
+                            "len": "0x01",
+                            "code": "0xFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Valid_Opcode_Reserved_Error_Code",
+                        "Description": "Sets the opcode to LL_TERMINATE_IND (0x02) but sets the error code to a reserved value (0xFF), causing an invalid termination reason.",
+                        "Packet_Name": "ll_terminate_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x02",
+                            "len": "0x01",
+                            "code": "0xFF"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ll_enc_req_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_EDIV_Rand_Combination",
+                        "Description": "Sets EDIV to 0x0000 and Rand to 0x0000000000000000, which is an invalid combination for encryption as it does not provide sufficient randomness for key derivation.",
+                        "Packet_Name": "ll_enc_req_pkt",
+                        "Mutated_Packet": {
+                            "ediv": "0x0000",
+                            "rand": "0x0000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Inconsistent_SKDM_IVM",
+                        "Description": "Sets SKDm to 0x0000000000000000 and IVm to 0xFFFFFFFF, creating an inconsistent encryption setup where the session key diversifier and initialization vector do not align.",
+                        "Packet_Name": "ll_enc_req_pkt",
+                        "Mutated_Packet": {
+                            "skdm": "0x0000000000000000",
+                            "ivm": "0xFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Zero_Values_Encryption",
+                        "Description": "Sets all encryption-related fields (Rand, EDIV, SKDm, IVm) to zero, which is an invalid configuration for encryption as it lacks randomness and diversity.",
+                        "Packet_Name": "ll_enc_req_pkt",
+                        "Mutated_Packet": {
+                            "rand": "0x0000000000000000",
+                            "ediv": "0x0000",
+                            "skdm": "0x0000000000000000",
+                            "ivm": "0x00000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Max_Values_Encryption",
+                        "Description": "Sets all encryption-related fields (Rand, EDIV, SKDm, IVm) to their maximum values, testing the upper bounds of encryption parameters.",
+                        "Packet_Name": "ll_enc_req_pkt",
+                        "Mutated_Packet": {
+                            "rand": "0xFFFFFFFFFFFFFFFF",
+                            "ediv": "0xFFFF",
+                            "skdm": "0xFFFFFFFFFFFFFFFF",
+                            "ivm": "0xFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Inconsistent_EDIV_Rand",
+                        "Description": "Sets EDIV to 0xFFFF and Rand to 0x0000000000000000, creating an inconsistent encryption setup where the diversifier is at its maximum while the random number is at its minimum.",
+                        "Packet_Name": "ll_enc_req_pkt",
+                        "Mutated_Packet": {
+                            "ediv": "0xFFFF",
+                            "rand": "0x0000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Inconsistent_SKDM_Rand",
+                        "Description": "Sets SKDm to 0xFFFFFFFFFFFFFFFF and Rand to 0x0000000000000000, creating an inconsistent encryption setup where the session key diversifier is at its maximum while the random number is at its minimum.",
+                        "Packet_Name": "ll_enc_req_pkt",
+                        "Mutated_Packet": {
+                            "skdm": "0xFFFFFFFFFFFFFFFF",
+                            "rand": "0x0000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Inconsistent_IVM_Rand",
+                        "Description": "Sets IVm to 0xFFFFFFFF and Rand to 0x0000000000000000, creating an inconsistent encryption setup where the initialization vector is at its maximum while the random number is at its minimum.",
+                        "Packet_Name": "ll_enc_req_pkt",
+                        "Mutated_Packet": {
+                            "ivm": "0xFFFFFFFF",
+                            "rand": "0x0000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Inconsistent_SKDM_EDIV",
+                        "Description": "Sets SKDm to 0x0000000000000000 and EDIV to 0xFFFF, creating an inconsistent encryption setup where the session key diversifier is at its minimum while the diversifier is at its maximum.",
+                        "Packet_Name": "ll_enc_req_pkt",
+                        "Mutated_Packet": {
+                            "skdm": "0x0000000000000000",
+                            "ediv": "0xFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Inconsistent_IVM_EDIV",
+                        "Description": "Sets IVm to 0x00000000 and EDIV to 0xFFFF, creating an inconsistent encryption setup where the initialization vector is at its minimum while the diversifier is at its maximum.",
+                        "Packet_Name": "ll_enc_req_pkt",
+                        "Mutated_Packet": {
+                            "ivm": "0x00000000",
+                            "ediv": "0xFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Inconsistent_IVM_SKDM",
+                        "Description": "Sets IVm to 0x00000000 and SKDm to 0xFFFFFFFFFFFFFFFF, creating an inconsistent encryption setup where the initialization vector is at its minimum while the session key diversifier is at its maximum.",
+                        "Packet_Name": "ll_enc_req_pkt",
+                        "Mutated_Packet": {
+                            "ivm": "0x00000000",
+                            "skdm": "0xFFFFFFFFFFFFFFFF"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ll_enc_rsp_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Length_For_Opcode",
+                        "Description": "Sets the 'len' field to an invalid value (0x00) for the LL_ENC_RSP opcode, which should have a length of 12 octets.",
+                        "Packet_Name": "ll_enc_rsp_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x00",
+                            "opcode": "0x04"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Sequence_Numbers",
+                        "Description": "Sets the 'SN' and 'NESN' fields to the same value (0x01), which is invalid as they should alternate.",
+                        "Packet_Name": "ll_enc_rsp_pkt",
+                        "Mutated_Packet": {
+                            "SN": "0x01",
+                            "NESN": "0x01"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_LLID_For_Control_PDU",
+                        "Description": "Sets the 'LLID' field to an invalid value (0x00) for an LL Control PDU, which should be 0x03.",
+                        "Packet_Name": "ll_enc_rsp_pkt",
+                        "Mutated_Packet": {
+                            "LLID": "0x00",
+                            "opcode": "0x04"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_More_Data",
+                        "Description": "Sets the 'MD' field to indicate more data (0x01) while the 'len' field is set to the maximum value (0xFF), which is inconsistent.",
+                        "Packet_Name": "ll_enc_rsp_pkt",
+                        "Mutated_Packet": {
+                            "MD": "0x01",
+                            "len": "0xFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Opcode_For_Packet",
+                        "Description": "Sets the 'opcode' field to an invalid value (0x00) for the LL_ENC_RSP packet, which should be 0x04.",
+                        "Packet_Name": "ll_enc_rsp_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x00"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Session_Key_Diversifier",
+                        "Description": "Sets the 'skds' field to an all-zero value (0x0000000000000000) while the 'ivs' field is set to a non-zero value (0xFFFFFFFF), which is inconsistent for encryption setup.",
+                        "Packet_Name": "ll_enc_rsp_pkt",
+                        "Mutated_Packet": {
+                            "skds": "0x0000000000000000",
+                            "ivs": "0xFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Initialization_Vector",
+                        "Description": "Sets the 'ivs' field to an all-zero value (0x00000000) while the 'skds' field is set to a non-zero value (0xFFFFFFFFFFFFFFFF), which is inconsistent for encryption setup.",
+                        "Packet_Name": "ll_enc_rsp_pkt",
+                        "Mutated_Packet": {
+                            "ivs": "0x00000000",
+                            "skds": "0xFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Length_For_Control_PDU",
+                        "Description": "Sets the 'len' field to an invalid value (0x0A) for the LL_ENC_RSP packet, which should be 12 octets.",
+                        "Packet_Name": "ll_enc_rsp_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x0A",
+                            "opcode": "0x04"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_RFU_And_Opcode",
+                        "Description": "Sets the 'RFU' field to a non-zero value (0x07) while the 'opcode' field is set to LL_ENC_RSP (0x04), which is inconsistent as RFU should be zero.",
+                        "Packet_Name": "ll_enc_rsp_pkt",
+                        "Mutated_Packet": {
+                            "RFU": "0x07",
+                            "opcode": "0x04"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_LLID_And_Length",
+                        "Description": "Sets the 'LLID' field to indicate an LL Data PDU (0x01) while the 'len' field is set to the length of an LL_ENC_RSP packet (0x0C), which is inconsistent.",
+                        "Packet_Name": "ll_enc_rsp_pkt",
+                        "Mutated_Packet": {
+                            "LLID": "0x01",
+                            "len": "0x0C"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ll_unknown_rsp_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Opcode_For_Unknown_Response",
+                        "Description": "Sets the 'code' field to an invalid opcode value (0x20) which is not defined in the LL Control PDU opcodes, causing an inconsistency with the purpose of the LL_UNKNOWN_RSP packet.",
+                        "Packet_Name": "ll_unknown_rsp_pkt",
+                        "Mutated_Packet": {
+                            "code": "0x20"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Opcode_For_Unknown_Response",
+                        "Description": "Sets the 'code' field to a reserved opcode value (0x1A) which is not currently used but reserved for future use, causing an inconsistency with the purpose of the LL_UNKNOWN_RSP packet.",
+                        "Packet_Name": "ll_unknown_rsp_pkt",
+                        "Mutated_Packet": {
+                            "code": "0x1A"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Valid_Opcode_For_Unknown_Response",
+                        "Description": "Sets the 'code' field to a valid opcode value (0x02) which is defined in the LL Control PDU opcodes, causing an inconsistency with the purpose of the LL_UNKNOWN_RSP packet as it should indicate an unknown opcode.",
+                        "Packet_Name": "ll_unknown_rsp_pkt",
+                        "Mutated_Packet": {
+                            "code": "0x02"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Zero_Length_Unknown_Response",
+                        "Description": "Sets the 'len' field to zero (0x00) while the 'code' field is set to a valid opcode (0x07), causing an inconsistency as the LL_UNKNOWN_RSP packet should contain the unknown opcode.",
+                        "Packet_Name": "ll_unknown_rsp_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x00",
+                            "code": "0x07"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Non_Zero_Length_Unknown_Response",
+                        "Description": "Sets the 'len' field to a non-zero value (0x01) while the 'code' field is set to a valid opcode (0x07), causing an inconsistency as the LL_UNKNOWN_RSP packet should not have a payload.",
+                        "Packet_Name": "ll_unknown_rsp_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x01",
+                            "code": "0x07"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "LLID_Data_For_Control_PDU",
+                        "Description": "Sets the 'LLID' field to a value indicating LL Data PDU (0x01) while the 'code' field is set to a valid opcode (0x07), causing an inconsistency as the LL_UNKNOWN_RSP is an LL Control PDU.",
+                        "Packet_Name": "ll_unknown_rsp_pkt",
+                        "Mutated_Packet": {
+                            "LLID": "0x01",
+                            "code": "0x07"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "LLID_Control_For_Data_PDU",
+                        "Description": "Sets the 'LLID' field to a value indicating LL Control PDU (0x03) while the 'len' field is set to a non-zero value (0x01), causing an inconsistency as the LL_UNKNOWN_RSP should not have a payload.",
+                        "Packet_Name": "ll_unknown_rsp_pkt",
+                        "Mutated_Packet": {
+                            "LLID": "0x03",
+                            "len": "0x01"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_LLID_For_Unknown_Response",
+                        "Description": "Sets the 'LLID' field to a reserved value (0x00) while the 'code' field is set to a valid opcode (0x07), causing an inconsistency as the LL_UNKNOWN_RSP should use the LL Control PDU LLID.",
+                        "Packet_Name": "ll_unknown_rsp_pkt",
+                        "Mutated_Packet": {
+                            "LLID": "0x00",
+                            "code": "0x07"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_SN_For_Unknown_Response",
+                        "Description": "Sets the 'SN' field to an invalid value (0x00) while the 'code' field is set to a valid opcode (0x07), causing an inconsistency as the SN should be toggled for each new packet.",
+                        "Packet_Name": "ll_unknown_rsp_pkt",
+                        "Mutated_Packet": {
+                            "SN": "0x00",
+                            "code": "0x07"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_NESN_For_Unknown_Response",
+                        "Description": "Sets the 'NESN' field to an invalid value (0x00) while the 'code' field is set to a valid opcode (0x07), causing an inconsistency as the NESN should be toggled based on the expected sequence number.",
+                        "Packet_Name": "ll_unknown_rsp_pkt",
+                        "Mutated_Packet": {
+                            "NESN": "0x00",
+                            "code": "0x07"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ll_feature_req_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Incompatible_Feature_Set_Opcode",
+                        "Description": "Sets the opcode to LL_FEATURE_REQ (0x08) but the feature_set includes unsupported features. This combination is logically inconsistent because the opcode should match the supported features.",
+                        "Packet_Name": "ll_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x08",
+                            "feature_set": "0x1000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Length_Feature_Set",
+                        "Description": "Sets the length to 0x08 but the feature_set is 64 bits long. This combination is logically inconsistent because the length should match the size of the feature_set.",
+                        "Packet_Name": "ll_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x08",
+                            "opcode": "0x08",
+                            "feature_set": "0x0000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Unsupported_Feature_Set",
+                        "Description": "Sets the feature_set to include LE 2M PHY (0x08) which is not supported by the device. This combination is logically inconsistent because the feature_set should only include supported features.",
+                        "Packet_Name": "ll_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x08",
+                            "feature_set": "0x0000000000000008"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Length_Opcode",
+                        "Description": "Sets the length to 0x00 but the opcode is LL_FEATURE_REQ (0x08). This combination is logically inconsistent because the length should be at least 8 bytes for LL_FEATURE_REQ.",
+                        "Packet_Name": "ll_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x00",
+                            "opcode": "0x08",
+                            "feature_set": "0x0000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Feature_Set_Length",
+                        "Description": "Sets the feature_set to 64 bits but the length is set to 0x04. This combination is logically inconsistent because the length should match the size of the feature_set.",
+                        "Packet_Name": "ll_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x04",
+                            "opcode": "0x08",
+                            "feature_set": "0x0000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Opcode_Feature_Set",
+                        "Description": "Sets the opcode to LL_CONNECTION_UPDATE_IND (0x00) but the feature_set is included. This combination is logically inconsistent because LL_CONNECTION_UPDATE_IND does not include a feature_set.",
+                        "Packet_Name": "ll_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x00",
+                            "feature_set": "0x0000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Length_Feature_Set_2",
+                        "Description": "Sets the length to 0x10 but the feature_set is 64 bits long. This combination is logically inconsistent because the length should match the size of the feature_set.",
+                        "Packet_Name": "ll_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x10",
+                            "opcode": "0x08",
+                            "feature_set": "0x0000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Unsupported_Feature_Set_2",
+                        "Description": "Sets the feature_set to include Minimum Number of Used Channels Procedure (0x10000) which is not supported by the device. This combination is logically inconsistent because the feature_set should only include supported features.",
+                        "Packet_Name": "ll_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x08",
+                            "feature_set": "0x0000000000010000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Opcode_Length",
+                        "Description": "Sets the opcode to LL_FEATURE_REQ (0x08) but the length is set to 0x00. This combination is logically inconsistent because the length should be at least 8 bytes for LL_FEATURE_REQ.",
+                        "Packet_Name": "ll_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x00",
+                            "opcode": "0x08"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Feature_Set_Length_3",
+                        "Description": "Sets the feature_set to 64 bits but the length is set to 0x07. This combination is logically inconsistent because the length should match the size of the feature_set.",
+                        "Packet_Name": "ll_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x07",
+                            "opcode": "0x08",
+                            "feature_set": "0x0000000000000001"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ll_feature_rsp_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Opcode_Feature_Set",
+                        "Description": "Sets the opcode to LL_FEATURE_RSP (0x09) but uses an invalid feature set value (0x0000000000000001) that is not defined in the Bluetooth specification.",
+                        "Packet_Name": "ll_feature_rsp_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x09",
+                            "feature_set": "0x0000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Opcode_Valid_Feature_Set",
+                        "Description": "Sets the opcode to a reserved value (0xFF) but uses a valid feature set value (0xFFFFFFFFFFFFFFFF) as defined in the Bluetooth specification.",
+                        "Packet_Name": "ll_feature_rsp_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0xFF",
+                            "feature_set": "0xFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Valid_Opcode_No_Features",
+                        "Description": "Sets the opcode to LL_FEATURE_RSP (0x09) but uses a feature set indicating no features supported (0x0000000000000000), which is valid but unusual.",
+                        "Packet_Name": "ll_feature_rsp_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x09",
+                            "feature_set": "0x0000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Valid_Opcode_All_Features",
+                        "Description": "Sets the opcode to LL_FEATURE_RSP (0x09) and uses a feature set indicating all features supported (0xFFFFFFFFFFFFFFFF), which is valid but unlikely in practice.",
+                        "Packet_Name": "ll_feature_rsp_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x09",
+                            "feature_set": "0xFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Opcode_No_Features",
+                        "Description": "Sets the opcode to a reserved value (0xFF) and uses a feature set indicating no features supported (0x0000000000000000), which is invalid due to the opcode.",
+                        "Packet_Name": "ll_feature_rsp_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0xFF",
+                            "feature_set": "0x0000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Opcode_All_Features",
+                        "Description": "Sets the opcode to a reserved value (0xFF) and uses a feature set indicating all features supported (0xFFFFFFFFFFFFFFFF), which is invalid due to the opcode.",
+                        "Packet_Name": "ll_feature_rsp_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0xFF",
+                            "feature_set": "0xFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Valid_Opcode_Invalid_Feature_Set",
+                        "Description": "Sets the opcode to LL_FEATURE_RSP (0x09) but uses an invalid feature set value (0xFFFFFFFFFFFFFFFFFFFFFFFF) that exceeds the defined 64-bit length.",
+                        "Packet_Name": "ll_feature_rsp_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x09",
+                            "feature_set": "0xFFFFFFFFFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Opcode_Invalid_Feature_Set",
+                        "Description": "Sets the opcode to a reserved value (0xFF) and uses an invalid feature set value (0xFFFFFFFFFFFFFFFFFFFFFFFF) that exceeds the defined 64-bit length.",
+                        "Packet_Name": "ll_feature_rsp_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0xFF",
+                            "feature_set": "0xFFFFFFFFFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Valid_Opcode_Partial_Features",
+                        "Description": "Sets the opcode to LL_FEATURE_RSP (0x09) and uses a feature set indicating partial feature support (0x0000000000000002), which is valid but tests specific feature support.",
+                        "Packet_Name": "ll_feature_rsp_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x09",
+                            "feature_set": "0x0000000000000002"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Opcode_Partial_Features",
+                        "Description": "Sets the opcode to a reserved value (0xFF) and uses a feature set indicating partial feature support (0x0000000000000002), which is invalid due to the opcode.",
+                        "Packet_Name": "ll_feature_rsp_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0xFF",
+                            "feature_set": "0x0000000000000002"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ll_version_ind_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Version_Company_Combination",
+                        "Description": "Sets the version to a known Bluetooth SIG value (0x09) but uses an invalid company identifier (0xFFFF). This combination is logically inconsistent because the company identifier should correspond to a valid manufacturer.",
+                        "Packet_Name": "ll_version_ind_pkt",
+                        "Mutated_Packet": {
+                            "version": "0x09",
+                            "company": "0xFFFF",
+                            "subversion": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Subversion_Company",
+                        "Description": "Sets the company identifier to a known value (0x004C for Apple) but uses an invalid subversion number (0xFFFF). This combination is logically inconsistent because the subversion should correspond to a valid implementation or revision for the specified company.",
+                        "Packet_Name": "ll_version_ind_pkt",
+                        "Mutated_Packet": {
+                            "version": "0x09",
+                            "company": "0x004C",
+                            "subversion": "0xFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Version_With_Valid_Company",
+                        "Description": "Sets the version to a reserved value (0xFF) but uses a valid company identifier (0x000F for Broadcom). This combination is logically inconsistent because the version should be a valid Bluetooth SIG assigned value.",
+                        "Packet_Name": "ll_version_ind_pkt",
+                        "Mutated_Packet": {
+                            "version": "0xFF",
+                            "company": "0x000F",
+                            "subversion": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Valid_Version_With_Reserved_Company",
+                        "Description": "Sets the version to a valid Bluetooth SIG value (0x08) but uses a reserved company identifier (0x0000). This combination is logically inconsistent because the company identifier should be a valid assigned number.",
+                        "Packet_Name": "ll_version_ind_pkt",
+                        "Mutated_Packet": {
+                            "version": "0x08",
+                            "company": "0x0000",
+                            "subversion": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Version_Subversion",
+                        "Description": "Sets the version to a known Bluetooth SIG value (0x07) but uses an invalid subversion number (0x0000). This combination is logically inconsistent because the subversion should correspond to a valid implementation or revision for the specified version.",
+                        "Packet_Name": "ll_version_ind_pkt",
+                        "Mutated_Packet": {
+                            "version": "0x07",
+                            "company": "0x004C",
+                            "subversion": "0x0000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Version_With_Reserved_Company",
+                        "Description": "Sets the version to a reserved value (0xFF) and uses a reserved company identifier (0xFFFF). This combination is logically inconsistent because both fields should be valid assigned values.",
+                        "Packet_Name": "ll_version_ind_pkt",
+                        "Mutated_Packet": {
+                            "version": "0xFF",
+                            "company": "0xFFFF",
+                            "subversion": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Valid_Version_With_Reserved_Subversion",
+                        "Description": "Sets the version to a valid Bluetooth SIG value (0x06) but uses a reserved subversion number (0xFFFF). This combination is logically inconsistent because the subversion should correspond to a valid implementation or revision.",
+                        "Packet_Name": "ll_version_ind_pkt",
+                        "Mutated_Packet": {
+                            "version": "0x06",
+                            "company": "0x000F",
+                            "subversion": "0xFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Version_With_Valid_Subversion",
+                        "Description": "Sets the version to a reserved value (0xFF) but uses a valid subversion number (0x0001). This combination is logically inconsistent because the version should be a valid Bluetooth SIG assigned value.",
+                        "Packet_Name": "ll_version_ind_pkt",
+                        "Mutated_Packet": {
+                            "version": "0xFF",
+                            "company": "0x004C",
+                            "subversion": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Valid_Company_With_Reserved_Subversion",
+                        "Description": "Sets the company identifier to a valid value (0x000F for Broadcom) but uses a reserved subversion number (0xFFFF). This combination is logically inconsistent because the subversion should correspond to a valid implementation or revision for the specified company.",
+                        "Packet_Name": "ll_version_ind_pkt",
+                        "Mutated_Packet": {
+                            "version": "0x09",
+                            "company": "0x000F",
+                            "subversion": "0xFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Company_With_Valid_Subversion",
+                        "Description": "Sets the company identifier to a reserved value (0x0000) but uses a valid subversion number (0x0001). This combination is logically inconsistent because the company identifier should be a valid assigned number.",
+                        "Packet_Name": "ll_version_ind_pkt",
+                        "Mutated_Packet": {
+                            "version": "0x09",
+                            "company": "0x0000",
+                            "subversion": "0x0001"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ll_reject_ind_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Opcode_With_Code",
+                        "Description": "Sets the opcode to LL_REJECT_IND (0x0D) but uses an invalid error code (0xFF) which is not defined in the Bluetooth Assigned Numbers.",
+                        "Packet_Name": "ll_reject_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0D",
+                            "code": "0xFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Valid_Opcode_With_Reserved_Code",
+                        "Description": "Sets the opcode to LL_REJECT_IND (0x0D) and uses a reserved error code (0x00) which is not typically used for rejection.",
+                        "Packet_Name": "ll_reject_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0D",
+                            "code": "0x00"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Opcode_Mismatch",
+                        "Description": "Sets the opcode to LL_CONNECTION_UPDATE_IND (0x00) but uses a valid LL_REJECT_IND error code (0x03), creating a mismatch between the opcode and the error code.",
+                        "Packet_Name": "ll_reject_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x00",
+                            "code": "0x03"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Opcode_With_Valid_Code",
+                        "Description": "Sets the opcode to a reserved value (0xFF) but uses a valid LL_REJECT_IND error code (0x03), creating a mismatch between the opcode and the error code.",
+                        "Packet_Name": "ll_reject_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0xFF",
+                            "code": "0x03"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Opcode_With_OutOfRange_Code",
+                        "Description": "Sets the opcode to LL_REJECT_IND (0x0D) but uses an out-of-range error code (0x100), which is not defined in the Bluetooth Assigned Numbers.",
+                        "Packet_Name": "ll_reject_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0D",
+                            "code": "0x100"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Valid_Opcode_With_Zero_Code",
+                        "Description": "Sets the opcode to LL_REJECT_IND (0x0D) and uses a zero error code (0x00), which is typically reserved and not used for rejection.",
+                        "Packet_Name": "ll_reject_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0D",
+                            "code": "0x00"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Opcode_With_Max_Code",
+                        "Description": "Sets the opcode to LL_REJECT_IND (0x0D) and uses the maximum valid error code (0xFF), which is typically used for unknown errors.",
+                        "Packet_Name": "ll_reject_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0D",
+                            "code": "0xFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Opcode_With_Min_Code",
+                        "Description": "Sets the opcode to LL_REJECT_IND (0x0D) and uses the minimum valid error code (0x01), which is typically used for specific errors.",
+                        "Packet_Name": "ll_reject_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0D",
+                            "code": "0x01"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Opcode_With_Common_Code",
+                        "Description": "Sets the opcode to LL_REJECT_IND (0x0D) and uses a commonly used error code (0x03), which is typically used for specific errors.",
+                        "Packet_Name": "ll_reject_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0D",
+                            "code": "0x03"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Opcode_With_Uncommon_Code",
+                        "Description": "Sets the opcode to LL_REJECT_IND (0x0D) and uses an uncommon error code (0x7F), which is typically used for specific errors.",
+                        "Packet_Name": "ll_reject_ind_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0D",
+                            "code": "0x7F"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ll_slave_feature_req_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Incompatible_Feature_Set_Length",
+                        "Description": "Sets the 'len' field to a value that is inconsistent with the actual length of the 'feature_set' field, causing a mismatch in packet interpretation.",
+                        "Packet_Name": "ll_slave_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x08",
+                            "opcode": "0x0E",
+                            "feature_set": "0x0000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Opcode_Feature_Set",
+                        "Description": "Sets the 'opcode' to an invalid value while keeping a valid 'feature_set', causing the packet to be misinterpreted as an unknown control PDU.",
+                        "Packet_Name": "ll_slave_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x08",
+                            "opcode": "0xFF",
+                            "feature_set": "0x0000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Zero_Length_Feature_Set",
+                        "Description": "Sets the 'len' field to zero, indicating no payload, while still including a 'feature_set', causing a logical inconsistency.",
+                        "Packet_Name": "ll_slave_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x00",
+                            "opcode": "0x0E",
+                            "feature_set": "0x0000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Excessive_Length_Feature_Set",
+                        "Description": "Sets the 'len' field to a value larger than the actual 'feature_set' length, causing the receiver to expect more data than is present.",
+                        "Packet_Name": "ll_slave_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x10",
+                            "opcode": "0x0E",
+                            "feature_set": "0x0000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Feature_Set_Value",
+                        "Description": "Sets the 'feature_set' to a value that is not defined in the specification, causing the receiver to misinterpret the supported features.",
+                        "Packet_Name": "ll_slave_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x08",
+                            "opcode": "0x0E",
+                            "feature_set": "0xFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Opcode_Length",
+                        "Description": "Sets the 'opcode' to LL_SLAVE_FEATURE_REQ while setting 'len' to a value that does not match the expected length for this opcode, causing a logical inconsistency.",
+                        "Packet_Name": "ll_slave_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x04",
+                            "opcode": "0x0E",
+                            "feature_set": "0x0000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Feature_Set_Opcode",
+                        "Description": "Sets the 'opcode' to a different control PDU type while keeping a valid 'feature_set', causing the packet to be misinterpreted as a different control PDU.",
+                        "Packet_Name": "ll_slave_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x08",
+                            "opcode": "0x08",
+                            "feature_set": "0x0000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Length_Opcode",
+                        "Description": "Sets the 'len' field to a value that is inconsistent with the 'opcode' field, causing the receiver to expect a different packet structure.",
+                        "Packet_Name": "ll_slave_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x02",
+                            "opcode": "0x0E",
+                            "feature_set": "0x0000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Feature_Set_Length_Opcode",
+                        "Description": "Sets the 'len' field to a value that is inconsistent with both the 'opcode' and the 'feature_set' length, causing multiple logical inconsistencies.",
+                        "Packet_Name": "ll_slave_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x05",
+                            "opcode": "0x0E",
+                            "feature_set": "0x0000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Feature_Set_Reserved",
+                        "Description": "Sets the 'feature_set' to a reserved value while keeping a valid 'opcode' and 'len', causing the receiver to misinterpret the supported features.",
+                        "Packet_Name": "ll_slave_feature_req_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x08",
+                            "opcode": "0x0E",
+                            "feature_set": "0x0000000000000000"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ll_connection_param_req_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Interval_Range",
+                        "Description": "Sets interval_min to a value greater than interval_max, which is invalid as interval_min must be less than or equal to interval_max.",
+                        "Packet_Name": "ll_connection_param_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0F",
+                            "interval_min": "0x0007",
+                            "interval_max": "0x0006"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Excessive_Latency",
+                        "Description": "Sets latency to the maximum value (0xFFFF) while setting a very short timeout (0x000A), creating a dependency conflict as the timeout may expire before the latency period.",
+                        "Packet_Name": "ll_connection_param_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0F",
+                            "latency": "0xFFFF",
+                            "timeout": "0x000A"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Offset_Values",
+                        "Description": "Sets offset0 to 0xFFFF (invalid) while setting other offsets to valid values, creating a dependency where offset0 should be valid and less than interval_max.",
+                        "Packet_Name": "ll_connection_param_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0F",
+                            "offset0": "0xFFFF",
+                            "offset1": "0x0001",
+                            "offset2": "0x0002",
+                            "offset3": "0x0003",
+                            "offset4": "0x0004",
+                            "offset5": "0x0005"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Periodicity",
+                        "Description": "Sets preferred_periodicity to 0x00 (not valid) while setting interval_min and interval_max to values that should be multiples of the periodicity, creating a dependency conflict.",
+                        "Packet_Name": "ll_connection_param_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0F",
+                            "preferred_periodicity": "0x00",
+                            "interval_min": "0x0006",
+                            "interval_max": "0x000C"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Inconsistent_Interval_Offset",
+                        "Description": "Sets interval_max to a value less than the sum of offset0 and interval_min, creating a dependency conflict as the offset should be within the interval range.",
+                        "Packet_Name": "ll_connection_param_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0F",
+                            "interval_min": "0x0006",
+                            "interval_max": "0x000A",
+                            "offset0": "0x0005"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Reference_Count",
+                        "Description": "Sets reference_conn_evt_count to 0xFFFF while setting offsets to values that should be relative to this count, creating a dependency conflict as the reference count should be valid.",
+                        "Packet_Name": "ll_connection_param_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0F",
+                            "reference_conn_evt_count": "0xFFFF",
+                            "offset0": "0x0001",
+                            "offset1": "0x0002",
+                            "offset2": "0x0003",
+                            "offset3": "0x0004",
+                            "offset4": "0x0005",
+                            "offset5": "0x0006"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Offset_Order",
+                        "Description": "Sets offsets in a non-decreasing order of preference, creating a dependency conflict as offsets should be in decreasing order of preference.",
+                        "Packet_Name": "ll_connection_param_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0F",
+                            "offset0": "0x0005",
+                            "offset1": "0x0004",
+                            "offset2": "0x0003",
+                            "offset3": "0x0002",
+                            "offset4": "0x0001",
+                            "offset5": "0x0000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Excessive_Timeout",
+                        "Description": "Sets timeout to the maximum value (0xFFFF) while setting a very short interval_max (0x0006), creating a dependency conflict as the timeout should be proportional to the interval.",
+                        "Packet_Name": "ll_connection_param_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0F",
+                            "interval_max": "0x0006",
+                            "timeout": "0xFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Interval_Min",
+                        "Description": "Sets interval_min to 0x0000 (0 ms), which is invalid as the minimum interval should be greater than 0.",
+                        "Packet_Name": "ll_connection_param_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0F",
+                            "interval_min": "0x0000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Interval_Max",
+                        "Description": "Sets interval_max to 0x0000 (0 ms), which is invalid as the maximum interval should be greater than 0.",
+                        "Packet_Name": "ll_connection_param_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x0F",
+                            "interval_max": "0x0000"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ll_connection_param_rsp_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Interval_Range",
+                        "Description": "Sets interval_min to a value greater than interval_max, which violates the specification that interval_min must be less than or equal to interval_max.",
+                        "Packet_Name": "ll_connection_param_rsp_pkt",
+                        "Mutated_Packet": {
+                            "interval_min": "0x0007",
+                            "interval_max": "0x0006"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Latency",
+                        "Description": "Sets latency to a value greater than the maximum allowed by the interval_max, which violates the specification that latency should not exceed (interval_max * 2 - 1).",
+                        "Packet_Name": "ll_connection_param_rsp_pkt",
+                        "Mutated_Packet": {
+                            "interval_max": "0x0006",
+                            "latency": "0x000D"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Timeout",
+                        "Description": "Sets timeout to a value less than the minimum required by the interval_max, which violates the specification that timeout must be greater than (1 + latency) * interval_max * 2.",
+                        "Packet_Name": "ll_connection_param_rsp_pkt",
+                        "Mutated_Packet": {
+                            "interval_max": "0x0006",
+                            "latency": "0x0001",
+                            "timeout": "0x0018"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Preferred_Periodicity",
+                        "Description": "Sets preferred_periodicity to a value greater than interval_max, which violates the specification that preferred_periodicity must be less than or equal to interval_max.",
+                        "Packet_Name": "ll_connection_param_rsp_pkt",
+                        "Mutated_Packet": {
+                            "interval_max": "0x0006",
+                            "preferred_periodicity": "0x07"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Offset_Range",
+                        "Description": "Sets offset0 to a value greater than interval_max, which violates the specification that all offsets must be less than interval_max.",
+                        "Packet_Name": "ll_connection_param_rsp_pkt",
+                        "Mutated_Packet": {
+                            "interval_max": "0x0006",
+                            "offset0": "0x0007"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Duplicate_Offsets",
+                        "Description": "Sets offset0 and offset1 to the same value, which violates the specification that all offsets must be unique.",
+                        "Packet_Name": "ll_connection_param_rsp_pkt",
+                        "Mutated_Packet": {
+                            "offset0": "0x0001",
+                            "offset1": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Offset_Order",
+                        "Description": "Sets offset0 to a value greater than offset1, which violates the specification that offsets should be in decreasing order of preference.",
+                        "Packet_Name": "ll_connection_param_rsp_pkt",
+                        "Mutated_Packet": {
+                            "offset0": "0x0002",
+                            "offset1": "0x0001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Reference_Conn_Evt_Count",
+                        "Description": "Sets reference_conn_evt_count to a value that does not match the expected value based on the current connection event counter, which can cause synchronization issues.",
+                        "Packet_Name": "ll_connection_param_rsp_pkt",
+                        "Mutated_Packet": {
+                            "reference_conn_evt_count": "0x0005"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Offset_With_Invalid_Value",
+                        "Description": "Sets offset0 to 0xFFFF, which is an invalid offset value according to the specification.",
+                        "Packet_Name": "ll_connection_param_rsp_pkt",
+                        "Mutated_Packet": {
+                            "offset0": "0xFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Preferred_Periodicity_With_Zero",
+                        "Description": "Sets preferred_periodicity to 0x00, which is not a valid value according to the specification.",
+                        "Packet_Name": "ll_connection_param_rsp_pkt",
+                        "Mutated_Packet": {
+                            "preferred_periodicity": "0x00"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ll_reject_ind_ext_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Reject_Opcode",
+                        "Description": "Sets the reject_opcode to an invalid value (0xFF) while keeping the error_code valid (0x1A). This tests the device's handling of an unknown reject opcode with a known error code.",
+                        "Packet_Name": "ll_reject_ind_ext_pkt",
+                        "Mutated_Packet": {
+                            "reject_opcode": "0xFF",
+                            "error_code": "0x1A"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Reject_Opcode",
+                        "Description": "Sets the reject_opcode to a reserved value (0x00) while keeping the error_code valid (0x3B). This tests the device's handling of a reserved reject opcode with a known error code.",
+                        "Packet_Name": "ll_reject_ind_ext_pkt",
+                        "Mutated_Packet": {
+                            "reject_opcode": "0x00",
+                            "error_code": "0x3B"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Error_Code",
+                        "Description": "Sets the error_code to an invalid value (0xFF) while keeping the reject_opcode valid (0x0D). This tests the device's handling of an unknown error code with a known reject opcode.",
+                        "Packet_Name": "ll_reject_ind_ext_pkt",
+                        "Mutated_Packet": {
+                            "reject_opcode": "0x0D",
+                            "error_code": "0xFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Error_Code",
+                        "Description": "Sets the error_code to a reserved value (0x00) while keeping the reject_opcode valid (0x0E). This tests the device's handling of a reserved error code with a known reject opcode.",
+                        "Packet_Name": "ll_reject_ind_ext_pkt",
+                        "Mutated_Packet": {
+                            "reject_opcode": "0x0E",
+                            "error_code": "0x00"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Mismatch_Reject_Opcode_Error_Code",
+                        "Description": "Sets the reject_opcode to 0x11 (LL_REJECT_EXT_IND) and the error_code to 0x3B (Unacceptable Connection Parameters). This tests the device's handling of a mismatch between the reject opcode and error code.",
+                        "Packet_Name": "ll_reject_ind_ext_pkt",
+                        "Mutated_Packet": {
+                            "reject_opcode": "0x11",
+                            "error_code": "0x3B"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Valid_Reject_Opcode_Invalid_Error_Code",
+                        "Description": "Sets the reject_opcode to 0x0F (LL_CONNECTION_PARAM_REQ) and the error_code to an invalid value (0xFF). This tests the device's handling of a valid reject opcode with an unknown error code.",
+                        "Packet_Name": "ll_reject_ind_ext_pkt",
+                        "Mutated_Packet": {
+                            "reject_opcode": "0x0F",
+                            "error_code": "0xFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Reject_Opcode_Valid_Error_Code",
+                        "Description": "Sets the reject_opcode to an invalid value (0xFF) and the error_code to 0x1A (Unsupported Remote Feature). This tests the device's handling of an unknown reject opcode with a known error code.",
+                        "Packet_Name": "ll_reject_ind_ext_pkt",
+                        "Mutated_Packet": {
+                            "reject_opcode": "0xFF",
+                            "error_code": "0x1A"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Reject_Opcode_Reserved_Error_Code",
+                        "Description": "Sets the reject_opcode to a reserved value (0x00) and the error_code to a reserved value (0x00). This tests the device's handling of reserved values for both fields.",
+                        "Packet_Name": "ll_reject_ind_ext_pkt",
+                        "Mutated_Packet": {
+                            "reject_opcode": "0x00",
+                            "error_code": "0x00"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Valid_Reject_Opcode_Reserved_Error_Code",
+                        "Description": "Sets the reject_opcode to 0x10 (LL_CONNECTION_PARAM_RSP) and the error_code to a reserved value (0x00). This tests the device's handling of a valid reject opcode with a reserved error code.",
+                        "Packet_Name": "ll_reject_ind_ext_pkt",
+                        "Mutated_Packet": {
+                            "reject_opcode": "0x10",
+                            "error_code": "0x00"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Reject_Opcode_Valid_Error_Code",
+                        "Description": "Sets the reject_opcode to a reserved value (0x00) and the error_code to 0x3B (Unacceptable Connection Parameters). This tests the device's handling of a reserved reject opcode with a known error code.",
+                        "Packet_Name": "ll_reject_ind_ext_pkt",
+                        "Mutated_Packet": {
+                            "reject_opcode": "0x00",
+                            "error_code": "0x3B"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ll_length_req_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Incompatible_Max_Rx_Tx_Bytes",
+                        "Description": "Sets max_rx_bytes to the minimum allowed value (0x001B) while setting max_tx_bytes to the maximum allowed value (0xFFFF). This combination is logically inconsistent as it suggests a device capable of sending much larger packets than it can receive.",
+                        "Packet_Name": "ll_length_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x14",
+                            "max_rx_bytes": "0x001B",
+                            "max_tx_bytes": "0xFFFF",
+                            "max_rx_time": "0x0148",
+                            "max_tx_time": "0x0848"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Max_Rx_Tx_Time",
+                        "Description": "Sets max_rx_time to the minimum allowed value (0x0148) while setting max_tx_time to the maximum allowed value (0x0848). This combination is logically inconsistent as it suggests a device capable of transmitting packets for a longer duration than it can receive.",
+                        "Packet_Name": "ll_length_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x14",
+                            "max_rx_bytes": "0x001B",
+                            "max_tx_bytes": "0x001B",
+                            "max_rx_time": "0x0148",
+                            "max_tx_time": "0x0848"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Rx_Bytes_Time",
+                        "Description": "Sets max_rx_bytes to the maximum allowed value (0xFFFF) while setting max_rx_time to the minimum allowed value (0x0148). This combination is logically inconsistent as it suggests a device capable of receiving large packets in a very short time.",
+                        "Packet_Name": "ll_length_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x14",
+                            "max_rx_bytes": "0xFFFF",
+                            "max_tx_bytes": "0x001B",
+                            "max_rx_time": "0x0148",
+                            "max_tx_time": "0x0148"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Tx_Bytes_Time",
+                        "Description": "Sets max_tx_bytes to the maximum allowed value (0xFFFF) while setting max_tx_time to the minimum allowed value (0x0148). This combination is logically inconsistent as it suggests a device capable of transmitting large packets in a very short time.",
+                        "Packet_Name": "ll_length_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x14",
+                            "max_rx_bytes": "0x001B",
+                            "max_tx_bytes": "0xFFFF",
+                            "max_rx_time": "0x0148",
+                            "max_tx_time": "0x0148"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Rx_Tx_Bytes",
+                        "Description": "Sets max_rx_bytes and max_tx_bytes to the same value (0x001B), which is the minimum allowed value. This combination is logically inconsistent as it suggests a device with very limited packet size capabilities.",
+                        "Packet_Name": "ll_length_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x14",
+                            "max_rx_bytes": "0x001B",
+                            "max_tx_bytes": "0x001B",
+                            "max_rx_time": "0x0148",
+                            "max_tx_time": "0x0148"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Rx_Tx_Time",
+                        "Description": "Sets max_rx_time and max_tx_time to the same value (0x0148), which is the minimum allowed value. This combination is logically inconsistent as it suggests a device with very limited packet time capabilities.",
+                        "Packet_Name": "ll_length_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x14",
+                            "max_rx_bytes": "0x001B",
+                            "max_tx_bytes": "0x001B",
+                            "max_rx_time": "0x0148",
+                            "max_tx_time": "0x0148"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Max_Rx_Bytes_Time",
+                        "Description": "Sets max_rx_bytes to the maximum allowed value (0xFFFF) while setting max_rx_time to a value (0x0848) that is insufficient for receiving such large packets. This combination is logically inconsistent.",
+                        "Packet_Name": "ll_length_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x14",
+                            "max_rx_bytes": "0xFFFF",
+                            "max_tx_bytes": "0x001B",
+                            "max_rx_time": "0x0848",
+                            "max_tx_time": "0x0148"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Max_Tx_Bytes_Time",
+                        "Description": "Sets max_tx_bytes to the maximum allowed value (0xFFFF) while setting max_tx_time to a value (0x0848) that is insufficient for transmitting such large packets. This combination is logically inconsistent.",
+                        "Packet_Name": "ll_length_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x14",
+                            "max_rx_bytes": "0x001B",
+                            "max_tx_bytes": "0xFFFF",
+                            "max_rx_time": "0x0148",
+                            "max_tx_time": "0x0848"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Rx_Tx_Bytes_Time",
+                        "Description": "Sets max_rx_bytes and max_tx_bytes to the maximum allowed value (0xFFFF) while setting max_rx_time and max_tx_time to the minimum allowed value (0x0148). This combination is logically inconsistent as it suggests a device capable of handling large packets in very short times.",
+                        "Packet_Name": "ll_length_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x14",
+                            "max_rx_bytes": "0xFFFF",
+                            "max_tx_bytes": "0xFFFF",
+                            "max_rx_time": "0x0148",
+                            "max_tx_time": "0x0148"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Rx_Tx_Time_Bytes",
+                        "Description": "Sets max_rx_time and max_tx_time to the maximum allowed value (0x0848) while setting max_rx_bytes and max_tx_bytes to the minimum allowed value (0x001B). This combination is logically inconsistent as it suggests a device capable of handling very short packets in very long times.",
+                        "Packet_Name": "ll_length_req_pkt",
+                        "Mutated_Packet": {
+                            "opcode": "0x14",
+                            "max_rx_bytes": "0x001B",
+                            "max_tx_bytes": "0x001B",
+                            "max_rx_time": "0x0848",
+                            "max_tx_time": "0x0848"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "ll_length_rsp_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Max_Rx_Tx_Bytes",
+                        "Description": "Sets max_rx_bytes and max_tx_bytes to values below the minimum allowed (27 octets), which is invalid according to the specification.",
+                        "Packet_Name": "ll_length_rsp_pkt",
+                        "Mutated_Packet": {
+                            "max_rx_bytes": "0x001A",
+                            "max_tx_bytes": "0x001A"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Max_Rx_Time",
+                        "Description": "Sets max_rx_time to a value below the minimum allowed (328 microseconds), which is invalid according to the specification.",
+                        "Packet_Name": "ll_length_rsp_pkt",
+                        "Mutated_Packet": {
+                            "max_rx_time": "0x0147"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Max_Tx_Time",
+                        "Description": "Sets max_tx_time to a value below the minimum allowed (328 microseconds), which is invalid according to the specification.",
+                        "Packet_Name": "ll_length_rsp_pkt",
+                        "Mutated_Packet": {
+                            "max_tx_time": "0x0147"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Rx_Tx_Bytes",
+                        "Description": "Sets max_rx_bytes to a value higher than max_tx_bytes, which is logically inconsistent as the receiver should not be able to handle more than the transmitter can send.",
+                        "Packet_Name": "ll_length_rsp_pkt",
+                        "Mutated_Packet": {
+                            "max_rx_bytes": "0x0020",
+                            "max_tx_bytes": "0x001B"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Rx_Tx_Time",
+                        "Description": "Sets max_rx_time to a value higher than max_tx_time, which is logically inconsistent as the receiver should not be able to handle more time than the transmitter can send.",
+                        "Packet_Name": "ll_length_rsp_pkt",
+                        "Mutated_Packet": {
+                            "max_rx_time": "0x0849",
+                            "max_tx_time": "0x0848"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Max_Rx_Bytes_Exceeds_Max_Rx_Time",
+                        "Description": "Sets max_rx_bytes to a value that would require more time than max_rx_time allows, which is logically inconsistent.",
+                        "Packet_Name": "ll_length_rsp_pkt",
+                        "Mutated_Packet": {
+                            "max_rx_bytes": "0x00FF",
+                            "max_rx_time": "0x0148"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Max_Tx_Bytes_Exceeds_Max_Tx_Time",
+                        "Description": "Sets max_tx_bytes to a value that would require more time than max_tx_time allows, which is logically inconsistent.",
+                        "Packet_Name": "ll_length_rsp_pkt",
+                        "Mutated_Packet": {
+                            "max_tx_bytes": "0x00FF",
+                            "max_tx_time": "0x0148"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Max_Rx_Time_Exceeds_Max_Tx_Time",
+                        "Description": "Sets max_rx_time to a value higher than max_tx_time, which is logically inconsistent as the receiver should not be able to handle more time than the transmitter can send.",
+                        "Packet_Name": "ll_length_rsp_pkt",
+                        "Mutated_Packet": {
+                            "max_rx_time": "0x0849",
+                            "max_tx_time": "0x0848"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Max_Tx_Time_Exceeds_Max_Rx_Time",
+                        "Description": "Sets max_tx_time to a value higher than max_rx_time, which is logically inconsistent as the transmitter should not be able to send more time than the receiver can handle.",
+                        "Packet_Name": "ll_length_rsp_pkt",
+                        "Mutated_Packet": {
+                            "max_tx_time": "0x0849",
+                            "max_rx_time": "0x0848"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Max_Rx_Bytes_And_Time_At_Minimum",
+                        "Description": "Sets both max_rx_bytes and max_rx_time to their minimum allowed values, which is a valid but edge case scenario.",
+                        "Packet_Name": "ll_length_rsp_pkt",
+                        "Mutated_Packet": {
+                            "max_rx_bytes": "0x001B",
+                            "max_rx_time": "0x0148"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Max_Tx_Bytes_And_Time_At_Minimum",
+                        "Description": "Sets both max_tx_bytes and max_tx_time to their minimum allowed values, which is a valid but edge case scenario.",
+                        "Packet_Name": "ll_length_rsp_pkt",
+                        "Mutated_Packet": {
+                            "max_tx_bytes": "0x001B",
+                            "max_tx_time": "0x0148"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "master_identification_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_EDIV_Rand_Combination",
+                        "Description": "Sets EDIV to 0x0000 while setting Rand to a non-zero value. This combination is invalid because a zero EDIV should be paired with a zero Rand for proper encryption parameter identification.",
+                        "Packet_Name": "master_identification_pkt",
+                        "Mutated_Packet": {
+                            "ediv": "0x0000",
+                            "rand": "0x0000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Inconsistent_EDIV_Rand_Values",
+                        "Description": "Sets EDIV to a non-zero value while setting Rand to 0x0000000000000000. This combination is inconsistent because a non-zero EDIV should be paired with a non-zero Rand for valid encryption parameters.",
+                        "Packet_Name": "master_identification_pkt",
+                        "Mutated_Packet": {
+                            "ediv": "0x0001",
+                            "rand": "0x0000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Max_EDIV_Min_Rand",
+                        "Description": "Sets EDIV to its maximum value (0xFFFF) while setting Rand to its minimum non-zero value (0x0000000000000001). This tests the boundary conditions of encryption parameter identification.",
+                        "Packet_Name": "master_identification_pkt",
+                        "Mutated_Packet": {
+                            "ediv": "0xFFFF",
+                            "rand": "0x0000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Min_EDIV_Max_Rand",
+                        "Description": "Sets EDIV to its minimum non-zero value (0x0001) while setting Rand to its maximum value (0xFFFFFFFFFFFFFFFF). This tests the boundary conditions of encryption parameter identification.",
+                        "Packet_Name": "master_identification_pkt",
+                        "Mutated_Packet": {
+                            "ediv": "0x0001",
+                            "rand": "0xFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Zero_EDIV_Zero_Rand",
+                        "Description": "Sets both EDIV and Rand to zero. This combination is valid but may cause issues with encryption parameter uniqueness.",
+                        "Packet_Name": "master_identification_pkt",
+                        "Mutated_Packet": {
+                            "ediv": "0x0000",
+                            "rand": "0x0000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Repeated_EDIV_Rand",
+                        "Description": "Sets EDIV and Rand to the same non-zero value. This tests the system's handling of repeated values in encryption parameters.",
+                        "Packet_Name": "master_identification_pkt",
+                        "Mutated_Packet": {
+                            "ediv": "0x1234",
+                            "rand": "0x0000000000001234"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incremental_EDIV_Rand",
+                        "Description": "Sets EDIV to a value and Rand to the same value incremented by one. This tests the system's handling of closely related values in encryption parameters.",
+                        "Packet_Name": "master_identification_pkt",
+                        "Mutated_Packet": {
+                            "ediv": "0x1234",
+                            "rand": "0x0000000000001235"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Max_EDIV_Max_Rand",
+                        "Description": "Sets both EDIV and Rand to their maximum values. This tests the system's handling of maximum values in encryption parameters.",
+                        "Packet_Name": "master_identification_pkt",
+                        "Mutated_Packet": {
+                            "ediv": "0xFFFF",
+                            "rand": "0xFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Min_EDIV_Min_Rand",
+                        "Description": "Sets both EDIV and Rand to their minimum non-zero values. This tests the system's handling of minimum values in encryption parameters.",
+                        "Packet_Name": "master_identification_pkt",
+                        "Mutated_Packet": {
+                            "ediv": "0x0001",
+                            "rand": "0x0000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Random_EDIV_Random_Rand",
+                        "Description": "Sets EDIV and Rand to random values. This tests the system's handling of arbitrary values in encryption parameters.",
+                        "Packet_Name": "master_identification_pkt",
+                        "Mutated_Packet": {
+                            "ediv": "0xABCD",
+                            "rand": "0x1234567890ABCDEF"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "pairing_request_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Incompatible_IO_MITM",
+                        "Description": "Sets IO Capability to NoInputNoOutput (0x03) while AuthReq requests MITM. This combination is logically inconsistent because the device cannot handle Passkey or Numeric Comparison inputs despite requesting MITM protection.",
+                        "Packet_Name": "Pairing_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x01",
+                            "iocap": "0x03",
+                            "oob": "0x00",
+                            "authentication": "0x01",
+                            "max_key_size": "0x10",
+                            "initiator_key_distribution": "0x0F",
+                            "responder_key_distribution": "0x0F"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_OOB_MITM",
+                        "Description": "Sets OOB Data Flag to present (0x01) while AuthReq does not request MITM. This is inconsistent because OOB data is typically used to enhance MITM protection.",
+                        "Packet_Name": "Pairing_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x01",
+                            "iocap": "0x00",
+                            "oob": "0x01",
+                            "authentication": "0x02",
+                            "max_key_size": "0x10",
+                            "initiator_key_distribution": "0x0F",
+                            "responder_key_distribution": "0x0F"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Key_Size",
+                        "Description": "Sets Max Key Size to an invalid value (0x06) while other fields are set to valid values. This is inconsistent because the key size must be between 7 and 16 octets.",
+                        "Packet_Name": "Pairing_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x01",
+                            "iocap": "0x00",
+                            "oob": "0x00",
+                            "authentication": "0x00",
+                            "max_key_size": "0x06",
+                            "initiator_key_distribution": "0x0F",
+                            "responder_key_distribution": "0x0F"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Key_Distribution",
+                        "Description": "Sets Initiator Key Distribution to no keys (0x0) while Responder Key Distribution requests all keys (0xF). This is inconsistent because both sides should agree on key distribution.",
+                        "Packet_Name": "Pairing_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x01",
+                            "iocap": "0x00",
+                            "oob": "0x00",
+                            "authentication": "0x00",
+                            "max_key_size": "0x10",
+                            "initiator_key_distribution": "0x00",
+                            "responder_key_distribution": "0x0F"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_IO_OOB",
+                        "Description": "Sets IO Capability to KeyboardOnly (0x02) while OOB Data Flag is set to present (0x01). This is inconsistent because KeyboardOnly devices typically do not use OOB data.",
+                        "Packet_Name": "Pairing_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x01",
+                            "iocap": "0x02",
+                            "oob": "0x01",
+                            "authentication": "0x00",
+                            "max_key_size": "0x10",
+                            "initiator_key_distribution": "0x0F",
+                            "responder_key_distribution": "0x0F"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_IO_Auth",
+                        "Description": "Sets IO Capability to DisplayOnly (0x00) while AuthReq requests no MITM and no SC (0x00). This is inconsistent because DisplayOnly devices typically support MITM protection.",
+                        "Packet_Name": "Pairing_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x01",
+                            "iocap": "0x00",
+                            "oob": "0x00",
+                            "authentication": "0x00",
+                            "max_key_size": "0x10",
+                            "initiator_key_distribution": "0x0F",
+                            "responder_key_distribution": "0x0F"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_OOB_Auth",
+                        "Description": "Sets OOB Data Flag to present (0x01) while AuthReq requests no MITM and no SC (0x00). This is inconsistent because OOB data is typically used to enhance security.",
+                        "Packet_Name": "Pairing_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x01",
+                            "iocap": "0x00",
+                            "oob": "0x01",
+                            "authentication": "0x00",
+                            "max_key_size": "0x10",
+                            "initiator_key_distribution": "0x0F",
+                            "responder_key_distribution": "0x0F"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Key_Size_Auth",
+                        "Description": "Sets Max Key Size to minimum valid value (0x07) while AuthReq requests MITM and SC (0x03). This is inconsistent because higher security levels typically require larger key sizes.",
+                        "Packet_Name": "Pairing_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x01",
+                            "iocap": "0x00",
+                            "oob": "0x00",
+                            "authentication": "0x03",
+                            "max_key_size": "0x07",
+                            "initiator_key_distribution": "0x0F",
+                            "responder_key_distribution": "0x0F"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Key_Distribution_Auth",
+                        "Description": "Sets Initiator Key Distribution to no keys (0x0) while AuthReq requests MITM and SC (0x03). This is inconsistent because higher security levels typically require key distribution.",
+                        "Packet_Name": "Pairing_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x01",
+                            "iocap": "0x00",
+                            "oob": "0x00",
+                            "authentication": "0x03",
+                            "max_key_size": "0x10",
+                            "initiator_key_distribution": "0x00",
+                            "responder_key_distribution": "0x0F"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_IO_Key_Distribution",
+                        "Description": "Sets IO Capability to NoInputNoOutput (0x03) while Initiator Key Distribution requests all keys (0xF). This is inconsistent because NoInputNoOutput devices typically do not support key distribution.",
+                        "Packet_Name": "Pairing_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x01",
+                            "iocap": "0x03",
+                            "oob": "0x00",
+                            "authentication": "0x00",
+                            "max_key_size": "0x10",
+                            "initiator_key_distribution": "0x0F",
+                            "responder_key_distribution": "0x0F"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "identity_information_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_IRK_Length",
+                        "Description": "Sets the length field to an invalid value for the IRK field, causing a mismatch between the expected and actual IRK length.",
+                        "Packet_Name": "identity_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x08",
+                            "sm_command": "0x08",
+                            "irk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Zero_IRK",
+                        "Description": "Sets the IRK to all zeros, which is a valid but potentially insecure value, while keeping the length correct.",
+                        "Packet_Name": "identity_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x10",
+                            "sm_command": "0x08",
+                            "irk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_SM_Command",
+                        "Description": "Sets the sm_command to an invalid value, which should be ignored by the receiver, while keeping the IRK and length valid.",
+                        "Packet_Name": "identity_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x10",
+                            "sm_command": "0x0F",
+                            "irk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Truncated_IRK",
+                        "Description": "Sets the length to a value shorter than the IRK field, causing the IRK to be truncated.",
+                        "Packet_Name": "identity_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x0F",
+                            "sm_command": "0x08",
+                            "irk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Extended_IRK",
+                        "Description": "Sets the length to a value longer than the IRK field, causing the packet to be interpreted as having additional data.",
+                        "Packet_Name": "identity_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x11",
+                            "sm_command": "0x08",
+                            "irk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "All_One_IRK",
+                        "Description": "Sets the IRK to all ones, which is a valid but potentially insecure value, while keeping the length correct.",
+                        "Packet_Name": "identity_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x10",
+                            "sm_command": "0x08",
+                            "irk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Length_Zero",
+                        "Description": "Sets the length to zero, which is invalid for an Identity Information packet containing an IRK.",
+                        "Packet_Name": "identity_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x00",
+                            "sm_command": "0x08",
+                            "irk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Length_Max",
+                        "Description": "Sets the length to the maximum possible value, which is invalid for an Identity Information packet containing an IRK.",
+                        "Packet_Name": "identity_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0xFF",
+                            "sm_command": "0x08",
+                            "irk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Valid_Length_Invalid_IRK",
+                        "Description": "Sets the length to a valid value but the IRK to an invalid length, causing a mismatch between the expected and actual IRK length.",
+                        "Packet_Name": "identity_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x10",
+                            "sm_command": "0x08",
+                            "irk": "0x0000000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Valid_Length_Valid_IRK",
+                        "Description": "Sets the length to a valid value and the IRK to a valid but potentially insecure value, testing the system's handling of edge cases.",
+                        "Packet_Name": "identity_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x10",
+                            "sm_command": "0x08",
+                            "irk": "0x01010101010101010101010101010101"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "pairing_confirm_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Confirm_Value",
+                        "Description": "Sets the confirm field to an invalid value (all zeros) which should fail the cryptographic verification during pairing.",
+                        "Packet_Name": "SM_Confirm",
+                        "Mutated_Packet": {
+                            "Code": "0x03",
+                            "confirm": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_IO_MITM",
+                        "Description": "Sets IO Capability to NoInputNoOutput (0x03) while AuthReq requests MITM. This combination is logically inconsistent because the device cannot handle Passkey or Numeric Comparison inputs despite requesting MITM protection.",
+                        "Packet_Name": "Pairing_Request",
+                        "Mutated_Packet": {
+                            "Code": "0x01",
+                            "IOCapability": "0x03",
+                            "OOBDataFlag": "0x00",
+                            "AuthReq": "0x05",
+                            "MaxEncKeySize": "0x10",
+                            "InitiatorKeyDist": "0x07",
+                            "ResponderKeyDist": "0x07"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_OOB_AuthReq",
+                        "Description": "Sets OOBDataFlag to 1 (OOB data available) while AuthReq does not request OOB authentication. This is inconsistent as OOB data should be used for authentication.",
+                        "Packet_Name": "Pairing_Request",
+                        "Mutated_Packet": {
+                            "Code": "0x01",
+                            "IOCapability": "0x01",
+                            "OOBDataFlag": "0x01",
+                            "AuthReq": "0x00",
+                            "MaxEncKeySize": "0x10",
+                            "InitiatorKeyDist": "0x07",
+                            "ResponderKeyDist": "0x07"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_KeySize_AuthReq",
+                        "Description": "Sets MaxEncKeySize to the minimum allowed value (0x07) while AuthReq requests secure connections. This is inconsistent as secure connections require a minimum key size of 16 octets.",
+                        "Packet_Name": "Pairing_Request",
+                        "Mutated_Packet": {
+                            "Code": "0x01",
+                            "IOCapability": "0x01",
+                            "OOBDataFlag": "0x00",
+                            "AuthReq": "0x08",
+                            "MaxEncKeySize": "0x07",
+                            "InitiatorKeyDist": "0x07",
+                            "ResponderKeyDist": "0x07"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_KeyDistribution",
+                        "Description": "Sets InitiatorKeyDist to 0x00 (no keys distributed) while ResponderKeyDist requests keys. This is inconsistent as both sides should agree on key distribution.",
+                        "Packet_Name": "Pairing_Request",
+                        "Mutated_Packet": {
+                            "Code": "0x01",
+                            "IOCapability": "0x01",
+                            "OOBDataFlag": "0x00",
+                            "AuthReq": "0x00",
+                            "MaxEncKeySize": "0x10",
+                            "InitiatorKeyDist": "0x00",
+                            "ResponderKeyDist": "0x07"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Pairing_Command",
+                        "Description": "Sets the sm_command to an invalid value (0x00) which is not defined in the protocol specifications.",
+                        "Packet_Name": "SM_Hdr",
+                        "Mutated_Packet": {
+                            "sm_command": "0x00"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_LLID_Length",
+                        "Description": "Sets LLID to 11b (LL Control PDU) while setting len to 0x00, which is inconsistent as LL Control PDUs should have a non-zero length.",
+                        "Packet_Name": "BTLE_DATA",
+                        "Mutated_Packet": {
+                            "LLID": "0x03",
+                            "len": "0x00"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_SN_NESN",
+                        "Description": "Sets SN to 0 (Even sequence number) while setting NESN to 0 (Current packet acknowledged), which is inconsistent as NESN should toggle with each new packet.",
+                        "Packet_Name": "BTLE_DATA",
+                        "Mutated_Packet": {
+                            "SN": "0x00",
+                            "NESN": "0x00"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_MD_Length",
+                        "Description": "Sets MD to 1 (More data available) while setting len to 0x00, which is inconsistent as more data should imply a non-zero length.",
+                        "Packet_Name": "BTLE_DATA",
+                        "Mutated_Packet": {
+                            "MD": "0x01",
+                            "len": "0x00"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_L2CAP_Length_CID",
+                        "Description": "Sets L2CAP length to 0x0000 while setting CID to 0x0001 (Signaling Channel), which is inconsistent as the Signaling Channel should have a non-zero length.",
+                        "Packet_Name": "L2CAP_Hdr",
+                        "Mutated_Packet": {
+                            "len": "0x0000",
+                            "cid": "0x0001"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "pairing_random_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Random_Value",
+                        "Description": "Sets the 'random' field to zero, which is an invalid value for the pairing process as it should be a non-zero random number.",
+                        "Packet_Name": "pairing_random_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x04",
+                            "random": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Inconsistent_Security_Request",
+                        "Description": "Sets 'sm_command' to Pairing Random (0x04) but includes a Security Request (0x0B) in the 'random' field, which is inconsistent as these are different commands.",
+                        "Packet_Name": "pairing_random_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x04",
+                            "random": "0x0B000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Truncated_Random_Value",
+                        "Description": "Sets the 'random' field to a value shorter than 128 bits, which is invalid for the pairing process.",
+                        "Packet_Name": "pairing_random_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x04",
+                            "random": "0x000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Command",
+                        "Description": "Sets 'sm_command' to a reserved value (0xFF), which should be ignored by the receiver, but includes a valid 'random' value.",
+                        "Packet_Name": "pairing_random_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0xFF",
+                            "random": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Zero_Random_With_Valid_Command",
+                        "Description": "Sets 'sm_command' to Pairing Random (0x04) but the 'random' field to zero, which is invalid for the pairing process.",
+                        "Packet_Name": "pairing_random_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x04",
+                            "random": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Max_Random_Value",
+                        "Description": "Sets the 'random' field to the maximum possible value, testing the upper boundary of the random value.",
+                        "Packet_Name": "pairing_random_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x04",
+                            "random": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Command_With_Valid_Random",
+                        "Description": "Sets 'sm_command' to an invalid value (0x00) but includes a valid 'random' value, which should be ignored by the receiver.",
+                        "Packet_Name": "pairing_random_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x00",
+                            "random": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Repeating_Pattern_Random",
+                        "Description": "Sets the 'random' field to a repeating pattern, which is not truly random and may fail the pairing process.",
+                        "Packet_Name": "pairing_random_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x04",
+                            "random": "0xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Alternating_Bits_Random",
+                        "Description": "Sets the 'random' field to an alternating bit pattern, which is not truly random and may fail the pairing process.",
+                        "Packet_Name": "pairing_random_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x04",
+                            "random": "0x55555555555555555555555555555555"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incrementing_Random",
+                        "Description": "Sets the 'random' field to an incrementing pattern, which is not truly random and may fail the pairing process.",
+                        "Packet_Name": "pairing_random_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x04",
+                            "random": "0x00000000000000010000000200000003"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "pairing_failed_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Pairing_Failure_Reason",
+                        "Description": "Sets the sm_command to Pairing Failed (0x05) but uses a reserved reason code (0x08). This is invalid as the reason should be within the defined values.",
+                        "Packet_Name": "pairing_failed_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x05",
+                            "reason": "0x08"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Pairing_Failure_With_Data",
+                        "Description": "Sets the sm_command to Pairing Failed (0x05) but includes a non-zero length (0x01), which is invalid as Pairing Failed should have no payload.",
+                        "Packet_Name": "pairing_failed_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x05",
+                            "reason": "0x01",
+                            "len": "0x01"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Pairing_Failure_With_Invalid_Length",
+                        "Description": "Sets the sm_command to Pairing Failed (0x05) but uses an invalid length (0xFF), which is incorrect as Pairing Failed should have a length of 0.",
+                        "Packet_Name": "pairing_failed_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x05",
+                            "reason": "0x01",
+                            "len": "0xFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Pairing_Failure_With_Reserved_Command",
+                        "Description": "Sets the sm_command to a reserved value (0x0F) with a valid reason (0x01), which is invalid as the command should be Pairing Failed (0x05).",
+                        "Packet_Name": "pairing_failed_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0F",
+                            "reason": "0x01"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Pairing_Failure_With_Reserved_Reason",
+                        "Description": "Sets the sm_command to Pairing Failed (0x05) but uses a reserved reason code (0xFF), which is invalid as the reason should be within the defined values.",
+                        "Packet_Name": "pairing_failed_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x05",
+                            "reason": "0xFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Pairing_Failure_With_Zero_Reason",
+                        "Description": "Sets the sm_command to Pairing Failed (0x05) but uses a reserved reason code (0x00), which is invalid as the reason should be within the defined values.",
+                        "Packet_Name": "pairing_failed_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x05",
+                            "reason": "0x00"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Pairing_Failure_With_Invalid_LLID",
+                        "Description": "Sets the sm_command to Pairing Failed (0x05) but uses an invalid LLID (00b), which is reserved for future use and should not be used for LL Control PDU.",
+                        "Packet_Name": "pairing_failed_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x05",
+                            "reason": "0x01",
+                            "LLID": "0x00"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Pairing_Failure_With_Invalid_SN",
+                        "Description": "Sets the sm_command to Pairing Failed (0x05) but uses an invalid SN (0x02), which is outside the defined values of 0 or 1.",
+                        "Packet_Name": "pairing_failed_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x05",
+                            "reason": "0x01",
+                            "SN": "0x02"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Pairing_Failure_With_Invalid_NESN",
+                        "Description": "Sets the sm_command to Pairing Failed (0x05) but uses an invalid NESN (0x02), which is outside the defined values of 0 or 1.",
+                        "Packet_Name": "pairing_failed_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x05",
+                            "reason": "0x01",
+                            "NESN": "0x02"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Pairing_Failure_With_Invalid_MD",
+                        "Description": "Sets the sm_command to Pairing Failed (0x05) but uses an invalid MD (0x02), which is outside the defined values of 0 or 1.",
+                        "Packet_Name": "pairing_failed_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x05",
+                            "reason": "0x01",
+                            "MD": "0x02"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "encryption_information_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_LTK_Length",
+                        "Description": "Sets the LTK to a value that is not 128 bits long, which is invalid according to the specification.",
+                        "Packet_Name": "encryption_information_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x06",
+                            "ltk": "0x00000000000000000000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Zero_LTK",
+                        "Description": "Sets the LTK to all zeros, which is a valid but weak key, potentially causing security issues.",
+                        "Packet_Name": "encryption_information_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x06",
+                            "ltk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "All_One_LTK",
+                        "Description": "Sets the LTK to all ones, which is a valid but weak key, potentially causing security issues.",
+                        "Packet_Name": "encryption_information_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x06",
+                            "ltk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_SM_Command",
+                        "Description": "Sets the sm_command to a reserved value, which should be ignored by the receiver.",
+                        "Packet_Name": "encryption_information_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x10",
+                            "ltk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Inconsistent_SM_Command_LTK",
+                        "Description": "Sets the sm_command to a non-Encryption Information value while providing an LTK, which is inconsistent.",
+                        "Packet_Name": "encryption_information_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x01",
+                            "ltk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reversed_LTK",
+                        "Description": "Reverses the byte order of the LTK, which is valid but may cause issues with key management.",
+                        "Packet_Name": "encryption_information_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x06",
+                            "ltk": "0x000000000000000000000000000000FF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incremented_LTK",
+                        "Description": "Increments the LTK by one, which is valid but may cause issues with key synchronization.",
+                        "Packet_Name": "encryption_information_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x06",
+                            "ltk": "0x00000000000000000000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Decremented_LTK",
+                        "Description": "Decrements the LTK by one, which is valid but may cause issues with key synchronization.",
+                        "Packet_Name": "encryption_information_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x06",
+                            "ltk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Random_LTK",
+                        "Description": "Sets the LTK to a random value, which is valid but may cause issues with key management.",
+                        "Packet_Name": "encryption_information_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x06",
+                            "ltk": "0x1234567890ABCDEF1234567890ABCDEF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Repeated_LTK",
+                        "Description": "Repeats the same byte value throughout the LTK, which is valid but may cause issues with key strength.",
+                        "Packet_Name": "encryption_information_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x06",
+                            "ltk": "0x11111111111111111111111111111111"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "identity_address_information_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Address_Type",
+                        "Description": "Sets the atype to Public Device Address (0x00) but uses an address outside the valid range for public addresses.",
+                        "Packet_Name": "identity_address_information_pkt",
+                        "Mutated_Packet": {
+                            "atype": "0x00",
+                            "address": "0xFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Static_Random_Address",
+                        "Description": "Sets the atype to Static Random Device Address (0x01) but uses an address that does not conform to the static random address format.",
+                        "Packet_Name": "identity_address_information_pkt",
+                        "Mutated_Packet": {
+                            "atype": "0x01",
+                            "address": "0x000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Address_Type",
+                        "Description": "Sets the atype to a reserved value (0x02) which is not defined in the specification.",
+                        "Packet_Name": "identity_address_information_pkt",
+                        "Mutated_Packet": {
+                            "atype": "0x02",
+                            "address": "0x123456789ABC"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Zero_Address",
+                        "Description": "Sets the address to zero regardless of the atype, which is invalid for both public and static random addresses.",
+                        "Packet_Name": "identity_address_information_pkt",
+                        "Mutated_Packet": {
+                            "atype": "0x00",
+                            "address": "0x000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Max_Address",
+                        "Description": "Sets the address to the maximum possible value regardless of the atype, which may not be valid for public addresses.",
+                        "Packet_Name": "identity_address_information_pkt",
+                        "Mutated_Packet": {
+                            "atype": "0x00",
+                            "address": "0xFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Inconsistent_Address_Type",
+                        "Description": "Sets the atype to Public Device Address (0x00) but uses an address that conforms to the static random address format.",
+                        "Packet_Name": "identity_address_information_pkt",
+                        "Mutated_Packet": {
+                            "atype": "0x00",
+                            "address": "0xC0DE456789AB"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Inconsistent_Address_Type_2",
+                        "Description": "Sets the atype to Static Random Device Address (0x01) but uses an address that conforms to the public address format.",
+                        "Packet_Name": "identity_address_information_pkt",
+                        "Mutated_Packet": {
+                            "atype": "0x01",
+                            "address": "0x123456789ABC"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Address_Length",
+                        "Description": "Sets the address to a value that is not 48 bits long, which is invalid for both public and static random addresses.",
+                        "Packet_Name": "identity_address_information_pkt",
+                        "Mutated_Packet": {
+                            "atype": "0x00",
+                            "address": "0x123456789A"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Reserved_Address_Value",
+                        "Description": "Sets the address to a reserved value that should not be used in normal operation.",
+                        "Packet_Name": "identity_address_information_pkt",
+                        "Mutated_Packet": {
+                            "atype": "0x00",
+                            "address": "0xFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Inconsistent_Address_Type_3",
+                        "Description": "Sets the atype to Static Random Device Address (0x01) but uses an address that is not in the valid range for static random addresses.",
+                        "Packet_Name": "identity_address_information_pkt",
+                        "Mutated_Packet": {
+                            "atype": "0x01",
+                            "address": "0x000056789ABC"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "signing_information_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Signing_Information_Length",
+                        "Description": "Sets the 'len' field of the L2CAP_Hdr to an invalid value (0x0001) which is too small to contain the CSRK field of the SM_Signing_Information packet.",
+                        "Packet_Name": "signing_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x0001",
+                            "cid": "0x0007",
+                            "sm_command": "0x0A",
+                            "csrk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_CID_For_Signing",
+                        "Description": "Sets the 'cid' field of the L2CAP_Hdr to an invalid value (0x0000) which is not allowed for any L2CAP channel.",
+                        "Packet_Name": "signing_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x0010",
+                            "cid": "0x0000",
+                            "sm_command": "0x0A",
+                            "csrk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_SM_Command",
+                        "Description": "Sets the 'sm_command' field to an invalid value (0x00) which is reserved for future use and should be ignored.",
+                        "Packet_Name": "signing_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x0010",
+                            "cid": "0x0007",
+                            "sm_command": "0x00",
+                            "csrk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Zero_CSRK",
+                        "Description": "Sets the 'csrk' field to all zeros (0x00000000000000000000000000000000), which is a valid but potentially insecure value.",
+                        "Packet_Name": "signing_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x0010",
+                            "cid": "0x0007",
+                            "sm_command": "0x0A",
+                            "csrk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Max_CSRK",
+                        "Description": "Sets the 'csrk' field to all ones (0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF), which is a valid but potentially insecure value.",
+                        "Packet_Name": "signing_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x0010",
+                            "cid": "0x0007",
+                            "sm_command": "0x0A",
+                            "csrk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Length_For_CSRK",
+                        "Description": "Sets the 'len' field of the L2CAP_Hdr to an invalid value (0x000F) which is too small to contain the CSRK field of the SM_Signing_Information packet.",
+                        "Packet_Name": "signing_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x000F",
+                            "cid": "0x0007",
+                            "sm_command": "0x0A",
+                            "csrk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_CID_For_Signing_Information",
+                        "Description": "Sets the 'cid' field of the L2CAP_Hdr to an invalid value (0x0001) which is reserved for signaling and not for signing information.",
+                        "Packet_Name": "signing_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x0010",
+                            "cid": "0x0001",
+                            "sm_command": "0x0A",
+                            "csrk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_SM_Command_For_Signing",
+                        "Description": "Sets the 'sm_command' field to an invalid value (0x01) which is for Pairing Request and not for Signing Information.",
+                        "Packet_Name": "signing_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x0010",
+                            "cid": "0x0007",
+                            "sm_command": "0x01",
+                            "csrk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Length_For_Signing",
+                        "Description": "Sets the 'len' field of the L2CAP_Hdr to an invalid value (0x0020) which is too large for the CSRK field of the SM_Signing_Information packet.",
+                        "Packet_Name": "signing_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x0020",
+                            "cid": "0x0007",
+                            "sm_command": "0x0A",
+                            "csrk": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_CID_For_Signing_Information_2",
+                        "Description": "Sets the 'cid' field of the L2CAP_Hdr to an invalid value (0x0040) which is a dynamic CID but not typically used for signing information.",
+                        "Packet_Name": "signing_information_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x0010",
+                            "cid": "0x0040",
+                            "sm_command": "0x0A",
+                            "csrk": "0x00000000000000000000000000000000"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "security_request_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Incompatible_SC_MITM",
+                        "Description": "Sets AuthReq to request LE Secure Connections (SC) but not MITM protection. This combination is logically inconsistent because SC typically requires MITM protection.",
+                        "Packet_Name": "SM_Security_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0B",
+                            "auth_req": "0x40"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Keypress_MITM",
+                        "Description": "Sets AuthReq to request Keypress notifications but not MITM protection. This combination is logically inconsistent because Keypress notifications are typically used with MITM protection.",
+                        "Packet_Name": "SM_Security_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0B",
+                            "auth_req": "0x80"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_SC_Keypress",
+                        "Description": "Sets AuthReq to request both LE Secure Connections (SC) and Keypress notifications. This combination is logically inconsistent because SC does not typically use Keypress notifications.",
+                        "Packet_Name": "SM_Security_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0B",
+                            "auth_req": "0xC0"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_SC_NoMITM",
+                        "Description": "Sets AuthReq to request LE Secure Connections (SC) but not MITM protection. This combination is logically inconsistent because SC typically requires MITM protection.",
+                        "Packet_Name": "SM_Security_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0B",
+                            "auth_req": "0x40"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Keypress_NoMITM",
+                        "Description": "Sets AuthReq to request Keypress notifications but not MITM protection. This combination is logically inconsistent because Keypress notifications are typically used with MITM protection.",
+                        "Packet_Name": "SM_Security_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0B",
+                            "auth_req": "0x80"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_SC_Keypress_NoMITM",
+                        "Description": "Sets AuthReq to request both LE Secure Connections (SC) and Keypress notifications but not MITM protection. This combination is logically inconsistent because SC typically requires MITM protection and Keypress notifications are typically used with MITM protection.",
+                        "Packet_Name": "SM_Security_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0B",
+                            "auth_req": "0xC0"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_SC_MITM_Keypress",
+                        "Description": "Sets AuthReq to request LE Secure Connections (SC), MITM protection, and Keypress notifications. This combination is logically inconsistent because SC does not typically use Keypress notifications.",
+                        "Packet_Name": "SM_Security_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0B",
+                            "auth_req": "0xE0"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_NoSC_MITM_Keypress",
+                        "Description": "Sets AuthReq to request MITM protection and Keypress notifications but not LE Secure Connections (SC). This combination is logically inconsistent because Keypress notifications are typically used with SC.",
+                        "Packet_Name": "SM_Security_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0B",
+                            "auth_req": "0xA0"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_NoSC_NoMITM_Keypress",
+                        "Description": "Sets AuthReq to request Keypress notifications but not LE Secure Connections (SC) or MITM protection. This combination is logically inconsistent because Keypress notifications are typically used with SC and MITM protection.",
+                        "Packet_Name": "SM_Security_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0B",
+                            "auth_req": "0x80"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_NoSC_MITM_NoKeypress",
+                        "Description": "Sets AuthReq to request MITM protection but not LE Secure Connections (SC) or Keypress notifications. This combination is logically inconsistent because MITM protection is typically used with SC.",
+                        "Packet_Name": "SM_Security_Request",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0B",
+                            "auth_req": "0x20"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "pairing_public_key_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Public_Key_Coordinates",
+                        "Description": "Sets both key_x and key_y to the minimum value, which is not a valid point on the elliptic curve used in Bluetooth LE Secure Connections.",
+                        "Packet_Name": "pairing_public_key_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0C",
+                            "key_x": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                            "key_y": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Public_Key_Coordinates_Max",
+                        "Description": "Sets both key_x and key_y to the maximum value, which is not a valid point on the elliptic curve used in Bluetooth LE Secure Connections.",
+                        "Packet_Name": "pairing_public_key_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0C",
+                            "key_x": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                            "key_y": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Public_Key_Coordinates_Mixed",
+                        "Description": "Sets key_x to the minimum value and key_y to the maximum value, which is not a valid point on the elliptic curve used in Bluetooth LE Secure Connections.",
+                        "Packet_Name": "pairing_public_key_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0C",
+                            "key_x": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                            "key_y": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Public_Key_Coordinates_Mixed_Reverse",
+                        "Description": "Sets key_x to the maximum value and key_y to the minimum value, which is not a valid point on the elliptic curve used in Bluetooth LE Secure Connections.",
+                        "Packet_Name": "pairing_public_key_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0C",
+                            "key_x": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+                            "key_y": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Public_Key_Coordinates_Same",
+                        "Description": "Sets both key_x and key_y to the same non-zero value, which is not a valid point on the elliptic curve used in Bluetooth LE Secure Connections.",
+                        "Packet_Name": "pairing_public_key_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0C",
+                            "key_x": "0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF",
+                            "key_y": "0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Public_Key_Coordinates_Zero_Y",
+                        "Description": "Sets key_x to a valid value and key_y to zero, which is not a valid point on the elliptic curve used in Bluetooth LE Secure Connections.",
+                        "Packet_Name": "pairing_public_key_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0C",
+                            "key_x": "0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF",
+                            "key_y": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Public_Key_Coordinates_Zero_X",
+                        "Description": "Sets key_x to zero and key_y to a valid value, which is not a valid point on the elliptic curve used in Bluetooth LE Secure Connections.",
+                        "Packet_Name": "pairing_public_key_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0C",
+                            "key_x": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                            "key_y": "0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Public_Key_Coordinates_One",
+                        "Description": "Sets both key_x and key_y to one, which is not a valid point on the elliptic curve used in Bluetooth LE Secure Connections.",
+                        "Packet_Name": "pairing_public_key_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0C",
+                            "key_x": "0x0000000000000000000000000000000000000000000000000000000000000001",
+                            "key_y": "0x0000000000000000000000000000000000000000000000000000000000000001"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Public_Key_Coordinates_Negative",
+                        "Description": "Sets key_x to a valid value and key_y to a value that would be negative in a signed representation, which is not a valid point on the elliptic curve used in Bluetooth LE Secure Connections.",
+                        "Packet_Name": "pairing_public_key_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0C",
+                            "key_x": "0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF",
+                            "key_y": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Public_Key_Coordinates_Overflow",
+                        "Description": "Sets key_x to a value that exceeds the maximum allowed value for the field, which is not a valid point on the elliptic curve used in Bluetooth LE Secure Connections.",
+                        "Packet_Name": "pairing_public_key_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0C",
+                            "key_x": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000000000000000000000",
+                            "key_y": "0x0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "pairing_dhkey_check_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_DHKey_Check_Length",
+                        "Description": "Sets the 'len' field of the L2CAP_Hdr to an invalid value that does not match the actual length of the DHKey Check payload, causing a mismatch in expected and actual payload size.",
+                        "Packet_Name": "pairing_dhkey_check_pkt",
+                        "Mutated_Packet": {
+                            "len": "0x000F",
+                            "dhkey_check": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_SM_Command",
+                        "Description": "Sets the 'sm_command' field to a reserved value (0x10) which should be ignored, while keeping the 'dhkey_check' field valid, causing a logical inconsistency in command processing.",
+                        "Packet_Name": "pairing_dhkey_check_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x10",
+                            "dhkey_check": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Zero_DHKey_Check",
+                        "Description": "Sets the 'dhkey_check' field to all zeros, which is a valid value but may indicate a security vulnerability or misconfiguration in key exchange.",
+                        "Packet_Name": "pairing_dhkey_check_pkt",
+                        "Mutated_Packet": {
+                            "dhkey_check": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Max_DHKey_Check",
+                        "Description": "Sets the 'dhkey_check' field to all ones, which is a valid value but may indicate a security vulnerability or misconfiguration in key exchange.",
+                        "Packet_Name": "pairing_dhkey_check_pkt",
+                        "Mutated_Packet": {
+                            "dhkey_check": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Length_With_Valid_DHKey",
+                        "Description": "Sets the 'len' field of the BTLE_DATA to an invalid value (0xFF) that exceeds the actual length of the DHKey Check payload, causing a mismatch in expected and actual payload size.",
+                        "Packet_Name": "pairing_dhkey_check_pkt",
+                        "Mutated_Packet": {
+                            "len": "0xFF",
+                            "dhkey_check": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_LLID",
+                        "Description": "Sets the 'LLID' field to a reserved value (00b) which is not allowed for data PDUs, while keeping the 'dhkey_check' field valid, causing a logical inconsistency in packet type identification.",
+                        "Packet_Name": "pairing_dhkey_check_pkt",
+                        "Mutated_Packet": {
+                            "LLID": "0x00",
+                            "dhkey_check": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_SN_NESN_Combination",
+                        "Description": "Sets the 'SN' and 'NESN' fields to the same value (0), which is invalid as they should alternate to indicate new and retransmitted packets, causing a logical inconsistency in sequence numbering.",
+                        "Packet_Name": "pairing_dhkey_check_pkt",
+                        "Mutated_Packet": {
+                            "SN": "0x0",
+                            "NESN": "0x0",
+                            "dhkey_check": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_MD",
+                        "Description": "Sets the 'MD' field to indicate more data (1) while the 'dhkey_check' field is the last expected payload, causing a logical inconsistency in data transmission.",
+                        "Packet_Name": "pairing_dhkey_check_pkt",
+                        "Mutated_Packet": {
+                            "MD": "0x1",
+                            "dhkey_check": "0x00000000000000000000000000000000"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_RFU",
+                        "Description": "Sets the 'RFU' field to a non-zero value (0x7), which is reserved for future use and should be zero, causing a logical inconsistency in reserved field usage.",
+                        "Packet_Name": "pairing_dhkey_check_pkt",
+                        "Mutated_Packet": {
+                            "RFU": "0x7",
+                            "dhkey_check": "0x00000000000000000000000000000000"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "pairing_keypress_notification_pkt",
+            "mutations": {
+                "Inner_Packet_Field_Dependent_Mutations": [
+                    {
+                        "Mutation_Type": "Invalid_Notification_Type",
+                        "Description": "Sets the notification_type to a reserved value (0xFF) which is not defined for use in the pairing keypress notification packet.",
+                        "Packet_Name": "pairing_keypress_notification_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0E",
+                            "notification_type": "0xFF"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Notification_Type_Length",
+                        "Description": "Sets the notification_type to 'Passkey entry started' (0x00) but sets an invalid length (0x02) for the packet, which should be 0x01 for this notification type.",
+                        "Packet_Name": "pairing_keypress_notification_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0E",
+                            "notification_type": "0x00",
+                            "len": "0x02"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Notification_Type_With_Data",
+                        "Description": "Sets the notification_type to 'Passkey digit entered' (0x01) but includes no additional data, which is required for this notification type.",
+                        "Packet_Name": "pairing_keypress_notification_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0E",
+                            "notification_type": "0x01",
+                            "len": "0x01"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Invalid_Length_For_Notification",
+                        "Description": "Sets the notification_type to 'Passkey entry completed' (0x04) but sets an invalid length (0x02) for the packet, which should be 0x01 for this notification type.",
+                        "Packet_Name": "pairing_keypress_notification_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0E",
+                            "notification_type": "0x04",
+                            "len": "0x02"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Notification_Type_With_Reserved",
+                        "Description": "Sets the notification_type to a reserved value (0x05) which is not defined for use in the pairing keypress notification packet.",
+                        "Packet_Name": "pairing_keypress_notification_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0E",
+                            "notification_type": "0x05"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Notification_Type_With_Length",
+                        "Description": "Sets the notification_type to 'Passkey digit erased' (0x02) but sets an invalid length (0x02) for the packet, which should be 0x01 for this notification type.",
+                        "Packet_Name": "pairing_keypress_notification_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0E",
+                            "notification_type": "0x02",
+                            "len": "0x02"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Notification_Type_With_Length_2",
+                        "Description": "Sets the notification_type to 'Passkey cleared' (0x03) but sets an invalid length (0x02) for the packet, which should be 0x01 for this notification type.",
+                        "Packet_Name": "pairing_keypress_notification_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0E",
+                            "notification_type": "0x03",
+                            "len": "0x02"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Notification_Type_With_Length_3",
+                        "Description": "Sets the notification_type to 'Passkey entry started' (0x00) but sets an invalid length (0x00) for the packet, which should be 0x01 for this notification type.",
+                        "Packet_Name": "pairing_keypress_notification_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0E",
+                            "notification_type": "0x00",
+                            "len": "0x00"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Notification_Type_With_Length_4",
+                        "Description": "Sets the notification_type to 'Passkey digit entered' (0x01) but sets an invalid length (0x00) for the packet, which should be greater than 0x01 for this notification type.",
+                        "Packet_Name": "pairing_keypress_notification_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0E",
+                            "notification_type": "0x01",
+                            "len": "0x00"
+                        }
+                    },
+                    {
+                        "Mutation_Type": "Incompatible_Notification_Type_With_Length_5",
+                        "Description": "Sets the notification_type to 'Passkey entry completed' (0x04) but sets an invalid length (0x00) for the packet, which should be 0x01 for this notification type.",
+                        "Packet_Name": "pairing_keypress_notification_pkt",
+                        "Mutated_Packet": {
+                            "sm_command": "0x0E",
+                            "notification_type": "0x04",
+                            "len": "0x00"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

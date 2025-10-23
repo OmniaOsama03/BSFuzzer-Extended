@@ -1,0 +1,1232 @@
+{
+  "info_str": "layer_name: BTLE_ADV, field_name: RxAdd, semantic: Indicates the type of address of the receiving device in the advertising packet., defined_values: \n            0b: Public Device Address\n            1b: Random Device Address\n        ",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.3",
+    "Verdict": "Invalid — RxAdd field value must be either 0b (Public) or 1b (Random); any misinterpretation or unsupported type violates expected format or filter policy"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop",
+    "ErrorResponseType": "None — Silent drop based on filter policy or inability to process address type"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_ADV, field_name: TxAdd, semantic: Indicates the type of address of the transmitting device in the advertising packet., defined_values: \n            0b: Public Device Address\n            1b: Random Device Address\n        ",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.2.5",
+    "Verdict": "Invalid — violates defined value range for TxAdd field (1-bit field, only 0 or 1 allowed)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop",
+    "ErrorResponseType": "None (Silent Drop due to parsing failure or implementation-specific handling)"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_ADV, field_name: ChSel, semantic: Indicates whether the device supports Channel Selection Algorithm #2 for connection establishment., defined_values: \n            0b: Channel Selection Algorithm #2 not supported\n            1b: Channel Selection Algorithm #2 supported\n        ",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.2.5 and §4.5.8.2",
+    "Verdict": "Invalid — if ChSel value is corrupted and passes CRC, violates expected binary format; otherwise, no violation for unsupported capability"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop if CRC fails; Fallback to Channel Selection Algorithm #1 if ChSel=1 is unsupported; Potential misinterpretation if invalid value passes CRC",
+    "ErrorResponseType": "None specified — Silent drop on CRC failure; No error signaling for unsupported ChSel"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_ADV, field_name: RFU, semantic: Reserved for future use, indicating that the field is currently unused but may be allocated for future protocol extensions., defined_values: 0b-1b (All values reserved for future use)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.3.4.3",
+    "Verdict": "Valid — RFU field values are ignored as they are reserved for future use and do not affect current protocol compliance"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Normal Processing",
+    "ErrorResponseType": "None"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_ADV, field_name: PDU_type, semantic: Indicates the type of Protocol Data Unit (PDU) in the advertising packet., defined_values: \n            0000b: ADV_IND (Connectable and scannable undirected advertising event)\n            0001b: ADV_DIRECT_IND (Connectable directed advertising event)\n            0010b: ADV_NONCONN_IND (Non-connectable undirected advertising event)\n            0011b: SCAN_REQ (Scan request)\n            0100b: SCAN_RSP (Scan response)\n            0101b: CONNECT_IND (Connection request)\n            0110b: ADV_SCAN_IND (Scannable undirected advertising event)\n            0111b-1111b: Reserved for future use\n        ",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.3",
+    "Verdict": "Invalid — violates defined PDU_Type values as per Table 2.3"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop",
+    "ErrorResponseType": "None"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_ADV, field_name: Length, semantic: Indicates the length of the advertising data in octets., defined_values: 0x00-0xFF (Valid range for advertising data length, where the maximum length is 255 octets)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.3",
+    "Verdict": "Invalid — violates payload size constraints for specific PDU type (e.g., Length > 31 octets for ADV_IND in legacy advertising)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop",
+    "ErrorResponseType": "None (Silent drop as advertising packets do not trigger error responses at Link Layer)"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_SCAN_REQ, field_name: ScanA, semantic: Represents the address of the device sending the scan request (Scanner Address)., defined_values: 48-bit Bluetooth device address (public or random)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.3.2.1",
+    "Verdict": "Invalid — violates expected format of 48-bit Bluetooth device address (public or random)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Normal Processing at Link Layer, potential Host-level rejection",
+    "ErrorResponseType": "None at Link Layer; Host may ignore based on policy"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_SCAN_REQ, field_name: AdvA, semantic: Represents the address of the advertising device targeted by the scan request (Advertising Address)., defined_values: 48-bit Bluetooth device address (public or random)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.3.2.1 and §4.4",
+    "Verdict": "Invalid — AdvA does not match advertiser's address or violates 48-bit Bluetooth address format"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop",
+    "ErrorResponseType": "None"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_CONNECT_REQ, field_name: InitA, semantic: Represents the address of the device initiating the connection request (Initiator Address)., defined_values: 48-bit Bluetooth device address (public or random)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.3.3.1",
+    "Verdict": "Invalid — violates the defined 48-bit Bluetooth device address format"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop / Ignore Connection Request",
+    "ErrorResponseType": "None (Silent Drop)"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_CONNECT_REQ, field_name: AdvA, semantic: Represents the address of the advertising device targeted by the connection request (Advertising Address)., defined_values: 48-bit Bluetooth device address (public or random)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.3.1 and §4.4.4.1",
+    "Verdict": "Invalid — violates format or matching requirements for AdvA field"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop",
+    "ErrorResponseType": "None"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_CONNECT_REQ, field_name: AA, semantic: Specifies the Access Address used to identify the connection after it is established., defined_values: 32-bit value (randomly generated, must not match advertising channel access address 0x8E89BED6)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.3.3.1",
+    "Verdict": "Invalid — violates Access Address uniqueness or randomness criteria"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop",
+    "ErrorResponseType": "None"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_CONNECT_REQ, field_name: crc_init, semantic: Specifies the initial value of the CRC calculation for the connection request., defined_values: 16-bit value (randomly generated, must not match advertising channel access address 0x8E89BED6)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.3.3.1",
+    "Verdict": "Invalid — violates requirement if crc_init matches advertising channel Access Address 0x8E89BED6"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop",
+    "ErrorResponseType": "None — Silent rejection by remaining in Advertising State"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_CONNECT_REQ, field_name: win_size, semantic: Specifies the transmit window size, defining the time window after connection establishment for the first data packet transmission, in units of 1.25 ms., defined_values: 0x01-0xFF (1.25 ms to 318.75 ms)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.3.3.1 and §4.5.3",
+    "Verdict": "Invalid — if win_size results in a transmitWindowSize that violates connection timing constraints"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop (Connection Fails to Establish)",
+    "ErrorResponseType": "None (No specific error response mechanism defined for CONNECT_IND PDU)"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_CONNECT_REQ, field_name: win_offset, semantic: Specifies the transmit window offset, defining the time delay from the end of the connection request to the start of the transmit window, in units of 1.25 ms., defined_values: 0x0000-0xFFFF (0 ms to 81,918.75 ms)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.5.3",
+    "Verdict": "Invalid — if win_offset value results in unsupported timing offset beyond device capabilities, though within defined range 0x0000-0xFFFF"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop (Silent Failure)",
+    "ErrorResponseType": "None (No explicit rejection mechanism during connection setup)"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_CONNECT_REQ, field_name: interval, semantic: Specifies the connection interval, defining the time between consecutive connection events, in units of 1.25 ms., defined_values: 0x0006-0x0C80 (7.5 ms to 4,000 ms)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.3.3.1",
+    "Verdict": "Invalid — violates defined range for interval (0x0006-0x0C80)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop",
+    "ErrorResponseType": "None"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_CONNECT_REQ, field_name: latency, semantic: Specifies the slave latency, defining the number of consecutive connection events that the slave device can skip to reduce power consumption., defined_values: 0x0000-0x01F3 (0 to 499 events)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.3.3.1",
+    "Verdict": "Invalid — violates defined range for connSlaveLatency (0x0000-0x01F3)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Reject Connection Request or Fail to Establish Connection",
+    "ErrorResponseType": "LL_REJECT_EXT_IND (if supported, with appropriate error code)"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_CONNECT_REQ, field_name: timeout, semantic: Specifies the supervision timeout, defining the maximum time between two successful connection events before the connection is considered lost, in units of 10 ms., defined_values: 0x000A-0x0C80 (100 ms to 32,000 ms)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.3.3.1",
+    "Verdict": "Invalid — violates defined value range for timeout (0x000A to 0x0C80)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop / Reject Connection Request",
+    "ErrorResponseType": "None (No specific error response defined for CONNECT_IND or AUX_CONNECT_REQ)"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_CONNECT_REQ, field_name: chM, semantic: Specifies the channel map, indicating which of the 37 data channels (0-36) are available for use in the connection, represented as a 5-byte bitmap., defined_values: Bit 0 to Bit 36 correspond to channels 0 to 36 (1 = used, 0 = unused); Bit 37-39 reserved",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.3.2.3 and §4.5.8",
+    "Verdict": "Invalid — violates requirement of at least two channels marked as used or non-zero reserved bits"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop / Reject Connection Request",
+    "ErrorResponseType": "No explicit error response defined; likely silent drop without transitioning to Connection State"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_CONNECT_REQ, field_name: SCA, semantic: Specifies the sleep clock accuracy of the slave device, indicating the worst-case clock drift in parts per million (ppm) for timing synchronization., defined_values: \n            000b: 251 ppm to 500 ppm\n            001b: 151 ppm to 250 ppm\n            010b: 101 ppm to 150 ppm\n            011b: 76 ppm to 100 ppm\n            100b: 51 ppm to 75 ppm\n            101b: 31 ppm to 50 ppm\n            110b: 21 ppm to 30 ppm\n            111b: 0 ppm to 20 ppm\n        ",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.2.5, §3.1.1, §4.5.7",
+    "Verdict": "Invalid — SCA value outside defined range or unsupported by implementation"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Implementation Dependent: Drop or Assume Default Value",
+    "ErrorResponseType": "None Specified (Potential Connection Rejection or Default Assumption)"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_CONNECT_REQ, field_name: hop, semantic: Specifies the hop increment used in the channel selection algorithm for frequency hopping during the connection., defined_values: 0x05-0x1F (5 to 31)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.4.4",
+    "Verdict": "Invalid — violates defined value range for hop field (0x05-0x1F)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop",
+    "ErrorResponseType": "None"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_DATA, field_name: RFU, semantic: Reserved for future use, indicating that the field is currently unused but may be allocated for future protocol extensions., defined_values: 000b-111b (All values reserved for future use)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4",
+    "Verdict": "Invalid — violates implied requirement to set RFU bits to 0, though low impact due to ignore mandate"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Normal Processing (ignore RFU bits)",
+    "ErrorResponseType": "None (no specific error signaling for RFU)"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_DATA, field_name: MD, semantic: The More Data (MD) field is used to indicate whether the sender has additional data to send in the current connection event., defined_values: 0 (No more data), 1 (More data available)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4 and §4.5.9",
+    "Verdict": "Invalid — logical inconsistency in MD field value with connection event state"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Normal Processing with Potential Impact",
+    "ErrorResponseType": "None at Link Layer; managed by higher layers if needed"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_DATA, field_name: SN, semantic: The Sequence Number (SN) field is used to differentiate new and retransmitted Data Channel PDUs in the Bluetooth link layer., defined_values: 0 (Even sequence number), 1 (Odd sequence number)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.5.9.1",
+    "Verdict": "Invalid — unexpected SN value compared to nextExpectedSeqNum"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop (if treated as retransmission)",
+    "ErrorResponseType": "None (handled via NESN in response PDU)"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_DATA, field_name: NESN, semantic: The Next Expected Sequence Number (NESN) field is used to indicate the next expected sequence number from the transmitting device, ensuring proper acknowledgment and retransmission handling in Bluetooth link layer communication., defined_values: 0 (Current packet acknowledged, ready for new data), 1 (Expecting retransmission or new data)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.5.9.1",
+    "Verdict": "Invalid — NESN value may not align with expected flow control logic, though not out of range as a single-bit field"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Normal Processing per Flow Control Rules",
+    "ErrorResponseType": "None — Device processes NESN as received, no explicit error signaling for invalid NESN"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_DATA, field_name: LLID, semantic: The Logical Link Identifier (LLID) field is used to indicate whether the packet is an LL Data PDU or an LL Control PDU., defined_values: 00b (Reserved for future use), 01b (LL Data PDU: Continuation fragment of an L2CAP message, or an Empty PDU), 10b (LL Data PDU: Start of an L2CAP message or a complete L2CAP message with no fragmentation), 11b (LL Control PDU)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4",
+    "Verdict": "Invalid — violates defined LLID values by using reserved value (00b)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop",
+    "ErrorResponseType": "None (Silent Drop, No Acknowledgment)"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_DATA, field_name: len, semantic: The Length field indicates the size, in octets, of the Payload and MIC, if included., defined_values: 0x00 - 0xFF (Valid range for payload size in octets, where the maximum payload size is 255 octets)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4",
+    "Verdict": "Invalid — violates expected format of Data Channel PDU Length field"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop / No Acknowledgment",
+    "ErrorResponseType": "Implicit via NESN (No explicit error code or packet)"
+  }
+}
+{
+  "info_str": "layer_name: L2CAP_Hdr, field_name: len, semantic: Indicates the size in octets of the payload following the Basic L2CAP header (excluding the 4-octet header itself). For connection-oriented channels, this is the Information payload; for connectionless channels, this includes the PSM field plus Information payload. Used for PDU recombination and integrity checking., defined_values: 0x0000 to 0xFFFF (0 to 65535 octets); practical minimum is 0 for connection-oriented, 2 for connectionless (PSM size); maximum constrained by MTU/MPS or 65535 (connection-oriented) / 65533 (connectionless with 2-octet PSM).",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part A §3.4",
+    "Verdict": "Invalid — violates constraints of 'Length' field if outside defined range (0x0000 to 0xFFFF) or negotiated MTU/MPS parameters"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop or Channel Closure",
+    "ErrorResponseType": "No specific error code defined; potential rejection response with 'unacceptable parameters' if signaling supported"
+  }
+}
+{
+  "info_str": "layer_name: L2CAP_Hdr, field_name: cid, semantic: Identifies the destination channel endpoint of the L2CAP PDU on the receiving device, scoped to a specific logical link (ACL-U, LE-U, AMP-U, ASB-U). Used for multiplexing data flows between L2CAP entities. Fixed CIDs (0x0001-0x003F) are predefined; dynamic CIDs (0x0040-0xFFFF or 0x007F) are allocated during channel setup., defined_values: 0x0000 (null, not allowed); 0x0001-0x003F (fixed channels, e.g., 0x0001 signaling, 0x0002 connectionless); 0x0040-0xFFFF (dynamic, ACL-U/AMP-U) or 0x0040-0x007F (dynamic, LE-U); other ranges reserved for future use per logical link type.",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part A §2.1",
+    "Verdict": "Invalid — CID value does not correspond to a valid or active channel"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop",
+    "ErrorResponseType": "None (Silent Discard)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Hdr, field_name: sm_command, semantic: The Code field is one octet long and identifies the type of command. If a packet is received with a Code that is reserved for future use it shall be ignored. , defined_values:  0x01 (Pairing Request), 0x02 (Pairing Response), 0x03 (Pairing Confirm), 0x04 (Pairing Random), 0x05 (Pairing Failed), 0x06 (Encryption Information), 0x07 (Master Identification), 0x08 (Identity Information), 0x09 (Identity Address Information), 0x0A (Signing Information), 0x0B (Security Request), 0x0C (Pairing Public Key), 0x0D (Pairing DHKey Check), 0x0E (Pairing Keypress Notification), 0x0F-0xFF (Reserved for future use) ",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5.5",
+    "Verdict": "Invalid — violates defined command code range or support"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Reason Code: 0x07 - Command Not Supported)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Pairing_Response, field_name: iocap, semantic: Defines the Input and Output (IO) capabilities of a Bluetooth device, influencing the selection of pairing methods and security levels., defined_values:  0x00 (DisplayOnly), 0x01 (DisplayYesNo), 0x02 (KeyboardOnly), 0x03 (NoInputNoOutput), 0x04 (KeyboardDisplay), 0x05-0xFF (Reserved for future use) ",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5",
+    "Verdict": "Invalid — violates defined value range for IO Capability (0x00 to 0x04)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Pairing_Response, field_name: oob, semantic: Indicates whether Out-of-Band (OOB) authentication data is available for pairing., defined_values:  0x00 (OOB authentication data not available), 0x01 (OOB authentication data available), 0x02-0xFF (Reserved for future use) ",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5.5",
+    "Verdict": "Invalid — violates defined value range for OOB field"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Pairing_Response, field_name: authentication, semantic: Defines the authentication requirements and security properties for pairing, including MITM protection and bonding options., defined_values:  Bit 0: Bonding (0 = No bonding, 1 = Bonding), Bit 1: MITM (0 = No MITM protection, 1 = MITM protection required), Bit 2: Secure Connections (0 = Legacy pairing, 1 = Secure Connections supported), Bit 3: Keypress Notifications (0 = Not supported, 1 = Supported), Bit 4-7: Reserved (Shall be set to 0) ",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5.2",
+    "Verdict": "Invalid — violates defined values for AuthReq field"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Pairing_Response, field_name: max_key_size, semantic: Specifies the maximum encryption key size, in bytes, that the device supports for pairing., defined_values:  0x07-0x10 (Valid encryption key size range, 7 to 16 bytes), 0x00-0x06 (Reserved, shall not be used), 0x11-0xFF (Reserved for future use) ",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5",
+    "Verdict": "Invalid — violates defined value range for max_key_size (valid range: 0x07-0x10)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Master_Identification, field_name: ediv, semantic: The EDIV (Encrypted Diversifier) is a 2-octet value used to identify the encryption parameters previously used, assisting in the re-establishment of an encrypted connection., defined_values: 0x0000-0xFFFF",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5.5",
+    "Verdict": "Invalid — violates defined parameter constraints for EDIV"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Master_Identification, field_name: rand, semantic: The Rand field provides an additional layer of security by ensuring the uniqueness of encryption parameters, crucial for preventing replay attacks., defined_values: 0x0000000000000000-0xFFFFFFFFFFFFFFFF (All possible 64-bit values)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5.5",
+    "Verdict": "Invalid — violates field length or packet structure requirements"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Pairing_Request, field_name: iocap, semantic: Defines the input and output capabilities of a Bluetooth device, influencing the selection of pairing methods and security levels., defined_values: 0x00 (DisplayOnly), 0x01 (DisplayYesNo), 0x02 (KeyboardOnly), 0x03 (NoInputNoOutput), 0x04 (KeyboardDisplay), 0x05-0xFF (Reserved for future use)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5.2",
+    "Verdict": "Invalid — violates defined value range for IO Capability (0x00-0x04)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Reason Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Pairing_Request, field_name: oob, semantic: Indicates the availability of OOB authentication data, which is used to enhance security by using data exchanged outside the standard Bluetooth communication channel., defined_values: 0x00 (OOB Authentication data not present), 0x01 (OOB Authentication data from a remote device is present), 0x02-0xFF (Reserved for future use)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5",
+    "Verdict": "Invalid — violates defined value range for OOB field (0x00 or 0x01)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Pairing_Request, field_name: authentication, semantic: Indicates the authentication requirements and security features requested during pairing, including MITM protection and LE Secure Connections support., defined_values: 0x00 (No MITM, No SC), 0x01 (MITM, No SC), 0x02 (No MITM, SC), 0x03 (MITM, SC), 0x04-0xFF (Reserved for future use)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5.5",
+    "Verdict": "Invalid — violates defined value range for Authentication Requirements field (0x00-0x03)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Pairing_Request, field_name: max_key_size, semantic: Defines the maximum encryption key size in octets that the device can support, influencing the security level of the connection., defined_values: 0x07-0x10 (Valid range: 7 to 16 octets), 0x00-0x06 (Reserved for future use)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5.5",
+    "Verdict": "Invalid — violates defined value range for max_key_size (0x07-0x10)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Code=0x05, Reason=Invalid Parameters 0x0A)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Pairing_Request, field_name: initiator_key_distribution, semantic: Specifies which keys the initiator will distribute or generate for the responder, influencing key management and security protocols during pairing., defined_values: 0x0 (No keys distributed), 0x1 (EncKey), 0x2 (IdKey), 0x4 (SignKey), 0x8 (LinkKey), 0xF (All keys), 0x0-0xF (Possible combinations of these keys)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5.5",
+    "Verdict": "Invalid — violates defined value range or format for initiator_key_distribution"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Pairing_Request, field_name: responder_key_distribution, semantic: Indicates which keys the responder will distribute or generate for the initiator during the Transport Specific Key Distribution phase. This includes EncKey, IdKey, SignKey, and LinkKey., defined_values: 0x0 (No keys distributed), 0x1 (EncKey), 0x2 (IdKey), 0x4 (SignKey), 0x8 (LinkKey), 0xF (All keys distributed), 0xF0-0xFF (Reserved for future use)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5",
+    "Verdict": "Invalid — violates defined value range for responder_key_distribution (0x0-0xF); values outside this range or in reserved range (0xF0-0xFF) are not permitted"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Identity_Information, field_name: irk, semantic: The Identity Resolving Key (IRK) is used for resolving private addresses and maintaining privacy in Bluetooth communications. It allows devices to identify each other securely when using resolvable private addresses., defined_values: No specific valid value enumeration is provided as the IRK is typically randomly generated or assigned, with no reserved bits described in the context. The theoretical range is from 0x00000000000000000000000000000000 to 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.6.4",
+    "Verdict": "Invalid — violates expected format or content for a 128-bit IRK value"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Confirm, field_name: confirm, semantic: The confirm field is used to ensure the authenticity and integrity of the pairing process between Bluetooth devices by exchanging confirm values derived from cryptographic functions during the pairing process., defined_values: 0x00000000000000000000000000000000 (Minimum), 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF (Maximum), All other values are valid within the cryptographic constraints of the AES-CMAC function used to generate confirm values.",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5.5",
+    "Verdict": "Invalid — violates expected cryptographic confirmation value"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x04 - Confirm Value Failed)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Random, field_name: random, semantic: Represents the random value used in the pairing process to verify the confirm value and generate the Short Term Key (STK) or Long Term Key (LTK). It is exchanged between the initiating and responding devices as part of the Secure Connections and LE Legacy Pairing process., defined_values: 0x00000000000000000000000000000000 - 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5.5",
+    "Verdict": "Invalid — violates packet structure if Random field length is not 16 octets"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Failed, field_name: reason, semantic: Indicates the reason for a pairing failure during the Bluetooth pairing process, facilitating error diagnosis and troubleshooting., defined_values: 0x00 (Reserved for future use), 0x01 (Passkey Entry Failed), 0x02 (OOB Not Available), 0x03 (Authentication Requirements), 0x04 (Confirm Value Failed), 0x05 (Pairing Not Supported), 0x06 (Encryption Key Size), 0x07 (Command Not Supported), 0x08-0xFF (Reserved for future use)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5.5",
+    "Verdict": "Invalid — violates defined value range for 'reason' field (0x01-0x0E); values 0x00 and 0x0F-0xFF are Reserved for Future Use"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop and Terminate Pairing Process",
+    "ErrorResponseType": "None — No further response required as SM_Failed is a terminal message"
+  }
+}
+{
+  "info_str": "layer_name: SM_Encryption_Information, field_name: ltk, semantic: Represents the Long Term Key (LTK) used in LE Secure Connections and LE Legacy Pairing to encrypt future connections. The LTK is generated during the pairing process and can be distributed using the Encryption Information command., defined_values: 0x00000000000000000000000000000000 - 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5",
+    "Verdict": "Invalid — violates parameter constraints or negotiated key size"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A for Invalid Parameters or 0x06 for Encryption Key Size)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Identity_Address_Information, field_name: atype, semantic: Indicates the type of address being used in the SM_Identity_Address_Information packet, differentiating between public and static random device addresses., defined_values: 0x00 (Public Device Address), 0x01 (Static Random Device Address)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5",
+    "Verdict": "Invalid — violates defined value range for 'atype' (must be 0x00 or 0x01)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Identity_Address_Information, field_name: address, semantic: The BD_ADDR field contains the distributing device's public device address or static random address, crucial for identifying the device involved in communication., defined_values: 0x000000000000 - 0xFFFFFFFFFFFF (Valid public or static random addresses)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §2.3",
+    "Verdict": "Invalid — violates defined range or format for address field"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Signing_Information, field_name: csrk, semantic: The CSRK (Connection Signature Resolving Key) is used to sign data, ensuring data integrity and authenticity during Bluetooth communication., defined_values: 0x00000000000000000000000000000000 (Minimum), 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF (Maximum)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5.5",
+    "Verdict": "Invalid — violates expected format or length of CSRK field"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters) for invalid values; Pairing Failed (Error Code: 0x07 - Command Not Supported) for unsupported features"
+  }
+}
+{
+  "info_str": "layer_name: SM_Security_Request, field_name: auth_req, semantic: Specifies the security properties requested during the pairing process, including the desired level of authentication, encryption, and bonding preferences., defined_values: Bits 0-4: Reserved for future use, Bit 5: MITM (0 - No protection, 1 - MITM protection requested), Bit 6: SC (0 - LE Legacy pairing, 1 - LE Secure Connections), Bit 7: Keypress (0 - No notifications, 1 - Keypress notifications enabled), Other combinations and values are reserved or undefined.",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5.5",
+    "Verdict": "Invalid — violates defined values for auth_req field"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Public_Key, field_name: key_x, semantic: Represents the X-coordinate of the elliptic curve public key used in the LE Secure Connections pairing process. It is used in the Elliptic Curve Diffie-Hellman (ECDH) key exchange to compute a shared secret., defined_values: 0x0000000000000000000000000000000000000000000000000000000000000000 - 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §2.3.5.6 & §3.5.5",
+    "Verdict": "Invalid — violates requirement for valid P-256 elliptic curve point in key_x field"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Public_Key, field_name: key_y, semantic: The key_y field represents the Y-coordinate of the public key, essential for Secure Connections pairing between Bluetooth devices., defined_values: 0x0000000000000000000000000000000000000000000000000000000000000000 (minimum), 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF (maximum)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §2.3.5.6",
+    "Verdict": "Invalid — violates the requirement for valid P-256 elliptic curve coordinates"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Reason Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_DHKey_Check, field_name: dhkey_check, semantic: Verifies the 128-bit Diffie-Hellman Key (DHKey) Check values, ensuring the authenticity and integrity of the key exchange in Low Energy (LE) Secure Connections., defined_values: 0x00000000000000000000000000000000 - 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF (Full range for 128-bit field)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5.5",
+    "Verdict": "Invalid — violates format or cryptographic verification of dhkey_check field"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Reason Code: 0x04 - Confirm Value Failed or 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: SM_Keypress_Notification, field_name: notification_type, semantic: Indicates the state of the passkey entry process during Bluetooth pairing, used to notify the remote device of key entry actions., defined_values: 0x00 (Passkey entry started), 0x01 (Passkey digit entered), 0x02 (Passkey digit erased), 0x03 (Passkey cleared), 0x04 (Passkey entry completed), 0x05-0xFF (Reserved for future use)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 3 Part H §3.5",
+    "Verdict": "Invalid — violates defined value range for notification_type (0x00-0x04)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "Pairing Failed (Error Code: 0x0A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: BTLE_CTRL, field_name: opcode, semantic: Identifies the type of Link Layer (LL) Control PDU being transmitted. The opcode determines the format and meaning of the control message., defined_values: \n        0x00 (LL_CONNECTION_UPDATE_IND),\n        0x01 (LL_CHANNEL_MAP_IND),\n        0x02 (LL_TERMINATE_IND),\n        0x03 (LL_ENC_REQ),\n        0x04 (LL_ENC_RSP),\n        0x05 (LL_START_ENC_REQ),\n        0x06 (LL_START_ENC_RSP),\n        0x07 (LL_UNKNOWN_RSP),\n        0x08 (LL_FEATURE_REQ),\n        0x09 (LL_FEATURE_RSP),\n        0x0A (LL_PAUSE_ENC_REQ),\n        0x0B (LL_PAUSE_ENC_RSP),\n        0x0C (LL_VERSION_IND),\n        0x0D (LL_REJECT_IND),\n        0x0E (LL_SLAVE_FEATURE_REQ),\n        0x0F (LL_CONNECTION_PARAM_REQ),\n        0x10 (LL_CONNECTION_PARAM_RSP),\n        0x11 (LL_REJECT_EXT_IND),\n        0x12 (LL_PING_REQ),\n        0x13 (LL_PING_RSP),\n        0x14 (LL_LENGTH_REQ),\n        0x15 (LL_LENGTH_RSP),\n        0x16 (LL_PHY_REQ),\n        0x17 (LL_PHY_RSP),\n        0x18 (LL_PHY_UPDATE_IND),\n        0x19 (LL_MIN_USED_CHANNELS_IND),\n        All other values Reserved for Future Use.\n      ",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2 & §4.5.9",
+    "Verdict": "Invalid — violates defined opcode range for LL Control PDU"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop",
+    "ErrorResponseType": "None"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_UPDATE_IND, field_name: win_size, semantic: Indicates the transmit window size, calculated as transmitWindowSize = WinSize * 1.25 ms, crucial for determining the timing of packet transmissions after a connection update., defined_values: 0x00 (Minimum window size), 0x01-0xFF (Variable window sizes with 0xFF being the maximum)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2.1, §4.5.3",
+    "Verdict": "Invalid — violates feasible timing constraints for transmitWindowSize"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop or Ignore Update",
+    "ErrorResponseType": "No specific error response defined; potential supervision timeout"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_UPDATE_IND, field_name: win_offset, semantic: Determines the transmitWindowOffset, which is critical in timing offsets for transmissions, calculated as transmitWindowOffset = WinOffset * 1.25 ms., defined_values: 0x00 (Minimum offset), 0xFF (Maximum offset), 0x100-0xFFFF (Reserved for future use)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2.1 & §4.5",
+    "Verdict": "Invalid — violates acceptable range or timing constraints for WinOffset"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop (Ignore Update)",
+    "ErrorResponseType": "None (No explicit rejection mechanism at Link Layer)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_UPDATE_IND, field_name: interval, semantic: Determines the time interval between consecutive connection events, measured in 1.25 ms units., defined_values: 0x0006 (7.5 ms) to 0xFFFF (81.91875 seconds), with specific values reserved for implementation-specific use.",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2.1",
+    "Verdict": "Invalid — violates defined range for interval field (0x0006 to 0xFFFF)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Ignore PDU or Error Response",
+    "ErrorResponseType": "LL_REJECT_IND (Error Code: Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_UPDATE_IND, field_name: latency, semantic: Specifies the connection slave latency, affecting the number of connection events a slave device can skip, improving battery efficiency., defined_values: 0x0000 (Minimum latency), 0xFFFF (Maximum latency), Note: Specific values are determined by device capabilities and use case requirements.",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2.1, §4.6.3",
+    "Verdict": "Invalid — violates supported range or connection constraints for latency field"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (Error Code: Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_UPDATE_IND, field_name: timeout, semantic: Represents the connection supervision timeout value in the connection update procedure. It defines the maximum time (in milliseconds) that can elapse between two successful connection events before the connection is considered lost., defined_values: 0x000A - 0x0C80 (Corresponds to a timeout range of 100 ms to 32.0 s, with values in multiples of 10 ms).",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2.1",
+    "Verdict": "Invalid — violates defined range of 0x000A to 0x0C80 for timeout field"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response or Ignore with Fallback",
+    "ErrorResponseType": "LL_REJECT_EXT_IND (Error Code: Invalid Parameters) or LL_REJECT_IND"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_UPDATE_IND, field_name: instant, semantic: Indicates the connection event count at which the new connection parameters take effect. The Instant field ensures synchronized connection parameter updates between the master and the slave., defined_values: 0x0000 - 0xFFFF (Represents a connection event count, using modulo 65536 arithmetic to handle wraparounds).",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §5.1.1",
+    "Verdict": "Invalid — violates contextual applicability of the instant field (e.g., value in the past or unreasonably far in the future)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop (No Acknowledgment)",
+    "ErrorResponseType": "None (Silent rejection by not acknowledging the PDU)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CHANNEL_MAP_IND, field_name: chM, semantic: Indicates the channel map of used and unused data channels, with each bit representing a channel's usage status in the index., defined_values: 0x0000000000 to 0x1FFFFFFFFF (where each bit represents a channel, 0 for unused, 1 for used, bits in positions 37, 38, and 39 are reserved for future use)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2",
+    "Verdict": "Invalid — violates format if reserved bits 37-39 are set to 1 or if fewer than 2 channels are used as per §4.5.8.1"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop or Error Response",
+    "ErrorResponseType": "LL_REJECT_IND (Error Code: Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CHANNEL_MAP_IND, field_name: instant, semantic: The Instant field indicates the specific event counter value at which the new channel map becomes active in a Bluetooth connection., defined_values: 0x0000-0xFFFF (Valid range, no specific reserved values documented)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §5.5",
+    "Verdict": "Invalid — violates requirement for 'instant' to be a future connection event with sufficient lead time"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop or Error Response",
+    "ErrorResponseType": "No specific error code defined for invalid 'instant'; likely silent drop or supervision timeout"
+  }
+}
+{
+  "info_str": "layer_name: LL_TERMINATE_IND, field_name: code, semantic: The ErrorCode field in the LL_TERMINATE_IND packet specifies the reason for terminating the connection in the Bluetooth Link Layer. It is used to inform the remote device about the cause of the disconnection., defined_values: 0x00-0xFF (Defined error codes, see Bluetooth Assigned Numbers for details)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2 & §5.1.6",
+    "Verdict": "Invalid — violates defined HCI error code values (Vol 2 Part D)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Normal Processing (Connection Termination)",
+    "ErrorResponseType": "None (No response expected for LL_TERMINATE_IND)"
+  }
+}
+{
+  "info_str": "layer_name: LL_ENC_REQ, field_name: rand, semantic: The Rand field contains a random number that is provided by the Host and used with the EDIV for encryption purposes., defined_values: 0x0000000000000000 to 0xFFFFFFFFFFFFFFFF (Full 64-bit range)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2",
+    "Verdict": "Invalid — if PDU is malformed (e.g., incorrect size of Rand field or CRC failure)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop or Error Response",
+    "ErrorResponseType": "LL_UNKNOWN_RSP (if supported) or Silent Drop with no acknowledgment leading to retransmission"
+  }
+}
+{
+  "info_str": "layer_name: LL_ENC_REQ, field_name: ediv, semantic: The ediv (Encrypted Diversifier) field is used in conjunction with the Rand field to identify the Long Term Key (LTK) used for encryption during a connection., defined_values: 0x0000-0xFFFF (All possible 16-bit values are valid for distinguishing different encryption sessions)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.5.5",
+    "Verdict": "Invalid — violates expected security context or pairing data for EDIV"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (Error Code: Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: LL_ENC_REQ, field_name: skdm, semantic: The SKDm field contains the master's portion of the session key diversifier., defined_values: 0x0000000000000000 to 0xFFFFFFFFFFFFFFFF (All possible 64-bit values)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.2.5 and §4.5.9",
+    "Verdict": "Valid — No violation possible for SKDm field values as the defined range covers all 64-bit values (0x0000000000000000 to 0xFFFFFFFFFFFFFFFF)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Normal Processing",
+    "ErrorResponseType": "N/A — Since all values are valid for SKDm, no error response is expected for this field. However, if the PDU is malformed in other ways (e.g., incorrect length or opcode), the device shall ignore the PDU or not acknowledge it, prompting retransmission."
+  }
+}
+{
+  "info_str": "layer_name: LL_ENC_REQ, field_name: ivm, semantic: Contains the master's portion of the initialization vector used in the encryption process of the Bluetooth Low Energy connection., defined_values: 0x00000000-0xFFFFFFFF (No reserved values specified, full range available for initialization vector)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2.4",
+    "Verdict": "Valid — No protocol-level violation possible for value range (0x00000000-0xFFFFFFFF); Invalid if field length or format is incorrect"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response or Drop if field length/format is invalid or unsupported by implementation",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (Error Code: Invalid Parameter if applicable)"
+  }
+}
+{
+  "info_str": "layer_name: LL_ENC_RSP, field_name: skds, semantic: The SKDs field contains the slave's portion of the session key diversifier, used to help derive the session key for encryption., defined_values: 0x0000000000000000 to 0xFFFFFFFFFFFFFFFF (Full range of 64-bit values)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2, §4.5.9, §4.6.1",
+    "Verdict": "Invalid — violates expected format or value for SKDs field in LL_ENC_RSP"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response or Drop",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (if supported)"
+  }
+}
+{
+  "info_str": "layer_name: LL_ENC_RSP, field_name: ivs, semantic: The IVs field contains the slave's portion of the initialization vector used in the encryption process for Bluetooth Low Energy communication., defined_values: 0x00000000-0xFFFFFFFF (All values are valid as they represent a 32-bit random initialization vector component)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §5.1.3.1",
+    "Verdict": "Invalid — if the IVs field violates format or security requirements (e.g., incorrect length or non-randomized data)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response or Silent Drop",
+    "ErrorResponseType": "LL_REJECT_EXT_IND (Error Code: 0x1A - Unsupported Remote Feature or security-related error)"
+  }
+}
+{
+  "info_str": "layer_name: LL_UNKNOWN_RSP, field_name: code, semantic: Contains the Opcode field value of the received LLControl PDU to indicate an unknown type., defined_values: 0x00-0xFF (Any Opcode value, no reserved values)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2",
+    "Verdict": "Invalid — unrecognized or unsupported Opcode value in the code field"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_UNKNOWN_RSP (Payload: Unknown Opcode)"
+  }
+}
+{
+  "info_str": "layer_name: LL_FEATURE_REQ, field_name: feature_set, semantic: Indicates the set of features supported by the master's Link Layer, with each bit representing a specific feature capability., defined_values: 0x00 (LE Encryption), 0x02 (Extended Reject Indication), 0x08 (LE 2M PHY), 0x10 (Stable Modulation Index - Receiver), 0x40 (Channel Selection Algorithm #2), 0x10000 (Minimum Number of Used Channels Procedure)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2.9",
+    "Verdict": "Invalid — violates semantic content of feature_set field by including unsupported or undefined bits"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Normal Processing with Modification (ignore unsupported bits) or Error Response",
+    "ErrorResponseType": "LL_FEATURE_RSP (with supported features) or LL_UNKNOWN_RSP or LL_TERMINATE_IND (if severe mismatch)"
+  }
+}
+{
+  "info_str": "layer_name: LL_FEATURE_RSP, field_name: feature_set, semantic: Contains a set of features supported by the Link Layer of both the master and slave devices in a Bluetooth connection., defined_values: 0x0000000000000000 (No features supported), 0xFFFFFFFFFFFFFFFF (All features supported), values depend on specific feature support as defined in the Bluetooth specification.",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2.10 & §5.1.4",
+    "Verdict": "Valid — no protocol violation for unsupported feature_set bits; unrecognized bits are ignored"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Normal Processing with ignored unsupported bits",
+    "ErrorResponseType": "None"
+  }
+}
+{
+  "info_str": "layer_name: LL_VERSION_IND, field_name: version, semantic: Contains the version of the Bluetooth Link Layer specification., defined_values: 0x00-0xFF (Version numbers as assigned by Bluetooth SIG)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2",
+    "Verdict": "Valid — no protocol violation at Link Layer level as CRC is correct and PDU structure is intact"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Normal Processing",
+    "ErrorResponseType": "None — handling of unsupported version deferred to higher layers"
+  }
+}
+{
+  "info_str": "layer_name: LL_VERSION_IND, field_name: company, semantic: The company identifier of the manufacturer of the Bluetooth Controller., defined_values: 0x0000-0xFFFF (Assigned numbers, specific values are allocated to various companies by the Bluetooth SIG)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2.13",
+    "Verdict": "Valid — no protocol violation for unsupported values within defined range (0x0000-0xFFFF)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Normal Processing",
+    "ErrorResponseType": "None"
+  }
+}
+{
+  "info_str": "layer_name: LL_VERSION_IND, field_name: subversion, semantic: Contains a unique value for each implementation or revision of an implementation of the Bluetooth Controller., defined_values: 0x0000-0xFFFF (All values represent unique implementations or revisions)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §5.1.5",
+    "Verdict": "Valid — no protocol violation as all values within 0x0000-0xFFFF are syntactically valid"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Normal Processing (Ignore unsupported subversion values)",
+    "ErrorResponseType": "None"
+  }
+}
+{
+  "info_str": "layer_name: LL_REJECT_IND, field_name: code, semantic: The ErrorCode field in the LL_REJECT_IND packet specifies the reason for rejecting a request in the Bluetooth Link Layer., defined_values: 0x00-0xFF (Defined error codes, see Bluetooth Assigned Numbers for details)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2.14",
+    "Verdict": "Invalid — violates specification if ErrorCode is undefined or reserved"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Normal Processing as generic rejection",
+    "ErrorResponseType": "None — log unrecognized ErrorCode for debugging"
+  }
+}
+{
+  "info_str": "layer_name: LL_SLAVE_FEATURE_REQ, field_name: feature_set, semantic: Indicates the set of features supported by the Link Layer of the device, including encryption, error indication, and channel selection capabilities., defined_values: 0x0000000000000000 (No features supported), 0x0000000000000001 (LE Encryption), 0x0000000000000002 (Extended Reject Indication), 0x0000000000000008 (LE 2M PHY), 0x0000000000000040 (Channel Selection Algorithm #2), 0x0000000000000100 (Minimum Number of Used Channels Procedure), 0xFFFFFFFFFFFFFFFF (All features supported)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2.15 & §4.6",
+    "Verdict": "Invalid — violates defined feature bitmask for feature_set field"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response or Fallback to Default Features",
+    "ErrorResponseType": "LL_UNKNOWN_RSP (if feature_set not understood or supported)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_REQ, field_name: interval_min, semantic: Indicates the minimum value of the connection interval in the LL_CONNECTION_PARAM_REQ packet, calculated as Interval_Min * 1.25 ms., defined_values: 0x0000 to 0xFFFF (All values represent valid minimum connection intervals, subject to device-specific constraints)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.5.1",
+    "Verdict": "Invalid — violates defined range if interval_min < 0x0006 or > 0x0C80"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (Error Code: 0x1A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_REQ, field_name: interval_max, semantic: Indicates the maximum value of the connection interval, impacting the timing of connection events., defined_values: 0x0000 (0 ms), 0xFFFF (81918.75 ms), other values represent intervals in multiples of 1.25 ms",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.6.2",
+    "Verdict": "Invalid — violates defined range for interval_max (0x0006 to 0x0C80)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (Error Code: 0x1E - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_REQ, field_name: latency, semantic: Indicates the connSlaveLatency value, which is the number of connection events the slave can ignore, allowing for power-saving by skipping events., defined_values: 0x0000 (Minimum Latency), 0xFFFF (Maximum Latency)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2",
+    "Verdict": "Invalid — violates expected range or constraints for connSlaveLatency"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_CONNECTION_PARAM_RSP (Status: Invalid Parameter)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_REQ, field_name: timeout, semantic: Indicates the connection supervision timeout value, which determines the maximum time between data packets before the connection is considered lost., defined_values: 0x0000-0xFFFF (All values represent a supervision timeout in increments of 10 ms)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §5.1.7",
+    "Verdict": "Invalid — if outside practical implementation range (e.g., below 100 ms or above 32 seconds), violates operational constraints"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (Error Code: Unsupported Parameter Value)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_REQ, field_name: preferred_periodicity, semantic: Indicates a value that the conninterval is preferred to be a multiple of, in units of 1.25 ms. A value of zero means not valid and shall be ignored., defined_values: 1-255 (Valid PreferredPeriodicity values), 0 (Not valid)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.6.2",
+    "Verdict": "Invalid — violates defined value range (1-255) for preferred_periodicity"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (Error Code: 0x1A - Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_REQ, field_name: reference_conn_evt_count, semantic: The ReferenceConnEventCount field indicates the value of the connEventCounter relative to which all valid Offset0 to Offset5 fields have been calculated. It is independent of the Instant field in the LL_CONNECTION_UPDATE_IND PDU., defined_values: 0 to 65535 (0x0000 to 0xFFFF)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §5.1.10",
+    "Verdict": "Invalid — violates expected range or synchronization for reference_conn_evt_count"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response or Adjust Event Count",
+    "ErrorResponseType": "LL_CONNECTION_PARAM_RSP (with adjusted event count or rejection)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_REQ, field_name: offset0, semantic: Indicates the most preferred position of the anchor points of the LE connection with updated connection parameters relative to the ReferenceConnEventCount., defined_values: 0 (minimum), 0xFFFF (not valid)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §5.1.7",
+    "Verdict": "Invalid — violates defined valid range for offset0 field"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (Error Code: Invalid Parameter) or LL_UNKNOWN_RSP"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_REQ, field_name: offset1, semantic: Indicates the possible values of the position of the anchor points of the LE connection with the updated connection parameters relative to the ReferenceConnEventCount., defined_values: 0x0000 to 0xFFFF (0xFFFF indicates an invalid value, other specific valid values are less than Interval_Max and should be unique and precede any invalid values)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.6.2",
+    "Verdict": "Invalid — violates defined value constraints for offset1 (e.g., value = 0xFFFF or >= Interval_Max)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (Error Code: Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_REQ, field_name: offset2, semantic: Indicates the possible values of the position of the anchor points of the LE connection with the updated connection parameters relative to the ReferenceConnEventCount., defined_values: 0x0000 to 0xFFFE (Valid values less than Interval_Max), 0xFFFF (Not valid)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.5.9 and §4.6.3",
+    "Verdict": "Invalid — violates defined value range for offset2 (0x0000 to 0xFFFE and less than Interval_Max)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response or Ignore Request",
+    "ErrorResponseType": "LL_REJECT_IND (Error Code: appropriate reason code if supported)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_REQ, field_name: offset3, semantic: Indicates the possible values of the position of the anchor points of the LE connection with the updated connection parameters relative to the ReferenceConnEventCount., defined_values: 0x0000 to 0xFFFF (Values less than Interval_Max, unique among Offset0 to Offset5, and in decreasing order of preference)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §5.1.7",
+    "Verdict": "Invalid — violates constraints for offset3 value (must be within 0x0000 to 0xFFFF, less than Interval_Max, unique among Offset0 to Offset5, and in decreasing order of preference)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_UNKNOWN_RSP (indicating unrecognized or unsupported content)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_REQ, field_name: offset4, semantic: Indicates a possible value for the position of the anchor point of the LE connection with updated parameters relative to the ReferenceConnEventCount., defined_values: 0x0000 to 0xFFFE (Valid, with Offset4 less than Interval_Max), 0xFFFF (Invalid)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2.1",
+    "Verdict": "Invalid — violates defined value range for offset4 (0x0000 to 0xFFFE)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop / Reject",
+    "ErrorResponseType": "LL_CONNECTION_PARAM_RSP (with failure status) or LL_REJECT_IND"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_REQ, field_name: offset5, semantic: Indicates the possible value of the position of the anchor point of the LE connection with the updated connection parameters relative to the ReferenceConnEventCount., defined_values: 0x0000 to 0xFFFE (Valid values less than Interval_Max), 0xFFFF (Not valid)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §5.1.1",
+    "Verdict": "Invalid — violates defined value range for offset5 (must be 0x0000 to 0xFFFE and less than Interval_Max)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_REJECT_IND or LL_CONNECTION_PARAM_RSP (Error Code: Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_RSP, field_name: interval_min, semantic: Indicates the minimum value of the connection interval in multiples of 1.25 ms, crucial for determining the frequency of connection events and power management., defined_values: 0x0006 (7.5 ms) to 0xFFFF (81,918.75 ms)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §5.1.7",
+    "Verdict": "Invalid — violates minimum value of 0x0006 for interval_min"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (Error Code: Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_RSP, field_name: interval_max, semantic: Specifies the maximum connection interval, which affects the frequency at which the master and slave will communicate., defined_values: 0x0006-0xFFFF (Valid range; values must be greater than or equal to Interval_Min and conform to other constraints such as supervision timeout)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.6.2",
+    "Verdict": "Invalid — violates defined range (0x0006-0xFFFF) or constraint (interval_max >= Interval_Min)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response or Ignore",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (Error Code: Invalid Parameter)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_RSP, field_name: latency, semantic: Indicates the connSlaveLatency value, representing the number of connection events the slave device can skip, hence affecting power saving and latency., defined_values: 0x0000-0xFFFF (Valid range for connSlaveLatency)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2 & §5.1.1",
+    "Verdict": "Invalid — violates acceptable range for connSlaveLatency (0x0000 to 0x01F3)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (Error Code: Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_RSP, field_name: timeout, semantic: The Timeout field indicates the connSupervision Timeout value, calculated as Timeout * 10 ms, representing the maximum time between two received data packets before the connection is considered lost., defined_values: 0x0000 (10 ms), 0xFFFF (655350 ms)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §5.1.7",
+    "Verdict": "Invalid — violates acceptable range or constraints for connSupervisionTimeout if value is impractical (e.g., 0x0000) or does not meet relationship with connection interval"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (Error Code: Invalid Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_RSP, field_name: preferred_periodicity, semantic: The preferred_periodicity field is set to indicate a value the conninterval is preferred to be a multiple of, in units of 1.25 ms. A value of zero means not valid. The PreferredPeriodicity shall be less than or equal to Interval_Max., defined_values: 0x00 (Not valid), 0x01-0xFF (Valid values within the range as multiples of 1.25 ms up to Interval_Max)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §5.1.7",
+    "Verdict": "Invalid — violates defined value range or implementation limits for preferred_periodicity"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response or Ignore with Fallback",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (Error Code: Unsupported Parameter Value)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_RSP, field_name: reference_conn_evt_count, semantic: Indicates the value of the connEventCounter relative to which all the valid Offset0 to Offset5 fields have been calculated., defined_values: 0x0000 to 0xFFFF",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §5.1.1",
+    "Verdict": "Invalid — violates semantic context of reference_conn_evt_count relative to current connEventCounter"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Ignore Update",
+    "ErrorResponseType": "None Specified"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_RSP, field_name: offset0, semantic: The Offset0 field in the LL_CONNECTION_PARAM_RSP packet indicates the most preferred offset for connection events in units of 1.25 ms. It helps synchronize the new connection parameters by defining anchor points., defined_values: 0x0000-0xFFFE (Valid offsets), 0xFFFF (Invalid offset)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §5.1.7",
+    "Verdict": "Invalid — violates defined value range for Offset0 (0x0000-0xFFFE)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response or Ignore with Fallback",
+    "ErrorResponseType": "LL_REJECT_EXT_IND (Error Code: Appropriate code per spec)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_RSP, field_name: offset1, semantic: The offset1 field is part of the LL_CONNECTION_PARAM_RSP packet and indicates the preferred timing offset for connection events. It is used in determining when the next connection event should occur, with offset1 being the next preferred value after offset0., defined_values: 0x0000-0xFFFF (0xFFFF indicates the value is not valid, valid values must be unique and less than Interval_Max)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §5.1.7",
+    "Verdict": "Invalid — violates acceptable range or constraints for offset1"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_REJECT_EXT_IND (Error Code: 0x3B - Unacceptable Connection Parameters)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_RSP, field_name: offset2, semantic: Offset2 is part of a sequence of offsets (Offset0 to Offset5) used for connection event timing, expressed in units of 1.25ms, with Offset0 being the most preferred. The value must be less than Interval_Max and should be unique among Offset0 to Offset5., defined_values: 0x0000 to Interval_Max-1, 0xFFFF (not valid)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.6.2",
+    "Verdict": "Invalid — violates defined value range or uniqueness constraint for offset2"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response or Ignore PDU",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (Error Code: specific to invalid parameter)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_RSP, field_name: offset3, semantic: The Offset3 field in the LL_CONNECTION_PARAM_RSP packet indicates one of the possible positions of the anchor points of the LE connection with the updated connection parameters. These offsets are in units of 1.25 ms and are ranked in decreasing order of preference., defined_values: 0x0000-0xFFFE (Valid offsets, unique within the set), 0xFFFF (Invalid offset)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2.12",
+    "Verdict": "Invalid — value 0xFFFF indicates an invalid or non-preferred offset as per spec"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response or Maintain Current Parameters",
+    "ErrorResponseType": "No specific error code mandated; may reject update if all offsets invalid"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_RSP, field_name: offset4, semantic: The offset4 field is part of the LL_CONNECTION_PARAM_RSP packet and is used to indicate the preferred offset value for the connection event, in units of 1.25 ms. It should be less than Interval_Max and represent a unique, valid value., defined_values: 0x0000-0xFFFE (Valid offsets less than Interval_Max), 0xFFFF (Invalid)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2",
+    "Verdict": "Invalid — violates specification by using reserved value 0xFFFF for offset4 when not supported or explicitly disallowed"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response or Ignore Invalid Offset",
+    "ErrorResponseType": "LL_REJECT_IND (Error Code: TBD based on specific implementation)"
+  }
+}
+{
+  "info_str": "layer_name: LL_CONNECTION_PARAM_RSP, field_name: offset5, semantic: The Offset5 field in the LL_CONNECTION_PARAM_RSP packet indicates a potential anchor point position for the LE connection with updated parameters. It is expressed in units of 1.25 ms and is ranked lowest in preference among Offset0 to Offset5 fields., defined_values: 0x0000-0xFFFE (Valid offsets, unique within the set), 0xFFFF (Invalid offset)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §5.1.10",
+    "Verdict": "Invalid — violates defined value range for Offset5 (0x0000-0xFFFE)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_REJECT_IND (Error Code: TBD based on specific implementation)"
+  }
+}
+{
+  "info_str": "layer_name: LL_REJECT_EXT_IND, field_name: reject_opcode, semantic: Contains the Opcode field value of the LL Control PDU being rejected., defined_values: 0x0D (LL_REJECT_IND), 0x0E (LL_SLAVE_FEATURE_REQ), 0x0F (LL_CONNECTION_PARAM_REQ), 0x10 (LL_CONNECTION_PARAM_RSP), 0x11 (LL_REJECT_EXT_IND), 0x12 (LL_PING_REQ), 0x13 (LL_PING_RSP), 0x14 (LL_LENGTH_REQ), 0x15 (LL_LENGTH_RSP), 0x16 (LL_PHY_REQ), 0x17 (LL_PHY_RSP), 0x18 (LL_PHY_UPDATE_IND), 0x19 (LL_MIN_USED_CHANNELS_IND), 0x00-0x0C, 0x1A-0xFF (Reserved for future use)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2",
+    "Verdict": "Invalid — violates defined opcode range for reject_opcode field"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_UNKNOWN_RSP (UnknownType: 0x11)"
+  }
+}
+{
+  "info_str": "layer_name: LL_REJECT_EXT_IND, field_name: error_code, semantic: The ErrorCode field in the LL_REJECT_EXT_IND packet specifies the reason the LL Control PDU was rejected. It helps identify the issue in establishing a Bluetooth connection or processing a control message., defined_values: 0x1A (Unsupported Remote Feature / Unsupported LMP Feature), 0x3B (Unacceptable Connection Parameters), 0x00-0xFF (Error Codes as defined in [Vol 2] Part D, with some values reserved for future use)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §5.1",
+    "Verdict": "Invalid — violates defined ErrorCode values as per specification"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Process as Generic Rejection",
+    "ErrorResponseType": "None — Ignore specific ErrorCode value, proceed with rejection action"
+  }
+}
+{
+  "info_str": "layer_name: LL_LENGTH_REQ, field_name: max_rx_bytes, semantic: Specifies the maximum number of octets that the sender can receive, ensuring that the sender does not announce a capability lower than 27 octets., defined_values: 0x001B-0xFFFF (Minimum value 27 octets, no maximum defined)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.5.10",
+    "Verdict": "Invalid — violates defined range for max_rx_bytes (minimum 27 octets)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (Error Code: 0x1C)"
+  }
+}
+{
+  "info_str": "layer_name: LL_LENGTH_REQ, field_name: max_rx_time, semantic: Specifies the maximum time the sender is capable of receiving a packet, in microseconds, ensuring compatibility with the receiver's capabilities., defined_values: 0x0148 (328), 0xFFFF (65535), Values in between are valid, but must be greater than or equal to 328 microseconds.",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §2.4.2.1",
+    "Verdict": "Invalid — violates defined range for max_rx_time if value < 0x0148 or > 0xFFFF"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_UNKNOWN_RSP (if value outside range) or LL_LENGTH_RSP with supported values (if unsupported within range)"
+  }
+}
+{
+  "info_str": "layer_name: LL_LENGTH_REQ, field_name: max_tx_bytes, semantic: Specifies the maximum number of octets that the sender is willing to transmit in a single packet over the connection., defined_values: 0x001B (27) to 0xFFFF (65535), values below 0x001B are not valid.",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.5.10",
+    "Verdict": "Invalid — violates minimum value of 27 octets for max_tx_bytes"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND (Error Code: 0x1C)"
+  }
+}
+{
+  "info_str": "layer_name: LL_LENGTH_REQ, field_name: max_tx_time, semantic: Specifies the maximum time, in microseconds, that the sender allows for a packet transmission on a connection, influencing data throughput and timing constraints., defined_values: 328-2120",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.5.10",
+    "Verdict": "Invalid — violates defined range or context for max_tx_time"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Error Response",
+    "ErrorResponseType": "LL_LENGTH_RSP with supported parameters or LL_REJECT_EXT_IND (Error Code: Unsupported LL Parameter Value)"
+  }
+}
+{
+  "info_str": "layer_name: LL_LENGTH_RSP, field_name: max_rx_bytes, semantic: Indicates the maximum number of octets the sender of the LL_LENGTH_RSP packet can receive., defined_values: 0x001B to 0xFFFF (Minimum value of 27 octets; no explicit maximum value defined in the document)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.5.10",
+    "Verdict": "Invalid — violates minimum value of 27 octets for max_rx_bytes if value < 0x001B; otherwise, potential capability mismatch if value exceeds device limits"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Ignore Packet / Maintain Current Configuration",
+    "ErrorResponseType": "None specified (No explicit error response packet or code defined for LL_LENGTH_RSP invalid values)"
+  }
+}
+{
+  "info_str": "layer_name: LL_LENGTH_RSP, field_name: max_rx_time, semantic: The max_rx_time field specifies the maximum time, in microseconds, that the sender allows for the reception of a single packet. It is used to negotiate the maximum allowable time for packet reception between devices during a Bluetooth connection., defined_values: 328-2120 (Range for standard and LE Coded PHY feature; values less than 328 are invalid for MaxRxTime, values greater than 2120 are used when LE Coded PHY feature is supported)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.5.10",
+    "Verdict": "Invalid — violates defined range of 328-2120 microseconds for max_rx_time"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Drop / Ignore Packet",
+    "ErrorResponseType": "None (No explicit error response mandated; optional error reporting to Host)"
+  }
+}
+{
+  "info_str": "layer_name: LL_LENGTH_RSP, field_name: max_tx_bytes, semantic: The MaxTxOctets field shall be set to the sender's connMaxTxOctets value, with a value not less than 27 octets, determining the maximum number of octets the sender intends to transmit in a single packet., defined_values: 0x001B (27 octets) to 0xFFFF (65535 octets; theoretical maximum), with values below 27 being invalid.",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.5.10",
+    "Verdict": "Invalid — violates minimum value of 27 octets for max_tx_bytes or exceeds receiver's supported capabilities"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Ignore Invalid Value / Cap to Supported Limit",
+    "ErrorResponseType": "None or LL_UNKNOWN_RSP if value is nonsensical"
+  }
+}
+{
+  "info_str": "layer_name: LL_LENGTH_RSP, field_name: max_tx_time, semantic: The max_tx_time field is used to set the sender's maximum transmission time for data packets, ensuring that it supports the specified time without exceeding it, with a minimum value of 328 microseconds., defined_values: 0x0148 (328 microseconds minimum), 0x0848 (2120 microseconds maximum for devices not supporting LE Coded PHY), 0x0000-0xFFFF (Theoretical range, but values below 328 are not valid)",
+  "ProtocolComplianceCheck": {
+    "SpecReference": "Vol 6 Part B §4.5.10",
+    "Verdict": "Invalid — violates defined range for max_tx_time (minimum 328 microseconds)"
+  },
+  "ExpectedDeviceBehavior": {
+    "PrimaryAction": "Ignore invalid value and maintain current or default transmission time parameters",
+    "ErrorResponseType": "None or LL_REJECT_EXT_IND (if supported, Error Code: dependent on specific violation)"
+  }
+}

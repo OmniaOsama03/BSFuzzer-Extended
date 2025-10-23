@@ -1,0 +1,46 @@
+{
+    "pairing_random_pkt": [
+        [
+            "pairing_random_pkt",
+            "BTLE_DATA",
+            "RFU",
+            "07"
+        ],
+        [
+            "pairing_random_pkt",
+            "BTLE_DATA",
+            "RFU",
+            "01"
+        ],
+        [
+            "pairing_random_pkt",
+            "BTLE_DATA",
+            "RFU",
+            "06"
+        ],
+        [
+            "pairing_random_pkt",
+            "BTLE_DATA",
+            "RFU",
+            "02"
+        ],
+        [
+            "pairing_random_pkt",
+            "BTLE_DATA",
+            "RFU",
+            "05"
+        ],
+        [
+            "pairing_random_pkt",
+            "BTLE_DATA",
+            "RFU",
+            "04"
+        ],
+        [
+            "pairing_random_pkt",
+            "BTLE_DATA",
+            "RFU",
+            "03"
+        ]
+    ]
+}

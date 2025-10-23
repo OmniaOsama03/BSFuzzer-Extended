@@ -1,0 +1,20 @@
+{
+    "llm": {
+      "model_provider": "grok",
+      "model": "grok-2",
+      "embedding_model": "text-embedding-3-small",
+      "temperature": 0
+      
+    },
+    "semfuzz": {
+
+      "xml_file_path": "/home/yangting/Documents/Semantic/data/sem_seed/merged.xml",
+      "field_seed_file_path": "/home/yangting/Documents/Semantic/data/sem_seed/${model_provider}/field_semseed_parse_deduplicated.json",
+      "inner_field_seed_file_path": "/home/yangting/Documents/Semantic/data/sem_seed/${model_provider}/inner_field_semseed_parse.json",
+      "state_seed_file_path": "/home/yangting/Documents/Semantic/data/sem_seed/${model_provider}/state_seed_sc_parsed.json"
+
+    }
+
+    
+
+  }

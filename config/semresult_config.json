@@ -1,0 +1,28 @@
+{
+    "llm": {
+        "field_model_provider": "google",
+        "field_model": "gemini-2.0-flash",
+        "state_model_provider": "google",
+        "state_model": "gemini-2.0-flash",
+        "base_model_provider": "grok",
+        "base_model": "grok-3",
+        "temperature": 0
+    },
+    
+    "faiss_index_path": {
+      "smp_faiss_index_path": "/home/yangting/Documents/Semantic/data/vector_db/smp/",
+      "l2cap_faiss_index_path": "/home/yangting/Documents/Semantic/data/vector_db/l2cap/",
+      "att_faiss_index_path": "/home/yangting/Documents/Semantic/data/vector_db/att/",
+      "ll_faiss_index_path": "/home/yangting/Documents/Semantic/data/vector_db/ll/"
+      
+    },
+    "sem_info": {
+      "sem_info_file_path": "/home/yangting/Documents/Semantic/data/sem_seed/merged.xml"
+    },
+
+    "semresult": {
+      "seed_result_file_path": "/home/yangting/Documents/Semantic/result/log_file/Esp32/semfuzz_output.json",
+      "answer_result_file_path": "/home/yangting/Documents/Semantic/result/log_file/Esp32/answer_result2.json"
+    }
+}
+ 

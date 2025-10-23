@@ -1,0 +1,1402 @@
+[
+  {
+    "packet_name": "ll_connection_update_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_connection_update_ind_pkt"
+  },
+  {
+    "packet_name": "ll_connection_update_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_connection_param_req_pkt,ll_connection_param_rsp_pkt,ll_connection_update_ind_pkt,ll_connection_update_ind_pkt"
+  },
+  {
+    "packet_name": "ll_connection_update_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_connection_update_ind_pkt"
+  },
+  {
+    "packet_name": "ll_connection_update_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_connection_update_ind_pkt,ll_connection_update_ind_pkt"
+  },
+  {
+    "packet_name": "ll_connection_update_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_connection_update_ind_pkt"
+  },
+  {
+    "packet_name": "ll_connection_update_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_connection_update_ind_pkt,ll_connection_update_ind_pkt"
+  },
+  {
+    "packet_name": "ll_connection_update_ind_pkt",
+    "path": "ll_length_req_pkt,ll_feature_req_pkt,ll_version_ind_pkt,ll_connection_update_ind_pkt"
+  },
+  {
+    "packet_name": "ll_connection_update_ind_pkt",
+    "path": "ll_length_req_pkt,ll_feature_req_pkt,ll_version_ind_pkt,ll_connection_param_req_pkt,ll_connection_param_rsp_pkt,ll_connection_update_ind_pkt,ll_connection_update_ind_pkt"
+  },
+  {
+    "packet_name": "ll_connection_update_ind_pkt",
+    "path": "ll_length_req_pkt,ll_feature_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_connection_update_ind_pkt"
+  },
+  {
+    "packet_name": "ll_connection_update_ind_pkt",
+    "path": "ll_length_req_pkt,ll_feature_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_connection_update_ind_pkt,ll_connection_update_ind_pkt"
+  },
+  {
+    "packet_name": "ll_channel_map_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_channel_map_req_pkt"
+  },
+  {
+    "packet_name": "ll_channel_map_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_channel_map_req_pkt,ll_channel_map_req_pkt"
+  },
+  {
+    "packet_name": "ll_channel_map_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_channel_map_req_pkt"
+  },
+  {
+    "packet_name": "ll_channel_map_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_channel_map_req_pkt,ll_channel_map_req_pkt"
+  },
+  {
+    "packet_name": "ll_channel_map_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_channel_map_req_pkt"
+  },
+  {
+    "packet_name": "ll_channel_map_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_channel_map_req_pkt,ll_channel_map_req_pkt"
+  },
+  {
+    "packet_name": "ll_channel_map_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_channel_map_req_pkt,ll_channel_map_req_pkt"
+  },
+  {
+    "packet_name": "ll_channel_map_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_channel_map_req_pkt"
+  },
+  {
+    "packet_name": "ll_channel_map_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_pause_enc_req_pkt,ll_channel_map_req_pkt"
+  },
+  {
+    "packet_name": "ll_channel_map_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_channel_map_req_pkt,ll_channel_map_req_pkt"
+  },
+  {
+    "packet_name": "ll_terminate_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_terminate_ind_pkt"
+  },
+  {
+    "packet_name": "ll_terminate_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_terminate_ind_pkt,ll_terminate_ind_pkt"
+  },
+  {
+    "packet_name": "ll_terminate_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,ll_terminate_ind_pkt"
+  },
+  {
+    "packet_name": "ll_terminate_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_terminate_ind_pkt"
+  },
+  {
+    "packet_name": "ll_terminate_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_terminate_ind_pkt"
+  },
+  {
+    "packet_name": "ll_terminate_ind_pkt",
+    "path": "ll_terminate_ind_pkt"
+  },
+  {
+    "packet_name": "ll_terminate_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_terminate_ind_pkt"
+  },
+  {
+    "packet_name": "ll_terminate_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_terminate_ind_pkt"
+  },
+  {
+    "packet_name": "ll_terminate_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,ll_terminate_ind_pkt"
+  },
+  {
+    "packet_name": "ll_terminate_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,ll_terminate_ind_pkt"
+  },
+  {
+    "packet_name": "ll_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,ll_enc_req_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,ll_enc_req_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_enc_rsp_pkt,ll_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,ll_enc_req_pkt,ll_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,ll_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,ll_enc_req_pkt,ll_enc_rsp_pkt,ll_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_rsp_pkt,ll_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_encryption_information_pkt,ll_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_enc_rsp_pkt,ll_enc_rsp_pkt,ll_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,ll_enc_req_pkt,ll_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_encryption_information_pkt,ll_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,ll_start_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_start_enc_req_pkt,ll_start_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_start_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,ll_start_enc_req_pkt,ll_start_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,ll_start_enc_req_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_start_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_start_enc_req_pkt,ll_pause_enc_req_pkt,ll_start_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,ll_start_enc_req_pkt,ll_start_enc_req_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_start_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,ll_start_enc_req_pkt,smp_pairing_random_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_start_enc_req_pkt,ll_pause_enc_req_pkt,ll_start_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_start_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_start_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_start_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_start_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_start_enc_rsp_pkt,ll_start_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_start_enc_rsp_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_start_enc_rsp_pkt,ll_start_enc_rsp_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_start_enc_rsp_pkt,ll_start_enc_rsp_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_start_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_pause_enc_req_pkt,ll_start_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_start_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_start_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_pause_enc_req_pkt,ll_start_enc_rsp_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt"
+  },
+  {
+    "packet_name": "ll_unknown_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_unknown_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_unknown_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_unknown_rsp_pkt,ll_unknown_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_unknown_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_unknown_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_unknown_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_unknown_rsp_pkt,ll_unknown_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_unknown_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_unknown_rsp_pkt,ll_unknown_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_unknown_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_unknown_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_unknown_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_unknown_rsp_pkt,ll_unknown_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_unknown_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,ll_unknown_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_unknown_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_unknown_rsp_pkt,ll_unknown_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_unknown_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_unknown_rsp_pkt,ll_unknown_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_feature_req_pkt",
+    "path": "ll_connection_param_req_pkt,ll_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_feature_req_pkt",
+    "path": "ll_feature_req_pkt,ll_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_feature_req_pkt",
+    "path": "ll_reject_ind_pkt,ll_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_feature_req_pkt",
+    "path": "ll_slave_feature_req_pkt,ll_feature_req_pkt,ll_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_feature_req_pkt",
+    "path": "ll_reject_ind_ext_pkt,ll_feature_req_pkt,ll_reject_ind_pkt,ll_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_feature_req_pkt",
+    "path": "ll_feature_req_pkt,ll_feature_req_pkt,ll_reject_ind_pkt,ll_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_feature_req_pkt",
+    "path": "ll_slave_feature_req_pkt,ll_feature_req_pkt,ll_feature_req_pkt,ll_reject_ind_pkt,ll_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_feature_req_pkt",
+    "path": "smp_pairing_request_pkt,ll_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_feature_req_pkt",
+    "path": "smp_pairing_request_pkt,smp_identity_information_pkt,ll_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_feature_req_pkt",
+    "path": "smp_pairing_request_pkt,ll_feature_req_pkt,smp_identity_information_pkt,ll_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_feature_rsp_pkt",
+    "path": "ll_feature_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_feature_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_feature_rsp_pkt,ll_feature_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_feature_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_feature_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_feature_rsp_pkt",
+    "path": "ll_feature_rsp_pkt,ll_feature_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_feature_rsp_pkt",
+    "path": "ll_feature_rsp_pkt,ll_length_req_pkt,ll_feature_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_feature_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_feature_rsp_pkt,ll_feature_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_feature_rsp_pkt",
+    "path": "smp_pairing_request_pkt,smp_pairing_public_key_pkt,ll_feature_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_feature_rsp_pkt",
+    "path": "smp_pairing_request_pkt,smp_pairing_public_key_pkt,ll_feature_req_pkt,ll_feature_rsp_pkt,ll_feature_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_feature_rsp_pkt",
+    "path": "smp_pairing_request_pkt,smp_pairing_public_key_pkt,ll_feature_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_feature_rsp_pkt",
+    "path": "ll_feature_rsp_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,ll_feature_rsp_pkt,ll_feature_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_pause_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_pause_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_pause_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_pause_enc_req_pkt,ll_pause_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_pause_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_pause_enc_req_pkt,ll_pause_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_pause_enc_req_pkt,ll_pause_enc_req_pkt,ll_pause_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,ll_enc_req_pkt,ll_pause_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,ll_enc_req_pkt,ll_pause_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_pause_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_pause_enc_rsp_pkt,ll_pause_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,ll_pause_enc_req_pkt,ll_pause_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_rsp_pkt,ll_pause_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,ll_pause_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,ll_pause_enc_req_pkt,ll_pause_enc_rsp_pkt,ll_pause_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,ll_pause_enc_rsp_pkt,ll_pause_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_pause_enc_rsp_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_pause_enc_rsp_pkt,ll_pause_enc_rsp_pkt,ll_pause_enc_req_pkt"
+  },
+  {
+    "packet_name": "ll_pause_enc_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_pause_enc_req_pkt,ll_pause_enc_rsp_pkt,smp_pairing_request_pkt"
+  },
+  {
+    "packet_name": "ll_version_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_version_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_version_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_version_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_version_ind_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_version_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_version_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_version_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_version_ind_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_version_ind_pkt",
+    "path": "ll_length_req_pkt,ll_feature_req_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_version_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_version_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_reject_ind_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_reject_ind_pkt,ll_reject_ind_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_reject_ind_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_reject_ind_pkt,ll_reject_ind_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_reject_ind_pkt,ll_length_req_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_reject_ind_pkt,ll_reject_ind_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_reject_ind_pkt,ll_length_req_pkt,ll_reject_ind_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_pkt",
+    "path": "ll_slave_feature_req_pkt,ll_reject_ind_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_length_rsp_pkt,ll_reject_ind_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_pkt",
+    "path": "ll_slave_feature_req_pkt,ll_reject_ind_pkt,ll_length_req_pkt,ll_length_rsp_pkt,ll_reject_ind_pkt"
+  },
+  {
+    "packet_name": "ll_slave_feature_req_pkt",
+    "path": "ll_slave_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_slave_feature_req_pkt",
+    "path": "ll_slave_feature_req_pkt,ll_slave_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_slave_feature_req_pkt",
+    "path": "ll_enc_req_pkt,ll_slave_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_slave_feature_req_pkt",
+    "path": "ll_slave_feature_req_pkt,ll_slave_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_slave_feature_req_pkt",
+    "path": "ll_enc_req_pkt,ll_slave_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_slave_feature_req_pkt",
+    "path": "ll_enc_req_pkt,ll_slave_feature_req_pkt,ll_slave_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_slave_feature_req_pkt",
+    "path": "ll_enc_req_pkt,ll_slave_feature_req_pkt,ll_slave_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_slave_feature_req_pkt",
+    "path": "ll_length_req_pkt,ll_slave_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_slave_feature_req_pkt",
+    "path": "smp_pairing_dhkey_check_pkt,ll_slave_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_slave_feature_req_pkt",
+    "path": "smp_pairing_dhkey_check_pkt,ll_slave_feature_req_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_req_pkt",
+    "path": "ll_feature_req_pkt,ll_connection_param_req_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_connection_param_req_pkt,ll_connection_param_req_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_connection_param_req_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_req_pkt",
+    "path": "ll_feature_req_pkt,ll_connection_param_req_pkt,ll_connection_param_req_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_req_pkt",
+    "path": "ll_feature_req_pkt,ll_connection_param_req_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_connection_param_req_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_connection_param_req_pkt,ll_connection_param_req_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_req_pkt",
+    "path": "ll_feature_req_pkt,ll_connection_param_req_pkt,ll_length_req_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_connection_param_req_pkt,ll_connection_param_rsp_pkt,ll_connection_param_req_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,ll_connection_param_req_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_req_pkt",
+    "path": "ll_feature_req_pkt,ll_connection_param_req_pkt,ll_connection_param_req_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_connection_param_req_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_connection_param_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_connection_param_req_pkt,ll_connection_param_rsp_pkt,ll_connection_param_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_connection_update_ind_pkt,ll_connection_param_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_connection_param_rsp_pkt,ll_connection_param_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_connection_update_ind_pkt,ll_connection_param_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_connection_update_ind_pkt,ll_connection_param_req_pkt,ll_connection_param_rsp_pkt,ll_connection_param_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_connection_update_ind_pkt,ll_connection_param_rsp_pkt,ll_connection_param_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_feature_rsp_pkt,ll_connection_param_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_connection_update_ind_pkt,ll_connection_param_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_connection_param_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_connection_param_req_pkt,ll_connection_param_rsp_pkt,ll_connection_param_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_ext_pkt",
+    "path": "ll_feature_req_pkt,ll_reject_ind_ext_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_ext_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_reject_ind_ext_pkt,ll_reject_ind_ext_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_ext_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_enc_req_pkt,ll_reject_ind_ext_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_ext_pkt",
+    "path": "ll_feature_req_pkt,ll_reject_ind_ext_pkt,ll_reject_ind_ext_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_ext_pkt",
+    "path": "ll_feature_req_pkt,ll_version_ind_pkt,ll_enc_req_pkt,ll_reject_ind_ext_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_ext_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,ll_enc_req_pkt,ll_reject_ind_ext_pkt,ll_reject_ind_ext_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_ext_pkt",
+    "path": "ll_feature_req_pkt,ll_version_ind_pkt,ll_enc_req_pkt,ll_reject_ind_ext_pkt,ll_reject_ind_ext_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_ext_pkt",
+    "path": "ll_terminate_ind_pkt,ll_reject_ind_ext_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_ext_pkt",
+    "path": "ll_unknown_rsp_pkt,ll_reject_ind_ext_pkt,ll_reject_ind_ext_pkt"
+  },
+  {
+    "packet_name": "ll_reject_ind_ext_pkt",
+    "path": "ll_slave_feature_req_pkt,ll_version_ind_pkt,ll_enc_req_pkt,ll_reject_ind_ext_pkt"
+  },
+  {
+    "packet_name": "ll_ping_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_ping_req_pkt"
+  },
+  {
+    "packet_name": "ll_ping_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_ping_req_pkt,ll_ping_req_pkt,ll_ping_req_pkt"
+  },
+  {
+    "packet_name": "ll_ping_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_ping_req_pkt"
+  },
+  {
+    "packet_name": "ll_ping_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_ping_req_pkt,ll_ping_req_pkt,ll_ping_req_pkt"
+  },
+  {
+    "packet_name": "ll_ping_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_ping_req_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_ping_req_pkt"
+  },
+  {
+    "packet_name": "ll_ping_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_ping_req_pkt,ll_ping_req_pkt,ll_ping_req_pkt"
+  },
+  {
+    "packet_name": "ll_ping_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_ping_req_pkt,ll_ping_req_pkt,ll_ping_req_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_ping_req_pkt"
+  },
+  {
+    "packet_name": "ll_ping_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_ping_req_pkt"
+  },
+  {
+    "packet_name": "ll_ping_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_ping_req_pkt,ll_ping_req_pkt,ll_ping_req_pkt"
+  },
+  {
+    "packet_name": "ll_ping_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_ping_req_pkt"
+  },
+  {
+    "packet_name": "ll_ping_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_ping_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_ping_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_ping_rsp_pkt,ll_ping_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_ping_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,ll_ping_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_ping_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_ping_rsp_pkt,ll_ping_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_ping_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,ll_ping_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_ping_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,ll_ping_rsp_pkt,ll_ping_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_ping_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,ll_ping_rsp_pkt,ll_ping_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_ping_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_ping_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_ping_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_ping_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_ping_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,ll_ping_rsp_pkt"
+  },
+  {
+    "packet_name": "ll_length_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_length_req_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_req_pkt",
+    "path": "ll_feature_req_pkt,ll_connection_param_req_pkt,ll_length_req_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_length_req_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_req_pkt",
+    "path": "ll_feature_req_pkt,ll_slave_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_req_pkt",
+    "path": "ll_feature_req_pkt,ll_reject_ind_pkt,ll_length_req_pkt,ll_length_req_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_req_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_length_req_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_req_pkt",
+    "path": "ll_feature_req_pkt,ll_slave_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_req_pkt",
+    "path": "ll_feature_req_pkt,ll_reject_ind_pkt,ll_length_req_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_req_pkt",
+    "path": "ll_feature_req_pkt,ll_connection_param_req_pkt,ll_length_req_pkt,ll_length_req_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_rsp_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_length_rsp_pkt,ll_length_rsp_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_enc_req_pkt,ll_length_rsp_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_enc_req_pkt,ll_length_rsp_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_enc_req_pkt,ll_length_rsp_pkt,ll_length_rsp_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_rsp_pkt,ll_length_rsp_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_feature_rsp_pkt,ll_length_rsp_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_slave_feature_req_pkt,ll_length_rsp_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_connection_param_req_pkt,ll_length_rsp_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "ll_length_rsp_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_reject_ind_pkt,ll_length_rsp_pkt,ll_length_rsp_pkt,ll_version_ind_pkt"
+  },
+  {
+    "packet_name": "smp_master_identification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,smp_master_identification_pkt"
+  },
+  {
+    "packet_name": "smp_master_identification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,smp_encryption_information_pkt,smp_master_identification_pkt,smp_master_identification_pkt"
+  },
+  {
+    "packet_name": "smp_master_identification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_master_identification_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,smp_encryption_information_pkt"
+  },
+  {
+    "packet_name": "smp_master_identification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,smp_master_identification_pkt,smp_master_identification_pkt"
+  },
+  {
+    "packet_name": "smp_master_identification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_master_identification_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "smp_master_identification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_master_identification_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,smp_encryption_information_pkt,smp_master_identification_pkt"
+  },
+  {
+    "packet_name": "smp_master_identification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,smp_master_identification_pkt,ll_start_enc_rsp_pkt,smp_encryption_information_pkt"
+  },
+  {
+    "packet_name": "smp_master_identification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,smp_encryption_information_pkt,smp_master_identification_pkt,smp_master_identification_pkt"
+  },
+  {
+    "packet_name": "smp_master_identification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,smp_master_identification_pkt,ll_start_enc_rsp_pkt,smp_encryption_information_pkt"
+  },
+  {
+    "packet_name": "smp_master_identification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_master_identification_pkt,ll_enc_req_pkt,smp_master_identification_pkt,ll_start_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_request_pkt",
+    "path": "ll_feature_req_pkt,smp_pairing_request_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_request_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_request_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_request_pkt",
+    "path": "ll_feature_req_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_request_pkt",
+    "path": "ll_feature_req_pkt,smp_pairing_request_pkt,smp_pairing_request_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_request_pkt",
+    "path": "ll_feature_req_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_request_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_request_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,smp_pairing_request_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_request_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_request_pkt,smp_pairing_request_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_request_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_random_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_request_pkt",
+    "path": "ll_feature_req_pkt,smp_pairing_request_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt"
+  },
+  {
+    "packet_name": "smp_identity_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_identity_information_pkt"
+  },
+  {
+    "packet_name": "smp_identity_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_identity_information_pkt,smp_identity_information_pkt"
+  },
+  {
+    "packet_name": "smp_identity_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_identity_information_pkt"
+  },
+  {
+    "packet_name": "smp_identity_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_identity_information_pkt,smp_identity_information_pkt"
+  },
+  {
+    "packet_name": "smp_identity_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_identity_information_pkt"
+  },
+  {
+    "packet_name": "smp_identity_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_identity_information_pkt,smp_identity_information_pkt"
+  },
+  {
+    "packet_name": "smp_identity_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_identity_information_pkt,smp_identity_information_pkt"
+  },
+  {
+    "packet_name": "smp_identity_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_identity_information_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt"
+  },
+  {
+    "packet_name": "smp_identity_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_identity_information_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt"
+  },
+  {
+    "packet_name": "smp_identity_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_identity_information_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,smp_identity_information_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_confirm_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_confirm_pkt,smp_pairing_random_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_confirm_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_confirm_pkt,smp_pairing_confirm_pkt,smp_pairing_random_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_confirm_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_confirm_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_confirm_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_confirm_pkt,smp_pairing_confirm_pkt,smp_pairing_random_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_confirm_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_confirm_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_confirm_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_confirm_pkt,smp_pairing_confirm_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_confirm_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_confirm_pkt,smp_pairing_confirm_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_confirm_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_random_pkt,smp_pairing_confirm_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_confirm_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_confirm_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_confirm_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_confirm_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_random_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_random_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_confirm_pkt,smp_pairing_random_pkt,smp_pairing_random_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_random_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_confirm_pkt,smp_encryption_information_pkt,smp_pairing_random_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_random_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_random_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_confirm_pkt,smp_pairing_random_pkt,smp_pairing_random_pkt,smp_encryption_information_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_random_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_confirm_pkt,smp_pairing_random_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_random_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_confirm_pkt,smp_pairing_dhkey_check_pkt,smp_pairing_random_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_random_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_random_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_random_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_confirm_pkt,ll_enc_req_pkt,smp_pairing_random_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_random_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,ll_start_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_failed_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_failed_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_failed_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_failed_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_failed_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_failed_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_failed_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_failed_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_failed_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_failed_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_failed_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_security_request_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_encryption_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,smp_encryption_information_pkt"
+  },
+  {
+    "packet_name": "smp_encryption_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,smp_master_identification_pkt,smp_encryption_information_pkt,smp_encryption_information_pkt"
+  },
+  {
+    "packet_name": "smp_encryption_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_encryption_information_pkt"
+  },
+  {
+    "packet_name": "smp_encryption_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_encryption_information_pkt"
+  },
+  {
+    "packet_name": "smp_encryption_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_master_identification_pkt,smp_encryption_information_pkt,smp_encryption_information_pkt"
+  },
+  {
+    "packet_name": "smp_encryption_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,smp_master_identification_pkt,smp_encryption_information_pkt"
+  },
+  {
+    "packet_name": "smp_encryption_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,smp_master_identification_pkt,smp_encryption_information_pkt,smp_encryption_information_pkt"
+  },
+  {
+    "packet_name": "smp_encryption_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_encryption_information_pkt"
+  },
+  {
+    "packet_name": "smp_encryption_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_encryption_information_pkt"
+  },
+  {
+    "packet_name": "smp_encryption_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_master_identification_pkt,smp_encryption_information_pkt,smp_encryption_information_pkt"
+  },
+  {
+    "packet_name": "smp_identity_address_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_identity_address_information_pkt"
+  },
+  {
+    "packet_name": "smp_identity_address_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_identity_address_information_pkt,smp_identity_address_information_pkt"
+  },
+  {
+    "packet_name": "smp_identity_address_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_identity_address_information_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "smp_identity_address_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_identity_address_information_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "smp_identity_address_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_identity_address_information_pkt,smp_identity_address_information_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "smp_identity_address_information_pkt",
+    "path": "ll_feature_req_pkt,smp_identity_address_information_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "smp_identity_address_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_identity_address_information_pkt,smp_identity_address_information_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "smp_identity_address_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_identity_address_information_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "smp_identity_address_information_pkt",
+    "path": "ll_feature_req_pkt,smp_identity_address_information_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt"
+  },
+  {
+    "packet_name": "smp_identity_address_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_identity_address_information_pkt,smp_identity_address_information_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt"
+  },
+  {
+    "packet_name": "smp_signing_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_signing_information_pkt"
+  },
+  {
+    "packet_name": "smp_signing_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,smp_signing_information_pkt,smp_signing_information_pkt"
+  },
+  {
+    "packet_name": "smp_signing_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_signing_information_pkt"
+  },
+  {
+    "packet_name": "smp_signing_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_signing_information_pkt,smp_pairing_request_pkt"
+  },
+  {
+    "packet_name": "smp_signing_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_signing_information_pkt,smp_signing_information_pkt"
+  },
+  {
+    "packet_name": "smp_signing_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_signing_information_pkt,smp_signing_information_pkt"
+  },
+  {
+    "packet_name": "smp_signing_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_signing_information_pkt,smp_signing_information_pkt,smp_pairing_request_pkt"
+  },
+  {
+    "packet_name": "smp_signing_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,smp_signing_information_pkt"
+  },
+  {
+    "packet_name": "smp_signing_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,smp_signing_information_pkt"
+  },
+  {
+    "packet_name": "smp_signing_information_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,smp_signing_information_pkt,smp_signing_information_pkt"
+  },
+  {
+    "packet_name": "smp_security_request_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_security_request_pkt"
+  },
+  {
+    "packet_name": "smp_security_request_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_security_request_pkt,smp_security_request_pkt"
+  },
+  {
+    "packet_name": "smp_security_request_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_security_request_pkt"
+  },
+  {
+    "packet_name": "smp_security_request_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_security_request_pkt,smp_security_request_pkt"
+  },
+  {
+    "packet_name": "smp_security_request_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_security_request_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_security_request_pkt"
+  },
+  {
+    "packet_name": "smp_security_request_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_security_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_security_request_pkt,smp_security_request_pkt"
+  },
+  {
+    "packet_name": "smp_security_request_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_security_request_pkt,smp_security_request_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_security_request_pkt,smp_security_request_pkt"
+  },
+  {
+    "packet_name": "smp_security_request_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_failed_pkt,smp_security_request_pkt"
+  },
+  {
+    "packet_name": "smp_security_request_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_signing_information_pkt,smp_security_request_pkt"
+  },
+  {
+    "packet_name": "smp_security_request_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,smp_security_request_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_public_key_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_public_key_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_confirm_pkt,smp_pairing_public_key_pkt,smp_pairing_public_key_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_public_key_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_confirm_pkt,smp_pairing_public_key_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_public_key_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_public_key_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_public_key_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_public_key_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_confirm_pkt,smp_pairing_public_key_pkt,smp_pairing_public_key_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_public_key_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_public_key_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_public_key_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_encryption_information_pkt,smp_pairing_public_key_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_public_key_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_confirm_pkt,smp_pairing_public_key_pkt,ll_feature_rsp_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_public_key_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_encryption_information_pkt,smp_pairing_public_key_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_dhkey_check_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_dhkey_check_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_dhkey_check_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_pairing_dhkey_check_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_dhkey_check_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_dhkey_check_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_dhkey_check_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_dhkey_check_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_pairing_dhkey_check_pkt,smp_pairing_failed_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_dhkey_check_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_dhkey_check_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_identity_address_information_pkt,smp_pairing_dhkey_check_pkt,smp_pairing_dhkey_check_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_dhkey_check_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_identity_address_information_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_dhkey_check_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_identity_address_information_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_dhkey_check_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_pairing_dhkey_check_pkt,smp_identity_address_information_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_keypress_notification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_keypress_notification_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_keypress_notification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_keypress_notification_pkt,smp_pairing_keypress_notification_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_keypress_notification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_pairing_keypress_notification_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_keypress_notification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_keypress_notification_pkt,smp_pairing_keypress_notification_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_keypress_notification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_keypress_notification_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_pairing_keypress_notification_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_keypress_notification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,smp_pairing_keypress_notification_pkt,smp_pairing_keypress_notification_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_keypress_notification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,smp_pairing_keypress_notification_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_keypress_notification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,smp_pairing_keypress_notification_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_keypress_notification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_keypress_notification_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,smp_pairing_keypress_notification_pkt"
+  },
+  {
+    "packet_name": "smp_pairing_keypress_notification_pkt",
+    "path": "ll_feature_req_pkt,ll_length_req_pkt,ll_version_ind_pkt,smp_pairing_request_pkt,smp_pairing_public_key_pkt,smp_pairing_random_pkt,smp_pairing_dhkey_check_pkt,ll_enc_req_pkt,ll_start_enc_rsp_pkt,ll_pause_enc_req_pkt,smp_pairing_keypress_notification_pkt,smp_pairing_keypress_notification_pkt"
+  }
+]

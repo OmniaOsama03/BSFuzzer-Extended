@@ -1,0 +1,126 @@
+{
+  "SM_Pairing_Request": {
+    "test_cases": [
+      {
+        "Scenario Type": "Pairing Process Interruption",
+        "Analysis": "Protocol Section 4.2 states: The pairing process must be completed sequentially in the following order: Pairing Request → Pairing Confirm → DHKey Exchange. Protocol Section 5.1 states: An encrypted session must be established only after a successful pairing.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Skip Pairing Confirm. 3. Directly send Encryption Request.",
+        "Validation": "✔ Violates Prestate Not Completed (Pairing Confirm is missing). ✔ Violates Encryption Handshake Process Specification."
+      },
+      {
+        "Scenario Type": "Encryption Handshake Failure",
+        "Analysis": "Protocol Section 5.1 states: An encrypted session must be established only after a successful pairing and key distribution.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Send Pairing Confirm. 3. Send Encryption Request without completing Key Distribution.",
+        "Validation": "✔ Violates Prestate Not Completed (Key Distribution is missing). ✔ Violates Encryption Handshake Process Specification."
+      },
+      {
+        "Scenario Type": "Service Discovery Conflict",
+        "Analysis": "Protocol Section 6.1 states: Service discovery must not occur until the pairing process is fully completed.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Send Pairing Confirm. 3. Send Service Discovery Request before completing key distribution.",
+        "Validation": "✔ Violates Prestate Not Completed (Service Discovery is attempted prematurely)."
+      },
+      {
+        "Scenario Type": "Feature Value Read/Write Order Error",
+        "Analysis": "Protocol Section 7.1 states: Feature values must be read before attempting to write new values.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Send Pairing Confirm. 3. Directly send Feature Value Write Request without reading the feature value first.",
+        "Validation": "✔ Violates Prestate Not Completed (Read operation is missing before Write)."
+      },
+      {
+        "Scenario Type": "Connection Parameter Update Conflict",
+        "Analysis": "Protocol Section 8.1 states: Connection parameters must not be updated during the pairing process.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Send Pairing Confirm. 3. Send Connection Parameter Update Request during the pairing process.",
+        "Validation": "✔ Violates Prestate Not Completed (Update is sent during pairing)."
+      },
+      {
+        "Scenario Type": "Pairing Process Interruption",
+        "Analysis": "Protocol Section 4.2 states: The pairing process must be completed sequentially in the following order: Pairing Request → Pairing Confirm → DHKey Exchange.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Skip Pairing Confirm. 3. Directly send Pairing Random.",
+        "Validation": "✔ Violates Prestate Not Completed (Pairing Confirm is missing)."
+      },
+      {
+        "Scenario Type": "Encryption Handshake Failure",
+        "Analysis": "Protocol Section 5.1 states: An encrypted session must be established only after a successful pairing.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Send Pairing Confirm. 3. Send Pairing Random. 4. Skip LL Encryption Request. 5. Directly send LL Start Encryption Response.",
+        "Validation": "✔ Violates Prestate Not Completed (LL Encryption Request is missing). ✔ Violates Encryption Handshake Process Specification."
+      },
+      {
+        "Scenario Type": "Service Discovery Conflict",
+        "Analysis": "Protocol Section 6.2 states: Service discovery must occur only after the pairing process is complete.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Send Pairing Confirm. 3. Send LL Length Request before LL Encryption Request.",
+        "Validation": "✔ Violates Prestate Not Completed (Pairing process not completed before service discovery)."
+      },
+      {
+        "Scenario Type": "Feature Value Read/Write Order Error",
+        "Analysis": "Protocol Section 6.3 states: Feature values must be read after establishing an encrypted session.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Send Pairing Confirm. 3. Send LL Encryption Request. 4. Send LL Version Ind before LL Start Encryption Response.",
+        "Validation": "✔ Violates Prestate Not Completed (LL Start Encryption Response is missing before reading features)."
+      },
+      {
+        "Scenario Type": "Connection Parameter Update Conflict",
+        "Analysis": "Protocol Section 7.1 states: Connection parameters must not be updated during the pairing process.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Send Pairing Confirm. 3. Send LL Encryption Request. 4. Send LL Start Encryption Response. 5. Immediately send a connection parameter update request.",
+        "Validation": "✔ Violates Prestate Not Completed (Connection parameters cannot be updated during the pairing process)."
+      },
+      {
+        "Scenario Type": "Pairing Process Interruption",
+        "Analysis": "Protocol Section 4.2 states: The pairing process must be completed sequentially in the following order: Pairing Request → Pairing Confirm → DHKey Exchange. Protocol Section 5.1 states: An encrypted session must be established only after a successful pairing.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Skip Pairing Confirm. 3. Directly send LL Encryption Request.",
+        "Validation": "✔ Violates Prestate Not Completed (Pairing Confirm is missing). ✔ Violates Encryption Handshake Process Specification."
+      },
+      {
+        "Scenario Type": "Encryption Handshake Failure",
+        "Analysis": "Protocol Section 4.2 states: The pairing process must be completed before encryption can start. Protocol Section 5.1 states: An encrypted session can only be initiated after Pairing Confirm.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Send Pairing Confirm. 3. Send LL Encryption Request without waiting for Pairing Random.",
+        "Validation": "✔ Violates Prestate Not Completed (Pairing Random is missing). ✔ Violates Encryption Handshake Process Specification."
+      },
+      {
+        "Scenario Type": "Service Discovery Conflict",
+        "Analysis": "Protocol Section 5.2 states: Service discovery must occur after establishing a secure connection. Protocol Section 4.2 states: Pairing must be completed before service discovery is initiated.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Send Pairing Confirm. 3. Directly initiate Service Discovery before LL Start Encryption Response.",
+        "Validation": "✔ Violates Prestate Not Completed (Secure connection is not established). ✔ Violates Order of Operations for Service Discovery."
+      },
+      {
+        "Scenario Type": "Feature Value Read/Write Order Error",
+        "Analysis": "Protocol Section 6.1 states: Feature values must be read after establishing a secure connection. Protocol Section 4.2 states: Pairing must be completed before any feature value operations.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Send Pairing Confirm. 3. Directly read feature values before LL Start Encryption Response.",
+        "Validation": "✔ Violates Prestate Not Completed (Secure connection is not established). ✔ Violates Order of Operations for Feature Value Access."
+      },
+      {
+        "Scenario Type": "Connection Parameter Update Conflict",
+        "Analysis": "Protocol Section 5.3 states: Connection parameters must only be updated after a successful pairing. Protocol Section 4.2 states: Pairing must be completed before connection parameter updates.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Send Pairing Confirm. 3. Send LL Length Request before LL Start Encryption Response.",
+        "Validation": "✔ Violates Prestate Not Completed (Secure connection is not established). ✔ Violates Connection Parameter Update Process."
+      },
+      {
+        "Scenario Type": "Pairing Process Interruption",
+        "Analysis": "Protocol Section 4.2 states: The pairing process must be completed sequentially in the following order: Pairing Request → Pairing Confirm → DHKey Exchange. Protocol Section 5.1 states: An encrypted session must be established only after a successful pairing.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Skip Pairing Confirm. 3. Directly send Encryption Request.",
+        "Validation": "✔ Violates Prestate Not Completed (Pairing Confirm is missing). ✔ Violates Encryption Handshake Process Specification."
+      },
+      {
+        "Scenario Type": "Encryption Handshake Failure",
+        "Analysis": "Protocol Section 5.1 states: An encrypted session must be established only after a successful pairing process. Protocol Section 4.2 defines that Pairing Confirm must be received before sending an Encryption Request.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Send Pairing Confirm. 3. Send Encryption Request without completing Pairing Random.",
+        "Validation": "✔ Violates Prestate Not Completed (Pairing Random is missing). ✔ Violates Encryption Handshake Process Specification."
+      },
+      {
+        "Scenario Type": "Service Discovery Conflict",
+        "Analysis": "Protocol Section 6.1 states: Service discovery must occur after the pairing is complete.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Complete Pairing Confirm and Pairing Random. 3. Immediately send Service Discovery Request before encryption is established.",
+        "Validation": "✔ Violates Prestate Not Completed (Encryption is not established). ✔ Violates Service Discovery Timing Requirement."
+      },
+      {
+        "Scenario Type": "Feature Value Read/Write Order Error",
+        "Analysis": "Protocol Section 3.3 states: Feature values must be read before they can be written.",
+        "Mutation Steps": "1. Send LL Feature Request. 2. Directly send LL Length Request before receiving a response.",
+        "Validation": "✔ Violates Repeated Operations Not Following Protocol Specifications (read before write)."
+      },
+      {
+        "Scenario Type": "Connection Parameter Update Conflict",
+        "Analysis": "Protocol Section 7.1 states: Connection parameters must not be updated during an active pairing process.",
+        "Mutation Steps": "1. Send Pairing Request. 2. Send Pairing Confirm. 3. Issue a Connection Parameter Update Request before completing the pairing process.",
+        "Validation": "✔ Violates Prestate Not Completed (Pairing Process is still active). ✔ Violates Connection Parameter Update Requirement."
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+2025-05-03 19:35:19,806 - INFO - Bluetooth_SUL.py:78 - Advertiser Address: 28:D0:43:1D:0A:14
+2025-05-03 19:35:19,806 - DEBUG - key.py:72 - ia: bce3ff6d04a0 ia_type: 01 ra: 28d0431d0a14 ra_type: 00 role: 1
+2025-05-03 19:35:19,817 - DEBUG - key.py:72 - ia: f57b330616ce ia_type: 01 ra: 28d0431d0a14 ra_type: 00 role: 1
+2025-05-03 19:35:19,829 - DEBUG - key.py:72 - ia: b2de8cbc67c5 ia_type: 01 ra: 28d0431d0a14 ra_type: 00 role: 1
+2025-05-03 19:35:19,840 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_ADV / BTLE_SCAN_REQ
+2025-05-03 19:35:20,179 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_ADV / BTLE_SCAN_REQ
+2025-05-03 19:35:20,569 - INFO - Bluetooth_SUL.py:306 - 2025-05-03 19:35:20  TX ---> BTLE / BTLE_ADV / BTLE_CONNECT_REQ
+2025-05-03 19:35:20,856 - DEBUG - key.py:72 - ia: e56bbff14169 ia_type: 01 ra: 28d0431d0a14 ra_type: 00 role: 1
+2025-05-03 19:35:20,879 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_ADV / BTLE_SCAN_REQ
+2025-05-03 19:35:21,685 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_ADV / BTLE_SCAN_REQ
+2025-05-03 19:35:21,974 - INFO - Bluetooth_SUL.py:306 - 2025-05-03 19:35:21  TX ---> BTLE / BTLE_ADV / BTLE_CONNECT_REQ
+2025-05-03 19:35:22,411 - DEBUG - key.py:72 - ia: f2ab026f036f ia_type: 01 ra: 28d0431d0a14 ra_type: 00 role: 1
+2025-05-03 19:35:22,435 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_ADV / BTLE_SCAN_REQ
+2025-05-03 19:35:23,874 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_ADV / BTLE_SCAN_REQ
+2025-05-03 19:35:24,270 - INFO - Bluetooth_SUL.py:306 - 2025-05-03 19:35:24  TX ---> BTLE / BTLE_ADV / BTLE_CONNECT_REQ
+2025-05-03 19:35:24,711 - DEBUG - key.py:72 - ia: 38719fbdb095 ia_type: 01 ra: 28d0431d0a14 ra_type: 00 role: 1
+2025-05-03 19:35:24,723 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_ADV / BTLE_SCAN_REQ
+2025-05-03 19:35:26,177 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_ADV / BTLE_SCAN_REQ
+2025-05-03 19:35:26,575 - INFO - Bluetooth_SUL.py:306 - 2025-05-03 19:35:26  TX ---> BTLE / BTLE_ADV / BTLE_CONNECT_REQ
+2025-05-03 19:35:26,959 - DEBUG - key.py:72 - ia: dcbe66b359da ia_type: 01 ra: 28d0431d0a14 ra_type: 00 role: 1
+2025-05-03 19:35:26,972 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_ADV / BTLE_SCAN_REQ
+2025-05-03 19:35:28,362 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_ADV / BTLE_SCAN_REQ
+2025-05-03 19:35:28,757 - INFO - Bluetooth_SUL.py:306 - 2025-05-03 19:35:28  TX ---> BTLE / BTLE_ADV / BTLE_CONNECT_REQ
+2025-05-03 19:35:29,134 - DEBUG - key.py:72 - ia: 3643e80fd72c ia_type: 01 ra: 28d0431d0a14 ra_type: 00 role: 1
+2025-05-03 19:35:29,159 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_ADV / BTLE_SCAN_REQ
+2025-05-03 19:35:30,661 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_ADV / BTLE_SCAN_REQ
+2025-05-03 19:35:31,079 - INFO - Bluetooth_SUL.py:306 - 2025-05-03 19:35:31  TX ---> BTLE / BTLE_ADV / BTLE_CONNECT_REQ
+2025-05-03 19:35:31,431 - DEBUG - key.py:72 - ia: 38df3e71f700 ia_type: 01 ra: 28d0431d0a14 ra_type: 00 role: 1
+2025-05-03 19:35:31,454 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_ADV / BTLE_SCAN_REQ
+2025-05-03 19:35:32,762 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_ADV / BTLE_SCAN_REQ
+2025-05-03 19:35:33,148 - INFO - Bluetooth_SUL.py:306 - 2025-05-03 19:35:33  TX ---> BTLE / BTLE_ADV / BTLE_CONNECT_REQ
+2025-05-03 19:35:33,486 - DEBUG - key.py:72 - ia: df27fa3f1606 ia_type: 01 ra: 28d0431d0a14 ra_type: 00 role: 1
+2025-05-03 19:35:33,508 - INFO - Bluetooth_SUL.py:353 - TX ---> BTLE / BTLE_ADV / BTLE_SCAN_REQ

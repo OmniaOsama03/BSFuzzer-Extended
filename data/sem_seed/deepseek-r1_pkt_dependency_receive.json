@@ -1,0 +1,53 @@
+{
+    "packets": [
+        {
+            "packet_name_1": "ll_enc_rsp_pkt",
+            "packet_name_2": "smp_encryption_information_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "skds <-> ltk": "The Session Key Diversifier Slave (skds) in ll enc rsp is derived using the Long Term Key (ltk) from smp encryption information. The ltk directly contributes to the computation of session keys like skds during the encryption setup phase, as per Bluetooth protocol specifications."
+            }
+        },
+        {
+            "packet_name_1": "ll_feature_rsp_pkt",
+            "packet_name_2": "ll_length_req_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "feature_set vs max_rx_bytes": "If the feature_set in ll_feature_rsp indicates support for Data Length Extension (DLE), the max_rx_bytes in ll_length_req can be set to values larger than the default 27 bytes (up to 251 bytes).",
+                "feature_set vs max_rx_time": "The max_rx_time in ll_length_req depends on the DLE support in feature_set, as the transmission time calculation directly uses the supported max_rx_bytes (which is enabled by DLE).",
+                "feature_set vs max_tx_bytes": "The max_tx_bytes in ll_length_req is directly constrained by the DLE support in feature_set, similar to max_rx_bytes.",
+                "feature_set vs max_tx_time": "The max_tx_time in ll_length_req is derived from the max_tx_bytes value, which is enabled by DLE support in feature_set."
+            }
+        },
+        {
+            "packet_name_1": "ll_feature_rsp_pkt",
+            "packet_name_2": "smp_pairing_request_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "feature_set -> authentication": "If the Secure Connections (SC) bit in feature_set is enabled, the Authentication Flag in SMP Pairing Request must set the SC bit. SC support in LL directly determines valid authentication options.",
+                "feature_set -> max_key_size": "The presence of SC in feature_set mandates max_key_size to be 16 bytes. Without SC, max_key_size can be 7-16 bytes. LL capabilities directly constrain SMP key size negotiation.",
+                "feature_set -> initiator_key_distribution": "If LE Encryption is not supported in feature_set, the initiator_key_distribution cannot include encryption keys (e.g., LTK). LL capabilities directly restrict permissible key distribution flags.",
+                "feature_set -> responder_key_distribution": "Similar to initiator_key_distribution: responder key distribution is constrained by LE Encryption/SC support in feature_set."
+            }
+        },
+        {
+            "packet_name_1": "ll_feature_rsp_pkt",
+            "packet_name_2": "smp_identity_information_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "feature_set (LE Privacy bit) -> irk": "If the LE Privacy bit in ll_feature_rsp's feature_set is enabled, the device must support SMP identity resolution via irk. The protocol mandates that IRK generation and usage depend directly on LE Privacy feature negotiation during the LL feature exchange."
+            }
+        },
+        {
+            "packet_name_1": "ll_feature_rsp_pkt",
+            "packet_name_2": "smp_identity_address_information_pkt",
+            "cross_packet_dependency": true,
+            "explanation": {
+                "feature_set -> atype": "If the 'feature_set' in 'll feature rsp' includes LE Privacy, the 'atype' in 'smp identity address information' must specify the type of identity address (public or static) used for resolving resolvable private addresses, as mandated by the protocol.",
+                "feature_set -> address": "The 'feature_set' in 'll feature rsp' (e.g., LE Privacy support) directly determines whether the 'address' in 'smp identity address information' is required to provide the valid identity address for resolving private addresses during pairing."
+            }
+        }
+
+
+    ]
+} 

@@ -1,0 +1,1522 @@
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_connection_update_ind_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "This packet can be sent at any point after connection establishment, but ideally after Phase 1 (Pairing Feature Exchange) if pairing is in progress, to avoid interference with SMP command exchanges.",
+      "PreviousPacketName": "Likely LL_DATA_PKT or another LL control PDU indicating an active connection state.",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (No Security) or higher if pairing/encryption is in progress"
+    },
+    "StateValidity": "True if the device is in Connected state; False if not connected or if a connection update interferes with critical SMP phases."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Acknowledge via NESN bit update in the next Data Channel PDU and apply connection parameters at specified Instant.",
+      "ErrorHandling": {
+        "ResponseType": "LL_REJECT_EXT_IND or LL_REJECT_IND if parameters are invalid",
+        "ErrorCode": "0x1E (Invalid LL Parameters)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send LL_REJECT_EXT_IND or ignore packet if not in Connected state.",
+      "ErrorCodeSelectionLogic": "Refer to Vol 6 Part B \u00a72.4.2.18 for error code selection based on invalid parameters or state mismatch."
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 6 Part B \u00a72.4.2.1 (LL_CONNECTION_UPDATE_IND definition)",
+      "Vol 6 Part B \u00a75.1.7 (Connection Parameters Update Procedure)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_channel_map_req_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Not applicable for LL_CHANNEL_MAP_IND as it is a Link Layer control packet independent of SMP pairing phases; it can be sent anytime during an active connection.",
+      "PreviousPacketName": "Any valid Data Channel PDU (e.g., LL_DATA_PKT) as part of ongoing connection events",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (No encryption required for this packet)"
+    },
+    "StateValidity": "True if the device is in Connection State and the packet passes CRC and sequence number checks; False otherwise."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Acknowledge with updated NESN in next Data Channel PDU and apply new channel map at specified Instant",
+      "ErrorHandling": {
+        "ResponseType": "None (if CRC fails, no acknowledgment is sent, triggering retransmission)",
+        "ErrorCode": "0x00 (No specific error code; implicit retransmission request via NAK behavior)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Do not acknowledge (NAK behavior) if CRC fails or sequence number is duplicate",
+      "ErrorCodeSelectionLogic": "No explicit error packet; refer to Vol 2 Part E \u00a74.5.9 for sequence number and acknowledgment rules"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part E \u00a72.4.2.2 (LL_CHANNEL_MAP_IND PDU structure and usage)",
+      "Vol 2 Part E \u00a74.5.8 (Channel map selection and update behavior)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_terminate_ind_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "The LL_TERMINATE_IND packet can be sent at any point after a connection is established, potentially during or after pairing phases (Phase 1: Feature Exchange, Phase 2: Key Generation, Phase 3: Key Distribution) if a security failure or timeout occurs.",
+      "PreviousPacketName": "Possible previous packets include LL_CONNECTION_UPDATE_IND or any data/control PDU indicating an active connection state.",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (or higher if encryption is required based on SMP state)"
+    },
+    "StateValidity": "True if the device is in Connection State; False if already terminated or not connected."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Acknowledge the LL_TERMINATE_IND packet with an empty Data Channel PDU or appropriate response, transition out of Connection State to Standby or Advertising State, and release connection resources.",
+      "ErrorHandling": {
+        "ResponseType": "None (if packet is valid and acknowledged)",
+        "ErrorCode": "0x00 (No error if termination is processed successfully)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Ignore the packet if CRC check fails or if not in Connection State.",
+      "ErrorCodeSelectionLogic": "If packet is invalid or device is not in Connection State, no response is sent; refer to Vol 2 Part D for error codes if termination reason is provided in the packet (e.g., 0x13 for Remote User Terminated Connection)."
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part E \u00a72.4.2.3 (LL_TERMINATE_IND Packet Format)",
+      "Vol 2 Part E \u00a75.1.6 (Termination Procedure)",
+      "Vol 3 Part H \u00a73.5.1 (SMP Pairing Failed Command and Error Codes)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_enc_req_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "After Phase 2 (Key Generation) of pairing where STK or LTK is generated, but before encryption is active.",
+      "PreviousPacketName": "Likely 'Pairing Response' or related SMP packets during Phase 2 completion.",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (Encryption required, based on SMP security properties)"
+    },
+    "StateValidity": "True if in Connected state, unencrypted, post-pairing key generation; False otherwise."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Respond with LL_ENC_RSP packet containing slave's session key diversifier and initialization vector.",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No error if state is valid)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Respond with LL_REJECT_IND or LL_UNKNOWN_RSP if not in correct state or parameters invalid.",
+      "ErrorCodeSelectionLogic": "Select error code based on specific issue, e.g., 'Command Disallowed' (0x0C) if encryption already active, per Vol 2 Part D."
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part E \u00a72.4.2.4 (LL_ENC_REQ packet definition and procedure)",
+      "Vol 3 Part H \u00a72.3.1 (SMP Security Modes and Pairing Phases)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_enc_rsp_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 2 of pairing (key generation) must be completed with successful exchange of Pairing Confirm and Pairing Random commands, before or during Phase 3 (key distribution if applicable). The `ll_enc_rsp_pkt` is expected after the slave has sent `LL_ENC_REQ` to initiate encryption.",
+      "PreviousPacketName": "LL_ENC_REQ",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (determined in Phase 1 as LE Secure Connections or LE Legacy Pairing)"
+    },
+    "StateValidity": "True if the slave is in Connection State, has sent `LL_ENC_REQ`, completed Phase 2 of pairing, and no pairing failures or concurrent SMP procedures are active; False otherwise."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Process the `LL_ENC_RSP` packet, acknowledge receipt by updating NESN, combine SKDs and IVs with own parameters to compute session key, and prepare to send `LL_START_ENC_REQ` to confirm readiness for encryption.",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No error if state is valid)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send `LL_UNKNOWN_RSP` or `LL_REJECT_EXT_IND` depending on the error type (e.g., unexpected packet or invalid parameters).",
+      "ErrorCodeSelectionLogic": "Select error code based on specific issue, such as 'Invalid LL Parameters (0x1E)' for invalid fields or 'Unsupported Remote Feature (0x1A)' if encryption setup is not expected, referencing Vol 2 Part E \u00a77.8.2."
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part E \u00a72.4.2.5 (LL_ENC_RSP PDU definition and usage)",
+      "Vol 3 Part H \u00a72.3.5 (Encryption setup and pairing phases)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_start_enc_req_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 2 of pairing (Key Generation) must be completed, with key (STK or LTK) generated or retrieved for bonded devices. The `ll_start_enc_req_pkt` should be sent after key agreement but before the link is fully encrypted.",
+      "PreviousPacketName": "Likely `Pairing Random` or `Pairing Confirm` at SMP level, indicating completion of key generation, or a prior LL control packet if re-establishing encryption.",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (depending on LE Legacy or LE Secure Connections, with or without MITM protection)"
+    },
+    "StateValidity": "True if the connection is unencrypted but connected, pairing key generation is complete, and security context matches; False otherwise."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Send `LL_START_ENC_RSP` to acknowledge encryption initiation.",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No error if state is valid)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send `LL_REJECT_IND` or `LL_REJECT_EXT_IND` to indicate error.",
+      "ErrorCodeSelectionLogic": "Refer to Vol 2 Part E \u00a77.8.24 for error codes such as 'Unsupported Remote Feature' (0x1A) or 'Invalid Parameters' (0x18) if security context or state is mismatched."
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part E \u00a77.8.6 (LL_START_ENC_REQ definition and behavior)",
+      "Vol 3 Part H \u00a72.3 (SMP Pairing Phases and relation to encryption)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_start_enc_rsp_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 2 (Key Generation) must be completed with successful confirm value verification, before encryption is initiated. The `LL_START_ENC_RSP` should be sent after the slave sends `LL_START_ENC_REQ` to request encryption start.",
+      "PreviousPacketName": "LL_START_ENC_REQ (sent by slave to master to initiate encryption)",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (depending on pairing type: LE Legacy or LE Secure Connections)"
+    },
+    "StateValidity": "True if the slave has sent `LL_START_ENC_REQ`, pairing Phase 2 is complete with key generation (STK or LTK), and the connection is in an unencrypted but connected state; False otherwise."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Transition to encrypted state and expect encrypted Data Channel PDUs in subsequent connection events.",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No error if state is valid)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Ignore packet or terminate connection if encryption cannot be established.",
+      "ErrorCodeSelectionLogic": "Refer to Vol 3 Part H \u00a72.4.2 for error handling during encryption setup (e.g., timeout or sequence number mismatch)."
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 3 Part H \u00a72.4.2 (Link Layer Control PDU for encryption start)",
+      "Vol 3 Part H \u00a73.5.4 (SMP confirm value verification and encryption start)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_unknown_rsp_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 1 (Pairing Feature Exchange) or Phase 2 (Key Generation) where feature exchange or control requests are typically sent.",
+      "PreviousPacketName": "LL_FEATURE_REQ or other Link Layer Control PDU sent by slave to master",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (No security requirements initially, encryption optional)"
+    },
+    "StateValidity": "True if the slave is in Connection State and has sent a prior control PDU; False if no prior control PDU was sent or connection state is not established."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Process LL_UNKNOWN_RSP and update internal state to note unsupported opcode",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No error, as this is a valid response)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Ignore packet or log error internally",
+      "ErrorCodeSelectionLogic": "Refer to Vol 2 Part E \u00a77.8.5 for handling unexpected control PDUs"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part E \u00a77.8.5 (LL_UNKNOWN_RSP definition and behavior)",
+      "Vol 3 Part H \u00a72.1 (SMP pairing phases and encryption requirements)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_feature_req_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Before or during Phase 1 (Pairing Feature Exchange), as feature exchange at LL typically occurs early in the connection setup to negotiate capabilities.",
+      "PreviousPacketName": "Likely a connection establishment packet such as LL_CONNECTION_REQ or a prior control PDU.",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (No security required initially, but may transition based on SMP pairing)"
+    },
+    "StateValidity": "True if the device is in Connected state; False if not in Connected state or if other preconditions like role mismatch occur."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Respond with LL_FEATURE_RSP packet containing the FeatureSet field (8 octets) detailing supported Link Layer features.",
+      "ErrorHandling": {
+        "ResponseType": "LL_UNKNOWN_RSP",
+        "ErrorCode": "0x1A (Unsupported Remote Feature / Unsupported LMP Feature)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Respond with LL_UNKNOWN_RSP packet if the PDU is not recognized or supported.",
+      "ErrorCodeSelectionLogic": "Refer to Vol 2 Part E \u00a77.8.5 for error handling of unsupported features."
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part E \u00a77.8.9 (LL_FEATURE_REQ PDU definition and behavior)",
+      "Vol 3 Part H \u00a72.3 (Security Manager Pairing Phases and Connection State)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_feature_rsp_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Before or during Phase 1 of SMP pairing (Pairing Feature Exchange), typically after connection establishment but before encryption or key distribution.",
+      "PreviousPacketName": "LL_SLAVE_FEATURE_REQ (sent by slave to request master's features) or LL_FEATURE_REQ (sent by master to initiate feature exchange).",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (if security is required, determined post-feature exchange)"
+    },
+    "StateValidity": "True if the slave is in Connected state, has initiated or received a feature request, and the packet passes CRC validation; False otherwise."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Process feature set, update NESN for acknowledgment, and potentially notify Host of master's supported features.",
+      "ErrorHandling": {
+        "ResponseType": "None (if packet is valid and processed correctly)",
+        "ErrorCode": "0x00 (No error)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Ignore packet and request retransmission if CRC fails, or disregard payload if sequence number indicates a duplicate.",
+      "ErrorCodeSelectionLogic": "Refer to Vol 2 Part E \u00a74.5.9 for acknowledgment and flow control rules regarding CRC failure or sequence number mismatch."
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part E \u00a72.4.2.10 (LL_FEATURE_RSP packet definition)",
+      "Vol 2 Part E \u00a75.1.4.2 (Slave-initiated Feature Exchange Procedure)",
+      "Vol 3 Part H \u00a72.1 (SMP Pairing Phases and Encryption Requirements)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_pause_enc_req_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Encrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Post Phase 2 (Encryption enabled after key generation, either STK for LE Legacy or LTK for LE Secure Connections)",
+      "PreviousPacketName": "LL_START_ENC_RSP (indicating encryption was started)",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (or higher, depending on pairing method and authentication requirements)"
+    },
+    "StateValidity": "True if connection is active and encrypted; False if connection is unencrypted or not established"
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "LL_PAUSE_ENC_RSP",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No error)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "LL_UNKNOWN_RSP",
+      "ErrorCodeSelectionLogic": "Refer to Vol 2 Part E \u00a72.4.2.8 for LL_UNKNOWN_RSP usage when encryption is not active or PDU is unexpected"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part E \u00a72.4.2.11 (LL_PAUSE_ENC_REQ definition and usage)",
+      "Vol 3 Part H \u00a72.1 (SMP Pairing Phases and encryption setup)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_pause_enc_rsp_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Encrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Post Phase 2 (Key Generation), encryption established, before or during a security procedure requiring pause.",
+      "PreviousPacketName": "LL_PAUSE_ENC_REQ",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (depending on authentication requirements)"
+    },
+    "StateValidity": "True if the slave has sent LL_PAUSE_ENC_REQ, connection is encrypted and active, and response is within timeout; False otherwise."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Acknowledge packet via SN/NESN mechanism and update encryption state to paused if confirmed by master.",
+      "ErrorHandling": {
+        "ResponseType": "LL_REJECT_EXT_IND if master rejects pause",
+        "ErrorCode": "0x0C (Command Disallowed) or other SIG-defined code based on rejection reason"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send LL_UNKNOWN_RSP if packet is unexpected or ignore if CRC fails.",
+      "ErrorCodeSelectionLogic": "Refer to Vol 2 Part E \u00a72.4.2.8 for LL_UNKNOWN_RSP usage and error code assignment."
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part E \u00a72.4.2.12 (LL_PAUSE_ENC_RSP definition and procedure)",
+      "Vol 3 Part H \u00a72.1 (SMP Pairing Phases and encryption setup)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_version_ind_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Before Phase 1 (Pairing Feature Exchange), as LL_VERSION_IND is typically exchanged early in the connection setup before SMP pairing procedures begin.",
+      "PreviousPacketName": "CONNECT_IND or AUX_CONNECT_REQ (packets that establish the connection state)",
+      "RoleConstraint": "Either",
+      "SecurityMode": "Mode 1"
+    },
+    "StateValidity": "True if the device is in Connection State; False otherwise"
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Respond with LL_VERSION_IND packet containing slave's version information",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No error if packet is valid and CRC check passes)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Ignore packet (if not in Connection State or CRC check fails)",
+      "ErrorCodeSelectionLogic": "No specific error code sent; packet is ignored and not acknowledged, prompting retransmission by master (Vol 6 Part B \u00a74.5.9.1)"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 6 Part B \u00a72.4.2.13 (LL_VERSION_IND PDU definition)",
+      "Vol 6 Part B \u00a74.5.9 (Flow Control and Acknowledgment)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_reject_ind_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 1 or early Phase 2 (before encryption is enabled), or post-encryption in Phase 3 if applicable, considering the Bluetooth pairing and encryption process.",
+      "PreviousPacketName": "LL_CONNECTION_PARAM_REQ or LL_FEATURE_REQ",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1"
+    },
+    "StateValidity": "True if in Connection State with prior request sent; False otherwise"
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Process ErrorCode and terminate associated procedure",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0xXX (As per ErrorCode in LL_REJECT_IND)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Ignore packet or send LL_UNKNOWN_RSP",
+      "ErrorCodeSelectionLogic": "Refer to Vol 2 Part D for error codes and handling unexpected packets"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part B \u00a72.4.2.14 (LL_REJECT_IND PDU definition)",
+      "Vol 3 Part H \u00a72.3 (SMP Pairing Phases and Security Requirements)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_slave_feature_req_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "This packet can be sent at any point after the connection is established, typically before or during Phase 1 (Pairing Feature Exchange) of the SMP pairing process to ensure feature compatibility.",
+      "PreviousPacketName": "LL_CONNECTION_PARAM_REQ or LL_CONNECTION_UPDATE_IND (if connection parameters were negotiated prior)",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (No Security) or transitioning to Mode 2 (if pairing initiated)"
+    },
+    "StateValidity": "True if in Connection State and role is Slave; False otherwise"
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "LL_FEATURE_RSP",
+      "ErrorHandling": {
+        "ResponseType": "LL_UNKNOWN_RSP",
+        "ErrorCode": "0x1A (Unsupported Remote Feature)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "LL_TERMINATE_IND",
+      "ErrorCodeSelectionLogic": "Refer to Vol 2 Part E \u00a77.8.24 for termination reason codes, prioritizing based on Vol 1 Part F \u00a73.4.1"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part E \u00a77.8.15 (LL_SLAVE_FEATURE_REQ)",
+      "Vol 3 Part H \u00a72.4.2 (SMP Pairing Phases and Security Interaction)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_connection_param_req_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "No active pairing procedure (Phases 1-3) should be in progress to avoid delays or prioritization conflicts; packet can be received post-pairing or before pairing initiation.",
+      "PreviousPacketName": "Any Data Channel PDU or Link Layer Control PDU indicating an active connection (e.g., LL_DATA_PKT)",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (if encryption is required, it should be established prior)"
+    },
+    "StateValidity": "True if in Connected state with no conflicting procedures; False if not in Connected state or if pairing is actively in progress with resource conflicts."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "LL_CONNECTION_PARAM_RSP if parameters are acceptable",
+      "ErrorHandling": {
+        "ResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND if parameters are unacceptable",
+        "ErrorCode": "0x1A (Unsupported Remote Feature / Unsupported LMP Feature) or other relevant code based on rejection reason"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "LL_REJECT_IND or LL_REJECT_EXT_IND if feature not supported or device not in Connected state",
+      "ErrorCodeSelectionLogic": "Select error code based on specific reason for rejection as per Vol 2 Part E \u00a75.1.10 (Connection Parameter Update Procedure)"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part E \u00a75.1.10 (Connection Parameter Update Procedure)",
+      "Vol 6 Part B \u00a72.4.2.16 (LL_CONNECTION_PARAM_REQ PDU definition)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_connection_param_rsp_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Can occur in any phase (Phase 1-3) as Link Layer control packets are not directly tied to SMP pairing state; typically after connection establishment and before or during parameter negotiation.",
+      "PreviousPacketName": "LL_CONNECTION_PARAM_REQ (sent by slave to master requesting connection parameter update)",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (No security required for Link Layer control packets, though higher layers may impose constraints)"
+    },
+    "StateValidity": "True if in Connected state and LL_CONNECTION_PARAM_REQ was sent; False if not in Connected state or feature not supported by master"
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Process LL_CONNECTION_PARAM_RSP and update connection parameters at agreed instant if accepted by master",
+      "ErrorHandling": {
+        "ResponseType": "LL_REJECT_IND or LL_REJECT_EXT_IND if parameters rejected by master",
+        "ErrorCode": "0x1A (Unsupported Remote Feature) if master does not support Connection Parameters Request Procedure"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Discard packet or send error response if applicable",
+      "ErrorCodeSelectionLogic": "Refer to Vol 2 Part E \u00a77.8.12 for LL_REJECT_IND error codes based on unsupported feature or invalid state (e.g., not in Connected state)"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part E \u00a77.8.18 (LL_CONNECTION_PARAM_RSP definition and behavior)",
+      "Vol 3 Part H \u00a72.4.6 (Security Request and encryption state impact on packet processing)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_reject_ind_ext_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 1 (Pairing Feature Exchange) or Phase 2 (Key Generation) if unencrypted; Phase 3 (Key Distribution) only if encrypted.",
+      "PreviousPacketName": "LL_CONNECTION_PARAM_REQ or other control request PDU initiated by slave",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (No security requirements) or higher depending on pairing progress"
+    },
+    "StateValidity": "True if in Connection State and a prior control request was sent by the slave; False otherwise"
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Acknowledge PDU via NESN update if CRC passes",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No error, as this is a rejection received from master)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Ignore PDU or terminate connection if context invalid",
+      "ErrorCodeSelectionLogic": "Refer to Vol 2 Part D (Error Codes) for appropriate code based on rejection reason"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part E \u00a72.4.2.18 (LL_REJECT_EXT_IND PDU definition)",
+      "Vol 3 Part H \u00a72.3 (SMP Pairing Phases and Security Modes)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_ping_req_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Not applicable for LL_PING_REQ as it is a Link Layer control packet, but if pairing is in progress, it should be between pairing initiation (Pairing Request) and completion (Key Distribution).",
+      "PreviousPacketName": "Any valid Data Channel PDU or Control PDU (e.g., LL_DATA or LL_CONTROL)",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (No Security) or higher if encrypted"
+    },
+    "StateValidity": "True if in Connected state; False if connection is not established or supervision timeout has expired"
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "LL_PING_RSP",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No Error)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "No Response (Silent Failure)",
+      "ErrorCodeSelectionLogic": "If connection state is invalid or packet validation fails (e.g., CRC error), no response is sent as per Vol 6 Part B \u00a74.5.9"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 6 Part B \u00a72.4.2.19 (LL_PING_REQ Definition)",
+      "Vol 6 Part B \u00a74.5 (Connection State)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_ping_rsp_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Encrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Post Phase 2 (Key Generation completed, encryption key applied) of SMP pairing process, before or during Phase 3 if applicable.",
+      "PreviousPacketName": "LL_PING_REQ",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (Encryption required, authentication optional based on pairing mode - Just Works or authenticated methods)"
+    },
+    "StateValidity": "True if all preconditions are met (encrypted connection, prior LL_PING_REQ sent, LE Ping feature supported); False otherwise."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Complete LE Ping procedure, no further packet transmission required.",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No error if packet CRC is valid)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Reject packet or initiate disconnection if supervision timeout occurs.",
+      "ErrorCodeSelectionLogic": "If LE Ping feature unsupported by master, expect LL_UNKNOWN_RSP with error code as per Vol 2 Part E \u00a77.8.5; if connection not encrypted or no prior LL_PING_REQ, no specific error packet but potential disconnection per Vol 2 Part E \u00a74.5.2."
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part E \u00a75.1.8 (LE Ping Procedure)",
+      "Vol 3 Part H \u00a72.3.5 (SMP Pairing Phases and Encryption)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_length_req_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Can be received at any phase of pairing (Phase 1-3), but processing may be deferred until encryption is established if security policy mandates encryption.",
+      "PreviousPacketName": "Likely preceded by connection establishment packets such as LL_FEATURE_REQ or LL_FEATURE_RSP for feature exchange.",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (No Security) or higher if encryption is required post-pairing."
+    },
+    "StateValidity": "True if in Connected state and feature exchange for LE Data Packet Length Extension is completed; False if conflicting procedures are ongoing or feature is unsupported."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Respond with LL_LENGTH_RSP containing supported data length parameters (MaxRxOctets, MaxTxOctets, MaxRxTime, MaxTxTime).",
+      "ErrorHandling": {
+        "ResponseType": "LL_REJECT_EXT_IND if parameters are unsupported",
+        "ErrorCode": "0x20 (Unsupported LL Parameter Value) or 0x1E (Invalid LL Parameters)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send LL_REJECT_EXT_IND or ignore if CRC fails or feature unsupported.",
+      "ErrorCodeSelectionLogic": "Select error code based on Vol 2 Part E \u00a72.4.2.18 (Error codes for LL control PDUs)."
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part E \u00a72.4.2.21 (LL_LENGTH_REQ and LL_LENGTH_RSP PDUs)",
+      "Vol 2 Part E \u00a74.6.6 (LE Data Packet Length Extension)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_length_rsp_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "No specific pairing phase required, but must be after connection establishment. The packet should be sent after the slave initiates the Data Length Update Procedure with an LL_LENGTH_REQ packet.",
+      "PreviousPacketName": "LL_LENGTH_REQ (sent by slave to initiate Data Length Update Procedure)",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (or higher if encryption is active)"
+    },
+    "StateValidity": "True if the slave is in Connection State, has sent LL_LENGTH_REQ, and supports LE Data Packet Length Extension; False otherwise."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Process LL_LENGTH_RSP and update connection parameters (MaxRxOctets, MaxTxOctets, MaxRxTime, MaxTxTime) to the minimum of slave\u2019s supported values and received values.",
+      "ErrorHandling": {
+        "ResponseType": "None (unless PDU is invalid or unsupported)",
+        "ErrorCode": "0x07 (Command Disallowed) if received out of context or unsupported"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send LL_UNKNOWN_RSP if the packet or feature is not supported.",
+      "ErrorCodeSelectionLogic": "Refer to Vol 2 Part E \u00a77.8.5 for LL_UNKNOWN_RSP usage and error code assignment based on unsupported feature or invalid context."
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 2 Part E \u00a75.1.9 (Data Length Update Procedure)",
+      "Vol 2 Part E \u00a72.4.2.21 (LL_LENGTH_RSP PDU structure)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "ll_pkts",
+      "PacketType": "ll_empty_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "The `ll_empty_pkt` can be received at any point during or after the pairing process, typically between connection establishment packets or data exchange packets in a connection event.",
+      "PreviousPacketName": "Possible previous packet could be `LL_DATA_PKT` or `LL_CONTROL_PKT` from the master device.",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (if no encryption required) or higher (if encryption established post-pairing)"
+    },
+    "StateValidity": "True if the device is in Connected state and within a connection event transmit window; False otherwise."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Acknowledge receipt via NESN bit update in the next transmitted packet (could be another `LL_EMPTY_PKT` or `LL_DATA_PKT`).",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No error if state is valid)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Ignore packet or terminate connection if supervision timeout occurs.",
+      "ErrorCodeSelectionLogic": "Refer to Vol 1 Part F \u00a73.4.1 for error code priority if connection state is invalid (e.g., not in Connected state)."
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 5 Part E \u00a74.5.1 (Connection Events)",
+      "Vol 5 Part E \u00a74.5.9 (Acknowledgment and Flow Control)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "smp_pkts",
+      "PacketType": "pairing_request_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 1 (Pairing Feature Exchange) initiation; this packet is the first in the pairing process sent by the master to the slave.",
+      "PreviousPacketName": "None or Security Request (if initiated by slave)",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1"
+    },
+    "StateValidity": "Boolean"
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Pairing Response Packet",
+      "ErrorHandling": {
+        "ResponseType": "Pairing Failed Packet/None",
+        "ErrorCode": "0x0A (Invalid Parameters) or 0x03 (Authentication Requirements)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Pairing Failed Packet",
+      "ErrorCodeSelectionLogic": "Refer to Vol 3 Part H \u00a73.5.5 for error code selection based on specific failure reason (e.g., 0x0A for Invalid Parameters, 0x0E for Cross-transport Key Derivation not allowed)"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 3 Part H \u00a73.5.1 (Pairing Request)",
+      "Vol 3 Part H \u00a73.5.2 (Pairing Response and Cross-transport Rules)",
+      "Vol 3 Part C \u00a714.2 (Collision Handling)",
+      "Vol 2 Part E \u00a74.5 (Link Layer Connection State)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "smp_pkts",
+      "PacketType": "pairing_response_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 1 (Pairing Feature Exchange), after receiving Pairing Request packet from the master",
+      "PreviousPacketName": "Pairing Request",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1"
+    },
+    "StateValidity": "Boolean"
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Send Pairing Response packet with feature data (IO Capability, OOB data flag, AuthReq, etc.)",
+      "ErrorHandling": {
+        "ResponseType": "Pairing Failed/None",
+        "ErrorCode": "0x0A (Invalid Parameters), 0x03 (Authentication Requirements), 0x05 (Pairing Not Supported), 0x0E (Cross-transport Key Derivation/Generation not allowed)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send Pairing Failed packet",
+      "ErrorCodeSelectionLogic": "Select highest priority error code as per Vol 1 Part F \u00a73.4.1, reference specific error reasons in Vol 3 Part H \u00a73.5.5"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 3 Part H \u00a73.5.2 (Pairing Response packet details and behavior)",
+      "Vol 3 Part H \u00a73.5.5 (Error handling for SMP commands)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "smp_pkts",
+      "PacketType": "pairing_confirm_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 2 (Key Generation), after receiving Pairing Confirm from master and before sending Pairing Random",
+      "PreviousPacketName": "Pairing Confirm (from master)",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1"
+    },
+    "StateValidity": "Boolean"
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Send Pairing Confirm packet to master",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No error)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send Pairing Failed packet",
+      "ErrorCodeSelectionLogic": "Refer to Vol 3 Part H \u00a73.5.7 for error codes such as Invalid Parameters (0x0A) or Confirm Value Failed (0x04)"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 3 Part H \u00a73.5.3 (Pairing Confirm packet sequencing and behavior)",
+      "Vol 2 Part E \u00a74.6.1 (LE Encryption in Link Layer)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "smp_pkts",
+      "PacketType": "pairing_random_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 2 (Key Generation Phase), after Pairing Confirm Packet exchange",
+      "PreviousPacketName": "Pairing Confirm Packet (from slave to master)",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1"
+    },
+    "StateValidity": "Boolean"
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Send Pairing Random Packet (Srand or Nb)",
+      "ErrorHandling": {
+        "ResponseType": "Pairing Failed Packet",
+        "ErrorCode": "0x04 (Confirm Value Failed)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send Pairing Failed Packet",
+      "ErrorCodeSelectionLogic": "Refer to Vol 3 Part H \u00a73.5.1 for error code selection based on confirm value verification or timing issues"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 3 Part H \u00a73.5.4 (Pairing Random Packet)",
+      "Vol 3 Part H \u00a72.3.5.5 (LE Legacy Pairing Phase 2)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "smp_pkts",
+      "PacketType": "pairing_failed_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Can be received at any point during Phase 1 (Pairing Feature Exchange), Phase 2 (STK/LTK Generation), or Phase 3 (Key Distribution) if the master detects an error.",
+      "PreviousPacketName": "Could be after 'Pairing Request', 'Pairing Response', 'Pairing Confirm', or any other pairing-related packet depending on when the failure is detected by the master.",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1"
+    },
+    "StateValidity": "True if the device is in a connected state and pairing is in progress; False if pairing is not initiated or connection is not established."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Terminate current pairing process",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "N/A (Reason code provided in the received Pairing Failed packet, e.g., 0x04 for Confirm Value Failed)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Ignore packet or terminate connection",
+      "ErrorCodeSelectionLogic": "Refer to Vol 3 Part H \u00a73.5.1 for general error handling if packet is received outside valid pairing context."
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 3 Part H \u00a73.5.1 (Pairing Failed command and reason codes)",
+      "Vol 3 Part H \u00a73.5.2 (Pairing process and phases)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "smp_pkts",
+      "PacketType": "encryption_information_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Encrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 3 (Key Distribution), after link encryption using key from Phase 2 (STK for LE Legacy or LTK for LE Secure Connections). This packet should be sent after the link is encrypted and before other key distribution packets like Master Identification or Identity Information if applicable.",
+      "PreviousPacketName": "Likely 'Pairing Confirm' or 'Pairing Random' (Phase 2 completion) followed by link encryption activation.",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (depending on security properties negotiated)"
+    },
+    "StateValidity": "True if link is encrypted, pairing is in Phase 3, and previous phases are completed; False otherwise."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Store Long Term Key (LTK) in security database and proceed to next packet in key distribution (e.g., Master Identification or Identity Information if applicable).",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No error if state is valid)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send Pairing Failed packet",
+      "ErrorCodeSelectionLogic": "Select error code based on specific issue, e.g., 'Unspecified Reason' (0x08) if link is unencrypted, 'Invalid Parameters' (0x0A) if packet content is malformed, or 'Authentication Requirements' (0x03) if security properties mismatch, as per Vol 3 Part H \u00a73.5.5."
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 3 Part H \u00a73.6.2 (Key Distribution Phase in SMP)",
+      "Vol 3 Part H \u00a72.3.5.5 (LE Legacy Pairing Encryption) and \u00a72.3.5.6 (LE Secure Connections)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "smp_pkts",
+      "PacketType": "master_identification_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 3 (Key Distribution Phase, after successful pairing and key generation)",
+      "PreviousPacketName": "Pairing Confirm or Pairing Random (depending on pairing method)",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1"
+    },
+    "StateValidity": "Boolean"
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Store EDIV and Rand values in security database for future LTK retrieval",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No error)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send Pairing Failed packet",
+      "ErrorCodeSelectionLogic": "Include specific referenced core_spec_reference (Vol 3 Part H \u00a73.5.5) for reason codes such as Invalid Parameters (0x0A) or Command Not Supported (0x07)"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 3 Part H \u00a73.6.3 (Master Identification Command)",
+      "Vol 3 Part H \u00a73.5.5 (Pairing Failed Command and Reason Codes)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "smp_pkts",
+      "PacketType": "identity_information_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Encrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 3 (Key Distribution), after successful completion of Phase 2 (Key Generation) and link encryption.",
+      "PreviousPacketName": "Likely 'Encryption Setup Complete' or related packet confirming link encryption (e.g., LL_START_ENC_RSP at LL layer).",
+      "RoleConstraint": "Slave (Responder)",
+      "SecurityMode": "Mode 1 (Encryption required)"
+    },
+    "StateValidity": "True if link is encrypted and IRK distribution was agreed upon in Phase 1; False otherwise."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Store IRK in security database for future use in resolving private addresses.",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No error)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send Pairing Failed packet",
+      "ErrorCodeSelectionLogic": "If link is unencrypted, use reason code 0x08 (Unspecified Reason); if IRK distribution not agreed upon, use 0x07 (Command Not Supported); if invalid parameters, use 0x0A (Invalid Parameters) as per Vol 3 Part H \u00a73.5.5."
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 3 Part H \u00a73.6.4 (Identity Information Packet in Key Distribution Phase)",
+      "Vol 3 Part H \u00a72.3.5 (Encryption Requirement before Key Distribution)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "smp_pkts",
+      "PacketType": "identity_address_information_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 3 (Key Distribution Phase, after successful authentication and key generation, typically between Identity Information packet and Signing Information packet or other key distribution packets)",
+      "PreviousPacketName": "Identity Information packet (containing IRK distribution)",
+      "RoleConstraint": "Slave (Responder)",
+      "SecurityMode": "Mode 1 (ideally encrypted link using STK or LTK)"
+    },
+    "StateValidity": "True if received in Phase 3 of pairing after feature exchange and authentication; False if received out of sequence or over an unencrypted link when encryption is required."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Process the Identity Address Information and store the address for future RPA resolution",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No error if state is valid)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send Pairing Failed packet",
+      "ErrorCodeSelectionLogic": "Reference Vol 3 Part H \u00a73.5.5 for Pairing Failed reason codes, such as 0x0A (Invalid Parameters) if received out of sequence"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 3 Part H \u00a73.6.5 (Identity Address Information packet definition)",
+      "Vol 3 Part H \u00a72.4.2.3 (Key Distribution Phase in SMP)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "smp_pkts",
+      "PacketType": "signing_information_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Encrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 3 (Key Distribution), after Phase 2 (Key Generation and Link Encryption) completion.",
+      "PreviousPacketName": "Encryption confirmation packets (e.g., successful STK or LTK establishment packets)",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (Encryption required)"
+    },
+    "StateValidity": "True if all preconditions are met (encrypted link, correct pairing phase, role as slave); False otherwise."
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Accept Signing Information and store CSRK for future data signing verification.",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No error)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send Pairing Failed packet",
+      "ErrorCodeSelectionLogic": "If link is unencrypted, use error code 0x03 (Authentication Requirements); if packet timing is incorrect (before Phase 2 completion), use error code 0x07 (Command Not Supported); if parameters are invalid, use error code 0x0A (Invalid Parameters) as per Vol 3 Part H \u00a73.5.1."
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 3 Part H \u00a73.6.6 (Signing Information Command)",
+      "Vol 3 Part H \u00a72.3.5 (Encryption Requirements for Key Distribution)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "smp_pkts",
+      "PacketType": "security_request_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "No ongoing pairing or encryption procedure (pre-Phase 1 or post-Phase 3 if re-initiating security)",
+      "PreviousPacketName": "None or any non-security procedure packet (e.g., data packet)",
+      "RoleConstraint": "Slave (typically sends Security Request, but question specifies received, implying a response context)",
+      "SecurityMode": "Mode 1 (Security properties to be negotiated)"
+    },
+    "StateValidity": "False (Slave receiving Security Request is non-standard per SMP spec; likely a misinterpretation or error in context)"
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "N/A (since state is invalid, see StateInvalidResponse)",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (Not applicable)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send Pairing Failed Packet",
+      "ErrorCodeSelectionLogic": "Reason: 'Command Not Supported' (0x07) as per Vol 3 Part H \u00a73.5.5, since Security Request is not defined to be received by slave"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 3 Part H \u00a73.6.7 (Security Request definition and constraints)",
+      "Vol 3 Part H \u00a73.5.5 (Pairing Failed reason codes)",
+      "Vol 6 Part B \u00a74.5 (Link Layer Connection State and encryption requirements)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "smp_pkts",
+      "PacketType": "pairing_public_key_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 2 of LE Secure Connections, after Pairing Feature Exchange (Phase 1) completion, between Pairing Request/Response and before Pairing Confirm/Random exchange.",
+      "PreviousPacketName": "Pairing Response (from slave to master)",
+      "RoleConstraint": "Slave",
+      "SecurityMode": "Mode 1 (LE Secure Connections)"
+    },
+    "StateValidity": "True if all preconditions are met (Connected, Unencrypted, Phase 1 completed); False otherwise"
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Send Pairing Public Key Packet (Slave's public key to Master)",
+      "ErrorHandling": {
+        "ResponseType": "Pairing Failed Packet if packet invalid",
+        "ErrorCode": "0x0A (Invalid Parameters)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send Pairing Failed Packet",
+      "ErrorCodeSelectionLogic": "Select error code based on specific failure reason, e.g., Vol 3 Part H \u00a73.5.5 (Table 3.7 for error codes like 0x0A for Invalid Parameters or 0x0E for Cross-Transport Key Derivation not allowed)"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 3 Part H \u00a73.5.6 (Pairing Public Key Exchange in LE Secure Connections)",
+      "Vol 3 Part H \u00a73.5.5 (Pairing Failed Command and Error Codes)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "smp_pkts",
+      "PacketType": "pairing_dhkey_check_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 2 of LE Secure Connections pairing process, after Pairing Public Key and Pairing Random exchange, before link encryption.",
+      "PreviousPacketName": "Pairing Random",
+      "RoleConstraint": "Slave (Peripheral)",
+      "SecurityMode": "LE Secure Connections"
+    },
+    "StateValidity": "Boolean"
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Send Pairing DHKey Check (Eb) to confirm DHKey match",
+      "ErrorHandling": {
+        "ResponseType": "Pairing Failed",
+        "ErrorCode": "0x0B (DHKey Check Failed)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send Pairing Failed",
+      "ErrorCodeSelectionLogic": "Refer to Vol 3 Part H \u00a73.5.5 for reason codes such as 0x0B (DHKey Check Failed) or 0x0A (Invalid Parameters)"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 3 Part H \u00a72.3.5.7 (LE Secure Connections Pairing Process)",
+      "Vol 3 Part H \u00a73.5.7 (Pairing DHKey Check Command Format)"
+    ]
+  }
+}
+{
+  "Input": {
+    "PacketContext": {
+      "Layer": "smp_pkts",
+      "PacketType": "pairing_keypress_notification_pkt",
+      "Direction": "Received by slave device"
+    }
+  },
+  "PreviousStateAnalysis": {
+    "RequiredState": {
+      "ConnectionState": [
+        "Unencrypted",
+        "Connected"
+      ],
+      "PairingPhase": "Phase 2 (Authentication Stage 1 during Passkey Entry method in LE Secure Connections)",
+      "PreviousPacketName": "Pairing Feature Exchange packets (Pairing Request and Pairing Response)",
+      "RoleConstraint": "Either (based on IO capabilities)",
+      "SecurityMode": "Mode 1 (LE Secure Connections with MITM protection)"
+    },
+    "StateValidity": "Boolean (True if preconditions are met, False otherwise)"
+  },
+  "ExpectedBehavior": {
+    "StateValidResponse": {
+      "PrimaryAction": "Process the notification and continue Passkey Entry process; may send corresponding Pairing Keypress Notification if entering passkey",
+      "ErrorHandling": {
+        "ResponseType": "None",
+        "ErrorCode": "0x00 (No error if state is valid)"
+      }
+    },
+    "StateInvalidResponse": {
+      "MandatoryAction": "Send Pairing Failed packet",
+      "ErrorCodeSelectionLogic": "Select based on specific error context, e.g., 'Invalid Parameters' (0x0A) if packet received outside correct phase or method, 'Pairing Not Supported' (0x05) if method unsupported, or 'Authentication Requirements' (0x03) if security mode mismatch, as per Vol 3 Part H \u00a73.5.7"
+    }
+  },
+  "SpecificationCompliance": {
+    "NormativeReferences": [
+      "Vol 3 Part H \u00a73.5.8 (Pairing Keypress Notification)",
+      "Vol 3 Part H \u00a72.3.5.6 (Passkey Entry method in LE Secure Connections)"
+    ]
+  }
+}

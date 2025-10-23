@@ -1,0 +1,24 @@
+{
+    "llm": {
+        "model_provider": "grok",
+        "model": "grok-2",
+        "jg_model": "deepseek-r1",
+        "temperature": 0
+    },
+    
+    "semext_merge": {
+      "xml_file_path": "/home/yangting/Documents/Semantic/data/sem_seed/merged.xml",
+      "faiss_index_path": "/home/yangting/Documents/Semantic/data/vector_db/smp/",
+      "txt_path": "/home/yangting/Documents/Semantic/data/V5.0/SMP.txt"
+      
+    },
+
+    "semseed": {
+      "field_seed_file_path": "/home/yangting/Documents/Semantic/data/sem_seed/${model_provider}/field_semseed.json",
+      "inner_field_seed_file_path": "/home/yangting/Documents/Semantic/data/sem_seed/${model_provider}/inner_field_seed.json",
+      "cross_field_seed_file_path": "/home/yangting/Documents/Semantic/data/sem_seed/${model_provider}/cross_field_seed.json",
+      "state_seed_file_path": "/home/yangting/Documents/Semantic/data/sem_seed/${model_provider}/state_seed.json",
+      "pkt_dependency_path": "/home/yangting/Documents/Semantic/data/sem_seed/pkt_dependency.json"
+    }
+}
+ 

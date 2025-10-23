@@ -1,0 +1,4982 @@
+{
+  "packets": [
+    {
+      "name": "BTLE_DATA",
+      "fields": [
+        {
+          "name": "RFU",
+          "mutations": [
+            {
+              "RFU": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "RFU": "0x07",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "RFU": "0x01",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "RFU": "0x07",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "RFU": "0x03",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "RFU": "0x04",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "RFU": "0x03",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "RFU": "0x06",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "RFU": "0x02",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "RFU": "0x05",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "MD",
+          "mutations": [
+            {
+              "MD": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (No more data)"
+            },
+            {
+              "MD": "0x01",
+              "TestType": "Boundary Test - Maximum Defined Value (More data available)"
+            },
+            {
+              "MD": "0x02",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "MD": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "MD": "0x03",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "MD": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "MD": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "MD": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "MD": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "MD": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "SN",
+          "mutations": [
+            {
+              "SN": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (Even sequence number)"
+            },
+            {
+              "SN": "0x01",
+              "TestType": "Boundary Test - Maximum Defined Value (Odd sequence number)"
+            },
+            {
+              "SN": "0x02",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "SN": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "SN": "0x03",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "SN": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "SN": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "SN": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "SN": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "SN": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "NESN",
+          "mutations": [
+            {
+              "NESN": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (Current packet acknowledged, ready for new data)"
+            },
+            {
+              "NESN": "0x01",
+              "TestType": "Boundary Test - Maximum Defined Value (Expecting retransmission or new data)"
+            },
+            {
+              "NESN": "0x02",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "NESN": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "NESN": "0x03",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "NESN": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "NESN": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "NESN": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "NESN": "0x04",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "NESN": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "LLID",
+          "mutations": [
+            {
+              "LLID": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (Reserved for future use)"
+            },
+            {
+              "LLID": "0x01",
+              "TestType": "Boundary Test - LL Data PDU: Continuation fragment or Empty PDU"
+            },
+            {
+              "LLID": "0x02",
+              "TestType": "Boundary Test - LL Data PDU: Start of an L2CAP message or complete L2CAP message"
+            },
+            {
+              "LLID": "0x03",
+              "TestType": "Boundary Test - Maximum Defined Value (LL Control PDU)"
+            },
+            {
+              "LLID": "0x04",
+              "TestType": "Semantic Invalid - First Reserved Value Beyond Defined Range"
+            },
+            {
+              "LLID": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "LLID": "0x05",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "LLID": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "LLID": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "LLID": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "LLID": "0x06",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "LLID": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "len",
+          "mutations": [
+            {
+              "len": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "len": "0xFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "len": "0x01",
+              "TestType": "Boundary Test - Minimum Non-Zero Value"
+            },
+            {
+              "len": "0xFE",
+              "TestType": "Boundary Test - Maximum Non-Maximum Value"
+            },
+            {
+              "len": "0x0F",
+              "TestType": "Semantic Invalid - Low Boundary Overflow"
+            },
+            {
+              "len": "0xF0",
+              "TestType": "Semantic Invalid - High Boundary Overflow"
+            },
+            {
+              "len": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "len": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "len": "0xAA",
+              "TestType": "Bit Flip - Alternating Bits"
+            },
+            {
+              "len": "0x55",
+              "TestType": "Bit Flip - Inverted Alternating Bits"
+            },
+            {
+              "len": "0xAB",
+              "TestType": "Random Value - Near Middle Range"
+            },
+            {
+              "len": "0xCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "L2CAP_Hdr",
+      "fields": [
+        {
+          "name": "len",
+          "mutations": [
+            {
+              "len": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value (Connection-Oriented)"
+            },
+            {
+              "len": "0x0002",
+              "TestType": "Boundary Test - Minimum Defined Value (Connectionless)"
+            },
+            {
+              "len": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value (Connection-Oriented)"
+            },
+            {
+              "len": "0xFFFD",
+              "TestType": "Boundary Test - Maximum Defined Value (Connectionless)"
+            },
+            {
+              "len": "0x0001",
+              "TestType": "Semantic Invalid - Below Minimum for Connectionless"
+            },
+            {
+              "len": "0xFFFE",
+              "TestType": "Semantic Invalid - Above Maximum for Connectionless"
+            },
+            {
+              "len": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "len": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "len": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "len": "0x0003",
+              "TestType": "Random Value - Near Minimum Boundary"
+            },
+            {
+              "len": "0xFFFC",
+              "TestType": "Random Value - Near Maximum Boundary"
+            },
+            {
+              "len": "0xABCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "cid",
+          "mutations": [
+            {
+              "cid": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value (Null)"
+            },
+            {
+              "cid": "0x0001",
+              "TestType": "Boundary Test - Minimum Fixed CID"
+            },
+            {
+              "cid": "0x003F",
+              "TestType": "Boundary Test - Maximum Fixed CID"
+            },
+            {
+              "cid": "0x0040",
+              "TestType": "Boundary Test - Minimum Dynamic CID (ACL-U/AMP-U)"
+            },
+            {
+              "cid": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Dynamic CID (ACL-U/AMP-U)"
+            },
+            {
+              "cid": "0x007F",
+              "TestType": "Boundary Test - Maximum Dynamic CID (LE-U)"
+            },
+            {
+              "cid": "0x0041",
+              "TestType": "Semantic Invalid - First Reserved Value (Dynamic Range)"
+            },
+            {
+              "cid": "0xFFFE",
+              "TestType": "Semantic Invalid - Near Maximum Reserved Value (Dynamic Range)"
+            },
+            {
+              "cid": "0x0080",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "cid": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "cid": "0xFFFD",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "cid": "0x0002",
+              "TestType": "Boundary Test - Connectionless Channel"
+            },
+            {
+              "cid": "0x00FF",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "cid": "0x1234",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Hdr",
+      "fields": [
+        {
+          "name": "sm_command",
+          "mutations": [
+            {
+              "sm_command": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "sm_command": "0x0F",
+              "TestType": "Boundary Test - First Reserved Value"
+            },
+            {
+              "sm_command": "0xFF",
+              "TestType": "Boundary Test - Maximum Reserved Value"
+            },
+            {
+              "sm_command": "0x10",
+              "TestType": "Semantic Invalid - Arbitrary Non-Reserved Value"
+            },
+            {
+              "sm_command": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "sm_command": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "sm_command": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "sm_command": "0x01",
+              "TestType": "Boundary Test - Pairing Request"
+            },
+            {
+              "sm_command": "0x02",
+              "TestType": "Boundary Test - Pairing Response"
+            },
+            {
+              "sm_command": "0x03",
+              "TestType": "Boundary Test - Pairing Confirm"
+            },
+            {
+              "sm_command": "0x0A",
+              "TestType": "Boundary Test - Signing Information"
+            },
+            {
+              "sm_command": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "sm_command": "0xAB",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Pairing_Response",
+      "fields": [
+        {
+          "name": "iocap",
+          "mutations": [
+            {
+              "iocap": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (DisplayOnly)"
+            },
+            {
+              "iocap": "0x04",
+              "TestType": "Boundary Test - Maximum Defined Value (KeyboardDisplay)"
+            },
+            {
+              "iocap": "0x05",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "iocap": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "iocap": "0x06",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "iocap": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "iocap": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "iocap": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "iocap": "0x03",
+              "TestType": "Boundary Test - NoInputNoOutput"
+            },
+            {
+              "iocap": "0x02",
+              "TestType": "Boundary Test - KeyboardOnly"
+            },
+            {
+              "iocap": "0x01",
+              "TestType": "Boundary Test - DisplayYesNo"
+            },
+            {
+              "iocap": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "iocap": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "oob",
+          "mutations": [
+            {
+              "oob": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (OOB Not Available)"
+            },
+            {
+              "oob": "0x01",
+              "TestType": "Boundary Test - Maximum Defined Value (OOB Available)"
+            },
+            {
+              "oob": "0x02",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "oob": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "oob": "0x7F",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "oob": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "oob": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "oob": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "oob": "0x03",
+              "TestType": "Boundary Test - Reserved Value Near Lower Bound"
+            },
+            {
+              "oob": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "oob": "0x55",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "oob": "0xAA",
+              "TestType": "Random Value - Alternating Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "authentication",
+          "mutations": [
+            {
+              "authentication": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (No Bonding, No MITM)"
+            },
+            {
+              "authentication": "0x0F",
+              "TestType": "Boundary Test - Maximum Defined Value (All Standard Bits Set)"
+            },
+            {
+              "authentication": "0x10",
+              "TestType": "Semantic Invalid - First Reserved Bit Set"
+            },
+            {
+              "authentication": "0xFF",
+              "TestType": "Semantic Invalid - All Bits Set (Including Reserved)"
+            },
+            {
+              "authentication": "0x30",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "authentication": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "authentication": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "authentication": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "authentication": "0x01",
+              "TestType": "Boundary Test - Bonding Only"
+            },
+            {
+              "authentication": "0x02",
+              "TestType": "Boundary Test - MITM Only"
+            },
+            {
+              "authentication": "0x04",
+              "TestType": "Boundary Test - Secure Connections Only"
+            },
+            {
+              "authentication": "0x08",
+              "TestType": "Boundary Test - Keypress Notifications Only"
+            },
+            {
+              "authentication": "0x2A",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "authentication": "0x5C",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "max_key_size",
+          "mutations": [
+            {
+              "max_key_size": "0x06",
+              "TestType": "Boundary Test - Minimum Reserved Value"
+            },
+            {
+              "max_key_size": "0x07",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "max_key_size": "0x10",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "max_key_size": "0x11",
+              "TestType": "Boundary Test - Minimum Future Use Value"
+            },
+            {
+              "max_key_size": "0x00",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "max_key_size": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "max_key_size": "0x05",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "max_key_size": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "max_key_size": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "max_key_size": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "max_key_size": "0x03",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "max_key_size": "0x02",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Master_Identification",
+      "fields": [
+        {
+          "name": "ediv",
+          "mutations": [
+            {
+              "ediv": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "ediv": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "ediv": "0x0001",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "ediv": "0xFFFE",
+              "TestType": "Semantic Invalid - Second to Last Reserved Value"
+            },
+            {
+              "ediv": "0x8000",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "ediv": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "ediv": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "ediv": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "ediv": "0x0002",
+              "TestType": "Random Value - Low Range"
+            },
+            {
+              "ediv": "0x7FFF",
+              "TestType": "Random Value - Mid Range"
+            },
+            {
+              "ediv": "0xFFFD",
+              "TestType": "Random Value - High Range"
+            },
+            {
+              "ediv": "0xABCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "rand",
+          "mutations": [
+            {
+              "rand": "0x0000000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "rand": "0xFFFFFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "rand": "0x0000000000000001",
+              "TestType": "Semantic Invalid - Minimum Non-Zero Value"
+            },
+            {
+              "rand": "0x7FFFFFFFFFFFFFFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "rand": "0x8000000000000000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "rand": "0xFFFFFFFFFFFFFFFE",
+              "TestType": "Bit Flip - Near Maximum Defined Value"
+            },
+            {
+              "rand": "0xAAAAAAAAAAAAAAAA",
+              "TestType": "Random Value - Alternating Bits"
+            },
+            {
+              "rand": "0x5555555555555555",
+              "TestType": "Random Value - Inverted Alternating Bits"
+            },
+            {
+              "rand": "0x123456789ABCDEF0",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "rand": "0x0F0F0F0F0F0F0F0F",
+              "TestType": "Random Value - Repeated Byte Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Pairing_Request",
+      "fields": [
+        {
+          "name": "iocap",
+          "mutations": [
+            {
+              "iocap": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (DisplayOnly)"
+            },
+            {
+              "iocap": "0x04",
+              "TestType": "Boundary Test - Maximum Defined Value (KeyboardDisplay)"
+            },
+            {
+              "iocap": "0x05",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "iocap": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "iocap": "0x06",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "iocap": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "iocap": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "iocap": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "iocap": "0x03",
+              "TestType": "Boundary Test - NoInputNoOutput"
+            },
+            {
+              "iocap": "0x02",
+              "TestType": "Boundary Test - KeyboardOnly"
+            },
+            {
+              "iocap": "0x01",
+              "TestType": "Boundary Test - DisplayYesNo"
+            },
+            {
+              "iocap": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "iocap": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "oob",
+          "mutations": [
+            {
+              "oob": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (OOB Authentication data not present)"
+            },
+            {
+              "oob": "0x01",
+              "TestType": "Boundary Test - Maximum Defined Value (OOB Authentication data from a remote device is present)"
+            },
+            {
+              "oob": "0x02",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "oob": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "oob": "0x7F",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "oob": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "oob": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "oob": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "oob": "0x03",
+              "TestType": "Boundary Test - Undefined Combination"
+            },
+            {
+              "oob": "0x04",
+              "TestType": "Boundary Test - Another Undefined Combination"
+            },
+            {
+              "oob": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "oob": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "authentication",
+          "mutations": [
+            {
+              "authentication": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (No MITM, No SC)"
+            },
+            {
+              "authentication": "0x03",
+              "TestType": "Boundary Test - Maximum Defined Value (MITM, SC)"
+            },
+            {
+              "authentication": "0x04",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "authentication": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "authentication": "0x05",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "authentication": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "authentication": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "authentication": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "authentication": "0x01",
+              "TestType": "Boundary Test - MITM, No SC"
+            },
+            {
+              "authentication": "0x02",
+              "TestType": "Boundary Test - No MITM, SC"
+            },
+            {
+              "authentication": "0x03",
+              "TestType": "Boundary Test - MITM, SC"
+            },
+            {
+              "authentication": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "authentication": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "max_key_size",
+          "mutations": [
+            {
+              "max_key_size": "0x06",
+              "TestType": "Boundary Test - Minimum Reserved Value"
+            },
+            {
+              "max_key_size": "0x07",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "max_key_size": "0x10",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "max_key_size": "0x00",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "max_key_size": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "max_key_size": "0x05",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "max_key_size": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "max_key_size": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "max_key_size": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "max_key_size": "0x03",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "max_key_size": "0x02",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "max_key_size": "0x01",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "max_key_size": "0xFA",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "initiator_key_distribution",
+          "mutations": [
+            {
+              "initiator_key_distribution": "0x0",
+              "TestType": "Boundary Test - Minimum Defined Value (No keys distributed)"
+            },
+            {
+              "initiator_key_distribution": "0xF",
+              "TestType": "Boundary Test - Maximum Defined Value (All keys)"
+            },
+            {
+              "initiator_key_distribution": "0x3",
+              "TestType": "Semantic Invalid - Reserved Combination"
+            },
+            {
+              "initiator_key_distribution": "0xE",
+              "TestType": "Semantic Invalid - Reserved Combination"
+            },
+            {
+              "initiator_key_distribution": "0xA",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "initiator_key_distribution": "0x8",
+              "TestType": "Bit Flip - LinkKey Only"
+            },
+            {
+              "initiator_key_distribution": "0x7",
+              "TestType": "Bit Flip - All Bits Except LinkKey"
+            },
+            {
+              "initiator_key_distribution": "0xB",
+              "TestType": "Bit Flip - EncKey and SignKey Set"
+            },
+            {
+              "initiator_key_distribution": "0x1",
+              "TestType": "Boundary Test - EncKey"
+            },
+            {
+              "initiator_key_distribution": "0x2",
+              "TestType": "Boundary Test - IdKey"
+            },
+            {
+              "initiator_key_distribution": "0x4",
+              "TestType": "Boundary Test - SignKey"
+            },
+            {
+              "initiator_key_distribution": "0x8",
+              "TestType": "Boundary Test - LinkKey"
+            },
+            {
+              "initiator_key_distribution": "0xD",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "initiator_key_distribution": "0xC",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "responder_key_distribution",
+          "mutations": [
+            {
+              "responder_key_distribution": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (No keys distributed)"
+            },
+            {
+              "responder_key_distribution": "0x0F",
+              "TestType": "Boundary Test - Maximum Defined Value (All keys distributed)"
+            },
+            {
+              "responder_key_distribution": "0xF0",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "responder_key_distribution": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "responder_key_distribution": "0xF6",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "responder_key_distribution": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "responder_key_distribution": "0x07",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "responder_key_distribution": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "responder_key_distribution": "0x01",
+              "TestType": "Boundary Test - EncKey Only"
+            },
+            {
+              "responder_key_distribution": "0x02",
+              "TestType": "Boundary Test - IdKey Only"
+            },
+            {
+              "responder_key_distribution": "0x04",
+              "TestType": "Boundary Test - SignKey Only"
+            },
+            {
+              "responder_key_distribution": "0x08",
+              "TestType": "Boundary Test - LinkKey Only"
+            },
+            {
+              "responder_key_distribution": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "responder_key_distribution": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Identity_Information",
+      "fields": [
+        {
+          "name": "irk",
+          "mutations": [
+            {
+              "irk": "0x00000000000000000000000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "irk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "irk": "0x00000000000000000000000000000001",
+              "TestType": "Semantic Invalid - First Bit Set"
+            },
+            {
+              "irk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE",
+              "TestType": "Semantic Invalid - Last Bit Unset"
+            },
+            {
+              "irk": "0xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "TestType": "Semantic Invalid - Alternating Bits"
+            },
+            {
+              "irk": "0x80000000000000000000000000000000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "irk": "0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "irk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7F",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum)"
+            },
+            {
+              "irk": "0x000000000000000000000000000000FF",
+              "TestType": "Bit Flip - Low Byte Set"
+            },
+            {
+              "irk": "0x0000000000000000000000000000FF00",
+              "TestType": "Bit Flip - Second Lowest Byte Set"
+            },
+            {
+              "irk": "0x123456789ABCDEF0123456789ABCDEF0",
+              "TestType": "Random Value - Arbitrary Pattern"
+            },
+            {
+              "irk": "0xFEDCBA9876543210FEDCBA9876543210",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Confirm",
+      "fields": [
+        {
+          "name": "confirm",
+          "mutations": [
+            {
+              "confirm": "0x00000000000000000000000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "confirm": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "confirm": "0x00000000000000000000000000000001",
+              "TestType": "Semantic Invalid - Just Above Minimum"
+            },
+            {
+              "confirm": "0xFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Semantic Invalid - Just Below Maximum"
+            },
+            {
+              "confirm": "0x80000000000000000000000000000000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "confirm": "0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "confirm": "0xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "TestType": "Random Value - Alternating Bits"
+            },
+            {
+              "confirm": "0x55555555555555555555555555555555",
+              "TestType": "Random Value - Inverted Alternating Bits"
+            },
+            {
+              "confirm": "0x123456789ABCDEF0123456789ABCDEF0",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "confirm": "0xFEDCBA9876543210FEDCBA9876543210",
+              "TestType": "Random Value - Reversed Hexadecimal Sequence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Random",
+      "fields": [
+        {
+          "name": "random",
+          "mutations": [
+            {
+              "random": "0x00000000000000000000000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "random": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "random": "0x00000000000000000000000000000001",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "random": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "random": "0xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "random": "0x80000000000000000000000000000000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "random": "0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "random": "0xFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "random": "0x55555555555555555555555555555555",
+              "TestType": "Random Value - Alternating Bits Pattern"
+            },
+            {
+              "random": "0x123456789ABCDEF0123456789ABCDEF0",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Failed",
+      "fields": [
+        {
+          "name": "reason",
+          "mutations": [
+            {
+              "reason": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "reason": "0x01",
+              "TestType": "Boundary Test - Minimum Valid Defined Value"
+            },
+            {
+              "reason": "0x07",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "reason": "0x08",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "reason": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "reason": "0x50",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "reason": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "reason": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "reason": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "reason": "0x03",
+              "TestType": "Boundary Test - Valid Defined Value"
+            },
+            {
+              "reason": "0x02",
+              "TestType": "Boundary Test - Valid Defined Value"
+            },
+            {
+              "reason": "0x04",
+              "TestType": "Boundary Test - Valid Defined Value"
+            },
+            {
+              "reason": "0x06",
+              "TestType": "Boundary Test - Valid Defined Value"
+            },
+            {
+              "reason": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "reason": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Encryption_Information",
+      "fields": [
+        {
+          "name": "ltk",
+          "mutations": [
+            {
+              "ltk": "0x00000000000000000000000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "ltk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "ltk": "0x00000000000000000000000000000001",
+              "TestType": "Semantic Invalid - Minimum Reserved Value"
+            },
+            {
+              "ltk": "0xFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "ltk": "0x80000000000000000000000000000000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "ltk": "0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "ltk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE",
+              "TestType": "Bit Flip - Near Maximum Defined Value"
+            },
+            {
+              "ltk": "0xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "TestType": "Random Value - Alternating Bit Pattern"
+            },
+            {
+              "ltk": "0x55555555555555555555555555555555",
+              "TestType": "Random Value - Inverted Alternating Bit Pattern"
+            },
+            {
+              "ltk": "0x1234567890ABCDEF1234567890ABCDEF",
+              "TestType": "Random Value - Non-Standard Hexadecimal Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Identity_Address_Information",
+      "fields": [
+        {
+          "name": "atype",
+          "mutations": [
+            {
+              "atype": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (Public Device Address)"
+            },
+            {
+              "atype": "0x01",
+              "TestType": "Boundary Test - Maximum Defined Value (Static Random Device Address)"
+            },
+            {
+              "atype": "0x02",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "atype": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "atype": "0x03",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "atype": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "atype": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "atype": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "atype": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "atype": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "address",
+          "mutations": [
+            {
+              "address": "0x000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "address": "0xFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "address": "0x000000000001",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "address": "0xFFFFFFFEFFFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "address": "0x123456789ABC",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "address": "0x800000000000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "address": "0x7FFFFFFFFFFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "address": "0xFEFFFFFFFFFF",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "address": "0x00000000000F",
+              "TestType": "Random Value - Low Range"
+            },
+            {
+              "address": "0xF0F0F0F0F0F0",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Signing_Information",
+      "fields": [
+        {
+          "name": "csrk",
+          "mutations": [
+            {
+              "csrk": "0x00000000000000000000000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "csrk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "csrk": "0x00000000000000000000000000000001",
+              "TestType": "Semantic Invalid - Minimum + 1"
+            },
+            {
+              "csrk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE",
+              "TestType": "Semantic Invalid - Maximum - 1"
+            },
+            {
+              "csrk": "0x80000000000000000000000000000000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "csrk": "0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "csrk": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7F",
+              "TestType": "Bit Flip - Low Bit Unset"
+            },
+            {
+              "csrk": "0x00000000000000000000000000000080",
+              "TestType": "Bit Flip - Single Bit Set (Low)"
+            },
+            {
+              "csrk": "0x00000000000000000000000000008000",
+              "TestType": "Bit Flip - Single Bit Set (Mid)"
+            },
+            {
+              "csrk": "0x80000000000000000000000000000000",
+              "TestType": "Bit Flip - Single Bit Set (High)"
+            },
+            {
+              "csrk": "0x55555555555555555555555555555555",
+              "TestType": "Random Value - Alternating Bits"
+            },
+            {
+              "csrk": "0xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "TestType": "Random Value - Inverted Alternating Bits"
+            },
+            {
+              "csrk": "0x123456789ABCDEF0123456789ABCDEF0",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Security_Request",
+      "fields": [
+        {
+          "name": "auth_req",
+          "mutations": [
+            {
+              "auth_req": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (No MITM, Legacy, No Keypress)"
+            },
+            {
+              "auth_req": "0x20",
+              "TestType": "Boundary Test - Maximum Defined Value (MITM, Secure Connections, Keypress)"
+            },
+            {
+              "auth_req": "0x01",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "auth_req": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "auth_req": "0x03",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "auth_req": "0x80",
+              "TestType": "Bit Flip - High Bit Set (Keypress Only)"
+            },
+            {
+              "auth_req": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit (MITM, Secure Connections)"
+            },
+            {
+              "auth_req": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "auth_req": "0x24",
+              "TestType": "Boundary Test - MITM Only"
+            },
+            {
+              "auth_req": "0x40",
+              "TestType": "Boundary Test - Secure Connections Only"
+            },
+            {
+              "auth_req": "0x02",
+              "TestType": "Boundary Test - Keypress Only"
+            },
+            {
+              "auth_req": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "auth_req": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Public_Key",
+      "fields": [
+        {
+          "name": "key_x",
+          "mutations": [
+            {
+              "key_x": "0x0000000000000000000000000000000000000000000000000000000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "key_x": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "key_x": "0x000000000000000000000000000000000000000000000000000000000000001",
+              "TestType": "Semantic Invalid - Just Above Minimum"
+            },
+            {
+              "key_x": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE",
+              "TestType": "Semantic Invalid - Just Below Maximum"
+            },
+            {
+              "key_x": "0x800000000000000000000000000000000000000000000000000000000000000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "key_x": "0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "key_x": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0",
+              "TestType": "Bit Flip - Multiple High Bits Set"
+            },
+            {
+              "key_x": "0x555555555555555555555555555555555555555555555555555555555555555",
+              "TestType": "Random Value - Alternating Bits"
+            },
+            {
+              "key_x": "0xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "TestType": "Random Value - Inverted Alternating Bits"
+            },
+            {
+              "key_x": "0x123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "key_y",
+          "mutations": [
+            {
+              "key_y": "0x0000000000000000000000000000000000000000000000000000000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "key_y": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "key_y": "0x0000000000000000000000000000000000000000000000000000000000000001",
+              "TestType": "Semantic Invalid - Just Above Minimum Defined Value"
+            },
+            {
+              "key_y": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE",
+              "TestType": "Semantic Invalid - Just Below Maximum Defined Value"
+            },
+            {
+              "key_y": "0x8000000000000000000000000000000000000000000000000000000000000000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "key_y": "0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "key_y": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0",
+              "TestType": "Bit Flip - Multiple High Bits Set"
+            },
+            {
+              "key_y": "0x0000000000000000000000000000000000000000000000000000000000000123",
+              "TestType": "Random Value - Non-Zero Low Value"
+            },
+            {
+              "key_y": "0xABCDEF123456789ABCDEF123456789ABCDEF123456789ABCDEF123456789ABCD",
+              "TestType": "Random Value - Arbitrary Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_DHKey_Check",
+      "fields": [
+        {
+          "name": "dhkey_check",
+          "mutations": [
+            {
+              "dhkey_check": "0x00000000000000000000000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "dhkey_check": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "dhkey_check": "0x00000000000000000000000000000001",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "dhkey_check": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE",
+              "TestType": "Semantic Invalid - Last Reserved Value"
+            },
+            {
+              "dhkey_check": "0x80000000000000000000000000000000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "dhkey_check": "0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "dhkey_check": "0xFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFF",
+              "TestType": "Bit Flip - Near Maximum Reserved Value"
+            },
+            {
+              "dhkey_check": "0x00000000000000000000000000000002",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "dhkey_check": "0x123456789ABCDEF0123456789ABCDEF0",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SM_Keypress_Notification",
+      "fields": [
+        {
+          "name": "notification_type",
+          "mutations": [
+            {
+              "notification_type": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (Passkey entry started)"
+            },
+            {
+              "notification_type": "0x04",
+              "TestType": "Boundary Test - Maximum Defined Value (Passkey entry completed)"
+            },
+            {
+              "notification_type": "0x05",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "notification_type": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "notification_type": "0x06",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "notification_type": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "notification_type": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "notification_type": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "notification_type": "0x03",
+              "TestType": "Boundary Test - Passkey Cleared"
+            },
+            {
+              "notification_type": "0x02",
+              "TestType": "Boundary Test - Passkey Digit Erased"
+            },
+            {
+              "notification_type": "0x01",
+              "TestType": "Boundary Test - Passkey Digit Entered"
+            },
+            {
+              "notification_type": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "notification_type": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BTLE_CTRL",
+      "fields": [
+        {
+          "name": "opcode",
+          "mutations": [
+            {
+              "opcode": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (LL_CONNECTION_UPDATE_IND)"
+            },
+            {
+              "opcode": "0x19",
+              "TestType": "Boundary Test - Maximum Defined Value (LL_MIN_USED_CHANNELS_IND)"
+            },
+            {
+              "opcode": "0x1A",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "opcode": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "opcode": "0x7F",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "opcode": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "opcode": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "opcode": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "opcode": "0x03",
+              "TestType": "Defined Value - LL_ENC_REQ"
+            },
+            {
+              "opcode": "0x02",
+              "TestType": "Defined Value - LL_TERMINATE_IND"
+            },
+            {
+              "opcode": "0x01",
+              "TestType": "Defined Value - LL_CHANNEL_MAP_IND"
+            },
+            {
+              "opcode": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "opcode": "0x10",
+              "TestType": "Defined Value - LL_CONNECTION_PARAM_RSP"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LL_CONNECTION_UPDATE_IND",
+      "fields": [
+        {
+          "name": "win_size",
+          "mutations": [
+            {
+              "win_size": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "win_size": "0xFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "win_size": "0x01",
+              "TestType": "Semantic Invalid - Minimum Non-Zero Value"
+            },
+            {
+              "win_size": "0x02",
+              "TestType": "Semantic Invalid - Arbitrary Low Value"
+            },
+            {
+              "win_size": "0xFE",
+              "TestType": "Semantic Invalid - Near Maximum Reserved Value"
+            },
+            {
+              "win_size": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "win_size": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "win_size": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "win_size": "0x03",
+              "TestType": "Boundary Test - Small Valid Value"
+            },
+            {
+              "win_size": "0x7E",
+              "TestType": "Boundary Test - Large Valid Value"
+            },
+            {
+              "win_size": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "win_size": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "win_offset",
+          "mutations": [
+            {
+              "win_offset": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "win_offset": "0xFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "win_offset": "0x100",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "win_offset": "0xFFFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "win_offset": "0x1234",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "win_offset": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "win_offset": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "win_offset": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "win_offset": "0x01",
+              "TestType": "Random Value - Within Valid Range"
+            },
+            {
+              "win_offset": "0x5A",
+              "TestType": "Random Value - Mid-Range Value"
+            },
+            {
+              "win_offset": "0xAB",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "win_offset": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            }
+          ]
+        },
+        {
+          "name": "interval",
+          "mutations": [
+            {
+              "interval": "0x0005",
+              "TestType": "Boundary Test - Below Minimum Defined Value"
+            },
+            {
+              "interval": "0x0006",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "interval": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "interval": "0x10000",
+              "TestType": "Boundary Test - Above Maximum Defined Value"
+            },
+            {
+              "interval": "0x0000",
+              "TestType": "Semantic Invalid - Zero Value"
+            },
+            {
+              "interval": "0x0007",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "interval": "0xFFFE",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "interval": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "interval": "0xFFFD",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Defined)"
+            },
+            {
+              "interval": "0x0003",
+              "TestType": "Random Value - Below Defined Range"
+            },
+            {
+              "interval": "0x000A",
+              "TestType": "Random Value - Within Defined Range"
+            },
+            {
+              "interval": "0xF00D",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "latency",
+          "mutations": [
+            {
+              "latency": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "latency": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "latency": "0x0001",
+              "TestType": "Semantic Invalid - Minimum Non-Zero Value"
+            },
+            {
+              "latency": "0xFFFE",
+              "TestType": "Semantic Invalid - Maximum Non-FFFF Value"
+            },
+            {
+              "latency": "0xABCD",
+              "TestType": "Semantic Invalid - Arbitrary Non-Standard Value"
+            },
+            {
+              "latency": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "latency": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "latency": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Defined)"
+            },
+            {
+              "latency": "0x0002",
+              "TestType": "Boundary Test - Near Minimum Defined Value"
+            },
+            {
+              "latency": "0xFFFD",
+              "TestType": "Boundary Test - Near Maximum Defined Value"
+            },
+            {
+              "latency": "0x1234",
+              "TestType": "Random Value - Mid-Range Value"
+            },
+            {
+              "latency": "0x5678",
+              "TestType": "Random Value - Another Mid-Range Value"
+            }
+          ]
+        },
+        {
+          "name": "timeout",
+          "mutations": [
+            {
+              "timeout": "0x000A",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "timeout": "0x0C80",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "timeout": "0x0009",
+              "TestType": "Semantic Invalid - Below Minimum Defined Value"
+            },
+            {
+              "timeout": "0x0C81",
+              "TestType": "Semantic Invalid - Above Maximum Defined Value"
+            },
+            {
+              "timeout": "0x0000",
+              "TestType": "Semantic Invalid - Zero Value"
+            },
+            {
+              "timeout": "0xFFFF",
+              "TestType": "Bit Flip - All Bits Set"
+            },
+            {
+              "timeout": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "timeout": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "timeout": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum)"
+            },
+            {
+              "timeout": "0x03E8",
+              "TestType": "Random Value - Within Defined Range"
+            },
+            {
+              "timeout": "0x1F40",
+              "TestType": "Random Value - Near Upper Boundary"
+            },
+            {
+              "timeout": "0x01F4",
+              "TestType": "Random Value - Near Lower Boundary"
+            },
+            {
+              "timeout": "0xABCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "instant",
+          "mutations": [
+            {
+              "instant": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "instant": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "instant": "0x0001",
+              "TestType": "Semantic Invalid - Minimum Non-Zero Value"
+            },
+            {
+              "instant": "0xFFFE",
+              "TestType": "Semantic Invalid - Maximum Non-Wraparound Value"
+            },
+            {
+              "instant": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "instant": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "instant": "0xFFFD",
+              "TestType": "Bit Flip - Near Maximum Reserved Value"
+            },
+            {
+              "instant": "0x0002",
+              "TestType": "Random Value - Small Increment"
+            },
+            {
+              "instant": "0xFF00",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "instant": "0x00FF",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "instant": "0xABCD",
+              "TestType": "Random Value - Arbitrary Mid-Range Value"
+            },
+            {
+              "instant": "0x1234",
+              "TestType": "Random Value - Arbitrary Low-Mid Range Value"
+            },
+            {
+              "instant": "0xEDCB",
+              "TestType": "Random Value - Arbitrary High-Mid Range Value"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LL_CHANNEL_MAP_IND",
+      "fields": [
+        {
+          "name": "chM",
+          "mutations": [
+            {
+              "chM": "0x0000000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "chM": "0x1FFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "chM": "0x2000000000",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "chM": "0x7FFFFFFFFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "chM": "0x4000000000",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "chM": "0x8000000000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "chM": "0x7FFFFFFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "chM": "0xFE00000000",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "chM": "0x0000000001",
+              "TestType": "Boundary Test - Single Channel Used"
+            },
+            {
+              "chM": "0x0000000002",
+              "TestType": "Boundary Test - Second Channel Used"
+            },
+            {
+              "chM": "0x0000000004",
+              "TestType": "Boundary Test - Third Channel Used"
+            },
+            {
+              "chM": "0xFAFAFAFAFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "chM": "0x123456789A",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "instant",
+          "mutations": [
+            {
+              "instant": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "instant": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "instant": "0x0001",
+              "TestType": "Semantic Invalid - Just Above Minimum"
+            },
+            {
+              "instant": "0xFFFE",
+              "TestType": "Semantic Invalid - Just Below Maximum"
+            },
+            {
+              "instant": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "instant": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "instant": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum)"
+            },
+            {
+              "instant": "0x0002",
+              "TestType": "Random Value - Low Range"
+            },
+            {
+              "instant": "0x7FFF",
+              "TestType": "Random Value - Mid Range"
+            },
+            {
+              "instant": "0xFFFD",
+              "TestType": "Random Value - High Range"
+            },
+            {
+              "instant": "0xABCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LL_TERMINATE_IND",
+      "fields": [
+        {
+          "name": "code",
+          "mutations": [
+            {
+              "code": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "code": "0xFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "code": "0x01",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "code": "0xFE",
+              "TestType": "Semantic Invalid - Near Maximum Reserved Value"
+            },
+            {
+              "code": "0x7F",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "code": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "code": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "code": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "code": "0x01",
+              "TestType": "Boundary Test - Valid Error Code"
+            },
+            {
+              "code": "0x02",
+              "TestType": "Boundary Test - Another Valid Error Code"
+            },
+            {
+              "code": "0x03",
+              "TestType": "Boundary Test - Yet Another Valid Error Code"
+            },
+            {
+              "code": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "code": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LL_ENC_REQ",
+      "fields": [
+        {
+          "name": "rand",
+          "mutations": [
+            {
+              "rand": "0x0000000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "rand": "0xFFFFFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "rand": "0x0000000000000001",
+              "TestType": "Semantic Invalid - First Non-Zero Value"
+            },
+            {
+              "rand": "0xFFFFFFFFFFFFFFFE",
+              "TestType": "Semantic Invalid - Near Maximum Value"
+            },
+            {
+              "rand": "0xAAAAAAAAAAAAAAAA",
+              "TestType": "Semantic Invalid - Alternating Bit Pattern"
+            },
+            {
+              "rand": "0x8000000000000000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "rand": "0x7FFFFFFFFFFFFFFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "rand": "0xFFFFFFFFFFFFFF00",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum)"
+            },
+            {
+              "rand": "0x0000000000000003",
+              "TestType": "Boundary Test - Small Non-Zero Value"
+            },
+            {
+              "rand": "0x00000000000000FF",
+              "TestType": "Boundary Test - Byte Boundary"
+            },
+            {
+              "rand": "0x0000000000000100",
+              "TestType": "Boundary Test - Byte Boundary + 1"
+            },
+            {
+              "rand": "0x123456789ABCDEF0",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "rand": "0xFEDCBA9876543210",
+              "TestType": "Random Value - Inverted Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "ediv",
+          "mutations": [
+            {
+              "ediv": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "ediv": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "ediv": "0x0001",
+              "TestType": "Semantic Invalid - Minimum Non-Zero Value"
+            },
+            {
+              "ediv": "0xFFFE",
+              "TestType": "Semantic Invalid - Maximum Non-Maximum Value"
+            },
+            {
+              "ediv": "0x1234",
+              "TestType": "Semantic Invalid - Arbitrary Valid Value"
+            },
+            {
+              "ediv": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "ediv": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "ediv": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Defined)"
+            },
+            {
+              "ediv": "0x0001",
+              "TestType": "Boundary Test - Minimum Non-Zero Value"
+            },
+            {
+              "ediv": "0xFFFE",
+              "TestType": "Boundary Test - Maximum Non-Maximum Value"
+            },
+            {
+              "ediv": "0xABCD",
+              "TestType": "Random Value - Mid-Range Value"
+            },
+            {
+              "ediv": "0x5678",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "skdm",
+          "mutations": [
+            {
+              "skdm": "0x0000000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "skdm": "0xFFFFFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "skdm": "0x0000000000000001",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "skdm": "0xFFFFFFFFFFFFFFFE",
+              "TestType": "Semantic Invalid - Last Reserved Value"
+            },
+            {
+              "skdm": "0x8000000000000000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "skdm": "0x7FFFFFFFFFFFFFFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "skdm": "0xFFFFFFFFFFFFFF00",
+              "TestType": "Bit Flip - Multiple Bits Flipped"
+            },
+            {
+              "skdm": "0xAAAAAAAAAAAAAAAA",
+              "TestType": "Random Value - Alternating Pattern"
+            },
+            {
+              "skdm": "0x5555555555555555",
+              "TestType": "Random Value - Inverted Alternating Pattern"
+            },
+            {
+              "skdm": "0x123456789ABCDEF0",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "skdm": "0xFEDCBA9876543210",
+              "TestType": "Random Value - Reversed Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "ivm",
+          "mutations": [
+            {
+              "ivm": "0x00000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "ivm": "0xFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "ivm": "0x80000000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "ivm": "0x7FFFFFFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "ivm": "0xFFFFFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Defined)"
+            },
+            {
+              "ivm": "0x00000001",
+              "TestType": "Boundary Test - One Above Minimum"
+            },
+            {
+              "ivm": "0xFFFFFFFE",
+              "TestType": "Boundary Test - One Below Maximum"
+            },
+            {
+              "ivm": "0x5A5A5A5A",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "ivm": "0xA5A5A5A5",
+              "TestType": "Random Value - Alternating Bits"
+            },
+            {
+              "ivm": "0xAAAAAAAA",
+              "TestType": "Random Value - Repeating Bits"
+            },
+            {
+              "ivm": "0x55555555",
+              "TestType": "Random Value - Inverted Repeating Bits"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LL_ENC_RSP",
+      "fields": [
+        {
+          "name": "skds",
+          "mutations": [
+            {
+              "skds": "0x0000000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "skds": "0xFFFFFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "skds": "0x0000000000000001",
+              "TestType": "Semantic Invalid - First Non-Zero Value"
+            },
+            {
+              "skds": "0xFFFFFFFFFFFFFFFE",
+              "TestType": "Semantic Invalid - Near Maximum Value"
+            },
+            {
+              "skds": "0x8000000000000000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "skds": "0x7FFFFFFFFFFFFFFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "skds": "0xAAAAAAAAAAAAAAAA",
+              "TestType": "Bit Flip - Alternating Bits"
+            },
+            {
+              "skds": "0x5555555555555555",
+              "TestType": "Bit Flip - Inverted Alternating Bits"
+            },
+            {
+              "skds": "0x00000000DEADBEEF",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "skds": "0xBADCAFEF00D15EA",
+              "TestType": "Random Value - Arbitrary Pattern"
+            }
+          ]
+        },
+        {
+          "name": "ivs",
+          "mutations": [
+            {
+              "ivs": "0x00000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "ivs": "0xFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "ivs": "0x00000001",
+              "TestType": "Semantic Invalid - Minimum Non-Zero Value"
+            },
+            {
+              "ivs": "0xFFFFFFFE",
+              "TestType": "Semantic Invalid - Maximum Non-Full Value"
+            },
+            {
+              "ivs": "0x80000000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "ivs": "0x7FFFFFFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "ivs": "0x00000002",
+              "TestType": "Bit Flip - Single Low Bit Set"
+            },
+            {
+              "ivs": "0xFFFFFFFD",
+              "TestType": "Bit Flip - Multiple High Bits Flipped"
+            },
+            {
+              "ivs": "0xABCD1234",
+              "TestType": "Random Value - Arbitrary Mid-Range Value"
+            },
+            {
+              "ivs": "0x11223344",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "ivs": "0xDEADBEEF",
+              "TestType": "Random Value - Common Hexadecimal Sequence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LL_UNKNOWN_RSP",
+      "fields": [
+        {
+          "name": "code",
+          "mutations": [
+            {
+              "code": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "code": "0xFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "code": "0x01",
+              "TestType": "Semantic Invalid - Arbitrary Valid Opcode"
+            },
+            {
+              "code": "0xFE",
+              "TestType": "Semantic Invalid - Near Maximum Defined Value"
+            },
+            {
+              "code": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "code": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "code": "0x42",
+              "TestType": "Random Value - Mid-Range Value"
+            },
+            {
+              "code": "0xAB",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "code": "0x55",
+              "TestType": "Random Value - Alternating Bits"
+            },
+            {
+              "code": "0xAA",
+              "TestType": "Random Value - Inverted Alternating Bits"
+            },
+            {
+              "code": "0x0F",
+              "TestType": "Bit Flip - Low Nibble Set"
+            },
+            {
+              "code": "0xF0",
+              "TestType": "Bit Flip - High Nibble Set"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LL_FEATURE_REQ",
+      "fields": [
+        {
+          "name": "feature_set",
+          "mutations": [
+            {
+              "feature_set": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (LE Encryption)"
+            },
+            {
+              "feature_set": "0x02",
+              "TestType": "Boundary Test - Maximum Defined Value (Extended Reject Indication)"
+            },
+            {
+              "feature_set": "0x03",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "feature_set": "0xFFFFFFFFFFFFFFFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "feature_set": "0x04",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "feature_set": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "feature_set": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "feature_set": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "feature_set": "0x01",
+              "TestType": "Boundary Test - LE Encryption Enabled Only"
+            },
+            {
+              "feature_set": "0x08",
+              "TestType": "Boundary Test - LE 2M PHY Enabled Only"
+            },
+            {
+              "feature_set": "0x10",
+              "TestType": "Boundary Test - Stable Modulation Index - Receiver Enabled Only"
+            },
+            {
+              "feature_set": "0x40",
+              "TestType": "Boundary Test - Channel Selection Algorithm #2 Enabled Only"
+            },
+            {
+              "feature_set": "0x10000",
+              "TestType": "Boundary Test - Minimum Number of Used Channels Procedure Enabled Only"
+            },
+            {
+              "feature_set": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "feature_set": "0x123456789ABCDEF0",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LL_FEATURE_RSP",
+      "fields": [
+        {
+          "name": "feature_set",
+          "mutations": [
+            {
+              "feature_set": "0x0000000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value (No features supported)"
+            },
+            {
+              "feature_set": "0xFFFFFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value (All features supported)"
+            },
+            {
+              "feature_set": "0x8000000000000000",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "feature_set": "0x7FFFFFFFFFFFFFFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "feature_set": "0x4000000000000000",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "feature_set": "0x8000000000000001",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "feature_set": "0x7FFFFFFFFFFFFFFE",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "feature_set": "0xBFFFFFFFFFFFFFFF",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "feature_set": "0x0000000000000001",
+              "TestType": "Boundary Test - Single Feature Enabled"
+            },
+            {
+              "feature_set": "0x0000000000000002",
+              "TestType": "Boundary Test - Second Feature Enabled"
+            },
+            {
+              "feature_set": "0x0000000000000004",
+              "TestType": "Boundary Test - Third Feature Enabled"
+            },
+            {
+              "feature_set": "0xABCDABCDABCDEF01",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "feature_set": "0x123456789ABCDEF0",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LL_VERSION_IND",
+      "fields": [
+        {
+          "name": "version",
+          "mutations": [
+            {
+              "version": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "version": "0xFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "version": "0x01",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "version": "0xFE",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "version": "0x7F",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "version": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "version": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "version": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "version": "0x03",
+              "TestType": "Random Value - Within Defined Range"
+            },
+            {
+              "version": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "version": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "company",
+          "mutations": [
+            {
+              "company": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "company": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "company": "0x0001",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "company": "0xFFFE",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "company": "0x8000",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "company": "0x8001",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "company": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "company": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "company": "0x0002",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "company": "0x1234",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "company": "0xABCD",
+              "TestType": "Random Value - Middle Range Value"
+            },
+            {
+              "company": "0x5678",
+              "TestType": "Random Value - Another Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "subversion",
+          "mutations": [
+            {
+              "subversion": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "subversion": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "subversion": "0x0001",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "subversion": "0xFFFE",
+              "TestType": "Semantic Invalid - Near Maximum Reserved Value"
+            },
+            {
+              "subversion": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "subversion": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "subversion": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "subversion": "0xABCD",
+              "TestType": "Random Value - Arbitrary Unique Implementation"
+            },
+            {
+              "subversion": "0x1234",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "subversion": "0x5678",
+              "TestType": "Random Value - Another Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LL_REJECT_IND",
+      "fields": [
+        {
+          "name": "code",
+          "mutations": [
+            {
+              "iocap": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "iocap": "0xFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "iocap": "0x01",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "iocap": "0xFE",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "iocap": "0x7F",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "iocap": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "iocap": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "iocap": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "iocap": "0x01",
+              "TestType": "Boundary Test - Valid ErrorCode"
+            },
+            {
+              "iocap": "0x02",
+              "TestType": "Boundary Test - Valid ErrorCode"
+            },
+            {
+              "iocap": "0x03",
+              "TestType": "Boundary Test - Valid ErrorCode"
+            },
+            {
+              "iocap": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "iocap": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LL_SLAVE_FEATURE_REQ",
+      "fields": [
+        {
+          "name": "feature_set",
+          "mutations": [
+            {
+              "feature_set": "0x0000000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value (No features supported)"
+            },
+            {
+              "feature_set": "0xFFFFFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value (All features supported)"
+            },
+            {
+              "feature_set": "0x0000000000000003",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "feature_set": "0x7FFFFFFFFFFFFFFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "feature_set": "0x0000000000000004",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "feature_set": "0x8000000000000000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "feature_set": "0x7FFFFFFFFFFFFFFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "feature_set": "0xBFFFFFFFFFFFFFFF",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "feature_set": "0x0000000000000001",
+              "TestType": "Boundary Test - LE Encryption"
+            },
+            {
+              "feature_set": "0x0000000000000002",
+              "TestType": "Boundary Test - Extended Reject Indication"
+            },
+            {
+              "feature_set": "0x0000000000000008",
+              "TestType": "Boundary Test - LE 2M PHY"
+            },
+            {
+              "feature_set": "0x0000000000000040",
+              "TestType": "Boundary Test - Channel Selection Algorithm #2"
+            },
+            {
+              "feature_set": "0x0000000000000100",
+              "TestType": "Boundary Test - Minimum Number of Used Channels Procedure"
+            },
+            {
+              "feature_set": "0xABCDEF123456789A",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "feature_set": "0x123456789ABCDEF0",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LL_CONNECTION_PARAM_REQ",
+      "fields": [
+        {
+          "name": "interval_min",
+          "mutations": [
+            {
+              "interval_min": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "interval_min": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "interval_min": "0x0001",
+              "TestType": "Boundary Test - One Above Minimum"
+            },
+            {
+              "interval_min": "0xFFFE",
+              "TestType": "Boundary Test - One Below Maximum"
+            },
+            {
+              "interval_min": "0x000F",
+              "TestType": "Semantic Invalid - Arbitrary Small Value"
+            },
+            {
+              "interval_min": "0xF000",
+              "TestType": "Bit Flip - High Bits Set"
+            },
+            {
+              "interval_min": "0x0FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "interval_min": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "interval_min": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit (Max)"
+            },
+            {
+              "interval_min": "0xABCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "interval_min": "0x1234",
+              "TestType": "Random Value - Arbitrary Valid Value"
+            },
+            {
+              "interval_min": "0x5678",
+              "TestType": "Random Value - Another Arbitrary Valid Value"
+            }
+          ]
+        },
+        {
+          "name": "interval_max",
+          "mutations": [
+            {
+              "interval_max": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "interval_max": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "interval_max": "0x0001",
+              "TestType": "Semantic Invalid - Minimum Non-Zero Value"
+            },
+            {
+              "interval_max": "0xFFFE",
+              "TestType": "Semantic Invalid - Maximum Non-Reserved Value"
+            },
+            {
+              "interval_max": "0x0002",
+              "TestType": "Semantic Invalid - Arbitrary Non-Zero Value"
+            },
+            {
+              "interval_max": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "interval_max": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "interval_max": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "interval_max": "0x000F",
+              "TestType": "Random Value - Low Range"
+            },
+            {
+              "interval_max": "0x7FFF",
+              "TestType": "Random Value - Mid Range"
+            },
+            {
+              "interval_max": "0xFF00",
+              "TestType": "Random Value - High Range"
+            },
+            {
+              "interval_max": "0xABCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "latency",
+          "mutations": [
+            {
+              "latency": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "latency": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "latency": "0x0001",
+              "TestType": "Semantic Invalid - Minimum Non-Zero Value"
+            },
+            {
+              "latency": "0xFFFE",
+              "TestType": "Semantic Invalid - Maximum Non-Defined Value"
+            },
+            {
+              "latency": "0xABCD",
+              "TestType": "Semantic Invalid - Arbitrary Non-Defined Value"
+            },
+            {
+              "latency": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "latency": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "latency": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Defined)"
+            },
+            {
+              "latency": "0x0002",
+              "TestType": "Boundary Test - Near Minimum Defined Value"
+            },
+            {
+              "latency": "0xFFFD",
+              "TestType": "Boundary Test - Near Maximum Defined Value"
+            },
+            {
+              "latency": "0x1234",
+              "TestType": "Random Value - Mid-Range Value"
+            },
+            {
+              "latency": "0x5678",
+              "TestType": "Random Value - Another Mid-Range Value"
+            }
+          ]
+        },
+        {
+          "name": "timeout",
+          "mutations": [
+            {
+              "timeout": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "timeout": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "timeout": "0x0001",
+              "TestType": "Semantic Invalid - Minimum Non-Zero Value"
+            },
+            {
+              "timeout": "0xFFFE",
+              "TestType": "Semantic Invalid - Maximum Non-FFFF Value"
+            },
+            {
+              "timeout": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "timeout": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "timeout": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Defined)"
+            },
+            {
+              "timeout": "0x0002",
+              "TestType": "Boundary Test - One Above Minimum Defined Value"
+            },
+            {
+              "timeout": "0xFFFD",
+              "TestType": "Boundary Test - One Below Maximum Defined Value"
+            },
+            {
+              "timeout": "0xABCD",
+              "TestType": "Random Value - Mid Range"
+            },
+            {
+              "timeout": "0x1234",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "timeout": "0xBEEF",
+              "TestType": "Random Value - Arbitrary Non-Zero Value"
+            }
+          ]
+        },
+        {
+          "name": "preferred_periodicity",
+          "mutations": [
+            {
+              "preferred_periodicity": "0x01",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "preferred_periodicity": "0xFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "preferred_periodicity": "0x00",
+              "TestType": "Semantic Invalid - Not Valid Value"
+            },
+            {
+              "preferred_periodicity": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "preferred_periodicity": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "preferred_periodicity": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "preferred_periodicity": "0x02",
+              "TestType": "Random Value - Within Defined Range"
+            },
+            {
+              "preferred_periodicity": "0xFA",
+              "TestType": "Random Value - Outside Defined Range"
+            },
+            {
+              "preferred_periodicity": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "reference_conn_evt_count",
+          "mutations": [
+            {
+              "reference_conn_evt_count": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "reference_conn_evt_count": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "reference_conn_evt_count": "0x0001",
+              "TestType": "Semantic Invalid - Minimum Value Plus One"
+            },
+            {
+              "reference_conn_evt_count": "0xFFFE",
+              "TestType": "Semantic Invalid - Maximum Value Minus One"
+            },
+            {
+              "reference_conn_evt_count": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "reference_conn_evt_count": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "reference_conn_evt_count": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Defined)"
+            },
+            {
+              "reference_conn_evt_count": "0xABCD",
+              "TestType": "Random Value - Arbitrary Valid Value"
+            },
+            {
+              "reference_conn_evt_count": "0x1234",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "offset0",
+          "mutations": [
+            {
+              "offset0": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "offset0": "0xFFFF",
+              "TestType": "Semantic Invalid - Not Valid Maximum Value"
+            },
+            {
+              "offset0": "0x0001",
+              "TestType": "Boundary Test - One Above Minimum"
+            },
+            {
+              "offset0": "0xFFFE",
+              "TestType": "Boundary Test - One Below Maximum Invalid"
+            },
+            {
+              "offset0": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "offset0": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "offset0": "0xBEEF",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "offset0": "0xDEAD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "offset0": "0x1234",
+              "TestType": "Random Value - Arbitrary Value"
+            },
+            {
+              "offset0": "0xABCD",
+              "TestType": "Random Value - Arbitrary Value"
+            },
+            {
+              "offset0": "0x5678",
+              "TestType": "Random Value - Arbitrary Value"
+            },
+            {
+              "offset0": "0x00FF",
+              "TestType": "Bit Flip - Low Byte Set"
+            },
+            {
+              "offset0": "0xFF00",
+              "TestType": "Bit Flip - High Byte Set"
+            }
+          ]
+        },
+        {
+          "name": "offset1",
+          "mutations": [
+            {
+              "offset1": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "offset1": "0xFFFE",
+              "TestType": "Boundary Test - Maximum Defined Value (Valid)"
+            },
+            {
+              "offset1": "0xFFFF",
+              "TestType": "Semantic Invalid - Invalid Value Indicator"
+            },
+            {
+              "offset1": "0x0001",
+              "TestType": "Boundary Test - Minimum Valid Non-Zero Value"
+            },
+            {
+              "offset1": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "offset1": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "offset1": "0xFFFD",
+              "TestType": "Bit Flip - Near Maximum Reserved"
+            },
+            {
+              "offset1": "0x0002",
+              "TestType": "Boundary Test - Small Positive Value"
+            },
+            {
+              "offset1": "0xFFFC",
+              "TestType": "Random Value - Near Maximum Reserved"
+            },
+            {
+              "offset1": "0x1234",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "offset1": "0xABCD",
+              "TestType": "Random Value - Arbitrary Mid-Range Value"
+            },
+            {
+              "offset1": "0x5678",
+              "TestType": "Random Value - Another Arbitrary Mid-Range Value"
+            }
+          ]
+        },
+        {
+          "name": "offset2",
+          "mutations": [
+            {
+              "offset2": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "offset2": "0xFFFE",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "offset2": "0xFFFF",
+              "TestType": "Semantic Invalid - Not Valid Value"
+            },
+            {
+              "offset2": "0x0001",
+              "TestType": "Boundary Test - One Above Minimum Defined Value"
+            },
+            {
+              "offset2": "0xFFFD",
+              "TestType": "Boundary Test - One Below Maximum Defined Value"
+            },
+            {
+              "offset2": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "offset2": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "offset2": "0xFEFF",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "offset2": "0x0002",
+              "TestType": "Random Value - Within Defined Range"
+            },
+            {
+              "offset2": "0x1234",
+              "TestType": "Random Value - Mid-Range Defined Value"
+            },
+            {
+              "offset2": "0xABCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "offset2": "0xFACE",
+              "TestType": "Random Value - Another Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "offset3",
+          "mutations": [
+            {
+              "offset3": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "offset3": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "offset3": "0xFFFE",
+              "TestType": "Semantic Invalid - Just Below Maximum Defined Value"
+            },
+            {
+              "offset3": "0x0001",
+              "TestType": "Semantic Invalid - Just Above Minimum Defined Value"
+            },
+            {
+              "offset3": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "offset3": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "offset3": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Defined)"
+            },
+            {
+              "offset3": "0x0002",
+              "TestType": "Bit Flip - Low Bits Set"
+            },
+            {
+              "offset3": "0xABCD",
+              "TestType": "Random Value - Mid Range"
+            },
+            {
+              "offset3": "0x1234",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "offset3": "0x5678",
+              "TestType": "Random Value - Another Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "offset4",
+          "mutations": [
+            {
+              "offset4": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "offset4": "0xFFFE",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "offset4": "0xFFFF",
+              "TestType": "Semantic Invalid - Invalid Value"
+            },
+            {
+              "offset4": "0x0001",
+              "TestType": "Boundary Test - One Above Minimum"
+            },
+            {
+              "offset4": "0xFFFD",
+              "TestType": "Boundary Test - One Below Maximum"
+            },
+            {
+              "offset4": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "offset4": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "offset4": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "offset4": "0x0002",
+              "TestType": "Random Value - Within Valid Range"
+            },
+            {
+              "offset4": "0x1234",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "offset4": "0xABCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "offset4": "0x5678",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "offset4": "0xFEDC",
+              "TestType": "Random Value - Near Maximum Reserved"
+            }
+          ]
+        },
+        {
+          "name": "offset5",
+          "mutations": [
+            {
+              "offset5": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "offset5": "0xFFFE",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "offset5": "0xFFFF",
+              "TestType": "Semantic Invalid - Not Valid Value"
+            },
+            {
+              "offset5": "0x0001",
+              "TestType": "Semantic Invalid - Below Minimum Defined Value"
+            },
+            {
+              "offset5": "0xFFFD",
+              "TestType": "Semantic Invalid - Above Maximum Defined Value"
+            },
+            {
+              "offset5": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "offset5": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "offset5": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "offset5": "0x0002",
+              "TestType": "Random Value - Low Range"
+            },
+            {
+              "offset5": "0x7FFE",
+              "TestType": "Random Value - Mid Range"
+            },
+            {
+              "offset5": "0xFFFC",
+              "TestType": "Random Value - High Range"
+            },
+            {
+              "offset5": "0xABCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LL_CONNECTION_PARAM_RSP",
+      "fields": [
+        {
+          "name": "interval_min",
+          "mutations": [
+            {
+              "interval_min": "0x0005",
+              "TestType": "Boundary Test - Below Minimum Defined Value"
+            },
+            {
+              "interval_min": "0x0006",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "interval_min": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "interval_min": "0x0007",
+              "TestType": "Boundary Test - Above Minimum Defined Value"
+            },
+            {
+              "interval_min": "0x0000",
+              "TestType": "Semantic Invalid - Zero Value"
+            },
+            {
+              "interval_min": "0x0001",
+              "TestType": "Semantic Invalid - Very Low Value"
+            },
+            {
+              "interval_min": "0xFFFE",
+              "TestType": "Semantic Invalid - Near Maximum Reserved Value"
+            },
+            {
+              "interval_min": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "interval_min": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "interval_min": "0xBEEF",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "interval_min": "0xABCD",
+              "TestType": "Random Value - Arbitrary Value"
+            },
+            {
+              "interval_min": "0x1234",
+              "TestType": "Random Value - Mid-Range Value"
+            }
+          ]
+        },
+        {
+          "name": "interval_max",
+          "mutations": [
+            {
+              "interval_max": "0x0005",
+              "TestType": "Boundary Test - Below Minimum Defined Value"
+            },
+            {
+              "interval_max": "0x0006",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "interval_max": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "interval_max": "0x0007",
+              "TestType": "Semantic Invalid - Just Above Minimum Defined Value"
+            },
+            {
+              "interval_max": "0x0000",
+              "TestType": "Semantic Invalid - Zero Value"
+            },
+            {
+              "interval_max": "0x10000",
+              "TestType": "Semantic Invalid - Beyond Maximum Defined Value"
+            },
+            {
+              "interval_max": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "interval_max": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "interval_max": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "interval_max": "0x0003",
+              "TestType": "Random Value - Below Minimum Defined Value"
+            },
+            {
+              "interval_max": "0x0010",
+              "TestType": "Random Value - Within Valid Range"
+            },
+            {
+              "interval_max": "0xABCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "latency",
+          "mutations": [
+            {
+              "latency": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "latency": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "latency": "0x0001",
+              "TestType": "Semantic Invalid - Minimum Non-Zero Value"
+            },
+            {
+              "latency": "0xFFFE",
+              "TestType": "Semantic Invalid - Maximum Non-Maximum Value"
+            },
+            {
+              "latency": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "latency": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "latency": "0xFFFD",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Defined)"
+            },
+            {
+              "latency": "0x0002",
+              "TestType": "Random Value - Low End"
+            },
+            {
+              "latency": "0x7A5E",
+              "TestType": "Random Value - Mid Range"
+            },
+            {
+              "latency": "0xFEDC",
+              "TestType": "Random Value - High End"
+            }
+          ]
+        },
+        {
+          "name": "timeout",
+          "mutations": [
+            {
+              "timeout": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "timeout": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "timeout": "0x0001",
+              "TestType": "Semantic Invalid - Minimum Plus One"
+            },
+            {
+              "timeout": "0xFFFE",
+              "TestType": "Semantic Invalid - Maximum Minus One"
+            },
+            {
+              "timeout": "0x0002",
+              "TestType": "Semantic Invalid - Arbitrary Low Value"
+            },
+            {
+              "timeout": "0xFFFD",
+              "TestType": "Semantic Invalid - Arbitrary High Value"
+            },
+            {
+              "timeout": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "timeout": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "timeout": "0xFEFF",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum)"
+            },
+            {
+              "timeout": "0x0003",
+              "TestType": "Boundary Test - Near Minimum Defined Value"
+            },
+            {
+              "timeout": "0xFFFC",
+              "TestType": "Boundary Test - Near Maximum Defined Value"
+            },
+            {
+              "timeout": "0xABCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "preferred_periodicity",
+          "mutations": [
+            {
+              "preferred_periodicity": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (Not valid)"
+            },
+            {
+              "preferred_periodicity": "0x01",
+              "TestType": "Boundary Test - Minimum Valid Value"
+            },
+            {
+              "preferred_periodicity": "0xFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "preferred_periodicity": "0x00",
+              "TestType": "Semantic Invalid - Not Valid"
+            },
+            {
+              "preferred_periodicity": "0x100",
+              "TestType": "Semantic Invalid - Exceeds Maximum Defined Value"
+            },
+            {
+              "preferred_periodicity": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "preferred_periodicity": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "preferred_periodicity": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Defined)"
+            },
+            {
+              "preferred_periodicity": "0x02",
+              "TestType": "Random Value - Valid Range Low"
+            },
+            {
+              "preferred_periodicity": "0x7E",
+              "TestType": "Random Value - Valid Range Mid"
+            },
+            {
+              "preferred_periodicity": "0xFD",
+              "TestType": "Random Value - Near Maximum Defined"
+            },
+            {
+              "preferred_periodicity": "0xAB",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "reference_conn_evt_count",
+          "mutations": [
+            {
+              "reference_conn_evt_count": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "reference_conn_evt_count": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "reference_conn_evt_count": "0x0001",
+              "TestType": "Semantic Invalid - Minimum Non-Zero Value"
+            },
+            {
+              "reference_conn_evt_count": "0xFFFE",
+              "TestType": "Semantic Invalid - Maximum Non-Reserved Value"
+            },
+            {
+              "reference_conn_evt_count": "0xABCD",
+              "TestType": "Semantic Invalid - Arbitrary Non-Zero Value"
+            },
+            {
+              "reference_conn_evt_count": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "reference_conn_evt_count": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "reference_conn_evt_count": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Defined)"
+            },
+            {
+              "reference_conn_evt_count": "0x0001",
+              "TestType": "Boundary Test - Minimum Non-Zero Value"
+            },
+            {
+              "reference_conn_evt_count": "0xFFFD",
+              "TestType": "Boundary Test - Near Maximum Defined Value"
+            },
+            {
+              "reference_conn_evt_count": "0xCDEF",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "reference_conn_evt_count": "0x1234",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "offset0",
+          "mutations": [
+            {
+              "offset0": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "offset0": "0xFFFE",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "offset0": "0xFFFF",
+              "TestType": "Semantic Invalid - Reserved Value"
+            },
+            {
+              "offset0": "0x0001",
+              "TestType": "Boundary Test - Minimum Defined Value + 1"
+            },
+            {
+              "offset0": "0xFFFD",
+              "TestType": "Boundary Test - Maximum Defined Value - 1"
+            },
+            {
+              "offset0": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "offset0": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "offset0": "0xFEFF",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "offset0": "0x1234",
+              "TestType": "Random Value - Within Defined Range"
+            },
+            {
+              "offset0": "0xABCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "offset0": "0x5678",
+              "TestType": "Random Value - Mid-Range Defined Value"
+            },
+            {
+              "offset0": "0xFACE",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "offset1",
+          "mutations": [
+            {
+              "offset1": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "offset1": "0xFFFE",
+              "TestType": "Boundary Test - Maximum Defined Value (Valid)"
+            },
+            {
+              "offset1": "0xFFFF",
+              "TestType": "Semantic Invalid - Not Valid Value"
+            },
+            {
+              "offset1": "0x0001",
+              "TestType": "Boundary Test - One Above Minimum Defined Value"
+            },
+            {
+              "offset1": "0xFFFD",
+              "TestType": "Boundary Test - One Below Maximum Defined Value"
+            },
+            {
+              "offset1": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "offset1": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "offset1": "0xBEEF",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "offset1": "0xDEAD",
+              "TestType": "Random Value - Another Non-Standard Bit Pattern"
+            },
+            {
+              "offset1": "0x1234",
+              "TestType": "Random Value - Mid Range Valid Value"
+            },
+            {
+              "offset1": "0xABCD",
+              "TestType": "Random Value - Arbitrary Valid Value"
+            },
+            {
+              "offset1": "0x00FF",
+              "TestType": "Bit Flip - Low Byte Set"
+            },
+            {
+              "offset1": "0xFF00",
+              "TestType": "Bit Flip - High Byte Set"
+            }
+          ]
+        },
+        {
+          "name": "offset2",
+          "mutations": [
+            {
+              "offset2": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "offset2": "0xFFFE",
+              "TestType": "Boundary Test - Maximum Defined Value (Interval_Max-1)"
+            },
+            {
+              "offset2": "0xFFFF",
+              "TestType": "Semantic Invalid - Not Valid Value"
+            },
+            {
+              "offset2": "0x0001",
+              "TestType": "Boundary Test - Minimum Defined Value + 1"
+            },
+            {
+              "offset2": "0xFFFD",
+              "TestType": "Boundary Test - Maximum Defined Value - 1"
+            },
+            {
+              "offset2": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "offset2": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "offset2": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "offset2": "0x0002",
+              "TestType": "Random Value - Small Non-Zero Value"
+            },
+            {
+              "offset2": "0x1234",
+              "TestType": "Random Value - Mid Range Value"
+            },
+            {
+              "offset2": "0xABCD",
+              "TestType": "Random Value - Arbitrary Non-Standard Bit Pattern"
+            },
+            {
+              "offset2": "0xFACE",
+              "TestType": "Random Value - Another Arbitrary Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "offset3",
+          "mutations": [
+            {
+              "offset3": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "offset3": "0xFFFE",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "offset3": "0xFFFF",
+              "TestType": "Semantic Invalid - Invalid Offset"
+            },
+            {
+              "offset3": "0x0001",
+              "TestType": "Bit Flip - Least Significant Bit Set"
+            },
+            {
+              "offset3": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "offset3": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "offset3": "0xFFFD",
+              "TestType": "Bit Flip - Near Maximum Defined Value"
+            },
+            {
+              "offset3": "0x0002",
+              "TestType": "Random Value - Low Range"
+            },
+            {
+              "offset3": "0x8001",
+              "TestType": "Random Value - Mid Range"
+            },
+            {
+              "offset3": "0xFE00",
+              "TestType": "Random Value - High Range"
+            }
+          ]
+        },
+        {
+          "name": "offset4",
+          "mutations": [
+            {
+              "offset4": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "offset4": "0xFFFE",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "offset4": "0xFFFF",
+              "TestType": "Semantic Invalid - Reserved Value"
+            },
+            {
+              "offset4": "0x0001",
+              "TestType": "Boundary Test - Minimum Valid Offset"
+            },
+            {
+              "offset4": "0xFFFD",
+              "TestType": "Boundary Test - Maximum Valid Offset"
+            },
+            {
+              "offset4": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "offset4": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "offset4": "0xFEFF",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "offset4": "0x1234",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "offset4": "0xABCD",
+              "TestType": "Random Value - Arbitrary Valid Offset"
+            },
+            {
+              "offset4": "0x5678",
+              "TestType": "Random Value - Another Valid Offset"
+            }
+          ]
+        },
+        {
+          "name": "offset5",
+          "mutations": [
+            {
+              "offset5": "0x0000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "offset5": "0xFFFE",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "offset5": "0xFFFF",
+              "TestType": "Semantic Invalid - Invalid Offset"
+            },
+            {
+              "offset5": "0x0001",
+              "TestType": "Boundary Test - Minimum Defined Value + 1"
+            },
+            {
+              "offset5": "0xFFFD",
+              "TestType": "Boundary Test - Maximum Defined Value - 1"
+            },
+            {
+              "offset5": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "offset5": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "offset5": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "offset5": "0xABCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "offset5": "0x1234",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "offset5": "0xFEDC",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "offset5": "0xBEEF",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LL_REJECT_EXT_IND",
+      "fields": [
+        {
+          "name": "reject_opcode",
+          "mutations": [
+            {
+              "reject_opcode": "0x0D",
+              "TestType": "Boundary Test - Minimum Defined Value (LL_REJECT_IND)"
+            },
+            {
+              "reject_opcode": "0x19",
+              "TestType": "Boundary Test - Maximum Defined Value (LL_MIN_USED_CHANNELS_IND)"
+            },
+            {
+              "reject_opcode": "0x00",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "reject_opcode": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "reject_opcode": "0x1A",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "reject_opcode": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "reject_opcode": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "reject_opcode": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "reject_opcode": "0x0C",
+              "TestType": "Boundary Test - Last Value Before Reserved Range"
+            },
+            {
+              "reject_opcode": "0x1A",
+              "TestType": "Boundary Test - First Value After Defined Range"
+            },
+            {
+              "reject_opcode": "0x1B",
+              "TestType": "Boundary Test - Near Minimum Reserved Value"
+            },
+            {
+              "reject_opcode": "0xFA",
+              "TestType": "Random Value - Reserved Range"
+            },
+            {
+              "reject_opcode": "0x3E",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "error_code",
+          "mutations": [
+            {
+              "error_code": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "error_code": "0xFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "error_code": "0x1B",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "error_code": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "error_code": "0x20",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "error_code": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "error_code": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "error_code": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "error_code": "0x1A",
+              "TestType": "Defined Value - Unsupported Remote Feature / Unsupported LMP Feature"
+            },
+            {
+              "error_code": "0x3B",
+              "TestType": "Defined Value - Unacceptable Connection Parameters"
+            },
+            {
+              "error_code": "0x55",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            },
+            {
+              "error_code": "0xAA",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LL_LENGTH_REQ",
+      "fields": [
+        {
+          "name": "max_rx_bytes",
+          "mutations": [
+            {
+              "max_rx_bytes": "0x001A",
+              "TestType": "Boundary Test - Below Minimum Defined Value"
+            },
+            {
+              "max_rx_bytes": "0x001B",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "max_rx_bytes": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "max_rx_bytes": "0x001A",
+              "TestType": "Semantic Invalid - Below Minimum Defined Value"
+            },
+            {
+              "max_rx_bytes": "0x0000",
+              "TestType": "Semantic Invalid - Zero Value"
+            },
+            {
+              "max_rx_bytes": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "max_rx_bytes": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "max_rx_bytes": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Defined)"
+            },
+            {
+              "max_rx_bytes": "0x1234",
+              "TestType": "Random Value - Mid-Range Value"
+            },
+            {
+              "max_rx_bytes": "0xABCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "max_rx_time",
+          "mutations": [
+            {
+              "max_rx_time": "0x0147",
+              "TestType": "Boundary Test - Below Minimum Defined Value"
+            },
+            {
+              "max_rx_time": "0x0148",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "max_rx_time": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "max_rx_time": "0x0149",
+              "TestType": "Boundary Test - Above Minimum Defined Value"
+            },
+            {
+              "max_rx_time": "0x0000",
+              "TestType": "Semantic Invalid - Zero Value"
+            },
+            {
+              "max_rx_time": "0x0146",
+              "TestType": "Semantic Invalid - Just Below Minimum"
+            },
+            {
+              "max_rx_time": "0x014A",
+              "TestType": "Semantic Valid - Just Above Minimum"
+            },
+            {
+              "max_rx_time": "0xFFFE",
+              "TestType": "Bit Flip - High Bit Unset (Near Maximum)"
+            },
+            {
+              "max_rx_time": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "max_rx_time": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "max_rx_time": "0xABCD",
+              "TestType": "Random Value - Mid-Range"
+            },
+            {
+              "max_rx_time": "0x1234",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "max_tx_bytes",
+          "mutations": [
+            {
+              "max_tx_bytes": "0x001A",
+              "TestType": "Boundary Test - Below Minimum Defined Value"
+            },
+            {
+              "max_tx_bytes": "0x001B",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "max_tx_bytes": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "max_tx_bytes": "0x001C",
+              "TestType": "Boundary Test - Above Minimum Defined Value"
+            },
+            {
+              "max_tx_bytes": "0x0000",
+              "TestType": "Semantic Invalid - Minimum Reserved Value"
+            },
+            {
+              "max_tx_bytes": "0xFFFE",
+              "TestType": "Semantic Invalid - Near Maximum Reserved Value"
+            },
+            {
+              "max_tx_bytes": "0x0001",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "max_tx_bytes": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "max_tx_bytes": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "max_tx_bytes": "0xFFFD",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "max_tx_bytes": "0x1234",
+              "TestType": "Random Value - Within Defined Range"
+            },
+            {
+              "max_tx_bytes": "0xABCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "max_tx_time",
+          "mutations": [
+            {
+              "max_tx_time": "0x0148",
+              "TestType": "Boundary Test - Minimum Defined Value (328)"
+            },
+            {
+              "max_tx_time": "0x0848",
+              "TestType": "Boundary Test - Maximum Defined Value (2120)"
+            },
+            {
+              "max_tx_time": "0x0147",
+              "TestType": "Semantic Invalid - Below Minimum Defined Value"
+            },
+            {
+              "max_tx_time": "0x0849",
+              "TestType": "Semantic Invalid - Above Maximum Defined Value"
+            },
+            {
+              "max_tx_time": "0x0000",
+              "TestType": "Semantic Invalid - Zero Value"
+            },
+            {
+              "max_tx_time": "0xFFFF",
+              "TestType": "Semantic Invalid - Maximum Possible Value"
+            },
+            {
+              "max_tx_time": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "max_tx_time": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "max_tx_time": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "max_tx_time": "0x0500",
+              "TestType": "Random Value - Within Defined Range"
+            },
+            {
+              "max_tx_time": "0x1000",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LL_LENGTH_RSP",
+      "fields": [
+        {
+          "name": "max_rx_bytes",
+          "mutations": [
+            {
+              "max_rx_bytes": "0x001A",
+              "TestType": "Boundary Test - Below Minimum Defined Value"
+            },
+            {
+              "max_rx_bytes": "0x001B",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "max_rx_bytes": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "max_rx_bytes": "0x0000",
+              "TestType": "Semantic Invalid - Zero Value"
+            },
+            {
+              "max_rx_bytes": "0x001C",
+              "TestType": "Semantic Valid - Just Above Minimum Defined Value"
+            },
+            {
+              "max_rx_bytes": "0xFFFE",
+              "TestType": "Semantic Valid - Just Below Maximum Defined Value"
+            },
+            {
+              "max_rx_bytes": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "max_rx_bytes": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "max_rx_bytes": "0xFFFD",
+              "TestType": "Bit Flip - Near Maximum Defined Value"
+            },
+            {
+              "max_rx_bytes": "0x1234",
+              "TestType": "Random Value - Mid Range"
+            },
+            {
+              "max_rx_bytes": "0xABCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "max_rx_time",
+          "mutations": [
+            {
+              "max_rx_time": "0x0148",
+              "TestType": "Boundary Test - Minimum Defined Value (328)"
+            },
+            {
+              "max_rx_time": "0x0848",
+              "TestType": "Boundary Test - Maximum Defined Value (2120)"
+            },
+            {
+              "max_rx_time": "0x0147",
+              "TestType": "Semantic Invalid - Below Minimum Defined Value"
+            },
+            {
+              "max_rx_time": "0x0849",
+              "TestType": "Semantic Invalid - Above Maximum Defined Value"
+            },
+            {
+              "max_rx_time": "0x0000",
+              "TestType": "Semantic Invalid - Zero Value"
+            },
+            {
+              "max_rx_time": "0xFFFF",
+              "TestType": "Bit Flip - All Bits Set"
+            },
+            {
+              "max_rx_time": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "max_rx_time": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "max_rx_time": "0xFFFE",
+              "TestType": "Bit Flip - Near Maximum Reserved"
+            },
+            {
+              "max_rx_time": "0x0500",
+              "TestType": "Random Value - Within Defined Range"
+            },
+            {
+              "max_rx_time": "0x0A00",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "max_tx_bytes",
+          "mutations": [
+            {
+              "max_tx_bytes": "0x001A",
+              "TestType": "Boundary Test - Below Minimum Defined Value"
+            },
+            {
+              "max_tx_bytes": "0x001B",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "max_tx_bytes": "0xFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "max_tx_bytes": "0x001C",
+              "TestType": "Boundary Test - Above Minimum Defined Value"
+            },
+            {
+              "max_tx_bytes": "0x0000",
+              "TestType": "Semantic Invalid - Minimum Reserved Value"
+            },
+            {
+              "max_tx_bytes": "0xFFFE",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "max_tx_bytes": "0xABCD",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "max_tx_bytes": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "max_tx_bytes": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "max_tx_bytes": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved)"
+            },
+            {
+              "max_tx_bytes": "0x1234",
+              "TestType": "Random Value - Within Valid Range"
+            },
+            {
+              "max_tx_bytes": "0x5678",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        },
+        {
+          "name": "max_tx_time",
+          "mutations": [
+            {
+              "max_tx_time": "0x0148",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "max_tx_time": "0x0848",
+              "TestType": "Boundary Test - Maximum Defined Value for Devices not supporting LE Coded PHY"
+            },
+            {
+              "max_tx_time": "0x0147",
+              "TestType": "Semantic Invalid - Below Minimum Valid Value"
+            },
+            {
+              "max_tx_time": "0xFFFF",
+              "TestType": "Semantic Invalid - Above Maximum Defined Value"
+            },
+            {
+              "max_tx_time": "0x0000",
+              "TestType": "Semantic Invalid - Zero Value"
+            },
+            {
+              "max_tx_time": "0x0149",
+              "TestType": "Boundary Test - Just Above Minimum Defined Value"
+            },
+            {
+              "max_tx_time": "0x0847",
+              "TestType": "Boundary Test - Just Below Maximum Defined Value for Devices not supporting LE Coded PHY"
+            },
+            {
+              "max_tx_time": "0x8000",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "max_tx_time": "0x7FFF",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "max_tx_time": "0xFFFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum)"
+            },
+            {
+              "max_tx_time": "0x2A2A",
+              "TestType": "Random Value - Mid-Range Valid Value"
+            },
+            {
+              "max_tx_time": "0xABCD",
+              "TestType": "Random Value - Non-Standard Bit Pattern"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
