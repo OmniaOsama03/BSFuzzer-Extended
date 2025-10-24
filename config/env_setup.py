@@ -34,10 +34,6 @@ def setup_env_variables():
         
         logger.info("环境变量设置完成")
         
-        # 输出环境变量（仅用于调试，实际使用时请移除）
-        logger.debug("OPENAI_API_KEY: %s", os.environ["OPENAI_API_KEY"][:5] + "..." if os.environ["OPENAI_API_KEY"] else "未设置")
-        logger.debug("GOOGLE_API_KEY: %s", os.environ["GOOGLE_API_KEY"][:5] + "..." if os.environ["GOOGLE_API_KEY"] else "未设置")
-        
     except Exception as e:
         logger.error("设置环境变量时出错: %s", str(e))
         raise

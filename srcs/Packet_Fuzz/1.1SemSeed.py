@@ -56,7 +56,6 @@ with open("/home/yangting/Documents/Semantic/config/semseed_config.json", "r") a
     model = config.get("llm", {}).get("model")
 # 
     model_config.update_config({"model":config.get("llm", {}).get("model"),"temperature":config.get("llm", {}).get("temperature"),})
-    print(model_config.get_config())
     llm = model_config.get_llm()
     xml_path = config.get("semext_merge", {}).get("xml_file_path")
     embedding_model = config.get("llm", {}).get("embedding_model")

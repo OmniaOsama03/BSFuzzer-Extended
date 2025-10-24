@@ -96,7 +96,6 @@ class ModelConfig:
             raise ValueError("Unsupported model provider")
     
     def _initialize_llm(self):
-        print(self.config)
         if self.model_provider == "openai":
             return ChatOpenAI(model_name=self.config["model"], temperature=self.config["temperature"], )
         elif self.model_provider == "grok":

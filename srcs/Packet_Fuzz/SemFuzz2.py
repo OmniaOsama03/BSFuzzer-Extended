@@ -53,7 +53,6 @@ class Fuzz_Session:
                 config = json.load(file)
                 model_config = ModelConfig(config.get("llm", {}).get("model_provider"))
                 model_config.update_config({"model":config.get("llm", {}).get("model"),"temperature":config.get("llm", {}).get("temperature"),})
-                print(model_config.get_config())
                 self.llm = model_config.get_llm()
                 self.semfuzz_xml_path = config.get("semfuzz", {}).get("xml_file_path")
                 self.semseed_file_path = config.get("semfuzz", {}).get("semseed_file_path")
