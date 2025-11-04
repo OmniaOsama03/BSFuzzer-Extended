@@ -2,11 +2,8 @@ import os
 import json
 from typing import Literal, Dict, Any
 from langchain_openai import ChatOpenAI
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_xai import ChatXAI
-from xai_grok import GrokClient
-from langchain_community.llms.tongyi import Tongyi
-# from openai import OpenAI
+
+
 
 
 
@@ -38,8 +35,9 @@ class ModelConfig:
         if self.model_provider == "openai":
             return {
                 "api_key": os.getenv("OPENAI_API_KEY"),
-                "model": "gpt-o3-mini",
-                "temperature": 0.7,
+                # 默认使用兼容 Chat Completions 的模型，避免 Responses-only 模型导致 stop 参数报错
+                "model": "gpt-4o-mini-2024-07-18",
+                "temperature": 1,
                 "max_tokens": 2048,
             }
         elif self.model_provider == "grok":
@@ -126,7 +124,16 @@ class ModelConfig:
         """
         更新配置参数
         """
-        self.config.update(new_config)
+        # 规范化模型名，避免使用不兼容 stop 参数的 Responses-only 模型
+        normalized_config = dict(new_config)
+        if self.model_provider == "openai":
+            model_name = normalized_config.get("model") or self.config.get("model")
+            if isinstance(model_name, str):
+                lower_name = model_name.lower()
+                # 将 gpt-5* 或 o*（常见 Responses-only）模型降级到兼容 Chat Completions 的模型
+                if lower_name.startswith("gpt-5") or lower_name.startswith("o1") or lower_name.startswith("o3") or lower_name.startswith("o4"):
+                    normalized_config["model"] = "gpt-4o-mini-2024-07-18"
+        self.config.update(normalized_config)
         self.llm = self._initialize_llm()
 
 # 示例用法
@@ -140,7 +147,7 @@ if __name__ == "__main__":
     config = ModelConfig(model_provider="google")
     llm = config.get_llm()
     # print(llm.model_name)
-    result = llm.invoke("hello")
+    result = llm.invoke("请问你是那个模型")
     print(result.content)
     # google
     # config = ModelConfig(model_provider="google")

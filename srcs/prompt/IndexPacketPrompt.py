@@ -1,4 +1,4 @@
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 
 question_template = PromptTemplate(
     input_variables=["packet_name","packet_name_2","packet_name_fields","packet_name_2_fields"],

@@ -29,7 +29,7 @@ from BSFuzz.libs.driver.NRF52_dongle import NRF52Dongle
 import Semantic.srcs.Send_Packet.constant as constant
 from BSFuzz.srcs.Send_Packet.Packet_Constuction import Packet_Constuction
 from BSFuzz.srcs.Packet_Process.Pcap_Packet_Process import Packet_Process
-from BSFuzz.srcs.Fail_Exception.Fail_Exception import *
+# from BSFuzz.srcs.Fail_Exception.Fail_Exception import *
 import configparser
 from BSFuzz.srcs.Packet_Process.Out_map import get_map
 
@@ -60,9 +60,9 @@ class Bluetooth_SUL(SUL):
         self.llpkts = ['ll_pkts','ll_connection_update_ind_pkt', 'll_channel_map_req_pkt', 'll_terminate_ind_pkt', 'll_enc_req_pkt', 'll_enc_rsp_pkt', 'll_start_enc_req_pkt', 'll_start_enc_rsp_pkt', 'll_unknown_rsp_pkt', 'll_feature_req_pkt', 'll_feature_rsp_pkt', 'll_pause_enc_req_pkt', 'll_pause_enc_rsp_pkt', 'll_version_ind_pkt', 'll_reject_ind_pkt', 'll_slave_feature_req_pkt', 'll_connection_param_req_pkt', 'll_connection_param_rsp_pkt', 'll_reject_ind_ext_pkt', 'll_ping_req_pkt', 'll_ping_rsp_pkt', 'll_length_req_pkt', 'll_length_rsp_pkt','ll_empty_pkt']
         # self.llpkts = ['ll_pkts', 'll_terminate_ind_pkt', 'll_enc_req_pkt', 'll_enc_rsp_pkt', 'll_start_enc_req_pkt', 'll_start_enc_rsp_pkt', 'll_unknown_rsp_pkt', 'll_feature_req_pkt', 'll_feature_rsp_pkt', 'll_pause_enc_req_pkt', 'll_pause_enc_rsp_pkt', 'll_version_ind_pkt', 'll_reject_ind_pkt', 'll_slave_feature_req_pkt', 'll_connection_param_req_pkt', 'll_connection_param_rsp_pkt', 'll_reject_ind_ext_pkt', 'll_ping_req_pkt', 'll_ping_rsp_pkt', 'll_length_req_pkt', 'll_length_rsp_pkt','ll_empty_pkt']
 
-        self.l2cappkts = ["l2cap_pkts",'l2cap_command_reject_rsp_pkt','l2cap_disconnection_req_pkt','l2cap_disconnection_rsp_pkt','l2cap_connection_parameter_update_req_pkt','l2cap_connection_parameter_update_rsp_pkt','l2cap_le_credit_based_connection_req_pkt','l2cap_le_credit_based_connection_rsp_pkt','l2cap_le_flow_control_credit_ind_pkt','l2cap_credit_based_connection_req_pkt','l2cap_credit_based_connection_rsp_pkt','l2cap_credit_based_reconfigure_req_pkt','l2cap_credit_based_reconfigure_rsp_pkt']
+        # self.l2cappkts = ["l2cap_pkts",'l2cap_command_reject_rsp_pkt','l2cap_disconnection_req_pkt','l2cap_disconnection_rsp_pkt','l2cap_connection_parameter_update_req_pkt','l2cap_connection_parameter_update_rsp_pkt','l2cap_le_credit_based_connection_req_pkt','l2cap_le_credit_based_connection_rsp_pkt','l2cap_le_flow_control_credit_ind_pkt','l2cap_credit_based_connection_req_pkt','l2cap_credit_based_connection_rsp_pkt','l2cap_credit_based_reconfigure_req_pkt','l2cap_credit_based_reconfigure_rsp_pkt']
         self.smppkts = ['smp_pkts','pairing_request_pkt', 'pairing_response_pkt', 'pairing_confirm_pkt', 'pairing_random_pkt', 'pairing_failed_pkt', 'encryption_information_pkt', 'master_identification_pkt', 'identity_information_pkt', 'identity_address_information_pkt', 'signing_information_pkt', 'security_request_pkt', 'pairing_public_key_pkt', 'pairing_dhkey_check_pkt', 'pairing_keypress_notification_pkt']
-        self.attpkts = ["att_pkts","att_error_rsp_pkt","att_exchange_mtu_req_pkt","att_exchange_mtu_rsp_pkt","att_find_information_req_pkt","att_find_information_rsp_pkt","att_find_by_type_value_req_pkt","att_find_by_type_value_rsp_pkt","att_read_by_type_req_pkt","att_read_by_type_rsp_pkt","att_read_req_pkt","att_read_rsp_pkt","att_read_blob_req_pkt","att_read_blob_rsp_pkt","att_read_multiple_req_pkt","att_read_multiple_rsp_pkt","att_read_by_group_type_req_pkt","att_read_by_group_type_rsp_pkt","att_read_multiple_variable_req_pkt","att_read_multiple_variable_rsp_pkt","att_write_req_pkt","att_write_rsp_pkt","att_write_cmd_pkt","att_signed_write_pkt","att_prepare_write_req_pkt","att_prepare_write_rsp_pkt","att_execute_write_req_pkt","att_execute_write_rsp_pkt","att_handle_value_notification_pkt","att_handle_value_indication_pkt","att_handle_value_confirmation_pkt","att_multiple_handle_value_notification_pkt"]
+        # self.attpkts = ["att_pkts","att_error_rsp_pkt","att_exchange_mtu_req_pkt","att_exchange_mtu_rsp_pkt","att_find_information_req_pkt","att_find_information_rsp_pkt","att_find_by_type_value_req_pkt","att_find_by_type_value_rsp_pkt","att_read_by_type_req_pkt","att_read_by_type_rsp_pkt","att_read_req_pkt","att_read_rsp_pkt","att_read_blob_req_pkt","att_read_blob_rsp_pkt","att_read_multiple_req_pkt","att_read_multiple_rsp_pkt","att_read_by_group_type_req_pkt","att_read_by_group_type_rsp_pkt","att_read_multiple_variable_req_pkt","att_read_multiple_variable_rsp_pkt","att_write_req_pkt","att_write_rsp_pkt","att_write_cmd_pkt","att_signed_write_pkt","att_prepare_write_req_pkt","att_prepare_write_rsp_pkt","att_execute_write_req_pkt","att_execute_write_rsp_pkt","att_handle_value_notification_pkt","att_handle_value_indication_pkt","att_handle_value_confirmation_pkt","att_multiple_handle_value_notification_pkt"]
         # self.packet_construction.get_pkts(self.advpkts)
         # self.packet_construction.get_pkts(self.llpkts)
         # self.packet_construction.get_pkts(self.l2cappkts)
@@ -116,9 +116,9 @@ class Bluetooth_SUL(SUL):
 
         self.packet_construction.get_pkts(self.advpkts)
         self.packet_construction.get_pkts(self.llpkts)
-        self.packet_construction.get_pkts(self.l2cappkts)
+        # self.packet_construction.get_pkts(self.l2cappkts)
         self.packet_construction.get_pkts(self.smppkts)
-        self.packet_construction.get_pkts(self.attpkts)
+        # self.packet_construction.get_pkts(self.attpkts)
 
     def data_processing(self):
         #['ll_connection_update_ind_pkt','LL_CONNECTION_UPDATE_IND','instant',0,constant.EMPTY],

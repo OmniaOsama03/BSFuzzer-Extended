@@ -1,0 +1,13 @@
+```dot
+digraph Security_Request {
+    s0 [label="s0"];
+    s1 [label="s1"];
+    s2 [label="s2"];
+    
+    s0 -> s1 [label="empty/Security Request"];
+    s1 -> s2 [label="Pairing Request/Pairing Response"];
+    
+    __start0 [label="", shape=none];
+    __start0 -> s0 [label=""];
+}
+```

@@ -1,4 +1,4 @@
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 
 SemRspPrompt = PromptTemplate(
             input_variables=["INSEQ","OUTSEQ", "MUTINF"],

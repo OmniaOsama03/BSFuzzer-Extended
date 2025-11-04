@@ -1,6 +1,6 @@
 
 
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 
 
 #  """"You are a Bluetooth protocol expert tasked with analyzing the protocol specifications within a technical document.

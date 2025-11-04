@@ -1,0 +1,3 @@
+2025-11-04 21:02:29,481 - INFO - Bluetooth_SUL.py:78 - Advertiser Address: e8:31:cd:73:f8:e2
+2025-11-04 21:02:29,482 - DEBUG - key.py:72 - ia: 0ab943776f91 ia_type: 01 ra: e831cd73f8e2 ra_type: 00 role: 1
+2025-11-04 21:02:29,552 - DEBUG - key.py:169 - preq: 0104000d100f0f

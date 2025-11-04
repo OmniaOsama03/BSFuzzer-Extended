@@ -11,21 +11,21 @@ device = {
     "rx_len": 251,
     "tx_len": 251,
     "packet_layer": 1,
-    "config_file": "/home/yangting/Documents/Semantic/srcs/Config_File/Esp32/esp_ble_security.ini",
-    "learned_model_path": "/home/yangting/Documents/Semantic/result/dot_file/Esp32/esp_ble_security_l2cap.dot",
-    "log_path": "/home/yangting/Documents/Semantic/result/log_file/Esp32/test_log.log",
-    "port_name": "/dev/ttyACM1",
+    "config_file": "/home/yangting/Documents/BSFuzz/srcs/Config_File/Esp32/esp_ble_security.ini",
+    "learned_model_path": "/home/yangting/Documents/BSFuzz/result/dot_file/Esp32/esp_ble_security_l2cap.dot",
+    "log_path": "/home/yangting/Documents/BSFuzz/result/log_file/Esp32/test_log.log",
+    "port_name": "/dev/ttyACM0",
     "logs_pcap": True,
-    "pcap_filename": "/home/yangting/Documents/Semantic/result/log_file/Esp32/test_smp_legency_access_adress.pcap",
+    "pcap_filename": "/home/yangting/Documents/BSFuzz/result/log_file/Esp32/test_smp_legency_access_adress.pcap",
     "return_handle_layer": [1,3] ,
     "send_handle_layer":[1,3], # Uncomment and modify if needed
-    "key_path": "/home/yangting/Documents/Semantic/result/log_file/Esp32/key.txt",
+    "key_path": "/home/yangting/Documents/BSFuzz/result/log_file/Esp32/key.txt",
     "pairing_type": "sc"
 }
 
 fuzz = {
-    "fuzz_pcap_filename": "/home/yangting/Documents/Semantic/result/log_file/Esp32/test_l2cap_fuzz.pcap",
-    "output_file_path": "/home/yangting/Documents/Semantic/result/log_file/Esp32/semfuzz_output.json",
+    "fuzz_pcap_filename": "/home/yangting/Documents/BSFuzz/result/log_file/Esp32/test_l2cap_fuzz.pcap",
+    "output_file_path": "/home/yangting/Documents/BSFuzz/result/log_file/Esp32/semfuzz_output_test.json",
     "untested_layer": ["BTLE",],
     "block_packet":[
         {

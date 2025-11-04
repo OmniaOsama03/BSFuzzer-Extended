@@ -1,51 +1,46 @@
 {
     "llm": {
-        "model_provider": "deepseek",
-        "model": "deepseek-reasoner",
+        "model_provider": "grok",
+        "model": "grok-3",
         "embedding_model": "text-embedding-3-small",
-        "temperature": 0.7
+        "temperature": 1
         
     },
     "semext_smp": {
-      "pdf_path":"/home/yangting/Documents/Semantic/data/Core_v5.0_SMP.pdf",
-      "txt_path":"/home/yangting/Documents/Semantic/data/V5.0/SMP.txt",
-      "faiss_index_path": "/home/yangting/Documents/Semantic/data/vector_db/smp/",
-      "xml_file_path": "/home/yangting/Documents/Semantic/data/sem_seed/smp_layer.xml"
+      "pdf_path":"/home/yangting/Documents/BSFuzz/data/Core_v5.0_SMP.pdf",
+      "txt_path":"/home/yangting/Documents/BSFuzz/data/V5.0/SMP.txt",
+      "faiss_index_path": "/home/yangting/Documents/BSFuzz/data/vector_db/smp/",
+
+      "xml_file_path": "/home/yangting/Documents/BSFuzz/data/sem_seed/smp_layer3.xml"
 
     },
     "semext_ll": {
-      "pdf_path":"/home/yangting/Documents/Semantic/data/Core_v5.0_LL.pdf",
-      "txt_path":"/home/yangting/Documents/Semantic/data/V5.0/LL.txt",
-      "faiss_index_path": "/home/yangting/Documents/Semantic/data/vector_db/ll/",
-      "xml_file_path": "/home/yangting/Documents/Semantic/data/sem_seed/link_layer.xml"
+      "pdf_path":"/home/yangting/Documents/BSFuzz/data/Core_v5.0_LL.pdf",
+      "txt_path":"/home/yangting/Documents/BSFuzz/data/V5.0/LL.txt",
+      "faiss_index_path": "/home/yangting/Documents/BSFuzz/data/vector_db/ll/",
+      "xml_file_path": "/home/yangting/Documents/BSFuzz/data/sem_seed/link_layer.xml"
 
     },
     "semext_l2cap": {
-      "pdf_path":"/home/yangting/Documents/Semantic/data/Core_v5.0_L2CAP.pdf",
-      "txt_path":"/home/yangting/Documents/Semantic/data/V5.0/L2CAP.txt",
-      "faiss_index_path": "/home/yangting/Documents/Semantic/data/vector_db/l2cap/",
-      "xml_file_path": "/home/yangting/Documents/Semantic/data/sem_seed/l2cap_layer.xml"
+      "pdf_path":"/home/yangting/Documents/BSFuzz/data/Core_v5.0_L2CAP.pdf",
+      "txt_path":"/home/yangting/Documents/BSFuzz/data/V5.0/L2CAP.txt",
+      "faiss_index_path": "/home/yangting/Documents/BSFuzz/data/vector_db/l2cap/",
+      "xml_file_path": "/home/yangting/Documents/BSFuzz/data/sem_seed/l2cap_layer.xml"
 
     },
     "semext_att": {
-      "pdf_path":"/home/yangting/Documents/Semantic/data/Core_v5.0_ATT.pdf",
-      "txt_path":"/home/yangting/Documents/Semantic/data/V5.0/ATT.txt",
-      "faiss_index_path": "/home/yangting/Documents/Semantic/data/vector_db/att/",
-      "xml_file_path": "/home/yangting/Documents/Semantic/data/sem_seed/att_layers.xml"
+      "pdf_path":"/home/yangting/Documents/BSFuzz/data/Core_v5.0_ATT.pdf",
+      "txt_path":"/home/yangting/Documents/BSFuzz/data/V5.0/ATT.txt",
+      "faiss_index_path": "/home/yangting/Documents/BSFuzz/data/vector_db/att/",
+      "xml_file_path": "/home/yangting/Documents/BSFuzz/data/sem_seed/att_layers.xml"
 
     },
-    "semext_mesh": {
-      "pdf_path":"/home/yangting/Documents/Semantic/data/Mesh/MshPRT_v1.1-561-604.pdf",
-      "txt_path":"/home/yangting/Documents/Semantic/data/Mesh/MshPRT_v1.1-561-604.txt",
-      "faiss_index_path": "/home/yangting/Documents/Semantic/data/vector_db/mesh_provisioning/",
-      "xml_file_path": "/home/yangting/Documents/Semantic/data/sem_seed/mesh_layer.xml"
-    },
     "semext_merge": {
-      "xml_file_path": "/home/yangting/Documents/Semantic/data/sem_seed/merged.xml"
+      "xml_file_path": "/home/yangting/Documents/BSFuzz/data/sem_seed/merged.xml"
 
     },
     "semseed":{
-      "seed_file_path": "/home/yangting/Documents/Semantic/data/sem_seed/semseed.xml"
+      "seed_file_path": "/home/yangting/Documents/BSFuzz/data/sem_seed/semseed.xml"
     }
 
   }

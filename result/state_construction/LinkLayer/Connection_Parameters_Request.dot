@@ -1,0 +1,13 @@
+```dot
+digraph Connection_Parameters_Request {
+    s0 [label="s0"];
+    s1 [label="s1"];
+    s2 [label="s2"];
+    
+    s0 -> s1 [label="LL_CONNECTION_PARAM_REQ/LL_CONNECTION_PARAM_RSP"];
+    s1 -> s2 [label="LL_CONNECTION_UPDATE_IND/empty"];
+    
+    __start0 [label="", shape=none];
+    __start0 -> s0 [label=""];
+}
+```

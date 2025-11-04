@@ -1,419 +1,53 @@
 <?xml version='1.0' encoding='utf-8'?>
-<protocol name="merge">
-  <packet name="BTLE_ADV">
-    <field name="RxAdd">
-        <field_bit_length>1</field_bit_length>
-        <semantic>Indicates the type of address of the receiving device in the advertising packet.</semantic>
-        <defined_values>
-            0b: Public Device Address
-            1b: Random Device Address
-        </defined_values>
-    </field>
-  </packet>
-  <packet name="BTLE_ADV">
-    <field name="TxAdd">
-        <field_bit_length>1</field_bit_length>
-        <semantic>Indicates the type of address of the transmitting device in the advertising packet.</semantic>
-        <defined_values>
-            0b: Public Device Address
-            1b: Random Device Address
-        </defined_values>
-    </field>
-  </packet>
-  <packet name="BTLE_ADV">
-    <field name="ChSel">
-        <field_bit_length>1</field_bit_length>
-        <semantic>Indicates whether the device supports Channel Selection Algorithm #2 for connection establishment.</semantic>
-        <defined_values>
-            0b: Channel Selection Algorithm #2 not supported
-            1b: Channel Selection Algorithm #2 supported
-        </defined_values>
-    </field>
-  </packet>
-  <packet name="BTLE_ADV">
-    <field name="RFU">
-        <field_bit_length>1</field_bit_length>
-        <semantic>Reserved for future use, indicating that the field is currently unused but may be allocated for future protocol extensions.</semantic>
-        <defined_values>0b-1b (All values reserved for future use)</defined_values>
-    </field>
-  </packet>
-  <packet name="BTLE_ADV">
-    <field name="PDU_type">
-        <field_bit_length>4</field_bit_length>
-        <semantic>Indicates the type of Protocol Data Unit (PDU) in the advertising packet.</semantic>
-        <defined_values>
-            0000b: ADV_IND (Connectable and scannable undirected advertising event)
-            0001b: ADV_DIRECT_IND (Connectable directed advertising event)
-            0010b: ADV_NONCONN_IND (Non-connectable undirected advertising event)
-            0011b: SCAN_REQ (Scan request)
-            0100b: SCAN_RSP (Scan response)
-            0101b: CONNECT_IND (Connection request)
-            0110b: ADV_SCAN_IND (Scannable undirected advertising event)
-            0111b-1111b: Reserved for future use
-        </defined_values>
-    </field>
-  </packet>
-  <packet name="BTLE_ADV">
-    <field name="Length">
-        <field_bit_length>8</field_bit_length>
-        <semantic>Indicates the length of the advertising data in octets.</semantic>
-        <defined_values>0x00-0xFF (Valid range for advertising data length, where the maximum length is 255 octets)</defined_values>
-    </field>
-  </packet>
-  <packet name="BTLE_SCAN_REQ">
-    <field name="ScanA">
-        <field_bit_length>48</field_bit_length>
-        <semantic>Represents the address of the device sending the scan request (Scanner Address).</semantic>
-        <defined_values>48-bit Bluetooth device address (public or random)</defined_values>
-    </field>
-  </packet>
-  <packet name="BTLE_SCAN_REQ">
-      <field name="AdvA">
-          <field_bit_length>48</field_bit_length>
-          <semantic>Represents the address of the advertising device targeted by the scan request (Advertising Address).</semantic>
-          <defined_values>48-bit Bluetooth device address (public or random)</defined_values>
-      </field>
-  </packet>
-  <packet name="BTLE_CONNECT_REQ">
-    <field name="InitA">
-        <field_bit_length>48</field_bit_length>
-        <semantic>Represents the address of the device initiating the connection request (Initiator Address).</semantic>
-        <defined_values>48-bit Bluetooth device address (public or random)</defined_values>
-    </field>
-  </packet>
-  <packet name="BTLE_CONNECT_REQ">
-    <field name="AdvA">
-        <field_bit_length>48</field_bit_length>
-        <semantic>Represents the address of the advertising device targeted by the connection request (Advertising Address).</semantic>
-        <defined_values>48-bit Bluetooth device address (public or random)</defined_values>
-    </field>
-  </packet>
-  <packet name="BTLE_CONNECT_REQ">
-    <field name="AA">
-        <field_bit_length>32</field_bit_length>
-        <semantic>Specifies the Access Address used to identify the connection after it is established.</semantic>
-        <defined_values>32-bit value (randomly generated, must not match advertising channel access address 0x8E89BED6)</defined_values>
-    </field>
-  </packet>
-  <packet name="BTLE_CONNECT_REQ">
-    <field name="crc_init">
-        <field_bit_length>16</field_bit_length>
-        <semantic>Specifies the initial value of the CRC calculation for the connection request.</semantic>
-        <defined_values>16-bit value (randomly generated, must not match advertising channel access address 0x8E89BED6)</defined_values>
-    </field>
-  </packet>
-  <packet name="BTLE_CONNECT_REQ">
-    <field name="win_size">
-        <field_bit_length>8</field_bit_length>
-        <semantic>Specifies the transmit window size, defining the time window after connection establishment for the first data packet transmission, in units of 1.25 ms.</semantic>
-        <defined_values>0x01-0xFF (1.25 ms to 318.75 ms)</defined_values>
-    </field>
-  </packet>
-  <packet name="BTLE_CONNECT_REQ">
-      <field name="win_offset">
-          <field_bit_length>16</field_bit_length>
-          <semantic>Specifies the transmit window offset, defining the time delay from the end of the connection request to the start of the transmit window, in units of 1.25 ms.</semantic>
-          <defined_values>0x0000-0xFFFF (0 ms to 81,918.75 ms)</defined_values>
-      </field>
-  </packet>
-  <packet name="BTLE_CONNECT_REQ">
-    <field name="interval">
-        <field_bit_length>16</field_bit_length>
-        <semantic>Specifies the connection interval, defining the time between consecutive connection events, in units of 1.25 ms.</semantic>
-        <defined_values>0x0006-0x0C80 (7.5 ms to 4,000 ms)</defined_values>
-    </field>
-  </packet>
-  <packet name="BTLE_CONNECT_REQ">
-    <field name="latency">
-        <field_bit_length>16</field_bit_length>
-        <semantic>Specifies the slave latency, defining the number of consecutive connection events that the slave device can skip to reduce power consumption.</semantic>
-        <defined_values>0x0000-0x01F3 (0 to 499 events)</defined_values>
-    </field>
-  </packet>
-  <packet name="BTLE_CONNECT_REQ">
-      <field name="timeout">
-          <field_bit_length>16</field_bit_length>
-          <semantic>Specifies the supervision timeout, defining the maximum time between two successful connection events before the connection is considered lost, in units of 10 ms.</semantic>
-          <defined_values>0x000A-0x0C80 (100 ms to 32,000 ms)</defined_values>
-      </field>
-  </packet>
-  <packet name="BTLE_CONNECT_REQ">
-    <field name="chM">
-        <field_bit_length>40</field_bit_length>
-        <semantic>Specifies the channel map, indicating which of the 37 data channels (0-36) are available for use in the connection, represented as a 5-byte bitmap.</semantic>
-        <defined_values>Bit 0 to Bit 36 correspond to channels 0 to 36 (1 = used, 0 = unused); Bit 37-39 reserved</defined_values>
-    </field>
-  </packet>
-  <packet name="BTLE_CONNECT_REQ">
-    <field name="SCA">
-        <field_bit_length>3</field_bit_length>
-        <semantic>Specifies the sleep clock accuracy of the slave device, indicating the worst-case clock drift in parts per million (ppm) for timing synchronization.</semantic>
-        <defined_values>
-            000b: 251 ppm to 500 ppm
-            001b: 151 ppm to 250 ppm
-            010b: 101 ppm to 150 ppm
-            011b: 76 ppm to 100 ppm
-            100b: 51 ppm to 75 ppm
-            101b: 31 ppm to 50 ppm
-            110b: 21 ppm to 30 ppm
-            111b: 0 ppm to 20 ppm
-        </defined_values>
-    </field>
-  </packet>
-  <packet name="BTLE_CONNECT_REQ">
-    <field name="hop">
-        <field_bit_length>5</field_bit_length>
-        <semantic>Specifies the hop increment used in the channel selection algorithm for frequency hopping during the connection.</semantic>
-        <defined_values>0x05-0x1F (5 to 31)</defined_values>
-    </field>
-  </packet>
-  <packet name="BTLE_DATA">
-      <field name="RFU">
-      <field_bit_length>3</field_bit_length>
-      <semantic>Reserved for future use, indicating that the field is currently unused but may be allocated for future protocol extensions.</semantic>
-      <defined_values>000b-111b (All values reserved for future use)</defined_values>
-      </field>
-  </packet>
-  <packet name="BTLE_DATA">
-      <field name="MD">
-      <field_bit_length>1</field_bit_length>
-      <semantic>The More Data (MD) field is used to indicate whether the sender has additional data to send in the current connection event.</semantic>
-      <defined_values>0 (No more data), 1 (More data available)</defined_values>
-      </field>
-  </packet>
-  <packet name="BTLE_DATA">
-      <field name="SN">
-      <field_bit_length>1</field_bit_length>
-      <semantic>The Sequence Number (SN) field is used to differentiate new and retransmitted Data Channel PDUs in the Bluetooth link layer.</semantic> 
-      <defined_values>0 (Even sequence number), 1 (Odd sequence number)</defined_values>
-      </field>
-  </packet>
-  <packet name="BTLE_DATA">
-      <field name="NESN">
-      <field_bit_length>1</field_bit_length> 
-      <semantic>The Next Expected Sequence Number (NESN) field is used to indicate the next expected sequence number from the transmitting device, ensuring proper acknowledgment and retransmission handling in Bluetooth link layer communication.</semantic> 
-      <defined_values>0 (Current packet acknowledged, ready for new data), 1 (Expecting retransmission or new data)</defined_values>
-      </field>
-  </packet>
-  <packet name="BTLE_DATA">
-      <field name="LLID">
-      <field_bit_length>2</field_bit_length> 
-      <semantic>The Logical Link Identifier (LLID) field is used to indicate whether the packet is an LL Data PDU or an LL Control PDU.</semantic> 
-      <defined_values>00b (Reserved for future use), 01b (LL Data PDU: Continuation fragment of an L2CAP message, or an Empty PDU), 10b (LL Data PDU: Start of an L2CAP message or a complete L2CAP message with no fragmentation), 11b (LL Control PDU)</defined_values> 
-      </field>
-  </packet>
-  <packet name="BTLE_DATA">
-      <field name="len">
-      <field_bit_length>8</field_bit_length> 
-      <semantic>The Length field indicates the size, in octets, of the Payload and MIC, if included.</semantic>
-      <defined_values>0x00 - 0xFF (Valid range for payload size in octets, where the maximum payload size is 255 octets)</defined_values>
-      </field>
-  </packet>
-
-
-  <packet name="L2CAP_Hdr">
-      <field name="len">
-      <field_bit_length>16</field_bit_length> 
-      <semantic>Indicates the size in octets of the payload following the Basic L2CAP header (excluding the 4-octet header itself). For connection-oriented channels, this is the Information payload; for connectionless channels, this includes the PSM field plus Information payload. Used for PDU recombination and integrity checking.</semantic> <defined_values>0x0000 to 0xFFFF (0 to 65535 octets); practical minimum is 0 for connection-oriented, 2 for connectionless (PSM size); maximum constrained by MTU/MPS or 65535 (connection-oriented) / 65533 (connectionless with 2-octet PSM).</defined_values>
-      </field>
-  </packet>
-  <packet name="L2CAP_Hdr">
-    <field name="cid">
-    <field_bit_length>16</field_bit_length> 
-    <semantic>Identifies the destination channel endpoint of the L2CAP PDU on the receiving device, scoped to a specific logical link (ACL-U, LE-U, AMP-U, ASB-U). Used for multiplexing data flows between L2CAP entities. Fixed CIDs (0x0001-0x003F) are predefined; dynamic CIDs (0x0040-0xFFFF or 0x007F) are allocated during channel setup.</semantic> 
-    <defined_values>0x0000 (null, not allowed); 0x0001-0x003F (fixed channels, e.g., 0x0001 signaling, 0x0002 connectionless); 0x0040-0xFFFF (dynamic, ACL-U/AMP-U) or 0x0040-0x007F (dynamic, LE-U); other ranges reserved for future use per logical link type.</defined_values>
-    </field>
-  </packet>
-  <packet name="SM_Hdr">
+<protocol name="merge"><packet name="SM_Hdr">
     <field name="sm_command">
-     <field_bit_length>8</field_bit_length> 
-     <semantic>The Code field is one octet long and identifies the type of command. If a packet is received with a Code that is reserved for future use it shall be ignored. </semantic> 
-     <defined_values> 0x01 (Pairing Request), 0x02 (Pairing Response), 0x03 (Pairing Confirm), 0x04 (Pairing Random), 0x05 (Pairing Failed), 0x06 (Encryption Information), 0x07 (Master Identification), 0x08 (Identity Information), 0x09 (Identity Address Information), 0x0A (Signing Information), 0x0B (Security Request), 0x0C (Pairing Public Key), 0x0D (Pairing DHKey Check), 0x0E (Pairing Keypress Notification), 0x0F-0xFF (Reserved for future use) </defined_values> 
+      <field_bit_length>8</field_bit_length>
+      <semantic>Identifies the type of Security Manager Protocol (SMP) command being sent, enabling the receiving device to interpret and process the subsequent data fields in the packet.</semantic>
+      <defined_values>0x01 (Pairing Request), 0x02 (Pairing Response), 0x03 (Pairing Confirm), 0x04 (Pairing Random), 0x05 (Pairing Failed), 0x06 (Encryption Information), 0x07 (Central Identification), 0x08 (Identity Information), 0x09 (Identity Address Information), 0x0A (Signing Information), 0x0B (Security Request), 0x0C (Pairing Public Key), 0x0D (Pairing DHKey Check), 0x0E (Pairing Keypress Notification), 0x0F-0xFF (Reserved for future use)</defined_values>
     </field>
   </packet>
-  
-  
   <packet name="SM_Pairing_Response">
-    <field name="iocap">
-      <field_bit_length>8</field_bit_length> 
-      <semantic>Defines the Input and Output (IO) capabilities of a Bluetooth device, influencing the selection of pairing methods and security levels.</semantic> <defined_values> 0x00 (DisplayOnly), 0x01 (DisplayYesNo), 0x02 (KeyboardOnly), 0x03 (NoInputNoOutput), 0x04 (KeyboardDisplay), 0x05-0xFF (Reserved for future use) </defined_values>
-    </field>
-  </packet>
-
-  <packet name="SM_Pairing_Response">  
-    <field name="oob">  
-      <field_bit_length>8</field_bit_length> <semantic>Indicates whether Out-of-Band (OOB) authentication data is available for pairing.</semantic> <defined_values> 0x00 (OOB authentication data not available), 0x01 (OOB authentication data available), 0x02-0xFF (Reserved for future use) </defined_values> 
-    </field>
-  </packet>
-  
-  
-  <packet name="SM_Pairing_Response">
-    <field name="authentication">
-      <field_bit_length>8</field_bit_length> 
-      <semantic>Defines the authentication requirements and security properties for pairing, including MITM protection and bonding options.</semantic> 
-      <defined_values> Bit 0: Bonding (0 = No bonding, 1 = Bonding), Bit 1: MITM (0 = No MITM protection, 1 = MITM protection required), Bit 2: Secure Connections (0 = Legacy pairing, 1 = Secure Connections supported), Bit 3: Keypress Notifications (0 = Not supported, 1 = Supported), Bit 4-7: Reserved (Shall be set to 0) </defined_values>
-    </field>
-  </packet>
-  
-  
-  <packet name="SM_Pairing_Response">    
-    <field name="max_key_size">
-      <field_bit_length>8</field_bit_length> <semantic>Specifies the maximum encryption key size, in bytes, that the device supports for pairing.</semantic> <defined_values> 0x07-0x10 (Valid encryption key size range, 7 to 16 bytes), 0x00-0x06 (Reserved, shall not be used), 0x11-0xFF (Reserved for future use) </defined_values>
-    </field>
-  </packet>
-  
-  
-
-  <packet name="SM_Master_Identification">
-    <field name="ediv">
-      <field_bit_length>16</field_bit_length>
-      <semantic>The EDIV (Encrypted Diversifier) is a 2-octet value used to identify the encryption parameters previously used, assisting in the re-establishment of an encrypted connection.</semantic>
-      <defined_values>0x0000-0xFFFF</defined_values>
-    </field>
-  </packet>
-  <packet name="SM_Master_Identification">
-    <field name="rand">
-      <field_bit_length>64</field_bit_length>
-      <semantic>The Rand field provides an additional layer of security by ensuring the uniqueness of encryption parameters, crucial for preventing replay attacks.</semantic>
-      <defined_values>0x0000000000000000-0xFFFFFFFFFFFFFFFF (All possible 64-bit values)</defined_values>
-    </field>
-  </packet>
-  <packet name="SM_Pairing_Request">
     <field name="iocap">
       <field_bit_length>8</field_bit_length>
       <semantic>Defines the input and output capabilities of a Bluetooth device, influencing the selection of pairing methods and security levels.</semantic>
       <defined_values>0x00 (DisplayOnly), 0x01 (DisplayYesNo), 0x02 (KeyboardOnly), 0x03 (NoInputNoOutput), 0x04 (KeyboardDisplay), 0x05-0xFF (Reserved for future use)</defined_values>
     </field>
   </packet>
-  <packet name="SM_Pairing_Request">
+  <packet name="SM_Pairing_Response">
     <field name="oob">
       <field_bit_length>8</field_bit_length>
-      <semantic>Indicates the availability of OOB authentication data, which is used to enhance security by using data exchanged outside the standard Bluetooth communication channel.</semantic>
-      <defined_values>0x00 (OOB Authentication data not present), 0x01 (OOB Authentication data from a remote device is present), 0x02-0xFF (Reserved for future use)</defined_values>
+      <semantic>Indicates whether Out-of-Band (OOB) authentication data is available for the pairing process, which can enhance security by providing an additional authentication mechanism outside the Bluetooth channel.</semantic>
+      <defined_values>0x00 (OOB data not available), 0x01 (OOB data available), 0x02-0xFF (Reserved for future use)</defined_values>
     </field>
   </packet>
-  <packet name="SM_Pairing_Request">
+  <packet name="SM_Pairing_Response">
     <field name="authentication">
       <field_bit_length>8</field_bit_length>
-      <semantic>Indicates the authentication requirements and security features requested during pairing, including MITM protection and LE Secure Connections support.</semantic>
-      <defined_values>0x00 (No MITM, No SC), 0x01 (MITM, No SC), 0x02 (No MITM, SC), 0x03 (MITM, SC), 0x04-0xFF (Reserved for future use)</defined_values>
+      <semantic>Specifies the authentication and security requirements for the pairing process, including Bonding, Man-in-the-Middle (MITM) protection, Secure Connections support, Keypress notifications, and CT2 support.</semantic>
+      <defined_values>0x00 (No Bonding, No MITM, No Secure Connections, No Keypress, No CT2), 0x01 (Bonding, No MITM, No Secure Connections, No Keypress, No CT2), 0x02 (No Bonding, MITM required, No Secure Connections, No Keypress, No CT2), 0x03 (Bonding, MITM required, No Secure Connections, No Keypress, No CT2), 0x04 (No Bonding, No MITM, Secure Connections supported, No Keypress, No CT2), 0x05 (Bonding, No MITM, Secure Connections supported, No Keypress, No CT2), 0x06 (No Bonding, MITM required, Secure Connections supported, No Keypress, No CT2), 0x07 (Bonding, MITM required, Secure Connections supported, No Keypress, No CT2), 0x08 (No Bonding, No MITM, No Secure Connections, Keypress supported, No CT2), 0x10 (No Bonding, No MITM, No Secure Connections, No Keypress, CT2 supported), 0x20-0xFF (Reserved for future use or invalid combinations)</defined_values>
     </field>
   </packet>
-  <packet name="SM_Pairing_Request">
+  <packet name="SM_Pairing_Response">
     <field name="max_key_size">
       <field_bit_length>8</field_bit_length>
-      <semantic>Defines the maximum encryption key size in octets that the device can support, influencing the security level of the connection.</semantic>
-      <defined_values>0x07-0x10 (Valid range: 7 to 16 octets), 0x00-0x06 (Reserved for future use)</defined_values>
+      <semantic>Indicates the maximum encryption key size (in bytes) supported by the responding device for securing the Bluetooth connection.</semantic>
+      <defined_values>7 to 16 (valid range for LE connections), values outside this range are invalid and may result in pairing failure</defined_values>
     </field>
   </packet>
-  <packet name="SM_Pairing_Request">
+  <packet name="SM_Pairing_Response">
     <field name="initiator_key_distribution">
-      <field_bit_length>4</field_bit_length>
-      <semantic>Specifies which keys the initiator will distribute or generate for the responder, influencing key management and security protocols during pairing.</semantic>
-      <defined_values>0x0 (No keys distributed), 0x1 (EncKey), 0x2 (IdKey), 0x4 (SignKey), 0x8 (LinkKey), 0xF (All keys), 0x0-0xF (Possible combinations of these keys)</defined_values>
+      <field_bit_length>8</field_bit_length>
+      <semantic>Specifies the security keys the initiating device will distribute during the key distribution phase of pairing, impacting encryption, privacy, and authentication features.</semantic>
+      <defined_values>Bit 0: EncKey (Encryption Key, e.g., LTK/STK), Bit 1: IdKey (Identity Key, e.g., IRK), Bit 2: SignKey (Signing Key, e.g., CSRK), Bits 3-7: Reserved for future use (should be 0); Example values: 0x01 (Encryption Key only), 0x03 (Encryption and Identity Keys)</defined_values>
     </field>
   </packet>
-  <packet name="SM_Pairing_Request">
+  <packet name="SM_Pairing_Response">
     <field name="responder_key_distribution">
-      <field_bit_length>4</field_bit_length>
-      <semantic>Indicates which keys the responder will distribute or generate for the initiator during the Transport Specific Key Distribution phase. This includes EncKey, IdKey, SignKey, and LinkKey.</semantic>
-      <defined_values>0x0 (No keys distributed), 0x1 (EncKey), 0x2 (IdKey), 0x4 (SignKey), 0x8 (LinkKey), 0xF (All keys distributed), 0xF0-0xFF (Reserved for future use)</defined_values>
-    </field>
-  </packet>
-  <packet name="SM_Identity_Information">
-    <field name="irk">
-      <field_bit_length>128</field_bit_length>
-      <semantic>The Identity Resolving Key (IRK) is used for resolving private addresses and maintaining privacy in Bluetooth communications. It allows devices to identify each other securely when using resolvable private addresses.</semantic>
-      <defined_values>No specific valid value enumeration is provided as the IRK is typically randomly generated or assigned, with no reserved bits described in the context. The theoretical range is from 0x00000000000000000000000000000000 to 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.</defined_values>
-    </field>
-  </packet>
-  <packet name="SM_Confirm">
-    <field name="confirm">
-      <field_bit_length>128</field_bit_length>
-      <semantic>The confirm field is used to ensure the authenticity and integrity of the pairing process between Bluetooth devices by exchanging confirm values derived from cryptographic functions during the pairing process.</semantic>
-      <defined_values>0x00000000000000000000000000000000 (Minimum), 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF (Maximum), All other values are valid within the cryptographic constraints of the AES-CMAC function used to generate confirm values.</defined_values>
-    </field>
-  </packet>
-  <packet name="SM_Random">
-    <field name="random">
-       <field_bit_length>128</field_bit_length>
-       <semantic>Represents the random value used in the pairing process to verify the confirm value and generate the Short Term Key (STK) or Long Term Key (LTK). It is exchanged between the initiating and responding devices as part of the Secure Connections and LE Legacy Pairing process.</semantic>
-       <defined_values>0x00000000000000000000000000000000 - 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</defined_values>
-    </field>
-  </packet>
-  <packet name="SM_Failed">
-    <field name="reason">
       <field_bit_length>8</field_bit_length>
-      <semantic>Indicates the reason for a pairing failure during the Bluetooth pairing process, facilitating error diagnosis and troubleshooting.</semantic>
-      <defined_values>0x00 (Reserved for future use), 0x01 (Passkey Entry Failed), 0x02 (OOB Not Available), 0x03 (Authentication Requirements), 0x04 (Confirm Value Failed), 0x05 (Pairing Not Supported), 0x06 (Encryption Key Size), 0x07 (Command Not Supported), 0x08-0xFF (Reserved for future use)</defined_values>
+      <semantic>Indicates which security keys (e.g., Long-Term Key (LTK), Identity Resolving Key (IRK), Connection Signature Resolving Key (CSRK)) the responding device is willing to distribute during the pairing process.</semantic>
+      <defined_values>0x00-0xFF (Bitmap with specific bits indicating keys such as LTK, IRK, CSRK; exact bit assignments not specified but inferred as defined for key distribution, others may be reserved)</defined_values>
     </field>
   </packet>
-  <packet name="SM_Encryption_Information">
-    <field name="ltk">
-       <field_bit_length>128</field_bit_length>
-       <semantic>Represents the Long Term Key (LTK) used in LE Secure Connections and LE Legacy Pairing to encrypt future connections. The LTK is generated during the pairing process and can be distributed using the Encryption Information command.</semantic>
-       <defined_values>0x00000000000000000000000000000000 - 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</defined_values>
-    </field>
-  </packet>
-  <packet name="SM_Identity_Address_Information">
-    <field name="atype">
-      <field_bit_length>1</field_bit_length>
-      <semantic>Indicates the type of address being used in the SM_Identity_Address_Information packet, differentiating between public and static random device addresses.</semantic>
-      <defined_values>0x00 (Public Device Address), 0x01 (Static Random Device Address)</defined_values>
-    </field>
-  </packet>
-  <packet name="SM_Identity_Address_Information">
-    <field name="address">
-      <field_bit_length>48</field_bit_length>
-      <semantic>The BD_ADDR field contains the distributing device's public device address or static random address, crucial for identifying the device involved in communication.</semantic>
-      <defined_values>0x000000000000 - 0xFFFFFFFFFFFF (Valid public or static random addresses)</defined_values>
-    </field>
-  </packet>
-  <packet name="SM_Signing_Information">
-    <field name="csrk">
-      <field_bit_length>128</field_bit_length>
-      <semantic>The CSRK (Connection Signature Resolving Key) is used to sign data, ensuring data integrity and authenticity during Bluetooth communication.</semantic>
-      <defined_values>0x00000000000000000000000000000000 (Minimum), 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF (Maximum)</defined_values>
-    </field>
-  </packet>
-  <packet name="SM_Security_Request">
-    <field name="auth_req">
-      <field_bit_length>8</field_bit_length>
-      <semantic>Specifies the security properties requested during the pairing process, including the desired level of authentication, encryption, and bonding preferences.</semantic>
-      <defined_values>Bits 0-4: Reserved for future use, Bit 5: MITM (0 - No protection, 1 - MITM protection requested), Bit 6: SC (0 - LE Legacy pairing, 1 - LE Secure Connections), Bit 7: Keypress (0 - No notifications, 1 - Keypress notifications enabled), Other combinations and values are reserved or undefined.</defined_values>
-    </field>
-  </packet>
-  <packet name="SM_Public_Key">
-    <field name="key_x">
-        <field_bit_length>256</field_bit_length>
-        <semantic>Represents the X-coordinate of the elliptic curve public key used in the LE Secure Connections pairing process. It is used in the Elliptic Curve Diffie-Hellman (ECDH) key exchange to compute a shared secret.</semantic>
-        <defined_values>0x0000000000000000000000000000000000000000000000000000000000000000 - 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</defined_values>
-    </field>
-  </packet>
-  <packet name="SM_Public_Key">
-    <field name="key_y">
-      <field_bit_length>256</field_bit_length>
-      <semantic>The key_y field represents the Y-coordinate of the public key, essential for Secure Connections pairing between Bluetooth devices.</semantic>
-      <defined_values>0x0000000000000000000000000000000000000000000000000000000000000000 (minimum), 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF (maximum)</defined_values>
-    </field>
-  </packet>
-  <packet name="SM_DHKey_Check">
-    <field name="dhkey_check">
-      <field_bit_length>128</field_bit_length>
-      <semantic>Verifies the 128-bit Diffie-Hellman Key (DHKey) Check values, ensuring the authenticity and integrity of the key exchange in Low Energy (LE) Secure Connections.</semantic>
-      <defined_values>0x00000000000000000000000000000000 - 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF (Full range for 128-bit field)</defined_values>
-    </field>
-  </packet>
-  <packet name="SM_Keypress_Notification">
-    <field name="notification_type">
-      <field_bit_length>8</field_bit_length>
-      <semantic>Indicates the state of the passkey entry process during Bluetooth pairing, used to notify the remote device of key entry actions.</semantic>
-      <defined_values>0x00 (Passkey entry started), 0x01 (Passkey digit entered), 0x02 (Passkey digit erased), 0x03 (Passkey cleared), 0x04 (Passkey entry completed), 0x05-0xFF (Reserved for future use)</defined_values>
-    </field>
-  </packet>
-
-
-
 <packet name="BTLE_CTRL">
     
     

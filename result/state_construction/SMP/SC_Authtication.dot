@@ -1,0 +1,13 @@
+```dot
+digraph SC_Authtication {
+    s0 [label="s0"];
+    s1 [label="s1"];
+    s2 [label="s2"];
+    
+    s0 -> s1 [label="empty/Pairing Confirm"];
+    s1 -> s2 [label="Pairing Random/Pairing Random"];
+    
+    __start0 [label="", shape=none];
+    __start0 -> s0 [label=""];
+}
+```

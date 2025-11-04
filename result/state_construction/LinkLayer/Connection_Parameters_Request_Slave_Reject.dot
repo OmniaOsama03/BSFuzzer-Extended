@@ -1,0 +1,13 @@
+```dot
+digraph Connection_Parameters_Request_Slave_Reject {
+    s0 [label="s0"];
+    s1 [label="s1"];
+    s2 [label="s2"];
+    
+    s0 -> s1 [label="empty/LL_CONNECTION_PARAM_REQ"];
+    s1 -> s2 [label="LL_REJECT_EXT_IND/empty"];
+    
+    __start0 [label="", shape=none];
+    __start0 -> s0 [label=""];
+}
+```

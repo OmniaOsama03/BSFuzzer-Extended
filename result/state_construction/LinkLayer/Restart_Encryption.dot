@@ -1,0 +1,17 @@
+```dot
+digraph Restart_Encryption {
+    s0 [label="s0"];
+    s1 [label="s1"];
+    s2 [label="s2"];
+    s3 [label="s3"];
+    s4 [label="s4"];
+    
+    s0 -> s1 [label="LL_PAUSE_ENC_REQ/LL_PAUSE_ENC_RSP"];
+    s1 -> s2 [label="LL_PAUSE_ENC_RSP/empty"];
+    s2 -> s3 [label="LL_ENC_REQ/LL_ENC_RSP,LL_START_ENC_REQ"];
+    s3 -> s4 [label="LL_START_ENC_RSP/LL_START_ENC_RSP"];
+    
+    __start0 [label="", shape=none];
+    __start0 -> s0 [label=""];
+}
+```

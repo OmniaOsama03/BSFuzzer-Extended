@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<layer name="smp">
+  <packet name="SM_Hdr">
+    <field name="sm_command">
+      <field_bit_length>8</field_bit_length>
+      <semantic>Identifies the type of Security Manager Protocol (SMP) command being sent, enabling the receiving device to interpret and process the subsequent data fields in the packet.</semantic>
+      <defined_values>0x01 (Pairing Request), 0x02 (Pairing Response), 0x03 (Pairing Confirm), 0x04 (Pairing Random), 0x05 (Pairing Failed), 0x06 (Encryption Information), 0x07 (Central Identification), 0x08 (Identity Information), 0x09 (Identity Address Information), 0x0A (Signing Information), 0x0B (Security Request), 0x0C (Pairing Public Key), 0x0D (Pairing DHKey Check), 0x0E (Pairing Keypress Notification), 0x0F-0xFF (Reserved for future use)</defined_values>
+    </field>
+  </packet>
+  <packet name="SM_Pairing_Response">
+    <field name="iocap">
+      <field_bit_length>8</field_bit_length>
+      <semantic>Defines the input and output capabilities of a Bluetooth device, influencing the selection of pairing methods and security levels.</semantic>
+      <defined_values>0x00 (DisplayOnly), 0x01 (DisplayYesNo), 0x02 (KeyboardOnly), 0x03 (NoInputNoOutput), 0x04 (KeyboardDisplay), 0x05-0xFF (Reserved for future use)</defined_values>
+    </field>
+  </packet>
+  <packet name="SM_Pairing_Response">
+    <field name="oob">
+      <field_bit_length>8</field_bit_length>
+      <semantic>Indicates whether Out-of-Band (OOB) authentication data is available for the pairing process, which can enhance security by providing an additional authentication mechanism outside the Bluetooth channel.</semantic>
+      <defined_values>0x00 (OOB data not available), 0x01 (OOB data available), 0x02-0xFF (Reserved for future use)</defined_values>
+    </field>
+  </packet>
+  <packet name="SM_Pairing_Response">
+    <field name="authentication">
+      <field_bit_length>8</field_bit_length>
+      <semantic>Specifies the authentication and security requirements for the pairing process, including Bonding, Man-in-the-Middle (MITM) protection, Secure Connections support, Keypress notifications, and CT2 support.</semantic>
+      <defined_values>0x00 (No Bonding, No MITM, No Secure Connections, No Keypress, No CT2), 0x01 (Bonding, No MITM, No Secure Connections, No Keypress, No CT2), 0x02 (No Bonding, MITM required, No Secure Connections, No Keypress, No CT2), 0x03 (Bonding, MITM required, No Secure Connections, No Keypress, No CT2), 0x04 (No Bonding, No MITM, Secure Connections supported, No Keypress, No CT2), 0x05 (Bonding, No MITM, Secure Connections supported, No Keypress, No CT2), 0x06 (No Bonding, MITM required, Secure Connections supported, No Keypress, No CT2), 0x07 (Bonding, MITM required, Secure Connections supported, No Keypress, No CT2), 0x08 (No Bonding, No MITM, No Secure Connections, Keypress supported, No CT2), 0x10 (No Bonding, No MITM, No Secure Connections, No Keypress, CT2 supported), 0x20-0xFF (Reserved for future use or invalid combinations)</defined_values>
+    </field>
+  </packet>
+  <packet name="SM_Pairing_Response">
+    <field name="max_key_size">
+      <field_bit_length>8</field_bit_length>
+      <semantic>Indicates the maximum encryption key size (in bytes) supported by the responding device for securing the Bluetooth connection.</semantic>
+      <defined_values>7 to 16 (valid range for LE connections), values outside this range are invalid and may result in pairing failure</defined_values>
+    </field>
+  </packet>
+  <packet name="SM_Pairing_Response">
+    <field name="initiator_key_distribution">
+      <field_bit_length>8</field_bit_length>
+      <semantic>Specifies the security keys the initiating device will distribute during the key distribution phase of pairing, impacting encryption, privacy, and authentication features.</semantic>
+      <defined_values>Bit 0: EncKey (Encryption Key, e.g., LTK/STK), Bit 1: IdKey (Identity Key, e.g., IRK), Bit 2: SignKey (Signing Key, e.g., CSRK), Bits 3-7: Reserved for future use (should be 0); Example values: 0x01 (Encryption Key only), 0x03 (Encryption and Identity Keys)</defined_values>
+    </field>
+  </packet>
+  <packet name="SM_Pairing_Response">
+    <field name="responder_key_distribution">
+      <field_bit_length>8</field_bit_length>
+      <semantic>Indicates which security keys (e.g., Long-Term Key (LTK), Identity Resolving Key (IRK), Connection Signature Resolving Key (CSRK)) the responding device is willing to distribute during the pairing process.</semantic>
+      <defined_values>0x00-0xFF (Bitmap with specific bits indicating keys such as LTK, IRK, CSRK; exact bit assignments not specified but inferred as defined for key distribution, others may be reserved)</defined_values>
+    </field>
+  </packet>
+</layer>

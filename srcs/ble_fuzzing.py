@@ -13,10 +13,10 @@ sys.path.insert(0,os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+"/
 from BSFuzz.srcs.Send_Packet.Bluetooth_SUL import Bluetooth_SUL
 from BSFuzz.libs.driver.NRF52_dongle import NRF52Dongle
 from BSFuzz.srcs.Log_Config.logger_config import *
-from BSFuzz.srcs.Packet_Fuzz.SemFuzz import Fuzz_Session
+from BSFuzz.srcs.Test_Seq_Generation.SemFuzz import Fuzz_Session
 from scapy.layers.bluetooth4LE import *
 from scapy.layers.bluetooth import *
-from BSFuzz.srcs.Config_File.Realtek import config
+from BSFuzz.srcs.Config_File.Esp32 import config
 
 rsrc = resource.RLIMIT_DATA
 soft, hard = resource.getrlimit(rsrc)
@@ -35,9 +35,7 @@ tx_len = config.device["tx_len"]
 test_layer = Layers[config.device["packet_layer"]]
 config_file = config.device["config_file"]
 logger_handle = config_file.split('/')[-1].split('.')[0]
-
 logger = configure_logger( logger_handle, config.device["log_path"],logging.DEBUG)
-
 
 return_handle_layer = [Layers[i] for i in config.device["return_handle_layer"]]
 send_handle_layer = [Layers[i] for i in config.device["send_handle_layer"]]
@@ -50,7 +48,7 @@ block_packet=config.fuzz["block_packet"]
 block_packet_truncated=config.fuzz["block_packet_truncated"]
 block_packet_add=config.fuzz["block_packet_add"]
 output_file_path = config.fuzz["output_file_path"]
-fuzz_config_path = "/home/yangting/Documents/Semantic/config/semfuzz_config.json"
+fuzz_config_path = "/home/yangting/Documents/BSFuzz/config/semfuzz_config.json"
 
 
 ble_sul = Bluetooth_SUL(NRF52Dongle(port_name=port_name,logs_pcap=logs_pcap,pcap_filename=pcap_filename), advertiser_address,iat,rat, role,rx_len,tx_len ,logger_handle, key_path,test_layer, config_file, return_handle_layer=return_handle_layer,send_handle_layer=send_handle_layer)

@@ -4,7 +4,7 @@ import sys
 import json
 
 sys.path.insert(0,os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+"/../../")
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 
 template = """
 As a Bluetooth protocol testing expert, you need to generate cross-package field dependency fuzz test cases as client role that comply with the specification. 

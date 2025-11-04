@@ -1,0 +1,21 @@
+```dot
+digraph Scanning {
+    s0 [label="s0"];
+    s1 [label="s1"];
+    s2 [label="s2"];
+    
+    // The sequence starts with a Peripheral -> Client message (ADV_IND).
+    // Per Rule 5, the Input is "empty".
+    // Per Rule 2, the Output is "ADV_IND".
+    s0 -> s1 [label="empty/ADV_IND"];
+
+    // The Client sends a SCAN_REQ message.
+    // Per Rule 1, the Input is "SCAN_REQ".
+    // The Peripheral responds with SCAN_RSP.
+    // Per Rule 2, the Output is "SCAN_RSP".
+    s1 -> s2 [label="SCAN_REQ/SCAN_RSP"];
+    
+    __start0 [label="", shape=none];
+    __start0 -> s0 [label=""];
+}
+```

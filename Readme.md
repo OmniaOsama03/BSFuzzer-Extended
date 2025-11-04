@@ -14,12 +14,12 @@ BSFuzzer is a context-aware semantic fuzzing framework guided by the Bluetooth C
 ```
 conda create -n BSFuzz_env python=3.11.8
 conda activate BSFuzz_env
-pip install -r requirements.txt
-conda deactivate
+
 ```
 
 ### 2. Clone the repository
 ```
 git clone https://github.com/yangting111/BSFuzz.git
 cd BSFuzz
+pip install -r requirements.txt
 ```

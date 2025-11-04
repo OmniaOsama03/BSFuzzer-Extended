@@ -1,0 +1,13 @@
+```dot
+digraph Slave_Rejects_Master’s_Confirm_Value {
+    s0 [label="s0"];
+    s1 [label="s1"];
+    s2 [label="s2"];
+    
+    s0 -> s1 [label="PairingConfirm (Mconfirm)/PairingConfirm (Sconfirm)"];
+    s1 -> s2 [label="PairingRandom (Mrand)/Pairing Failed (\"Confirm Value Failed\")"];
+    
+    __start0 [label="", shape=none];
+    __start0 -> s0 [label=""];
+}
+```

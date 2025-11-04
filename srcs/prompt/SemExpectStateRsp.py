@@ -1,4 +1,4 @@
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 packet_type =  "Received by slave device"
 SemRspPrompt = PromptTemplate(
             input_variables=["layer","packet_name"],

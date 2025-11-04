@@ -1,0 +1,520 @@
+{
+  "packets": [
+    {
+      "name": "BTLE_ADV",
+      "fields": [
+        {
+          "name": "RxAdd",
+          "mutations": [
+            {
+              "RxAdd": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (Public Device Address)"
+            },
+            {
+              "RxAdd": "0x01",
+              "TestType": "Boundary Test - Maximum Defined Value (Random Device Address)"
+            },
+            {
+              "RxAdd": "0x02",
+              "TestType": "Semantic Invalid - First Value Beyond Defined Range"
+            },
+            {
+              "RxAdd": "0x03",
+              "TestType": "Semantic Invalid - Arbitrary Value Beyond Defined Range"
+            },
+            {
+              "RxAdd": "0x04",
+              "TestType": "Semantic Invalid - Another Arbitrary Value Beyond Defined Range"
+            },
+            {
+              "RxAdd": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Possible Value (Beyond Defined Range)"
+            },
+            {
+              "RxAdd": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "RxAdd": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "RxAdd": "0xFE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum)"
+            },
+            {
+              "RxAdd": "0x55",
+              "TestType": "Random Value - Beyond Defined Range"
+            },
+            {
+              "RxAdd": "0xAA",
+              "TestType": "Random Value - Another Beyond Defined Range"
+            }
+          ]
+        },
+        {
+          "name": "TxAdd",
+          "mutations": [
+            {
+              "TxAdd": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value (Public Device Address)"
+            },
+            {
+              "TxAdd": "0x01",
+              "TestType": "Boundary Test - Maximum Defined Value (Random Device Address)"
+            },
+            {
+              "TxAdd": "0x02",
+              "TestType": "Semantic Invalid - First Reserved Value (LSB 0, but byte not 0x00)"
+            },
+            {
+              "TxAdd": "0x03",
+              "TestType": "Semantic Invalid - First Reserved Value (LSB 1, but byte not 0x01)"
+            },
+            {
+              "TxAdd": "0x04",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value (LSB 0, but byte not 0x00)"
+            },
+            {
+              "TxAdd": "0xFF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value (LSB 1, but byte not 0x01)"
+            },
+            {
+              "TxAdd": "0x80",
+              "TestType": "Bit Flip - High Bit Set (from 0x00)"
+            },
+            {
+              "TxAdd": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit (from 0x00)"
+            },
+            {
+              "TxAdd": "0x05",
+              "TestType": "Bit Flip - Arbitrary Bit (from 0x01, flipping 3rd bit)"
+            },
+            {
+              "TxAdd": "0x81",
+              "TestType": "Bit Flip - High Bit Set (from 0x01)"
+            },
+            {
+              "TxAdd": "0x06",
+              "TestType": "Random Value - Small Reserved (LSB 0)"
+            },
+            {
+              "TxAdd": "0x10",
+              "TestType": "Random Value - Non-Standard Bit Pattern (LSB 0)"
+            },
+            {
+              "TxAdd": "0xFA",
+              "TestType": "Random Value - Reserved Range (LSB 0)"
+            }
+          ]
+        },
+        {
+          "name": "ChSel",
+          "mutations": [
+            {
+              "ChSel": "0x0",
+              "TestType": "Boundary Test - Minimum Defined Value (Channel Selection Algorithm #2 not supported)"
+            },
+            {
+              "ChSel": "0x1",
+              "TestType": "Boundary Test - Maximum Defined Value (Channel Selection Algorithm #2 supported)"
+            },
+            {
+              "ChSel": "0x1",
+              "TestType": "Bit Flip - From 0b to 1b"
+            },
+            {
+              "ChSel": "0x0",
+              "TestType": "Bit Flip - From 1b to 0b"
+            }
+          ]
+        },
+        {
+          "name": "RFU",
+          "mutations": [
+            {
+              "RFU": "0x0",
+              "TestType": "Boundary Test - Minimum Defined Value (Reserved)"
+            },
+            {
+              "RFU": "0x1",
+              "TestType": "Boundary Test - Maximum Defined Value (Reserved)"
+            },
+            {
+              "RFU": "0x0",
+              "TestType": "Semantic Invalid - First Reserved Value (0b)"
+            },
+            {
+              "RFU": "0x1",
+              "TestType": "Semantic Invalid - Last Reserved Value (1b)"
+            },
+            {
+              "RFU": "0x1",
+              "TestType": "Bit Flip - From 0b to 1b"
+            },
+            {
+              "RFU": "0x0",
+              "TestType": "Bit Flip - From 1b to 0b"
+            },
+            {
+              "RFU": "0x0",
+              "TestType": "Random Value - 0b"
+            },
+            {
+              "RFU": "0x1",
+              "TestType": "Random Value - 1b"
+            }
+          ]
+        },
+        {
+          "name": "PDU_type",
+          "mutations": [
+            {
+              "PDU_type": "0x0",
+              "TestType": "Boundary Test - Minimum Defined Value (ADV_IND)"
+            },
+            {
+              "PDU_type": "0x6",
+              "TestType": "Boundary Test - Maximum Defined Value (ADV_SCAN_IND)"
+            },
+            {
+              "PDU_type": "0x1",
+              "TestType": "Boundary Test - ADV_DIRECT_IND"
+            },
+            {
+              "PDU_type": "0x2",
+              "TestType": "Boundary Test - ADV_NONCONN_IND"
+            },
+            {
+              "PDU_type": "0x3",
+              "TestType": "Boundary Test - SCAN_REQ"
+            },
+            {
+              "PDU_type": "0x4",
+              "TestType": "Boundary Test - SCAN_RSP"
+            },
+            {
+              "PDU_type": "0x5",
+              "TestType": "Boundary Test - CONNECT_IND"
+            },
+            {
+              "PDU_type": "0x7",
+              "TestType": "Semantic Invalid - First Reserved Value (0111b)"
+            },
+            {
+              "PDU_type": "0xF",
+              "TestType": "Semantic Invalid - Maximum Reserved Value (1111b)"
+            },
+            {
+              "PDU_type": "0xA",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value (1010b)"
+            },
+            {
+              "PDU_type": "0xC",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value (1100b)"
+            },
+            {
+              "PDU_type": "0x8",
+              "TestType": "Bit Flip - High Bit Set (1000b)"
+            },
+            {
+              "PDU_type": "0x7",
+              "TestType": "Bit Flip - All Bits Except High Bit (0111b)"
+            },
+            {
+              "PDU_type": "0xE",
+              "TestType": "Bit Flip - High Bits Set (Near Maximum Reserved) (1110b)"
+            },
+            {
+              "PDU_type": "0x9",
+              "TestType": "Random Value - Reserved Range (1001b)"
+            },
+            {
+              "PDU_type": "0xB",
+              "TestType": "Random Value - Reserved Range (1011b)"
+            },
+            {
+              "PDU_type": "0xD",
+              "TestType": "Random Value - Reserved Range (1101b)"
+            }
+          ]
+        },
+        {
+          "name": "Length",
+          "mutations": [
+            {
+              "Length": "0x00",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "Length": "0xFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "Length": "0x01",
+              "TestType": "Boundary Test - One Above Minimum"
+            },
+            {
+              "Length": "0xFE",
+              "TestType": "Boundary Test - One Below Maximum"
+            },
+            {
+              "Length": "0x02",
+              "TestType": "Semantic Invalid - First Reserved Value"
+            },
+            {
+              "Length": "0xFD",
+              "TestType": "Semantic Invalid - Maximum Reserved Value"
+            },
+            {
+              "Length": "0x1A",
+              "TestType": "Semantic Invalid - Arbitrary Reserved Value"
+            },
+            {
+              "Length": "0x80",
+              "TestType": "Bit Flip - High Bit Set"
+            },
+            {
+              "Length": "0x7F",
+              "TestType": "Bit Flip - All Bits Except High Bit"
+            },
+            {
+              "Length": "0xAA",
+              "TestType": "Bit Flip - Alternating Bits (10101010)"
+            },
+            {
+              "Length": "0x55",
+              "TestType": "Bit Flip - Alternating Bits (01010101)"
+            },
+            {
+              "Length": "0x3B",
+              "TestType": "Random Value - Mid-range"
+            },
+            {
+              "Length": "0xC4",
+              "TestType": "Random Value - High-range"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BTLE_SCAN_REQ",
+      "fields": [
+        {
+          "name": "ScanA",
+          "mutations": [
+            {
+              "ScanA": "0x000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "ScanA": "0xFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "ScanA": "0x000000000001",
+              "TestType": "Boundary Test - Minimum + 1"
+            },
+            {
+              "ScanA": "0xFFFFFFFFFFFE",
+              "TestType": "Boundary Test - Maximum - 1"
+            },
+            {
+              "ScanA": "0x010101010101",
+              "TestType": "Semantic Invalid - Repeating Byte Pattern"
+            },
+            {
+              "ScanA": "0x123456789ABC",
+              "TestType": "Semantic Invalid - Arbitrary Common Test Pattern 1"
+            },
+            {
+              "ScanA": "0xDEADBEEFDEAD",
+              "TestType": "Semantic Invalid - Arbitrary Common Test Pattern 2"
+            },
+            {
+              "ScanA": "0xAAAAAAAAAAAA",
+              "TestType": "Semantic Invalid - Alternating Bits (0xA)"
+            },
+            {
+              "ScanA": "0x555555555555",
+              "TestType": "Semantic Invalid - Alternating Bits (0x5)"
+            },
+            {
+              "ScanA": "0x000000000001",
+              "TestType": "Bit Flip - LSB Set"
+            },
+            {
+              "ScanA": "0x800000000000",
+              "TestType": "Bit Flip - MSB Set"
+            },
+            {
+              "ScanA": "0x000000800000",
+              "TestType": "Bit Flip - Middle Bit Set (Bit 23)"
+            },
+            {
+              "ScanA": "0x7FFFFFFFFFFF",
+              "TestType": "Bit Flip - All Bits Except MSB Set"
+            },
+            {
+              "ScanA": "0x000000000002",
+              "TestType": "Bit Flip - Second LSB Set"
+            },
+            {
+              "ScanA": "0xFF0000000000",
+              "TestType": "Bit Flip - First Byte All Ones"
+            },
+            {
+              "ScanA": "0x0000000000FF",
+              "TestType": "Bit Flip - Last Byte All Ones"
+            },
+            {
+              "ScanA": "0x1A2B3C4D5E6F",
+              "TestType": "Random Value - Arbitrary Pattern 1"
+            },
+            {
+              "ScanA": "0x9876543210FE",
+              "TestType": "Random Value - Arbitrary Pattern 2"
+            },
+            {
+              "ScanA": "0xABCDEF123456",
+              "TestType": "Random Value - Arbitrary Pattern 3"
+            }
+          ]
+        },
+        {
+          "name": "AdvA",
+          "mutations": [
+            {
+              "AdvA": "0x000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value (All Zeros)"
+            },
+            {
+              "AdvA": "0xFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value (All Ones)"
+            },
+            {
+              "AdvA": "0x100000000000",
+              "TestType": "Semantic Invalid - Reserved Random Address Type Prefix (MSB '10')"
+            },
+            {
+              "AdvA": "0x000000000001",
+              "TestType": "Semantic Invalid - Near Minimum (LSB Set)"
+            },
+            {
+              "AdvA": "0xFFFFFFFFFFFFFE",
+              "TestType": "Semantic Invalid - Near Maximum (LSB Cleared)"
+            },
+            {
+              "AdvA": "0x000000000002",
+              "TestType": "Semantic Invalid - Second LSB Set"
+            },
+            {
+              "AdvA": "0x800000000000",
+              "TestType": "Bit Flip - Most Significant Bit Set"
+            },
+            {
+              "AdvA": "0x400000000000",
+              "TestType": "Bit Flip - Second Most Significant Bit Set"
+            },
+            {
+              "AdvA": "0x7FFFFFFFFFFF",
+              "TestType": "Bit Flip - All Bits Except MSB"
+            },
+            {
+              "AdvA": "0xFFFFFFFFFFFE",
+              "TestType": "Bit Flip - All Bits Except LSB"
+            },
+            {
+              "AdvA": "0x555555555555",
+              "TestType": "Bit Flip - Alternating Bits (0101...)"
+            },
+            {
+              "AdvA": "0xAAAAAAAAAAAAAAAA",
+              "TestType": "Bit Flip - Alternating Bits (1010...)"
+            },
+            {
+              "AdvA": "0x123456789ABC",
+              "TestType": "Random Value - Arbitrary Pattern 1"
+            },
+            {
+              "AdvA": "0xABCDEF123456",
+              "TestType": "Random Value - Arbitrary Pattern 2"
+            },
+            {
+              "AdvA": "0xDEADBEEFCAFE",
+              "TestType": "Random Value - Arbitrary Pattern 3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BTLE_CONNECT_REQ",
+      "fields": [
+        {
+          "name": "InitA",
+          "mutations": [
+            {
+              "InitA": "0x000000000000",
+              "TestType": "Boundary Test - Minimum Defined Value"
+            },
+            {
+              "InitA": "0xFFFFFFFFFFFF",
+              "TestType": "Boundary Test - Maximum Defined Value"
+            },
+            {
+              "InitA": "0x000000000001",
+              "TestType": "Boundary Test - One Above Minimum"
+            },
+            {
+              "InitA": "0xFFFFFFFFFFFE",
+              "TestType": "Boundary Test - One Below Maximum"
+            },
+            {
+              "InitA": "0x400000000000",
+              "TestType": "Semantic Invalid - First Reserved Address Type (MSBs 01)"
+            },
+            {
+              "InitA": "0x800000000000",
+              "TestType": "Semantic Invalid - Second Reserved Address Type (MSBs 10)"
+            },
+            {
+              "InitA": "0x7FFFFFFFFFFF",
+              "TestType": "Semantic Invalid - Max Value for First Reserved Type"
+            },
+            {
+              "InitA": "0xBFFFFFFFFFFF",
+              "TestType": "Semantic Invalid - Max Value for Second Reserved Type"
+            },
+            {
+              "InitA": "0x000080000000",
+              "TestType": "Bit Flip - Middle Bit (Bit 23) Set"
+            },
+            {
+              "InitA": "0xAAAAAAAAAAAAAAAA",
+              "TestType": "Bit Flip - Alternating Bits (10...)"
+            },
+            {
+              "InitA": "0x555555555555",
+              "TestType": "Bit Flip - Alternating Bits (01...)"
+            },
+            {
+              "InitA": "0x123456789ABC",
+              "TestType": "Random Value - Arbitrary"
+            },
+            {
+              "InitA": "0xDEADBEEFCAFE",
+              "TestType": "Random Value - Arbitrary"
+            },
+            {
+              "InitA": "0x0F0F0F0F0F0F",
+              "TestType": "Random Value - Patterned"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+```dot
+digraph LL_Encryption_Start_Prcedure {
+    s0 [label="s0"];
+    s1 [label="s1"];
+    s2 [label="s2"];
+    
+    s0 -> s1 [label="LL_ENC_REQ/LL_ENC_RSP,LL_START_ENC_REQ"];
+    s1 -> s2 [label="LL_START_ENC_RSP/LL_START_ENC_RSP"];
+    
+    __start0 [label="", shape=none];
+    __start0 -> s0 [label=""];
+}
+```

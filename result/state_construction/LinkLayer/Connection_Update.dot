@@ -1,0 +1,11 @@
+```dot
+digraph Connection_Update {
+    s0 [label="s0"];
+    s1 [label="s1"];
+    
+    s0 -> s1 [label="LL_CONNECTION_UPDATE_IND/empty"];
+    
+    __start0 [label="", shape=none];
+    __start0 -> s0 [label=""];
+}
+```

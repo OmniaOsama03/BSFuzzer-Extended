@@ -1,0 +1,13 @@
+```dot
+digraph Master_Rejects_Pairing_Because_of_Key_Size {
+    s0 [label="s0"];
+    s1 [label="s1"];
+    s2 [label="s2"];
+    
+    s0 -> s1 [label="Pairing Request/Pairing Response"];
+    s1 -> s2 [label="Pairing Failed/empty"];
+    
+    __start0 [label="", shape=none];
+    __start0 -> s0 [label=""];
+}
+```

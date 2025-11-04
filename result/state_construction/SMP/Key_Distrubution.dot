@@ -1,0 +1,21 @@
+```dot
+digraph Key_Distrubution {
+    s0 [label="s0"];
+    s1 [label="s1"];
+    s2 [label="s2"];
+    s3 [label="s3"];
+    s4 [label="s4"];
+    s5 [label="s5"];
+    s6 [label="s6"];
+
+    s0 -> s1 [label="empty/Encryption Information (Long Term Key), Master Identification (EDIV, Rand), Identity Information (Identity Resolving Key), Identity Address Information (AddrType, BD_ADDR), Signing Information (Signature Key)"];
+    s1 -> s2 [label="Encryption Information (Long Term Key)/empty"];
+    s2 -> s3 [label="Master Identification (EDIV, Rand)/empty"];
+    s3 -> s4 [label="Identity Information (Identity Resolving Key)/empty"];
+    s4 -> s5 [label="Identity Address Information (AddrType, BD_ADDR)/empty"];
+    s5 -> s6 [label="Signing Information (Signature Key)/empty"];
+    
+    __start0 [label="", shape=none];
+    __start0 -> s0 [label=""];
+}
+```

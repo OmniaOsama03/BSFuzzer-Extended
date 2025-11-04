@@ -1,0 +1,13 @@
+```dot
+digraph Phy_Update {
+    s0 [label="s0"];
+    s1 [label="s1"];
+    s2 [label="s2"];
+    
+    s0 -> s1 [label="LL_PHY_REQ/LL_PHY_RSP"];
+    s1 -> s2 [label="LL_PHY_UPDATE_IND/empty"];
+    
+    __start0 [label="", shape=none];
+    __start0 -> s0 [label=""];
+}
+```
