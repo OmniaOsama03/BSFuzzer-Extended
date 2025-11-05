@@ -2,7 +2,7 @@
     "llm": {
         "model_provider": "grok",
         "model": "grok-3",
-        "jg_model": "deepseek-r1",
+        "jg_model": "grok-3",
         "temperature": 0
     },
     

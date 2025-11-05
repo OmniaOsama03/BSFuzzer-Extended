@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-环境变量设置脚本
+环境变量设置脚本 
 从配置文件中读取API密钥并设置为环境变量
 """
 
@@ -32,10 +32,10 @@ def setup_env_variables():
         os.environ["GROK_API_KEY"] = api_keys.get("grok_api_key", "")
         os.environ["ALI_API_KEY"] = api_keys.get("ali_api_key", "")
         
-        logger.info("环境变量设置完成")
+        logger.info("setup env variables done")
         
     except Exception as e:
-        logger.error("设置环境变量时出错: %s", str(e))
+        logger.error("setup env variables error: %s", str(e))
         raise
 
 if __name__ == "__main__":
