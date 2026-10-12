@@ -5,17 +5,17 @@ import json
 import re
 
 sys.path.insert(0,os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+"/../../")
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 
 from langchain_community.vectorstores import FAISS
-from langchain.schema import Document
+from langchain_core.documents import Document
 from BSFuzz.srcs.Log_Config.logger_config import *
 from BSFuzz.srcs.Config_File.Esp32 import config
 from BSFuzz.srcs.llm_model.ModConf import ModelConfig
 
 
-with open("/home/yangting/Documents/Semantic/config/semext_config.json", "r") as file:
+with open("/home/silver/BSFuzzer-Extended/config/semext_config.json", "r") as file:
     config = json.load(file)
     model_config = ModelConfig(config.get("llm", {}).get("model_provider"))
     model = config.get("llm", {}).get("model")
